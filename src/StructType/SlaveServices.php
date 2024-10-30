@@ -1,10 +1,11 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
 /**
  * This class stands for SlaveServices StructType
  */
+#[\AllowDynamicProperties]
 class SlaveServices extends SlaveServicesBase
 {
     /**
@@ -12,10 +13,8 @@ class SlaveServices extends SlaveServicesBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var Marketing
      */
-    public $marketing;
+    protected ?Marketing $marketing = null;
 
     /**
      * Constructor method for SlaveServices
@@ -31,22 +30,19 @@ class SlaveServices extends SlaveServicesBase
 
     /**
      * Get marketing value
-     *
-     * @return Marketing|null
      */
-    public function getMarketing()
+    public function getMarketing(): ?Marketing
     {
         return $this->marketing;
     }
 
     /**
      * Set marketing value
-     *
-     * @return self
      */
-    public function setMarketing(?Marketing $marketing = null)
+    public function setMarketing(?Marketing $marketing = null): self
     {
         $this->marketing = $marketing;
+
         return $this;
     }
 }

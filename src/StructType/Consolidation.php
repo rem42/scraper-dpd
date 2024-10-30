@@ -1,10 +1,11 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
 /**
  * This class stands for Consolidation StructType
  */
+#[\AllowDynamicProperties]
 class Consolidation extends DefaultService
 {
     /**
@@ -12,19 +13,15 @@ class Consolidation extends DefaultService
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var string
      */
-    public $type;
+    protected string $type;
 
     /**
      * Constructor method for Consolidation
      *
      * @uses Consolidation::setType()
-     *
-     * @param string $type
      */
-    public function __construct($type = null)
+    public function __construct(string $type)
     {
         $this
             ->setType($type)
@@ -33,10 +30,8 @@ class Consolidation extends DefaultService
 
     /**
      * Get type value
-     *
-     * @return string
      */
-    public function getType()
+    public function getType(): string
     {
         return $this->type;
     }
@@ -47,19 +42,16 @@ class Consolidation extends DefaultService
      * @uses \Scraper\ScraperDPD\EnumType\EtypeConsolidation::valueIsValid()
      * @uses \Scraper\ScraperDPD\EnumType\EtypeConsolidation::getValidValues()
      *
-     * @param string $type
-     *
      * @throws \InvalidArgumentException
-     *
-     * @return self
      */
-    public function setType($type = null)
+    public function setType(string $type): self
     {
         // validation for constraint: enumeration
         if (!\Scraper\ScraperDPD\EnumType\EtypeConsolidation::valueIsValid($type)) {
             throw new \InvalidArgumentException(sprintf('Invalid value(s) %s, please use one of: %s from enumeration class \Scraper\ScraperDPD\EnumType\EtypeConsolidation', \is_array($type) ? implode(', ', $type) : var_export($type, true), implode(', ', \Scraper\ScraperDPD\EnumType\EtypeConsolidation::getValidValues())), __LINE__);
         }
         $this->type = $type;
+
         return $this;
     }
 }

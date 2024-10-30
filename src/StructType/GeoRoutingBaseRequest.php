@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for GeoRoutingBaseRequest StructType
  */
+#[\AllowDynamicProperties]
 class GeoRoutingBaseRequest extends AbstractStructBase
 {
     /**
@@ -14,55 +15,43 @@ class GeoRoutingBaseRequest extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var int
      */
-    public $destinationDepot;
+    protected int $destinationDepot;
     /**
      * The countryPrefix
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $countryPrefix;
+    protected ?string $countryPrefix = null;
     /**
      * The zipCode
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $zipCode;
+    protected ?string $zipCode = null;
     /**
      * The date
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $date;
+    protected ?string $date = null;
     /**
      * The buCode
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $buCode;
+    protected ?string $buCode = null;
     /**
      * The depotStr
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $depotStr;
+    protected ?string $depotStr = null;
 
     /**
      * Constructor method for GeoRoutingBaseRequest
@@ -73,15 +62,8 @@ class GeoRoutingBaseRequest extends AbstractStructBase
      * @uses GeoRoutingBaseRequest::setDate()
      * @uses GeoRoutingBaseRequest::setBuCode()
      * @uses GeoRoutingBaseRequest::setDepotStr()
-     *
-     * @param int    $destinationDepot
-     * @param string $countryPrefix
-     * @param string $zipCode
-     * @param string $date
-     * @param string $buCode
-     * @param string $depotStr
      */
-    public function __construct($destinationDepot = null, $countryPrefix = null, $zipCode = null, $date = null, $buCode = null, $depotStr = null)
+    public function __construct(int $destinationDepot, ?string $countryPrefix = null, ?string $zipCode = null, ?string $date = null, ?string $buCode = null, ?string $depotStr = null)
     {
         $this
             ->setDestinationDepot($destinationDepot)
@@ -95,163 +77,133 @@ class GeoRoutingBaseRequest extends AbstractStructBase
 
     /**
      * Get destinationDepot value
-     *
-     * @return int
      */
-    public function getDestinationDepot()
+    public function getDestinationDepot(): int
     {
         return $this->destinationDepot;
     }
 
     /**
      * Set destinationDepot value
-     *
-     * @param int $destinationDepot
-     *
-     * @return self
      */
-    public function setDestinationDepot($destinationDepot = null)
+    public function setDestinationDepot(int $destinationDepot): self
     {
         // validation for constraint: int
         if (null !== $destinationDepot && !(\is_int($destinationDepot) || ctype_digit($destinationDepot))) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($destinationDepot, true), \gettype($destinationDepot)), __LINE__);
         }
         $this->destinationDepot = $destinationDepot;
+
         return $this;
     }
 
     /**
      * Get countryPrefix value
-     *
-     * @return string|null
      */
-    public function getCountryPrefix()
+    public function getCountryPrefix(): ?string
     {
         return $this->countryPrefix;
     }
 
     /**
      * Set countryPrefix value
-     *
-     * @param string $countryPrefix
-     *
-     * @return self
      */
-    public function setCountryPrefix($countryPrefix = null)
+    public function setCountryPrefix(?string $countryPrefix = null): self
     {
         // validation for constraint: string
         if (null !== $countryPrefix && !\is_string($countryPrefix)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($countryPrefix, true), \gettype($countryPrefix)), __LINE__);
         }
         $this->countryPrefix = $countryPrefix;
+
         return $this;
     }
 
     /**
      * Get zipCode value
-     *
-     * @return string|null
      */
-    public function getZipCode()
+    public function getZipCode(): ?string
     {
         return $this->zipCode;
     }
 
     /**
      * Set zipCode value
-     *
-     * @param string $zipCode
-     *
-     * @return self
      */
-    public function setZipCode($zipCode = null)
+    public function setZipCode(?string $zipCode = null): self
     {
         // validation for constraint: string
         if (null !== $zipCode && !\is_string($zipCode)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($zipCode, true), \gettype($zipCode)), __LINE__);
         }
         $this->zipCode = $zipCode;
+
         return $this;
     }
 
     /**
      * Get date value
-     *
-     * @return string|null
      */
-    public function getDate()
+    public function getDate(): ?string
     {
         return $this->date;
     }
 
     /**
      * Set date value
-     *
-     * @param string $date
-     *
-     * @return self
      */
-    public function setDate($date = null)
+    public function setDate(?string $date = null): self
     {
         // validation for constraint: string
         if (null !== $date && !\is_string($date)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($date, true), \gettype($date)), __LINE__);
         }
         $this->date = $date;
+
         return $this;
     }
 
     /**
      * Get buCode value
-     *
-     * @return string|null
      */
-    public function getBuCode()
+    public function getBuCode(): ?string
     {
         return $this->buCode;
     }
 
     /**
      * Set buCode value
-     *
-     * @param string $buCode
-     *
-     * @return self
      */
-    public function setBuCode($buCode = null)
+    public function setBuCode(?string $buCode = null): self
     {
         // validation for constraint: string
         if (null !== $buCode && !\is_string($buCode)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($buCode, true), \gettype($buCode)), __LINE__);
         }
         $this->buCode = $buCode;
+
         return $this;
     }
 
     /**
      * Get depotStr value
-     *
-     * @return string|null
      */
-    public function getDepotStr()
+    public function getDepotStr(): ?string
     {
         return $this->depotStr;
     }
 
     /**
      * Set depotStr value
-     *
-     * @param string $depotStr
-     *
-     * @return self
      */
-    public function setDepotStr($depotStr = null)
+    public function setDepotStr(?string $depotStr = null): self
     {
         // validation for constraint: string
         if (null !== $depotStr && !\is_string($depotStr)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($depotStr, true), \gettype($depotStr)), __LINE__);
         }
         $this->depotStr = $depotStr;
+
         return $this;
     }
 }

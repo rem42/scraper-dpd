@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\ArrayType;
 
@@ -18,7 +18,7 @@ class ArrayOfTask extends AbstractStructArrayBase
      *
      * @var array<\Scraper\ScraperDPD\StructType\Task>
      */
-    public $Task;
+    protected ?array $Task = null;
 
     /**
      * Constructor method for ArrayOfTask
@@ -27,7 +27,7 @@ class ArrayOfTask extends AbstractStructArrayBase
      *
      * @param array<\Scraper\ScraperDPD\StructType\Task> $task
      */
-    public function __construct(array $task = [])
+    public function __construct(?array $task = null)
     {
         $this
             ->setTask($task)
@@ -40,21 +40,25 @@ class ArrayOfTask extends AbstractStructArrayBase
      * this property may have been unset before, due to the fact that this property is
      * removable from the request (nillable=true+minOccurs=0)
      *
-     * @return array<\Scraper\ScraperDPD\StructType\Task>|null
+     * @return array<\Scraper\ScraperDPD\StructType\Task>
      */
-    public function getTask()
+    public function getTask(): ?array
     {
         return $this->Task ?? null;
     }
 
     /**
-     * This method is responsible for validating the values passed to the setTask method
+     * This method is responsible for validating the value(s) passed to the setTask method
      * This method is willingly generated in order to preserve the one-line inline validation within the setTask method
+     * This has to validate that each item contained by the array match the itemType constraint
      *
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateTaskForArrayConstraintsFromSetTask(array $values = [])
+    public static function validateTaskForArrayConstraintFromSetTask(?array $values = []): string
     {
+        if (!\is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
 
@@ -69,6 +73,7 @@ class ArrayOfTask extends AbstractStructArrayBase
             $message = sprintf('The Task property can only contain items of type \Scraper\ScraperDPD\StructType\Task, %s given', \is_object($invalidValues) ? $invalidValues::class : (\is_array($invalidValues) ? implode(', ', $invalidValues) : \gettype($invalidValues)));
         }
         unset($invalidValues);
+
         return $message;
     }
 
@@ -80,13 +85,11 @@ class ArrayOfTask extends AbstractStructArrayBase
      * @param array<\Scraper\ScraperDPD\StructType\Task> $task
      *
      * @throws \InvalidArgumentException
-     *
-     * @return self
      */
-    public function setTask(array $task = [])
+    public function setTask(?array $task = null): self
     {
         // validation for constraint: array
-        if ('' !== ($taskArrayErrorMessage = self::validateTaskForArrayConstraintsFromSetTask($task))) {
+        if ('' !== ($taskArrayErrorMessage = self::validateTaskForArrayConstraintFromSetTask($task))) {
             throw new \InvalidArgumentException($taskArrayErrorMessage, __LINE__);
         }
 
@@ -95,23 +98,7 @@ class ArrayOfTask extends AbstractStructArrayBase
         } else {
             $this->Task = $task;
         }
-        return $this;
-    }
 
-    /**
-     * Add item to Task value
-     *
-     * @throws \InvalidArgumentException
-     *
-     * @return self
-     */
-    public function addToTask(\Scraper\ScraperDPD\StructType\Task $item)
-    {
-        // validation for constraint: itemType
-        if (!$item instanceof \Scraper\ScraperDPD\StructType\Task) {
-            throw new \InvalidArgumentException(sprintf('The Task property can only contain items of type \Scraper\ScraperDPD\StructType\Task, %s given', \is_object($item) ? $item::class : (\is_array($item) ? implode(', ', $item) : \gettype($item))), __LINE__);
-        }
-        $this->Task[] = $item;
         return $this;
     }
 
@@ -119,10 +106,8 @@ class ArrayOfTask extends AbstractStructArrayBase
      * Returns the current element
      *
      * @see AbstractStructArrayBase::current()
-     *
-     * @return \Scraper\ScraperDPD\StructType\Task|null
      */
-    public function current()
+    public function current(): ?\Scraper\ScraperDPD\StructType\Task
     {
         return parent::current();
     }
@@ -133,10 +118,8 @@ class ArrayOfTask extends AbstractStructArrayBase
      * @see AbstractStructArrayBase::item()
      *
      * @param int $index
-     *
-     * @return \Scraper\ScraperDPD\StructType\Task|null
      */
-    public function item($index)
+    public function item($index): ?\Scraper\ScraperDPD\StructType\Task
     {
         return parent::item($index);
     }
@@ -145,10 +128,8 @@ class ArrayOfTask extends AbstractStructArrayBase
      * Returns the first element
      *
      * @see AbstractStructArrayBase::first()
-     *
-     * @return \Scraper\ScraperDPD\StructType\Task|null
      */
-    public function first()
+    public function first(): ?\Scraper\ScraperDPD\StructType\Task
     {
         return parent::first();
     }
@@ -157,10 +138,8 @@ class ArrayOfTask extends AbstractStructArrayBase
      * Returns the last element
      *
      * @see AbstractStructArrayBase::last()
-     *
-     * @return \Scraper\ScraperDPD\StructType\Task|null
      */
-    public function last()
+    public function last(): ?\Scraper\ScraperDPD\StructType\Task
     {
         return parent::last();
     }
@@ -171,12 +150,28 @@ class ArrayOfTask extends AbstractStructArrayBase
      * @see AbstractStructArrayBase::offsetGet()
      *
      * @param int $offset
-     *
-     * @return \Scraper\ScraperDPD\StructType\Task|null
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): ?\Scraper\ScraperDPD\StructType\Task
     {
         return parent::offsetGet($offset);
+    }
+
+    /**
+     * Add element to array
+     *
+     * @see AbstractStructArrayBase::add()
+     *
+     * @param \Scraper\ScraperDPD\StructType\Task $item
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function add($item): self
+    {
+        // validation for constraint: itemType
+        if (!$item instanceof \Scraper\ScraperDPD\StructType\Task) {
+            throw new \InvalidArgumentException(sprintf('The Task property can only contain items of type \Scraper\ScraperDPD\StructType\Task, %s given', \is_object($item) ? $item::class : (\is_array($item) ? implode(', ', $item) : \gettype($item))), __LINE__);
+        }
+        return parent::add($item);
     }
 
     /**
@@ -186,7 +181,7 @@ class ArrayOfTask extends AbstractStructArrayBase
      *
      * @return string Task
      */
-    public function getAttributeName()
+    public function getAttributeName(): string
     {
         return 'Task';
     }

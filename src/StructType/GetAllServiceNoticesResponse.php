@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for GetAllServiceNoticesResponse StructType
  */
+#[\AllowDynamicProperties]
 class GetAllServiceNoticesResponse extends AbstractStructBase
 {
     /**
@@ -14,37 +15,29 @@ class GetAllServiceNoticesResponse extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var bool
      */
-    public $DataComplete;
+    protected bool $DataComplete;
     /**
      * The GetAllServiceNoticesResult
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var self
      */
-    public $GetAllServiceNoticesResult;
+    protected ?GetAllServiceNoticesResponse $GetAllServiceNoticesResult = null;
     /**
      * The ServiceNotices
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var \Scraper\ScraperDPD\ArrayType\ArrayOfServiceNoticeEntry
      */
-    public $ServiceNotices;
+    protected ?\Scraper\ScraperDPD\ArrayType\ArrayOfServiceNoticeEntry $ServiceNotices = null;
     /**
      * The LastKey
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $LastKey;
+    protected ?string $LastKey = null;
 
     /**
      * Constructor method for GetAllServiceNoticesResponse
@@ -53,11 +46,8 @@ class GetAllServiceNoticesResponse extends AbstractStructBase
      * @uses GetAllServiceNoticesResponse::setGetAllServiceNoticesResult()
      * @uses GetAllServiceNoticesResponse::setServiceNotices()
      * @uses GetAllServiceNoticesResponse::setLastKey()
-     *
-     * @param bool   $dataComplete
-     * @param string $lastKey
      */
-    public function __construct($dataComplete = null, ?self $getAllServiceNoticesResult = null, ?\Scraper\ScraperDPD\ArrayType\ArrayOfServiceNoticeEntry $serviceNotices = null, $lastKey = null)
+    public function __construct(bool $dataComplete, ?self $getAllServiceNoticesResult = null, ?\Scraper\ScraperDPD\ArrayType\ArrayOfServiceNoticeEntry $serviceNotices = null, ?string $lastKey = null)
     {
         $this
             ->setDataComplete($dataComplete)
@@ -69,97 +59,81 @@ class GetAllServiceNoticesResponse extends AbstractStructBase
 
     /**
      * Get DataComplete value
-     *
-     * @return bool
      */
-    public function getDataComplete()
+    public function getDataComplete(): bool
     {
         return $this->DataComplete;
     }
 
     /**
      * Set DataComplete value
-     *
-     * @param bool $dataComplete
-     *
-     * @return self
      */
-    public function setDataComplete($dataComplete = null)
+    public function setDataComplete(bool $dataComplete): self
     {
         // validation for constraint: boolean
         if (null !== $dataComplete && !\is_bool($dataComplete)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a bool, %s given', var_export($dataComplete, true), \gettype($dataComplete)), __LINE__);
         }
         $this->DataComplete = $dataComplete;
+
         return $this;
     }
 
     /**
      * Get GetAllServiceNoticesResult value
-     *
-     * @return self|null
      */
-    public function getGetAllServiceNoticesResult()
+    public function getGetAllServiceNoticesResult(): ?self
     {
         return $this->GetAllServiceNoticesResult;
     }
 
     /**
      * Set GetAllServiceNoticesResult value
-     *
-     * @return self
      */
-    public function setGetAllServiceNoticesResult(?self $getAllServiceNoticesResult = null)
+    public function setGetAllServiceNoticesResult(?self $getAllServiceNoticesResult = null): self
     {
         $this->GetAllServiceNoticesResult = $getAllServiceNoticesResult;
+
         return $this;
     }
 
     /**
      * Get ServiceNotices value
-     *
-     * @return \Scraper\ScraperDPD\ArrayType\ArrayOfServiceNoticeEntry|null
      */
-    public function getServiceNotices()
+    public function getServiceNotices(): ?\Scraper\ScraperDPD\ArrayType\ArrayOfServiceNoticeEntry
     {
         return $this->ServiceNotices;
     }
 
     /**
      * Set ServiceNotices value
-     *
-     * @return self
      */
-    public function setServiceNotices(?\Scraper\ScraperDPD\ArrayType\ArrayOfServiceNoticeEntry $serviceNotices = null)
+    public function setServiceNotices(?\Scraper\ScraperDPD\ArrayType\ArrayOfServiceNoticeEntry $serviceNotices = null): self
     {
         $this->ServiceNotices = $serviceNotices;
+
         return $this;
     }
 
     /**
      * Get LastKey value
-     *
-     * @return string|null
      */
-    public function getLastKey()
+    public function getLastKey(): ?string
     {
         return $this->LastKey;
     }
 
     /**
      * Set LastKey value
-     *
-     * @param string $lastKey
-     *
-     * @return self
      */
-    public function setLastKey($lastKey = null)
+    public function setLastKey(?string $lastKey = null): self
     {
         // validation for constraint: string
         if (null !== $lastKey && !\is_string($lastKey)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($lastKey, true), \gettype($lastKey)), __LINE__);
         }
         $this->LastKey = $lastKey;
+
         return $this;
     }
 }

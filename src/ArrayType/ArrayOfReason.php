@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\ArrayType;
 
@@ -18,7 +18,7 @@ class ArrayOfReason extends AbstractStructArrayBase
      *
      * @var array<\Scraper\ScraperDPD\StructType\Reason>
      */
-    public $Reason;
+    protected ?array $Reason = null;
 
     /**
      * Constructor method for ArrayOfReason
@@ -27,7 +27,7 @@ class ArrayOfReason extends AbstractStructArrayBase
      *
      * @param array<\Scraper\ScraperDPD\StructType\Reason> $reason
      */
-    public function __construct(array $reason = [])
+    public function __construct(?array $reason = null)
     {
         $this
             ->setReason($reason)
@@ -40,21 +40,25 @@ class ArrayOfReason extends AbstractStructArrayBase
      * this property may have been unset before, due to the fact that this property is
      * removable from the request (nillable=true+minOccurs=0)
      *
-     * @return array<\Scraper\ScraperDPD\StructType\Reason>|null
+     * @return array<\Scraper\ScraperDPD\StructType\Reason>
      */
-    public function getReason()
+    public function getReason(): ?array
     {
         return $this->Reason ?? null;
     }
 
     /**
-     * This method is responsible for validating the values passed to the setReason method
+     * This method is responsible for validating the value(s) passed to the setReason method
      * This method is willingly generated in order to preserve the one-line inline validation within the setReason method
+     * This has to validate that each item contained by the array match the itemType constraint
      *
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateReasonForArrayConstraintsFromSetReason(array $values = [])
+    public static function validateReasonForArrayConstraintFromSetReason(?array $values = []): string
     {
+        if (!\is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
 
@@ -69,6 +73,7 @@ class ArrayOfReason extends AbstractStructArrayBase
             $message = sprintf('The Reason property can only contain items of type \Scraper\ScraperDPD\StructType\Reason, %s given', \is_object($invalidValues) ? $invalidValues::class : (\is_array($invalidValues) ? implode(', ', $invalidValues) : \gettype($invalidValues)));
         }
         unset($invalidValues);
+
         return $message;
     }
 
@@ -80,13 +85,11 @@ class ArrayOfReason extends AbstractStructArrayBase
      * @param array<\Scraper\ScraperDPD\StructType\Reason> $reason
      *
      * @throws \InvalidArgumentException
-     *
-     * @return self
      */
-    public function setReason(array $reason = [])
+    public function setReason(?array $reason = null): self
     {
         // validation for constraint: array
-        if ('' !== ($reasonArrayErrorMessage = self::validateReasonForArrayConstraintsFromSetReason($reason))) {
+        if ('' !== ($reasonArrayErrorMessage = self::validateReasonForArrayConstraintFromSetReason($reason))) {
             throw new \InvalidArgumentException($reasonArrayErrorMessage, __LINE__);
         }
 
@@ -95,23 +98,7 @@ class ArrayOfReason extends AbstractStructArrayBase
         } else {
             $this->Reason = $reason;
         }
-        return $this;
-    }
 
-    /**
-     * Add item to Reason value
-     *
-     * @throws \InvalidArgumentException
-     *
-     * @return self
-     */
-    public function addToReason(\Scraper\ScraperDPD\StructType\Reason $item)
-    {
-        // validation for constraint: itemType
-        if (!$item instanceof \Scraper\ScraperDPD\StructType\Reason) {
-            throw new \InvalidArgumentException(sprintf('The Reason property can only contain items of type \Scraper\ScraperDPD\StructType\Reason, %s given', \is_object($item) ? $item::class : (\is_array($item) ? implode(', ', $item) : \gettype($item))), __LINE__);
-        }
-        $this->Reason[] = $item;
         return $this;
     }
 
@@ -119,10 +106,8 @@ class ArrayOfReason extends AbstractStructArrayBase
      * Returns the current element
      *
      * @see AbstractStructArrayBase::current()
-     *
-     * @return \Scraper\ScraperDPD\StructType\Reason|null
      */
-    public function current()
+    public function current(): ?\Scraper\ScraperDPD\StructType\Reason
     {
         return parent::current();
     }
@@ -133,10 +118,8 @@ class ArrayOfReason extends AbstractStructArrayBase
      * @see AbstractStructArrayBase::item()
      *
      * @param int $index
-     *
-     * @return \Scraper\ScraperDPD\StructType\Reason|null
      */
-    public function item($index)
+    public function item($index): ?\Scraper\ScraperDPD\StructType\Reason
     {
         return parent::item($index);
     }
@@ -145,10 +128,8 @@ class ArrayOfReason extends AbstractStructArrayBase
      * Returns the first element
      *
      * @see AbstractStructArrayBase::first()
-     *
-     * @return \Scraper\ScraperDPD\StructType\Reason|null
      */
-    public function first()
+    public function first(): ?\Scraper\ScraperDPD\StructType\Reason
     {
         return parent::first();
     }
@@ -157,10 +138,8 @@ class ArrayOfReason extends AbstractStructArrayBase
      * Returns the last element
      *
      * @see AbstractStructArrayBase::last()
-     *
-     * @return \Scraper\ScraperDPD\StructType\Reason|null
      */
-    public function last()
+    public function last(): ?\Scraper\ScraperDPD\StructType\Reason
     {
         return parent::last();
     }
@@ -171,12 +150,28 @@ class ArrayOfReason extends AbstractStructArrayBase
      * @see AbstractStructArrayBase::offsetGet()
      *
      * @param int $offset
-     *
-     * @return \Scraper\ScraperDPD\StructType\Reason|null
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): ?\Scraper\ScraperDPD\StructType\Reason
     {
         return parent::offsetGet($offset);
+    }
+
+    /**
+     * Add element to array
+     *
+     * @see AbstractStructArrayBase::add()
+     *
+     * @param \Scraper\ScraperDPD\StructType\Reason $item
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function add($item): self
+    {
+        // validation for constraint: itemType
+        if (!$item instanceof \Scraper\ScraperDPD\StructType\Reason) {
+            throw new \InvalidArgumentException(sprintf('The Reason property can only contain items of type \Scraper\ScraperDPD\StructType\Reason, %s given', \is_object($item) ? $item::class : (\is_array($item) ? implode(', ', $item) : \gettype($item))), __LINE__);
+        }
+        return parent::add($item);
     }
 
     /**
@@ -186,7 +181,7 @@ class ArrayOfReason extends AbstractStructArrayBase
      *
      * @return string Reason
      */
-    public function getAttributeName()
+    public function getAttributeName(): string
     {
         return 'Reason';
     }

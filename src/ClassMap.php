@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD;
 
@@ -13,7 +13,7 @@ class ClassMap
      *
      * @return array<string>
      */
-    final public static function get()
+    final public static function get(): array
     {
         return [
             'isAlive' => '\\Scraper\\ScraperDPD\\StructType\\IsAlive',
@@ -37,7 +37,8 @@ class ClassMap
             'ShopAddress' => '\\Scraper\\ScraperDPD\\StructType\\ShopAddress',
             'AddressInfo' => '\\Scraper\\ScraperDPD\\StructType\\AddressInfo',
             'StdServices' => '\\Scraper\\ScraperDPD\\StructType\\StdServices',
-            'StdServicesBase' => '\\Scraper\\ScraperDPD\\StructType\\StdServicesBase',
+            'ContactServices' => '\\Scraper\\ScraperDPD\\StructType\\ContactServices',
+            'CreateServicesBase' => '\\Scraper\\ScraperDPD\\StructType\\CreateServicesBase',
             'ServiceBaseList' => '\\Scraper\\ScraperDPD\\StructType\\ServiceBaseList',
             'AppendOptionsBase' => '\\Scraper\\ScraperDPD\\StructType\\AppendOptionsBase',
             'Bic3' => '\\Scraper\\ScraperDPD\\StructType\\Bic3',
@@ -58,8 +59,9 @@ class ClassMap
             'ReverseInverseReturn' => '\\Scraper\\ScraperDPD\\StructType\\ReverseInverseReturn',
             'Reverse' => '\\Scraper\\ScraperDPD\\StructType\\Reverse',
             'ParcelShop' => '\\Scraper\\ScraperDPD\\StructType\\ParcelShop',
-            'Contact' => '\\Scraper\\ScraperDPD\\StructType\\Contact',
             'ExtraInsurance' => '\\Scraper\\ScraperDPD\\StructType\\ExtraInsurance',
+            'Secure' => '\\Scraper\\ScraperDPD\\StructType\\Secure',
+            'Contact' => '\\Scraper\\ScraperDPD\\StructType\\Contact',
             'CreateShipmentResponse' => '\\Scraper\\ScraperDPD\\StructType\\CreateShipmentResponse',
             'ArrayOfShipment' => '\\Scraper\\ScraperDPD\\ArrayType\\ArrayOfShipment',
             'Shipment' => '\\Scraper\\ScraperDPD\\StructType\\Shipment',
@@ -180,6 +182,9 @@ class ClassMap
             'LabelDataBase' => '\\Scraper\\ScraperDPD\\StructType\\LabelDataBase',
             'ArrayOfBarcodeData' => '\\Scraper\\ScraperDPD\\ArrayType\\ArrayOfBarcodeData',
             'BarcodeData' => '\\Scraper\\ScraperDPD\\StructType\\BarcodeData',
+            'GetSecureData' => '\\Scraper\\ScraperDPD\\StructType\\GetSecureData',
+            'GetSecureDataRequest' => '\\Scraper\\ScraperDPD\\StructType\\GetSecureDataRequest',
+            'GetSecureDataResponse' => '\\Scraper\\ScraperDPD\\StructType\\GetSecureDataResponse',
             'GetRetourLabel' => '\\Scraper\\ScraperDPD\\StructType\\GetRetourLabel',
             'ReceiveRetourLabelRequest' => '\\Scraper\\ScraperDPD\\StructType\\ReceiveRetourLabelRequest',
             'ReceiveRetourLabelRequestBase' => '\\Scraper\\ScraperDPD\\StructType\\ReceiveRetourLabelRequestBase',
@@ -220,8 +225,11 @@ class ClassMap
             'ShipmentRequestBc' => '\\Scraper\\ScraperDPD\\StructType\\ShipmentRequestBc',
             'GetShipmentBcResponse' => '\\Scraper\\ScraperDPD\\StructType\\GetShipmentBcResponse',
             'ShipmentDataExtendedBc' => '\\Scraper\\ScraperDPD\\StructType\\ShipmentDataExtendedBc',
+            'ShipmentDataExtendedBcBase' => '\\Scraper\\ScraperDPD\\StructType\\ShipmentDataExtendedBcBase',
             'ArrayOfServiceEntry' => '\\Scraper\\ScraperDPD\\ArrayType\\ArrayOfServiceEntry',
             'ServiceEntry' => '\\Scraper\\ScraperDPD\\StructType\\ServiceEntry',
+            'GetShipmentWcs' => '\\Scraper\\ScraperDPD\\StructType\\GetShipmentWcs',
+            'GetShipmentWcsResponse' => '\\Scraper\\ScraperDPD\\StructType\\GetShipmentWcsResponse',
             'GetShipmentBcMulti' => '\\Scraper\\ScraperDPD\\StructType\\GetShipmentBcMulti',
             'GetShipmentBcMultiRequest' => '\\Scraper\\ScraperDPD\\StructType\\GetShipmentBcMultiRequest',
             'GetShipmentBcMultiResponse' => '\\Scraper\\ScraperDPD\\StructType\\GetShipmentBcMultiResponse',

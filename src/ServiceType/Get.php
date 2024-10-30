@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\ServiceType;
 
@@ -13,16 +13,10 @@ class Get extends AbstractSoapClientBase
      * Sets the UserCredentials SoapHeader param
      *
      * @uses AbstractSoapClientBase::setSoapHeader()
-     *
-     * @param string $nameSpace
-     * @param bool   $mustUnderstand
-     * @param string $actor
-     *
-     * @return bool
      */
-    public function setSoapHeaderUserCredentials(\Scraper\ScraperDPD\StructType\UserCredentials $userCredentials, $nameSpace = 'http://www.cargonet.software', $mustUnderstand = false, $actor = null)
+    public function setSoapHeaderUserCredentials(\Scraper\ScraperDPD\StructType\UserCredentials $userCredentials, string $namespace = 'http://www.cargonet.software', bool $mustUnderstand = false, ?string $actor = null): self
     {
-        return $this->setSoapHeader($nameSpace, 'UserCredentials', $userCredentials, $mustUnderstand, $actor);
+        return $this->setSoapHeader($namespace, 'UserCredentials', $userCredentials, $mustUnderstand, $actor);
     }
 
     /**
@@ -35,7 +29,6 @@ class Get extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\GetServiceNoticeAnswersResponse|bool
@@ -43,10 +36,14 @@ class Get extends AbstractSoapClientBase
     public function GetServiceNoticeAnswers(\Scraper\ScraperDPD\StructType\GetServiceNoticeAnswers $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->GetServiceNoticeAnswers($parameters));
-            return $this->getResult();
+            $this->setResult($resultGetServiceNoticeAnswers = $this->getSoapClient()->__soapCall('GetServiceNoticeAnswers', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultGetServiceNoticeAnswers;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -61,7 +58,6 @@ class Get extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\GetServiceNoticesResponse|bool
@@ -69,10 +65,14 @@ class Get extends AbstractSoapClientBase
     public function GetServiceNotices(\Scraper\ScraperDPD\StructType\GetServiceNotices $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->GetServiceNotices($parameters));
-            return $this->getResult();
+            $this->setResult($resultGetServiceNotices = $this->getSoapClient()->__soapCall('GetServiceNotices', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultGetServiceNotices;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -87,7 +87,6 @@ class Get extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\GetAllServiceNoticesResponse|bool
@@ -95,10 +94,14 @@ class Get extends AbstractSoapClientBase
     public function GetAllServiceNotices(\Scraper\ScraperDPD\StructType\GetAllServiceNotices $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->GetAllServiceNotices($parameters));
-            return $this->getResult();
+            $this->setResult($resultGetAllServiceNotices = $this->getSoapClient()->__soapCall('GetAllServiceNotices', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultGetAllServiceNotices;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -113,7 +116,6 @@ class Get extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\GetBic3Response|bool
@@ -121,10 +123,14 @@ class Get extends AbstractSoapClientBase
     public function GetBic3(\Scraper\ScraperDPD\StructType\GetBic3 $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->GetBic3($parameters));
-            return $this->getResult();
+            $this->setResult($resultGetBic3 = $this->getSoapClient()->__soapCall('GetBic3', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultGetBic3;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -139,7 +145,6 @@ class Get extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\GetBic3RoutingResponse|bool
@@ -147,10 +152,14 @@ class Get extends AbstractSoapClientBase
     public function GetBic3Routing(\Scraper\ScraperDPD\StructType\GetBic3Routing $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->GetBic3Routing($parameters));
-            return $this->getResult();
+            $this->setResult($resultGetBic3Routing = $this->getSoapClient()->__soapCall('GetBic3Routing', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultGetBic3Routing;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -165,7 +174,6 @@ class Get extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\GetGeoRoutingResponse|bool
@@ -173,10 +181,14 @@ class Get extends AbstractSoapClientBase
     public function GetGeoRouting(\Scraper\ScraperDPD\StructType\GetGeoRouting $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->GetGeoRouting($parameters));
-            return $this->getResult();
+            $this->setResult($resultGetGeoRouting = $this->getSoapClient()->__soapCall('GetGeoRouting', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultGetGeoRouting;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -191,7 +203,6 @@ class Get extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\GetGeoRoutingReverseResponse|bool
@@ -199,10 +210,14 @@ class Get extends AbstractSoapClientBase
     public function GetGeoRoutingReverse(\Scraper\ScraperDPD\StructType\GetGeoRoutingReverse $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->GetGeoRoutingReverse($parameters));
-            return $this->getResult();
+            $this->setResult($resultGetGeoRoutingReverse = $this->getSoapClient()->__soapCall('GetGeoRoutingReverse', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultGetGeoRoutingReverse;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -217,7 +232,6 @@ class Get extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\GetRetourShipmentDataResponse|bool
@@ -225,10 +239,14 @@ class Get extends AbstractSoapClientBase
     public function GetRetourShipmentData(\Scraper\ScraperDPD\StructType\GetRetourShipmentData $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->GetRetourShipmentData($parameters));
-            return $this->getResult();
+            $this->setResult($resultGetRetourShipmentData = $this->getSoapClient()->__soapCall('GetRetourShipmentData', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultGetRetourShipmentData;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -243,7 +261,6 @@ class Get extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\GetRetourShipmentDataBcResponse|bool
@@ -251,10 +268,14 @@ class Get extends AbstractSoapClientBase
     public function GetRetourShipmentDataBc(\Scraper\ScraperDPD\StructType\GetRetourShipmentDataBc $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->GetRetourShipmentDataBc($parameters));
-            return $this->getResult();
+            $this->setResult($resultGetRetourShipmentDataBc = $this->getSoapClient()->__soapCall('GetRetourShipmentDataBc', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultGetRetourShipmentDataBc;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -269,7 +290,6 @@ class Get extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\GetLabelResponse|bool
@@ -277,10 +297,14 @@ class Get extends AbstractSoapClientBase
     public function GetLabel(\Scraper\ScraperDPD\StructType\GetLabel $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->GetLabel($parameters));
-            return $this->getResult();
+            $this->setResult($resultGetLabel = $this->getSoapClient()->__soapCall('GetLabel', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultGetLabel;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -295,7 +319,6 @@ class Get extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\GetLabelBcResponse|bool
@@ -303,10 +326,14 @@ class Get extends AbstractSoapClientBase
     public function GetLabelBc(\Scraper\ScraperDPD\StructType\GetLabelBc $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->GetLabelBc($parameters));
-            return $this->getResult();
+            $this->setResult($resultGetLabelBc = $this->getSoapClient()->__soapCall('GetLabelBc', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultGetLabelBc;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -321,7 +348,6 @@ class Get extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\GetLabelDataResponse|bool
@@ -329,10 +355,43 @@ class Get extends AbstractSoapClientBase
     public function GetLabelData(\Scraper\ScraperDPD\StructType\GetLabelData $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->GetLabelData($parameters));
-            return $this->getResult();
+            $this->setResult($resultGetLabelData = $this->getSoapClient()->__soapCall('GetLabelData', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultGetLabelData;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
+            return false;
+        }
+    }
+
+    /**
+     * Method to call the operation originally named GetSecureData
+     * Meta information extracted from the WSDL
+     * - SOAPHeaderNames: UserCredentials
+     * - SOAPHeaderNamespaces: http://www.cargonet.software
+     * - SOAPHeaderTypes: \Scraper\ScraperDPD\StructType\UserCredentials
+     * - SOAPHeaders: required
+     *
+     * @uses AbstractSoapClientBase::getSoapClient()
+     * @uses AbstractSoapClientBase::setResult()
+     * @uses AbstractSoapClientBase::saveLastError()
+     *
+     * @return \Scraper\ScraperDPD\StructType\GetSecureDataResponse|bool
+     */
+    public function GetSecureData(\Scraper\ScraperDPD\StructType\GetSecureData $parameters)
+    {
+        try {
+            $this->setResult($resultGetSecureData = $this->getSoapClient()->__soapCall('GetSecureData', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultGetSecureData;
+        } catch (\SoapFault $soapFault) {
+            $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -347,7 +406,6 @@ class Get extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\GetRetourLabelResponse|bool
@@ -355,10 +413,14 @@ class Get extends AbstractSoapClientBase
     public function GetRetourLabel(\Scraper\ScraperDPD\StructType\GetRetourLabel $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->GetRetourLabel($parameters));
-            return $this->getResult();
+            $this->setResult($resultGetRetourLabel = $this->getSoapClient()->__soapCall('GetRetourLabel', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultGetRetourLabel;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -373,7 +435,6 @@ class Get extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\GetRetourLabelBcResponse|bool
@@ -381,10 +442,14 @@ class Get extends AbstractSoapClientBase
     public function GetRetourLabelBc(\Scraper\ScraperDPD\StructType\GetRetourLabelBc $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->GetRetourLabelBc($parameters));
-            return $this->getResult();
+            $this->setResult($resultGetRetourLabelBc = $this->getSoapClient()->__soapCall('GetRetourLabelBc', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultGetRetourLabelBc;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -399,7 +464,6 @@ class Get extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\GetShipmentResponse|bool
@@ -407,10 +471,14 @@ class Get extends AbstractSoapClientBase
     public function GetShipment(\Scraper\ScraperDPD\StructType\GetShipment $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->GetShipment($parameters));
-            return $this->getResult();
+            $this->setResult($resultGetShipment = $this->getSoapClient()->__soapCall('GetShipment', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultGetShipment;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -425,7 +493,6 @@ class Get extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\GetShipmentBcResponse|bool
@@ -433,10 +500,43 @@ class Get extends AbstractSoapClientBase
     public function GetShipmentBc(\Scraper\ScraperDPD\StructType\GetShipmentBc $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->GetShipmentBc($parameters));
-            return $this->getResult();
+            $this->setResult($resultGetShipmentBc = $this->getSoapClient()->__soapCall('GetShipmentBc', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultGetShipmentBc;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
+            return false;
+        }
+    }
+
+    /**
+     * Method to call the operation originally named GetShipmentWcs
+     * Meta information extracted from the WSDL
+     * - SOAPHeaderNames: UserCredentials
+     * - SOAPHeaderNamespaces: http://www.cargonet.software
+     * - SOAPHeaderTypes: \Scraper\ScraperDPD\StructType\UserCredentials
+     * - SOAPHeaders: required
+     *
+     * @uses AbstractSoapClientBase::getSoapClient()
+     * @uses AbstractSoapClientBase::setResult()
+     * @uses AbstractSoapClientBase::saveLastError()
+     *
+     * @return \Scraper\ScraperDPD\StructType\GetShipmentWcsResponse|bool
+     */
+    public function GetShipmentWcs(\Scraper\ScraperDPD\StructType\GetShipmentWcs $parameters)
+    {
+        try {
+            $this->setResult($resultGetShipmentWcs = $this->getSoapClient()->__soapCall('GetShipmentWcs', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultGetShipmentWcs;
+        } catch (\SoapFault $soapFault) {
+            $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -451,7 +551,6 @@ class Get extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\GetShipmentBcMultiResponse|bool
@@ -459,10 +558,14 @@ class Get extends AbstractSoapClientBase
     public function GetShipmentBcMulti(\Scraper\ScraperDPD\StructType\GetShipmentBcMulti $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->GetShipmentBcMulti($parameters));
-            return $this->getResult();
+            $this->setResult($resultGetShipmentBcMulti = $this->getSoapClient()->__soapCall('GetShipmentBcMulti', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultGetShipmentBcMulti;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -477,7 +580,6 @@ class Get extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\GetReverseOnDemandModeResponse|bool
@@ -485,10 +587,14 @@ class Get extends AbstractSoapClientBase
     public function GetReverseOnDemandMode(\Scraper\ScraperDPD\StructType\GetReverseOnDemandMode $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->GetReverseOnDemandMode($parameters));
-            return $this->getResult();
+            $this->setResult($resultGetReverseOnDemandMode = $this->getSoapClient()->__soapCall('GetReverseOnDemandMode', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultGetReverseOnDemandMode;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -503,7 +609,6 @@ class Get extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\GetLastNumberResponse|bool
@@ -511,10 +616,14 @@ class Get extends AbstractSoapClientBase
     public function GetLastNumber(\Scraper\ScraperDPD\StructType\GetLastNumber $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->GetLastNumber($parameters));
-            return $this->getResult();
+            $this->setResult($resultGetLastNumber = $this->getSoapClient()->__soapCall('GetLastNumber', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultGetLastNumber;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -529,7 +638,6 @@ class Get extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\GetNationalTransitTimeResponse|bool
@@ -537,10 +645,14 @@ class Get extends AbstractSoapClientBase
     public function GetNationalTransitTime(\Scraper\ScraperDPD\StructType\GetNationalTransitTime $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->GetNationalTransitTime($parameters));
-            return $this->getResult();
+            $this->setResult($resultGetNationalTransitTime = $this->getSoapClient()->__soapCall('GetNationalTransitTime', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultGetNationalTransitTime;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -555,7 +667,6 @@ class Get extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\GetRdvShipmentDataResponse|bool
@@ -563,10 +674,14 @@ class Get extends AbstractSoapClientBase
     public function GetRdvShipmentData(\Scraper\ScraperDPD\StructType\GetRdvShipmentData $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->GetRdvShipmentData($parameters));
-            return $this->getResult();
+            $this->setResult($resultGetRdvShipmentData = $this->getSoapClient()->__soapCall('GetRdvShipmentData', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultGetRdvShipmentData;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -581,7 +696,6 @@ class Get extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\GetSafePlaceDataResponse|bool
@@ -589,10 +703,14 @@ class Get extends AbstractSoapClientBase
     public function GetSafePlaceData(\Scraper\ScraperDPD\StructType\GetSafePlaceData $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->GetSafePlaceData($parameters));
-            return $this->getResult();
+            $this->setResult($resultGetSafePlaceData = $this->getSoapClient()->__soapCall('GetSafePlaceData', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultGetSafePlaceData;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -607,7 +725,6 @@ class Get extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\GetCustomerAddressResponse|bool
@@ -615,10 +732,14 @@ class Get extends AbstractSoapClientBase
     public function GetCustomerAddress(\Scraper\ScraperDPD\StructType\GetCustomerAddress $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->GetCustomerAddress($parameters));
-            return $this->getResult();
+            $this->setResult($resultGetCustomerAddress = $this->getSoapClient()->__soapCall('GetCustomerAddress', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultGetCustomerAddress;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -633,7 +754,6 @@ class Get extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\GetNumberRangeResponse|bool
@@ -641,10 +761,14 @@ class Get extends AbstractSoapClientBase
     public function GetNumberRange(\Scraper\ScraperDPD\StructType\GetNumberRange $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->GetNumberRange($parameters));
-            return $this->getResult();
+            $this->setResult($resultGetNumberRange = $this->getSoapClient()->__soapCall('GetNumberRange', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultGetNumberRange;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -659,7 +783,6 @@ class Get extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\GetNumberRangeBcResponse|bool
@@ -667,10 +790,14 @@ class Get extends AbstractSoapClientBase
     public function GetNumberRangeBc(\Scraper\ScraperDPD\StructType\GetNumberRangeBc $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->GetNumberRangeBc($parameters));
-            return $this->getResult();
+            $this->setResult($resultGetNumberRangeBc = $this->getSoapClient()->__soapCall('GetNumberRangeBc', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultGetNumberRangeBc;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -685,7 +812,6 @@ class Get extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\GetCustomerProfileResponse|bool
@@ -693,10 +819,14 @@ class Get extends AbstractSoapClientBase
     public function GetCustomerProfile(\Scraper\ScraperDPD\StructType\GetCustomerProfile $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->GetCustomerProfile($parameters));
-            return $this->getResult();
+            $this->setResult($resultGetCustomerProfile = $this->getSoapClient()->__soapCall('GetCustomerProfile', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultGetCustomerProfile;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -711,7 +841,6 @@ class Get extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\GetPropertiesResponse|bool
@@ -719,10 +848,14 @@ class Get extends AbstractSoapClientBase
     public function GetProperties(\Scraper\ScraperDPD\StructType\GetProperties $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->GetProperties($parameters));
-            return $this->getResult();
+            $this->setResult($resultGetProperties = $this->getSoapClient()->__soapCall('GetProperties', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultGetProperties;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -737,7 +870,6 @@ class Get extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\GetOptionValueResponse|bool
@@ -745,10 +877,14 @@ class Get extends AbstractSoapClientBase
     public function GetOptionValue(\Scraper\ScraperDPD\StructType\GetOptionValue $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->GetOptionValue($parameters));
-            return $this->getResult();
+            $this->setResult($resultGetOptionValue = $this->getSoapClient()->__soapCall('GetOptionValue', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultGetOptionValue;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -763,7 +899,6 @@ class Get extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\GetOptionValuesResponse|bool
@@ -771,10 +906,14 @@ class Get extends AbstractSoapClientBase
     public function GetOptionValues(\Scraper\ScraperDPD\StructType\GetOptionValues $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->GetOptionValues($parameters));
-            return $this->getResult();
+            $this->setResult($resultGetOptionValues = $this->getSoapClient()->__soapCall('GetOptionValues', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultGetOptionValues;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -789,7 +928,6 @@ class Get extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\GetShippingResponse|bool
@@ -797,10 +935,14 @@ class Get extends AbstractSoapClientBase
     public function GetShipping(\Scraper\ScraperDPD\StructType\GetShipping $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->GetShipping($parameters));
-            return $this->getResult();
+            $this->setResult($resultGetShipping = $this->getSoapClient()->__soapCall('GetShipping', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultGetShipping;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -815,7 +957,6 @@ class Get extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\GetInfoResponse|bool
@@ -823,10 +964,14 @@ class Get extends AbstractSoapClientBase
     public function getInfo(\Scraper\ScraperDPD\StructType\GetInfo $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->getInfo($parameters));
-            return $this->getResult();
+            $this->setResult($resultGetInfo = $this->getSoapClient()->__soapCall('getInfo', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultGetInfo;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -836,7 +981,7 @@ class Get extends AbstractSoapClientBase
      *
      * @see AbstractSoapClientBase::getResult()
      *
-     * @return \Scraper\ScraperDPD\StructType\GetAllServiceNoticesResponse|\Scraper\ScraperDPD\StructType\GetBic3Response|\Scraper\ScraperDPD\StructType\GetBic3RoutingResponse|\Scraper\ScraperDPD\StructType\GetCustomerAddressResponse|\Scraper\ScraperDPD\StructType\GetCustomerProfileResponse|\Scraper\ScraperDPD\StructType\GetGeoRoutingResponse|\Scraper\ScraperDPD\StructType\GetGeoRoutingReverseResponse|\Scraper\ScraperDPD\StructType\GetInfoResponse|\Scraper\ScraperDPD\StructType\GetLabelBcResponse|\Scraper\ScraperDPD\StructType\GetLabelDataResponse|\Scraper\ScraperDPD\StructType\GetLabelResponse|\Scraper\ScraperDPD\StructType\GetLastNumberResponse|\Scraper\ScraperDPD\StructType\GetNationalTransitTimeResponse|\Scraper\ScraperDPD\StructType\GetNumberRangeBcResponse|\Scraper\ScraperDPD\StructType\GetNumberRangeResponse|\Scraper\ScraperDPD\StructType\GetOptionValueResponse|\Scraper\ScraperDPD\StructType\GetOptionValuesResponse|\Scraper\ScraperDPD\StructType\GetPropertiesResponse|\Scraper\ScraperDPD\StructType\GetRdvShipmentDataResponse|\Scraper\ScraperDPD\StructType\GetRetourLabelBcResponse|\Scraper\ScraperDPD\StructType\GetRetourLabelResponse|\Scraper\ScraperDPD\StructType\GetRetourShipmentDataBcResponse|\Scraper\ScraperDPD\StructType\GetRetourShipmentDataResponse|\Scraper\ScraperDPD\StructType\GetReverseOnDemandModeResponse|\Scraper\ScraperDPD\StructType\GetSafePlaceDataResponse|\Scraper\ScraperDPD\StructType\GetServiceNoticeAnswersResponse|\Scraper\ScraperDPD\StructType\GetServiceNoticesResponse|\Scraper\ScraperDPD\StructType\GetShipmentBcMultiResponse|\Scraper\ScraperDPD\StructType\GetShipmentBcResponse|\Scraper\ScraperDPD\StructType\GetShipmentResponse|\Scraper\ScraperDPD\StructType\GetShippingResponse
+     * @return \Scraper\ScraperDPD\StructType\GetAllServiceNoticesResponse|\Scraper\ScraperDPD\StructType\GetBic3Response|\Scraper\ScraperDPD\StructType\GetBic3RoutingResponse|\Scraper\ScraperDPD\StructType\GetCustomerAddressResponse|\Scraper\ScraperDPD\StructType\GetCustomerProfileResponse|\Scraper\ScraperDPD\StructType\GetGeoRoutingResponse|\Scraper\ScraperDPD\StructType\GetGeoRoutingReverseResponse|\Scraper\ScraperDPD\StructType\GetInfoResponse|\Scraper\ScraperDPD\StructType\GetLabelBcResponse|\Scraper\ScraperDPD\StructType\GetLabelDataResponse|\Scraper\ScraperDPD\StructType\GetLabelResponse|\Scraper\ScraperDPD\StructType\GetLastNumberResponse|\Scraper\ScraperDPD\StructType\GetNationalTransitTimeResponse|\Scraper\ScraperDPD\StructType\GetNumberRangeBcResponse|\Scraper\ScraperDPD\StructType\GetNumberRangeResponse|\Scraper\ScraperDPD\StructType\GetOptionValueResponse|\Scraper\ScraperDPD\StructType\GetOptionValuesResponse|\Scraper\ScraperDPD\StructType\GetPropertiesResponse|\Scraper\ScraperDPD\StructType\GetRdvShipmentDataResponse|\Scraper\ScraperDPD\StructType\GetRetourLabelBcResponse|\Scraper\ScraperDPD\StructType\GetRetourLabelResponse|\Scraper\ScraperDPD\StructType\GetRetourShipmentDataBcResponse|\Scraper\ScraperDPD\StructType\GetRetourShipmentDataResponse|\Scraper\ScraperDPD\StructType\GetReverseOnDemandModeResponse|\Scraper\ScraperDPD\StructType\GetSafePlaceDataResponse|\Scraper\ScraperDPD\StructType\GetSecureDataResponse|\Scraper\ScraperDPD\StructType\GetServiceNoticeAnswersResponse|\Scraper\ScraperDPD\StructType\GetServiceNoticesResponse|\Scraper\ScraperDPD\StructType\GetShipmentBcMultiResponse|\Scraper\ScraperDPD\StructType\GetShipmentBcResponse|\Scraper\ScraperDPD\StructType\GetShipmentResponse|\Scraper\ScraperDPD\StructType\GetShipmentWcsResponse|\Scraper\ScraperDPD\StructType\GetShippingResponse
      */
     public function getResult()
     {

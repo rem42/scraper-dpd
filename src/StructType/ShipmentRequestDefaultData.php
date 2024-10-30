@@ -1,10 +1,11 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
 /**
  * This class stands for ShipmentRequestDefaultData StructType
  */
+#[\AllowDynamicProperties]
 class ShipmentRequestDefaultData extends ShipmentRequestBase
 {
     /**
@@ -12,10 +13,8 @@ class ShipmentRequestDefaultData extends ShipmentRequestBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var StdServices
      */
-    public $services;
+    protected ?StdServices $services = null;
 
     /**
      * Constructor method for ShipmentRequestDefaultData
@@ -31,22 +30,19 @@ class ShipmentRequestDefaultData extends ShipmentRequestBase
 
     /**
      * Get services value
-     *
-     * @return StdServices|null
      */
-    public function getServices()
+    public function getServices(): ?StdServices
     {
         return $this->services;
     }
 
     /**
      * Set services value
-     *
-     * @return self
      */
-    public function setServices(?StdServices $services = null)
+    public function setServices(?StdServices $services = null): self
     {
         $this->services = $services;
+
         return $this;
     }
 }

@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for GetLabelDataResponse StructType
  */
+#[\AllowDynamicProperties]
 class GetLabelDataResponse extends AbstractStructBase
 {
     /**
@@ -14,28 +15,22 @@ class GetLabelDataResponse extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var self
      */
-    public $GetLabelDataResult;
+    protected ?GetLabelDataResponse $GetLabelDataResult = null;
     /**
      * The Data
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var LabelData
      */
-    public $Data;
+    protected ?LabelData $Data = null;
     /**
      * The BarcodeData
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var \Scraper\ScraperDPD\ArrayType\ArrayOfBarcodeData
      */
-    public $BarcodeData;
+    protected ?\Scraper\ScraperDPD\ArrayType\ArrayOfBarcodeData $BarcodeData = null;
 
     /**
      * Constructor method for GetLabelDataResponse
@@ -55,64 +50,55 @@ class GetLabelDataResponse extends AbstractStructBase
 
     /**
      * Get GetLabelDataResult value
-     *
-     * @return self|null
      */
-    public function getGetLabelDataResult()
+    public function getGetLabelDataResult(): ?self
     {
         return $this->GetLabelDataResult;
     }
 
     /**
      * Set GetLabelDataResult value
-     *
-     * @return self
      */
-    public function setGetLabelDataResult(?self $getLabelDataResult = null)
+    public function setGetLabelDataResult(?self $getLabelDataResult = null): self
     {
         $this->GetLabelDataResult = $getLabelDataResult;
+
         return $this;
     }
 
     /**
      * Get Data value
-     *
-     * @return LabelData|null
      */
-    public function getData()
+    public function getData(): ?LabelData
     {
         return $this->Data;
     }
 
     /**
      * Set Data value
-     *
-     * @return self
      */
-    public function setData(?LabelData $data = null)
+    public function setData(?LabelData $data = null): self
     {
         $this->Data = $data;
+
         return $this;
     }
 
     /**
      * Get BarcodeData value
-     *
-     * @return \Scraper\ScraperDPD\ArrayType\ArrayOfBarcodeData|null
      */
-    public function getBarcodeData()
+    public function getBarcodeData(): ?\Scraper\ScraperDPD\ArrayType\ArrayOfBarcodeData
     {
         return $this->BarcodeData;
     }
 
     /**
      * Set BarcodeData value
-     *
-     * @return self
      */
-    public function setBarcodeData(?\Scraper\ScraperDPD\ArrayType\ArrayOfBarcodeData $barcodeData = null)
+    public function setBarcodeData(?\Scraper\ScraperDPD\ArrayType\ArrayOfBarcodeData $barcodeData = null): self
     {
         $this->BarcodeData = $barcodeData;
+
         return $this;
     }
 }

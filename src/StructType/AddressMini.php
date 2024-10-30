@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for AddressMini StructType
  */
+#[\AllowDynamicProperties]
 class AddressMini extends AbstractStructBase
 {
     /**
@@ -14,37 +15,29 @@ class AddressMini extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $countryPrefix;
+    protected ?string $countryPrefix = null;
     /**
      * The zipCode
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $zipCode;
+    protected ?string $zipCode = null;
     /**
      * The city
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $city;
+    protected ?string $city = null;
     /**
      * The street
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $street;
+    protected ?string $street = null;
 
     /**
      * Constructor method for AddressMini
@@ -53,13 +46,8 @@ class AddressMini extends AbstractStructBase
      * @uses AddressMini::setZipCode()
      * @uses AddressMini::setCity()
      * @uses AddressMini::setStreet()
-     *
-     * @param string $countryPrefix
-     * @param string $zipCode
-     * @param string $city
-     * @param string $street
      */
-    public function __construct($countryPrefix = null, $zipCode = null, $city = null, $street = null)
+    public function __construct(?string $countryPrefix = null, ?string $zipCode = null, ?string $city = null, ?string $street = null)
     {
         $this
             ->setCountryPrefix($countryPrefix)
@@ -71,109 +59,89 @@ class AddressMini extends AbstractStructBase
 
     /**
      * Get countryPrefix value
-     *
-     * @return string|null
      */
-    public function getCountryPrefix()
+    public function getCountryPrefix(): ?string
     {
         return $this->countryPrefix;
     }
 
     /**
      * Set countryPrefix value
-     *
-     * @param string $countryPrefix
-     *
-     * @return self
      */
-    public function setCountryPrefix($countryPrefix = null)
+    public function setCountryPrefix(?string $countryPrefix = null): self
     {
         // validation for constraint: string
         if (null !== $countryPrefix && !\is_string($countryPrefix)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($countryPrefix, true), \gettype($countryPrefix)), __LINE__);
         }
         $this->countryPrefix = $countryPrefix;
+
         return $this;
     }
 
     /**
      * Get zipCode value
-     *
-     * @return string|null
      */
-    public function getZipCode()
+    public function getZipCode(): ?string
     {
         return $this->zipCode;
     }
 
     /**
      * Set zipCode value
-     *
-     * @param string $zipCode
-     *
-     * @return self
      */
-    public function setZipCode($zipCode = null)
+    public function setZipCode(?string $zipCode = null): self
     {
         // validation for constraint: string
         if (null !== $zipCode && !\is_string($zipCode)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($zipCode, true), \gettype($zipCode)), __LINE__);
         }
         $this->zipCode = $zipCode;
+
         return $this;
     }
 
     /**
      * Get city value
-     *
-     * @return string|null
      */
-    public function getCity()
+    public function getCity(): ?string
     {
         return $this->city;
     }
 
     /**
      * Set city value
-     *
-     * @param string $city
-     *
-     * @return self
      */
-    public function setCity($city = null)
+    public function setCity(?string $city = null): self
     {
         // validation for constraint: string
         if (null !== $city && !\is_string($city)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($city, true), \gettype($city)), __LINE__);
         }
         $this->city = $city;
+
         return $this;
     }
 
     /**
      * Get street value
-     *
-     * @return string|null
      */
-    public function getStreet()
+    public function getStreet(): ?string
     {
         return $this->street;
     }
 
     /**
      * Set street value
-     *
-     * @param string $street
-     *
-     * @return self
      */
-    public function setStreet($street = null)
+    public function setStreet(?string $street = null): self
     {
         // validation for constraint: string
         if (null !== $street && !\is_string($street)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($street, true), \gettype($street)), __LINE__);
         }
         $this->street = $street;
+
         return $this;
     }
 }

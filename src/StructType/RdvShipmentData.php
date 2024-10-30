@@ -1,10 +1,11 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
 /**
  * This class stands for RdvShipmentData StructType
  */
+#[\AllowDynamicProperties]
 class RdvShipmentData extends RdvShipmentDataBase
 {
     /**
@@ -12,28 +13,22 @@ class RdvShipmentData extends RdvShipmentDataBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var ParcelInfoSin
      */
-    public $Parcel;
+    protected ?ParcelInfoSin $Parcel = null;
     /**
      * The ShipmentSin
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $ShipmentSin;
+    protected ?string $ShipmentSin = null;
     /**
      * The AvisDePassageSin
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $AvisDePassageSin;
+    protected ?string $AvisDePassageSin = null;
 
     /**
      * Constructor method for RdvShipmentData
@@ -41,11 +36,8 @@ class RdvShipmentData extends RdvShipmentDataBase
      * @uses RdvShipmentData::setParcel()
      * @uses RdvShipmentData::setShipmentSin()
      * @uses RdvShipmentData::setAvisDePassageSin()
-     *
-     * @param string $shipmentSin
-     * @param string $avisDePassageSin
      */
-    public function __construct(?ParcelInfoSin $parcel = null, $shipmentSin = null, $avisDePassageSin = null)
+    public function __construct(?ParcelInfoSin $parcel = null, ?string $shipmentSin = null, ?string $avisDePassageSin = null)
     {
         $this
             ->setParcel($parcel)
@@ -56,76 +48,63 @@ class RdvShipmentData extends RdvShipmentDataBase
 
     /**
      * Get Parcel value
-     *
-     * @return ParcelInfoSin|null
      */
-    public function getParcel()
+    public function getParcel(): ?ParcelInfoSin
     {
         return $this->Parcel;
     }
 
     /**
      * Set Parcel value
-     *
-     * @return self
      */
-    public function setParcel(?ParcelInfoSin $parcel = null)
+    public function setParcel(?ParcelInfoSin $parcel = null): self
     {
         $this->Parcel = $parcel;
+
         return $this;
     }
 
     /**
      * Get ShipmentSin value
-     *
-     * @return string|null
      */
-    public function getShipmentSin()
+    public function getShipmentSin(): ?string
     {
         return $this->ShipmentSin;
     }
 
     /**
      * Set ShipmentSin value
-     *
-     * @param string $shipmentSin
-     *
-     * @return self
      */
-    public function setShipmentSin($shipmentSin = null)
+    public function setShipmentSin(?string $shipmentSin = null): self
     {
         // validation for constraint: string
         if (null !== $shipmentSin && !\is_string($shipmentSin)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($shipmentSin, true), \gettype($shipmentSin)), __LINE__);
         }
         $this->ShipmentSin = $shipmentSin;
+
         return $this;
     }
 
     /**
      * Get AvisDePassageSin value
-     *
-     * @return string|null
      */
-    public function getAvisDePassageSin()
+    public function getAvisDePassageSin(): ?string
     {
         return $this->AvisDePassageSin;
     }
 
     /**
      * Set AvisDePassageSin value
-     *
-     * @param string $avisDePassageSin
-     *
-     * @return self
      */
-    public function setAvisDePassageSin($avisDePassageSin = null)
+    public function setAvisDePassageSin(?string $avisDePassageSin = null): self
     {
         // validation for constraint: string
         if (null !== $avisDePassageSin && !\is_string($avisDePassageSin)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($avisDePassageSin, true), \gettype($avisDePassageSin)), __LINE__);
         }
         $this->AvisDePassageSin = $avisDePassageSin;
+
         return $this;
     }
 }

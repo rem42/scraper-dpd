@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for GetOptionsResponse StructType
  */
+#[\AllowDynamicProperties]
 class GetOptionsResponse extends AbstractStructBase
 {
     /**
@@ -14,10 +15,8 @@ class GetOptionsResponse extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var \Scraper\ScraperDPD\ArrayType\ArrayOfGetOptionResponse
      */
-    public $Options;
+    protected ?\Scraper\ScraperDPD\ArrayType\ArrayOfGetOptionResponse $Options = null;
 
     /**
      * Constructor method for GetOptionsResponse
@@ -33,22 +32,19 @@ class GetOptionsResponse extends AbstractStructBase
 
     /**
      * Get Options value
-     *
-     * @return \Scraper\ScraperDPD\ArrayType\ArrayOfGetOptionResponse|null
      */
-    public function getOptions()
+    public function getOptions(): ?\Scraper\ScraperDPD\ArrayType\ArrayOfGetOptionResponse
     {
         return $this->Options;
     }
 
     /**
      * Set Options value
-     *
-     * @return self
      */
-    public function setOptions(?\Scraper\ScraperDPD\ArrayType\ArrayOfGetOptionResponse $options = null)
+    public function setOptions(?\Scraper\ScraperDPD\ArrayType\ArrayOfGetOptionResponse $options = null): self
     {
         $this->Options = $options;
+
         return $this;
     }
 }

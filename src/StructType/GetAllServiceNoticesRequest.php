@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for GetAllServiceNoticesRequest StructType
  */
+#[\AllowDynamicProperties]
 class GetAllServiceNoticesRequest extends AbstractStructBase
 {
     /**
@@ -14,28 +15,22 @@ class GetAllServiceNoticesRequest extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var Customer
      */
-    public $Customer;
+    protected ?Customer $Customer = null;
     /**
      * The Languages
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var \Scraper\ScraperDPD\ArrayType\ArrayOfString
      */
-    public $Languages;
+    protected ?\Scraper\ScraperDPD\ArrayType\ArrayOfString $Languages = null;
     /**
      * The LastKey
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $LastKey;
+    protected ?string $LastKey = null;
 
     /**
      * Constructor method for GetAllServiceNoticesRequest
@@ -43,10 +38,8 @@ class GetAllServiceNoticesRequest extends AbstractStructBase
      * @uses GetAllServiceNoticesRequest::setCustomer()
      * @uses GetAllServiceNoticesRequest::setLanguages()
      * @uses GetAllServiceNoticesRequest::setLastKey()
-     *
-     * @param string $lastKey
      */
-    public function __construct(?Customer $customer = null, ?\Scraper\ScraperDPD\ArrayType\ArrayOfString $languages = null, $lastKey = null)
+    public function __construct(?Customer $customer = null, ?\Scraper\ScraperDPD\ArrayType\ArrayOfString $languages = null, ?string $lastKey = null)
     {
         $this
             ->setCustomer($customer)
@@ -57,70 +50,59 @@ class GetAllServiceNoticesRequest extends AbstractStructBase
 
     /**
      * Get Customer value
-     *
-     * @return Customer|null
      */
-    public function getCustomer()
+    public function getCustomer(): ?Customer
     {
         return $this->Customer;
     }
 
     /**
      * Set Customer value
-     *
-     * @return self
      */
-    public function setCustomer(?Customer $customer = null)
+    public function setCustomer(?Customer $customer = null): self
     {
         $this->Customer = $customer;
+
         return $this;
     }
 
     /**
      * Get Languages value
-     *
-     * @return \Scraper\ScraperDPD\ArrayType\ArrayOfString|null
      */
-    public function getLanguages()
+    public function getLanguages(): ?\Scraper\ScraperDPD\ArrayType\ArrayOfString
     {
         return $this->Languages;
     }
 
     /**
      * Set Languages value
-     *
-     * @return self
      */
-    public function setLanguages(?\Scraper\ScraperDPD\ArrayType\ArrayOfString $languages = null)
+    public function setLanguages(?\Scraper\ScraperDPD\ArrayType\ArrayOfString $languages = null): self
     {
         $this->Languages = $languages;
+
         return $this;
     }
 
     /**
      * Get LastKey value
-     *
-     * @return string|null
      */
-    public function getLastKey()
+    public function getLastKey(): ?string
     {
         return $this->LastKey;
     }
 
     /**
      * Set LastKey value
-     *
-     * @param string $lastKey
-     *
-     * @return self
      */
-    public function setLastKey($lastKey = null)
+    public function setLastKey(?string $lastKey = null): self
     {
         // validation for constraint: string
         if (null !== $lastKey && !\is_string($lastKey)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($lastKey, true), \gettype($lastKey)), __LINE__);
         }
         $this->LastKey = $lastKey;
+
         return $this;
     }
 }

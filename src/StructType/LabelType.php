@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for LabelType StructType
  */
+#[\AllowDynamicProperties]
 class LabelType extends AbstractStructBase
 {
     /**
@@ -14,19 +15,15 @@ class LabelType extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var string
      */
-    public $type;
+    protected string $type;
 
     /**
      * Constructor method for LabelType
      *
      * @uses LabelType::setType()
-     *
-     * @param string $type
      */
-    public function __construct($type = null)
+    public function __construct(string $type)
     {
         $this
             ->setType($type)
@@ -35,10 +32,8 @@ class LabelType extends AbstractStructBase
 
     /**
      * Get type value
-     *
-     * @return string
      */
-    public function getType()
+    public function getType(): string
     {
         return $this->type;
     }
@@ -49,19 +44,16 @@ class LabelType extends AbstractStructBase
      * @uses \Scraper\ScraperDPD\EnumType\ELabelType::valueIsValid()
      * @uses \Scraper\ScraperDPD\EnumType\ELabelType::getValidValues()
      *
-     * @param string $type
-     *
      * @throws \InvalidArgumentException
-     *
-     * @return self
      */
-    public function setType($type = null)
+    public function setType(string $type): self
     {
         // validation for constraint: enumeration
         if (!\Scraper\ScraperDPD\EnumType\ELabelType::valueIsValid($type)) {
             throw new \InvalidArgumentException(sprintf('Invalid value(s) %s, please use one of: %s from enumeration class \Scraper\ScraperDPD\EnumType\ELabelType', \is_array($type) ? implode(', ', $type) : var_export($type, true), implode(', ', \Scraper\ScraperDPD\EnumType\ELabelType::getValidValues())), __LINE__);
         }
         $this->type = $type;
+
         return $this;
     }
 }

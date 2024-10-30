@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for GetShipmentBcMultiResponse StructType
  */
+#[\AllowDynamicProperties]
 class GetShipmentBcMultiResponse extends AbstractStructBase
 {
     /**
@@ -14,19 +15,15 @@ class GetShipmentBcMultiResponse extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var self
      */
-    public $GetShipmentBcMultiResult;
+    protected ?GetShipmentBcMultiResponse $GetShipmentBcMultiResult = null;
     /**
      * The Shipments
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var \Scraper\ScraperDPD\ArrayType\ArrayOfGetShipmentEntry
      */
-    public $Shipments;
+    protected ?\Scraper\ScraperDPD\ArrayType\ArrayOfGetShipmentEntry $Shipments = null;
 
     /**
      * Constructor method for GetShipmentBcMultiResponse
@@ -44,43 +41,37 @@ class GetShipmentBcMultiResponse extends AbstractStructBase
 
     /**
      * Get GetShipmentBcMultiResult value
-     *
-     * @return self|null
      */
-    public function getGetShipmentBcMultiResult()
+    public function getGetShipmentBcMultiResult(): ?self
     {
         return $this->GetShipmentBcMultiResult;
     }
 
     /**
      * Set GetShipmentBcMultiResult value
-     *
-     * @return self
      */
-    public function setGetShipmentBcMultiResult(?self $getShipmentBcMultiResult = null)
+    public function setGetShipmentBcMultiResult(?self $getShipmentBcMultiResult = null): self
     {
         $this->GetShipmentBcMultiResult = $getShipmentBcMultiResult;
+
         return $this;
     }
 
     /**
      * Get Shipments value
-     *
-     * @return \Scraper\ScraperDPD\ArrayType\ArrayOfGetShipmentEntry|null
      */
-    public function getShipments()
+    public function getShipments(): ?\Scraper\ScraperDPD\ArrayType\ArrayOfGetShipmentEntry
     {
         return $this->Shipments;
     }
 
     /**
      * Set Shipments value
-     *
-     * @return self
      */
-    public function setShipments(?\Scraper\ScraperDPD\ArrayType\ArrayOfGetShipmentEntry $shipments = null)
+    public function setShipments(?\Scraper\ScraperDPD\ArrayType\ArrayOfGetShipmentEntry $shipments = null): self
     {
         $this->Shipments = $shipments;
+
         return $this;
     }
 }

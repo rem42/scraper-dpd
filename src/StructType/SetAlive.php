@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for setAlive StructType
  */
+#[\AllowDynamicProperties]
 class SetAlive extends AbstractStructBase
 {
     /**
@@ -14,19 +15,15 @@ class SetAlive extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var bool
      */
-    public $value;
+    protected bool $value;
 
     /**
      * Constructor method for setAlive
      *
      * @uses SetAlive::setValue()
-     *
-     * @param bool $value
      */
-    public function __construct($value = null)
+    public function __construct(bool $value)
     {
         $this
             ->setValue($value)
@@ -35,28 +32,23 @@ class SetAlive extends AbstractStructBase
 
     /**
      * Get value value
-     *
-     * @return bool
      */
-    public function getValue()
+    public function getValue(): bool
     {
         return $this->value;
     }
 
     /**
      * Set value value
-     *
-     * @param bool $value
-     *
-     * @return self
      */
-    public function setValue($value = null)
+    public function setValue(bool $value): self
     {
         // validation for constraint: boolean
         if (null !== $value && !\is_bool($value)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a bool, %s given', var_export($value, true), \gettype($value)), __LINE__);
         }
         $this->value = $value;
+
         return $this;
     }
 }

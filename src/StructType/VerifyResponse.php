@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for VerifyResponse StructType
  */
+#[\AllowDynamicProperties]
 class VerifyResponse extends AbstractStructBase
 {
     /**
@@ -14,19 +15,15 @@ class VerifyResponse extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $Data;
+    protected ?string $Data = null;
 
     /**
      * Constructor method for VerifyResponse
      *
      * @uses VerifyResponse::setData()
-     *
-     * @param string $data
      */
-    public function __construct($data = null)
+    public function __construct(?string $data = null)
     {
         $this
             ->setData($data)
@@ -35,28 +32,23 @@ class VerifyResponse extends AbstractStructBase
 
     /**
      * Get Data value
-     *
-     * @return string|null
      */
-    public function getData()
+    public function getData(): ?string
     {
         return $this->Data;
     }
 
     /**
      * Set Data value
-     *
-     * @param string $data
-     *
-     * @return self
      */
-    public function setData($data = null)
+    public function setData(?string $data = null): self
     {
         // validation for constraint: string
         if (null !== $data && !\is_string($data)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($data, true), \gettype($data)), __LINE__);
         }
         $this->Data = $data;
+
         return $this;
     }
 }

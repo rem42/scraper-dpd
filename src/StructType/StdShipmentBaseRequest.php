@@ -1,10 +1,11 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
 /**
  * This class stands for StdShipmentBaseRequest StructType
  */
+#[\AllowDynamicProperties]
 class StdShipmentBaseRequest extends ShipmentRequestDefaultData
 {
     /**
@@ -12,46 +13,36 @@ class StdShipmentBaseRequest extends ShipmentRequestDefaultData
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $weight;
+    protected ?string $weight = null;
     /**
      * The referencenumber
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $referencenumber;
+    protected ?string $referencenumber = null;
     /**
      * The reference2
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $reference2;
+    protected ?string $reference2 = null;
     /**
      * The reference3
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $reference3;
+    protected ?string $reference3 = null;
     /**
      * The reference4
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $reference4;
+    protected ?string $reference4 = null;
 
     /**
      * Constructor method for StdShipmentBaseRequest
@@ -61,14 +52,8 @@ class StdShipmentBaseRequest extends ShipmentRequestDefaultData
      * @uses StdShipmentBaseRequest::setReference2()
      * @uses StdShipmentBaseRequest::setReference3()
      * @uses StdShipmentBaseRequest::setReference4()
-     *
-     * @param string $weight
-     * @param string $referencenumber
-     * @param string $reference2
-     * @param string $reference3
-     * @param string $reference4
      */
-    public function __construct($weight = null, $referencenumber = null, $reference2 = null, $reference3 = null, $reference4 = null)
+    public function __construct(?string $weight = null, ?string $referencenumber = null, ?string $reference2 = null, ?string $reference3 = null, ?string $reference4 = null)
     {
         $this
             ->setWeight($weight)
@@ -81,136 +66,111 @@ class StdShipmentBaseRequest extends ShipmentRequestDefaultData
 
     /**
      * Get weight value
-     *
-     * @return string|null
      */
-    public function getWeight()
+    public function getWeight(): ?string
     {
         return $this->weight;
     }
 
     /**
      * Set weight value
-     *
-     * @param string $weight
-     *
-     * @return self
      */
-    public function setWeight($weight = null)
+    public function setWeight(?string $weight = null): self
     {
         // validation for constraint: string
         if (null !== $weight && !\is_string($weight)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($weight, true), \gettype($weight)), __LINE__);
         }
         $this->weight = $weight;
+
         return $this;
     }
 
     /**
      * Get referencenumber value
-     *
-     * @return string|null
      */
-    public function getReferencenumber()
+    public function getReferencenumber(): ?string
     {
         return $this->referencenumber;
     }
 
     /**
      * Set referencenumber value
-     *
-     * @param string $referencenumber
-     *
-     * @return self
      */
-    public function setReferencenumber($referencenumber = null)
+    public function setReferencenumber(?string $referencenumber = null): self
     {
         // validation for constraint: string
         if (null !== $referencenumber && !\is_string($referencenumber)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($referencenumber, true), \gettype($referencenumber)), __LINE__);
         }
         $this->referencenumber = $referencenumber;
+
         return $this;
     }
 
     /**
      * Get reference2 value
-     *
-     * @return string|null
      */
-    public function getReference2()
+    public function getReference2(): ?string
     {
         return $this->reference2;
     }
 
     /**
      * Set reference2 value
-     *
-     * @param string $reference2
-     *
-     * @return self
      */
-    public function setReference2($reference2 = null)
+    public function setReference2(?string $reference2 = null): self
     {
         // validation for constraint: string
         if (null !== $reference2 && !\is_string($reference2)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($reference2, true), \gettype($reference2)), __LINE__);
         }
         $this->reference2 = $reference2;
+
         return $this;
     }
 
     /**
      * Get reference3 value
-     *
-     * @return string|null
      */
-    public function getReference3()
+    public function getReference3(): ?string
     {
         return $this->reference3;
     }
 
     /**
      * Set reference3 value
-     *
-     * @param string $reference3
-     *
-     * @return self
      */
-    public function setReference3($reference3 = null)
+    public function setReference3(?string $reference3 = null): self
     {
         // validation for constraint: string
         if (null !== $reference3 && !\is_string($reference3)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($reference3, true), \gettype($reference3)), __LINE__);
         }
         $this->reference3 = $reference3;
+
         return $this;
     }
 
     /**
      * Get reference4 value
-     *
-     * @return string|null
      */
-    public function getReference4()
+    public function getReference4(): ?string
     {
         return $this->reference4;
     }
 
     /**
      * Set reference4 value
-     *
-     * @param string $reference4
-     *
-     * @return self
      */
-    public function setReference4($reference4 = null)
+    public function setReference4(?string $reference4 = null): self
     {
         // validation for constraint: string
         if (null !== $reference4 && !\is_string($reference4)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($reference4, true), \gettype($reference4)), __LINE__);
         }
         $this->reference4 = $reference4;
+
         return $this;
     }
 }

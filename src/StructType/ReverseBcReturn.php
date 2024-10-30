@@ -1,10 +1,11 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
 /**
  * This class stands for ReverseBcReturn StructType
  */
+#[\AllowDynamicProperties]
 class ReverseBcReturn extends ReverseReturnBase
 {
     /**
@@ -12,10 +13,8 @@ class ReverseBcReturn extends ReverseReturnBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var BcData
      */
-    public $original_parcel;
+    protected ?BcData $original_parcel = null;
 
     /**
      * Constructor method for ReverseBcReturn
@@ -31,22 +30,19 @@ class ReverseBcReturn extends ReverseReturnBase
 
     /**
      * Get original_parcel value
-     *
-     * @return BcData|null
      */
-    public function getOriginal_parcel()
+    public function getOriginal_parcel(): ?BcData
     {
         return $this->original_parcel;
     }
 
     /**
      * Set original_parcel value
-     *
-     * @return self
      */
-    public function setOriginal_parcel(?BcData $original_parcel = null)
+    public function setOriginal_parcel(?BcData $original_parcel = null): self
     {
         $this->original_parcel = $original_parcel;
+
         return $this;
     }
 }

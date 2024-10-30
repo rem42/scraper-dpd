@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\ServiceType;
 
@@ -13,16 +13,10 @@ class Create extends AbstractSoapClientBase
      * Sets the UserCredentials SoapHeader param
      *
      * @uses AbstractSoapClientBase::setSoapHeader()
-     *
-     * @param string $nameSpace
-     * @param bool   $mustUnderstand
-     * @param string $actor
-     *
-     * @return bool
      */
-    public function setSoapHeaderUserCredentials(\Scraper\ScraperDPD\StructType\UserCredentials $userCredentials, $nameSpace = 'http://www.cargonet.software', $mustUnderstand = false, $actor = null)
+    public function setSoapHeaderUserCredentials(\Scraper\ScraperDPD\StructType\UserCredentials $userCredentials, string $namespace = 'http://www.cargonet.software', bool $mustUnderstand = false, ?string $actor = null): self
     {
-        return $this->setSoapHeader($nameSpace, 'UserCredentials', $userCredentials, $mustUnderstand, $actor);
+        return $this->setSoapHeader($namespace, 'UserCredentials', $userCredentials, $mustUnderstand, $actor);
     }
 
     /**
@@ -35,7 +29,6 @@ class Create extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\CreateShipmentResponse|bool
@@ -43,10 +36,14 @@ class Create extends AbstractSoapClientBase
     public function CreateShipment(\Scraper\ScraperDPD\StructType\CreateShipment $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->CreateShipment($parameters));
-            return $this->getResult();
+            $this->setResult($resultCreateShipment = $this->getSoapClient()->__soapCall('CreateShipment', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultCreateShipment;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -61,7 +58,6 @@ class Create extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\CreateShipmentBcResponse|bool
@@ -69,10 +65,14 @@ class Create extends AbstractSoapClientBase
     public function CreateShipmentBc(\Scraper\ScraperDPD\StructType\CreateShipmentBc $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->CreateShipmentBc($parameters));
-            return $this->getResult();
+            $this->setResult($resultCreateShipmentBc = $this->getSoapClient()->__soapCall('CreateShipmentBc', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultCreateShipmentBc;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -87,7 +87,6 @@ class Create extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\CreateShipmentWithLabelsResponse|bool
@@ -95,10 +94,14 @@ class Create extends AbstractSoapClientBase
     public function CreateShipmentWithLabels(\Scraper\ScraperDPD\StructType\CreateShipmentWithLabels $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->CreateShipmentWithLabels($parameters));
-            return $this->getResult();
+            $this->setResult($resultCreateShipmentWithLabels = $this->getSoapClient()->__soapCall('CreateShipmentWithLabels', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultCreateShipmentWithLabels;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -113,7 +116,6 @@ class Create extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\CreateShipmentWithLabelsBcResponse|bool
@@ -121,10 +123,14 @@ class Create extends AbstractSoapClientBase
     public function CreateShipmentWithLabelsBc(\Scraper\ScraperDPD\StructType\CreateShipmentWithLabelsBc $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->CreateShipmentWithLabelsBc($parameters));
-            return $this->getResult();
+            $this->setResult($resultCreateShipmentWithLabelsBc = $this->getSoapClient()->__soapCall('CreateShipmentWithLabelsBc', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultCreateShipmentWithLabelsBc;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -139,7 +145,6 @@ class Create extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\CreateMultiShipmentResponse|bool
@@ -147,10 +152,14 @@ class Create extends AbstractSoapClientBase
     public function CreateMultiShipment(\Scraper\ScraperDPD\StructType\CreateMultiShipment $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->CreateMultiShipment($parameters));
-            return $this->getResult();
+            $this->setResult($resultCreateMultiShipment = $this->getSoapClient()->__soapCall('CreateMultiShipment', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultCreateMultiShipment;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -165,7 +174,6 @@ class Create extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\CreateMultiShipmentBcResponse|bool
@@ -173,10 +181,14 @@ class Create extends AbstractSoapClientBase
     public function CreateMultiShipmentBc(\Scraper\ScraperDPD\StructType\CreateMultiShipmentBc $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->CreateMultiShipmentBc($parameters));
-            return $this->getResult();
+            $this->setResult($resultCreateMultiShipmentBc = $this->getSoapClient()->__soapCall('CreateMultiShipmentBc', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultCreateMultiShipmentBc;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -191,7 +203,6 @@ class Create extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\CreateReverseInverseShipmentResponse|bool
@@ -199,10 +210,14 @@ class Create extends AbstractSoapClientBase
     public function CreateReverseInverseShipment(\Scraper\ScraperDPD\StructType\CreateReverseInverseShipment $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->CreateReverseInverseShipment($parameters));
-            return $this->getResult();
+            $this->setResult($resultCreateReverseInverseShipment = $this->getSoapClient()->__soapCall('CreateReverseInverseShipment', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultCreateReverseInverseShipment;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -217,7 +232,6 @@ class Create extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\CreateReverseInverseShipmentBcResponse|bool
@@ -225,10 +239,14 @@ class Create extends AbstractSoapClientBase
     public function CreateReverseInverseShipmentBc(\Scraper\ScraperDPD\StructType\CreateReverseInverseShipmentBc $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->CreateReverseInverseShipmentBc($parameters));
-            return $this->getResult();
+            $this->setResult($resultCreateReverseInverseShipmentBc = $this->getSoapClient()->__soapCall('CreateReverseInverseShipmentBc', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultCreateReverseInverseShipmentBc;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -244,7 +262,6 @@ class Create extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\CreateReverseInverseShipmentWithLabelsResponse|bool
@@ -252,10 +269,14 @@ class Create extends AbstractSoapClientBase
     public function CreateReverseInverseShipmentWithLabels(\Scraper\ScraperDPD\StructType\CreateReverseInverseShipmentWithLabels $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->CreateReverseInverseShipmentWithLabels($parameters));
-            return $this->getResult();
+            $this->setResult($resultCreateReverseInverseShipmentWithLabels = $this->getSoapClient()->__soapCall('CreateReverseInverseShipmentWithLabels', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultCreateReverseInverseShipmentWithLabels;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -271,7 +292,6 @@ class Create extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\CreateReverseInverseShipmentWithLabelsBcResponse|bool
@@ -279,10 +299,14 @@ class Create extends AbstractSoapClientBase
     public function CreateReverseInverseShipmentWithLabelsBc(\Scraper\ScraperDPD\StructType\CreateReverseInverseShipmentWithLabelsBc $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->CreateReverseInverseShipmentWithLabelsBc($parameters));
-            return $this->getResult();
+            $this->setResult($resultCreateReverseInverseShipmentWithLabelsBc = $this->getSoapClient()->__soapCall('CreateReverseInverseShipmentWithLabelsBc', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultCreateReverseInverseShipmentWithLabelsBc;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -297,7 +321,6 @@ class Create extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\CreateCollectionRequestResponse|bool
@@ -305,10 +328,14 @@ class Create extends AbstractSoapClientBase
     public function CreateCollectionRequest(\Scraper\ScraperDPD\StructType\CreateCollectionRequest $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->CreateCollectionRequest($parameters));
-            return $this->getResult();
+            $this->setResult($resultCreateCollectionRequest = $this->getSoapClient()->__soapCall('CreateCollectionRequest', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultCreateCollectionRequest;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -323,7 +350,6 @@ class Create extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\CreateCollectionRequestBcResponse|bool
@@ -331,10 +357,14 @@ class Create extends AbstractSoapClientBase
     public function CreateCollectionRequestBc(\Scraper\ScraperDPD\StructType\CreateCollectionRequestBc $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->CreateCollectionRequestBc($parameters));
-            return $this->getResult();
+            $this->setResult($resultCreateCollectionRequestBc = $this->getSoapClient()->__soapCall('CreateCollectionRequestBc', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultCreateCollectionRequestBc;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -349,7 +379,6 @@ class Create extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\CreatePickupAtCustomerResponse|bool
@@ -357,10 +386,14 @@ class Create extends AbstractSoapClientBase
     public function CreatePickupAtCustomer(\Scraper\ScraperDPD\StructType\CreatePickupAtCustomer $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->CreatePickupAtCustomer($parameters));
-            return $this->getResult();
+            $this->setResult($resultCreatePickupAtCustomer = $this->getSoapClient()->__soapCall('CreatePickupAtCustomer', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultCreatePickupAtCustomer;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -375,7 +408,6 @@ class Create extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\CreatePickupAtCustomerBcResponse|bool
@@ -383,10 +415,14 @@ class Create extends AbstractSoapClientBase
     public function CreatePickupAtCustomerBc(\Scraper\ScraperDPD\StructType\CreatePickupAtCustomerBc $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->CreatePickupAtCustomerBc($parameters));
-            return $this->getResult();
+            $this->setResult($resultCreatePickupAtCustomerBc = $this->getSoapClient()->__soapCall('CreatePickupAtCustomerBc', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultCreatePickupAtCustomerBc;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }

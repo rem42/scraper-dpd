@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for Parcel StructType
  */
+#[\AllowDynamicProperties]
 class Parcel extends AbstractStructBase
 {
     /**
@@ -14,28 +15,22 @@ class Parcel extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var int
      */
-    public $countrycode;
+    protected int $countrycode;
     /**
      * The centernumber
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var int
      */
-    public $centernumber;
+    protected int $centernumber;
     /**
      * The parcelnumber
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var int
      */
-    public $parcelnumber;
+    protected int $parcelnumber;
 
     /**
      * Constructor method for Parcel
@@ -43,12 +38,8 @@ class Parcel extends AbstractStructBase
      * @uses Parcel::setCountrycode()
      * @uses Parcel::setCenternumber()
      * @uses Parcel::setParcelnumber()
-     *
-     * @param int $countrycode
-     * @param int $centernumber
-     * @param int $parcelnumber
      */
-    public function __construct($countrycode = null, $centernumber = null, $parcelnumber = null)
+    public function __construct(int $countrycode, int $centernumber, int $parcelnumber)
     {
         $this
             ->setCountrycode($countrycode)
@@ -59,82 +50,67 @@ class Parcel extends AbstractStructBase
 
     /**
      * Get countrycode value
-     *
-     * @return int
      */
-    public function getCountrycode()
+    public function getCountrycode(): int
     {
         return $this->countrycode;
     }
 
     /**
      * Set countrycode value
-     *
-     * @param int $countrycode
-     *
-     * @return self
      */
-    public function setCountrycode($countrycode = null)
+    public function setCountrycode(int $countrycode): self
     {
         // validation for constraint: int
         if (null !== $countrycode && !(\is_int($countrycode) || ctype_digit($countrycode))) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($countrycode, true), \gettype($countrycode)), __LINE__);
         }
         $this->countrycode = $countrycode;
+
         return $this;
     }
 
     /**
      * Get centernumber value
-     *
-     * @return int
      */
-    public function getCenternumber()
+    public function getCenternumber(): int
     {
         return $this->centernumber;
     }
 
     /**
      * Set centernumber value
-     *
-     * @param int $centernumber
-     *
-     * @return self
      */
-    public function setCenternumber($centernumber = null)
+    public function setCenternumber(int $centernumber): self
     {
         // validation for constraint: int
         if (null !== $centernumber && !(\is_int($centernumber) || ctype_digit($centernumber))) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($centernumber, true), \gettype($centernumber)), __LINE__);
         }
         $this->centernumber = $centernumber;
+
         return $this;
     }
 
     /**
      * Get parcelnumber value
-     *
-     * @return int
      */
-    public function getParcelnumber()
+    public function getParcelnumber(): int
     {
         return $this->parcelnumber;
     }
 
     /**
      * Set parcelnumber value
-     *
-     * @param int $parcelnumber
-     *
-     * @return self
      */
-    public function setParcelnumber($parcelnumber = null)
+    public function setParcelnumber(int $parcelnumber): self
     {
         // validation for constraint: int
         if (null !== $parcelnumber && !(\is_int($parcelnumber) || ctype_digit($parcelnumber))) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($parcelnumber, true), \gettype($parcelnumber)), __LINE__);
         }
         $this->parcelnumber = $parcelnumber;
+
         return $this;
     }
 }

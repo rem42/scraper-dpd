@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for CreatePickupAtCustomerBcResponse StructType
  */
+#[\AllowDynamicProperties]
 class CreatePickupAtCustomerBcResponse extends AbstractStructBase
 {
     /**
@@ -14,10 +15,8 @@ class CreatePickupAtCustomerBcResponse extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var PickupAtCustomerResponse
      */
-    public $CreatePickupAtCustomerBcResult;
+    protected ?PickupAtCustomerResponse $CreatePickupAtCustomerBcResult = null;
 
     /**
      * Constructor method for CreatePickupAtCustomerBcResponse
@@ -33,22 +32,19 @@ class CreatePickupAtCustomerBcResponse extends AbstractStructBase
 
     /**
      * Get CreatePickupAtCustomerBcResult value
-     *
-     * @return PickupAtCustomerResponse|null
      */
-    public function getCreatePickupAtCustomerBcResult()
+    public function getCreatePickupAtCustomerBcResult(): ?PickupAtCustomerResponse
     {
         return $this->CreatePickupAtCustomerBcResult;
     }
 
     /**
      * Set CreatePickupAtCustomerBcResult value
-     *
-     * @return self
      */
-    public function setCreatePickupAtCustomerBcResult(?PickupAtCustomerResponse $createPickupAtCustomerBcResult = null)
+    public function setCreatePickupAtCustomerBcResult(?PickupAtCustomerResponse $createPickupAtCustomerBcResult = null): self
     {
         $this->CreatePickupAtCustomerBcResult = $createPickupAtCustomerBcResult;
+
         return $this;
     }
 }

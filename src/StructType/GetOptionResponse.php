@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for GetOptionResponse StructType
  */
+#[\AllowDynamicProperties]
 class GetOptionResponse extends AbstractStructBase
 {
     /**
@@ -14,30 +15,23 @@ class GetOptionResponse extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $Value;
+    protected ?string $Value = null;
     /**
      * The Parameter
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $Parameter;
+    protected ?string $Parameter = null;
 
     /**
      * Constructor method for GetOptionResponse
      *
      * @uses GetOptionResponse::setValue()
      * @uses GetOptionResponse::setParameter()
-     *
-     * @param string $value
-     * @param string $parameter
      */
-    public function __construct($value = null, $parameter = null)
+    public function __construct(?string $value = null, ?string $parameter = null)
     {
         $this
             ->setValue($value)
@@ -47,55 +41,45 @@ class GetOptionResponse extends AbstractStructBase
 
     /**
      * Get Value value
-     *
-     * @return string|null
      */
-    public function getValue()
+    public function getValue(): ?string
     {
         return $this->Value;
     }
 
     /**
      * Set Value value
-     *
-     * @param string $value
-     *
-     * @return self
      */
-    public function setValue($value = null)
+    public function setValue(?string $value = null): self
     {
         // validation for constraint: string
         if (null !== $value && !\is_string($value)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($value, true), \gettype($value)), __LINE__);
         }
         $this->Value = $value;
+
         return $this;
     }
 
     /**
      * Get Parameter value
-     *
-     * @return string|null
      */
-    public function getParameter()
+    public function getParameter(): ?string
     {
         return $this->Parameter;
     }
 
     /**
      * Set Parameter value
-     *
-     * @param string $parameter
-     *
-     * @return self
      */
-    public function setParameter($parameter = null)
+    public function setParameter(?string $parameter = null): self
     {
         // validation for constraint: string
         if (null !== $parameter && !\is_string($parameter)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($parameter, true), \gettype($parameter)), __LINE__);
         }
         $this->Parameter = $parameter;
+
         return $this;
     }
 }

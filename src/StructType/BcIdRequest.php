@@ -1,10 +1,11 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
 /**
  * This class stands for BcIdRequest StructType
  */
+#[\AllowDynamicProperties]
 class BcIdRequest extends BcIdBaseRequest
 {
     /**
@@ -12,10 +13,8 @@ class BcIdRequest extends BcIdBaseRequest
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var BcData
      */
-    public $Barcode;
+    protected ?BcData $Barcode = null;
 
     /**
      * Constructor method for BcIdRequest
@@ -31,22 +30,19 @@ class BcIdRequest extends BcIdBaseRequest
 
     /**
      * Get Barcode value
-     *
-     * @return BcData|null
      */
-    public function getBarcode()
+    public function getBarcode(): ?BcData
     {
         return $this->Barcode;
     }
 
     /**
      * Set Barcode value
-     *
-     * @return self
      */
-    public function setBarcode(?BcData $barcode = null)
+    public function setBarcode(?BcData $barcode = null): self
     {
         $this->Barcode = $barcode;
+
         return $this;
     }
 }

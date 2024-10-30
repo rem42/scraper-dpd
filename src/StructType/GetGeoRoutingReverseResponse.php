@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for GetGeoRoutingReverseResponse StructType
  */
+#[\AllowDynamicProperties]
 class GetGeoRoutingReverseResponse extends AbstractStructBase
 {
     /**
@@ -14,28 +15,22 @@ class GetGeoRoutingReverseResponse extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var self
      */
-    public $GetGeoRoutingReverseResult;
+    protected ?GetGeoRoutingReverseResponse $GetGeoRoutingReverseResult = null;
     /**
      * The Reverse
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var GeoRouting
      */
-    public $Reverse;
+    protected ?GeoRouting $Reverse = null;
     /**
      * The ReverseRetour
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var GeoRouting
      */
-    public $ReverseRetour;
+    protected ?GeoRouting $ReverseRetour = null;
 
     /**
      * Constructor method for GetGeoRoutingReverseResponse
@@ -55,64 +50,55 @@ class GetGeoRoutingReverseResponse extends AbstractStructBase
 
     /**
      * Get GetGeoRoutingReverseResult value
-     *
-     * @return self|null
      */
-    public function getGetGeoRoutingReverseResult()
+    public function getGetGeoRoutingReverseResult(): ?self
     {
         return $this->GetGeoRoutingReverseResult;
     }
 
     /**
      * Set GetGeoRoutingReverseResult value
-     *
-     * @return self
      */
-    public function setGetGeoRoutingReverseResult(?self $getGeoRoutingReverseResult = null)
+    public function setGetGeoRoutingReverseResult(?self $getGeoRoutingReverseResult = null): self
     {
         $this->GetGeoRoutingReverseResult = $getGeoRoutingReverseResult;
+
         return $this;
     }
 
     /**
      * Get Reverse value
-     *
-     * @return GeoRouting|null
      */
-    public function getReverse()
+    public function getReverse(): ?GeoRouting
     {
         return $this->Reverse;
     }
 
     /**
      * Set Reverse value
-     *
-     * @return self
      */
-    public function setReverse(?GeoRouting $reverse = null)
+    public function setReverse(?GeoRouting $reverse = null): self
     {
         $this->Reverse = $reverse;
+
         return $this;
     }
 
     /**
      * Get ReverseRetour value
-     *
-     * @return GeoRouting|null
      */
-    public function getReverseRetour()
+    public function getReverseRetour(): ?GeoRouting
     {
         return $this->ReverseRetour;
     }
 
     /**
      * Set ReverseRetour value
-     *
-     * @return self
      */
-    public function setReverseRetour(?GeoRouting $reverseRetour = null)
+    public function setReverseRetour(?GeoRouting $reverseRetour = null): self
     {
         $this->ReverseRetour = $reverseRetour;
+
         return $this;
     }
 }

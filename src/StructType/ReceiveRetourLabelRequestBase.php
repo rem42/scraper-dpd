@@ -1,10 +1,11 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
 /**
  * This class stands for ReceiveRetourLabelRequestBase StructType
  */
+#[\AllowDynamicProperties]
 abstract class ReceiveRetourLabelRequestBase extends ReceiveLabelRequestBase
 {
     /**
@@ -12,46 +13,36 @@ abstract class ReceiveRetourLabelRequestBase extends ReceiveLabelRequestBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var RetourServices
      */
-    public $services;
+    protected ?RetourServices $services = null;
     /**
      * The weight
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $weight;
+    protected ?string $weight = null;
     /**
      * The shipperaddress
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var Address
      */
-    public $shipperaddress;
+    protected ?Address $shipperaddress = null;
     /**
      * The receiveraddress
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var Address
      */
-    public $receiveraddress;
+    protected ?Address $receiveraddress = null;
     /**
      * The customLabelText
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $customLabelText;
+    protected ?string $customLabelText = null;
 
     /**
      * Constructor method for ReceiveRetourLabelRequestBase
@@ -61,11 +52,8 @@ abstract class ReceiveRetourLabelRequestBase extends ReceiveLabelRequestBase
      * @uses ReceiveRetourLabelRequestBase::setShipperaddress()
      * @uses ReceiveRetourLabelRequestBase::setReceiveraddress()
      * @uses ReceiveRetourLabelRequestBase::setCustomLabelText()
-     *
-     * @param string $weight
-     * @param string $customLabelText
      */
-    public function __construct(?RetourServices $services = null, $weight = null, ?Address $shipperaddress = null, ?Address $receiveraddress = null, $customLabelText = null)
+    public function __construct(?RetourServices $services = null, ?string $weight = null, ?Address $shipperaddress = null, ?Address $receiveraddress = null, ?string $customLabelText = null)
     {
         $this
             ->setServices($services)
@@ -78,118 +66,99 @@ abstract class ReceiveRetourLabelRequestBase extends ReceiveLabelRequestBase
 
     /**
      * Get services value
-     *
-     * @return RetourServices|null
      */
-    public function getServices()
+    public function getServices(): ?RetourServices
     {
         return $this->services;
     }
 
     /**
      * Set services value
-     *
-     * @return self
      */
-    public function setServices(?RetourServices $services = null)
+    public function setServices(?RetourServices $services = null): self
     {
         $this->services = $services;
+
         return $this;
     }
 
     /**
      * Get weight value
-     *
-     * @return string|null
      */
-    public function getWeight()
+    public function getWeight(): ?string
     {
         return $this->weight;
     }
 
     /**
      * Set weight value
-     *
-     * @param string $weight
-     *
-     * @return self
      */
-    public function setWeight($weight = null)
+    public function setWeight(?string $weight = null): self
     {
         // validation for constraint: string
         if (null !== $weight && !\is_string($weight)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($weight, true), \gettype($weight)), __LINE__);
         }
         $this->weight = $weight;
+
         return $this;
     }
 
     /**
      * Get shipperaddress value
-     *
-     * @return Address|null
      */
-    public function getShipperaddress()
+    public function getShipperaddress(): ?Address
     {
         return $this->shipperaddress;
     }
 
     /**
      * Set shipperaddress value
-     *
-     * @return self
      */
-    public function setShipperaddress(?Address $shipperaddress = null)
+    public function setShipperaddress(?Address $shipperaddress = null): self
     {
         $this->shipperaddress = $shipperaddress;
+
         return $this;
     }
 
     /**
      * Get receiveraddress value
-     *
-     * @return Address|null
      */
-    public function getReceiveraddress()
+    public function getReceiveraddress(): ?Address
     {
         return $this->receiveraddress;
     }
 
     /**
      * Set receiveraddress value
-     *
-     * @return self
      */
-    public function setReceiveraddress(?Address $receiveraddress = null)
+    public function setReceiveraddress(?Address $receiveraddress = null): self
     {
         $this->receiveraddress = $receiveraddress;
+
         return $this;
     }
 
     /**
      * Get customLabelText value
-     *
-     * @return string|null
      */
-    public function getCustomLabelText()
+    public function getCustomLabelText(): ?string
     {
         return $this->customLabelText;
     }
 
     /**
      * Set customLabelText value
-     *
-     * @param string $customLabelText
-     *
-     * @return self
      */
-    public function setCustomLabelText($customLabelText = null)
+    public function setCustomLabelText(?string $customLabelText = null): self
     {
         // validation for constraint: string
         if (null !== $customLabelText && !\is_string($customLabelText)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($customLabelText, true), \gettype($customLabelText)), __LINE__);
         }
         $this->customLabelText = $customLabelText;
+
         return $this;
     }
 }

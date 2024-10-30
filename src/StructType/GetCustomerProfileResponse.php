@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for GetCustomerProfileResponse StructType
  */
+#[\AllowDynamicProperties]
 class GetCustomerProfileResponse extends AbstractStructBase
 {
     /**
@@ -14,19 +15,15 @@ class GetCustomerProfileResponse extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var self
      */
-    public $GetCustomerProfileResult;
+    protected ?GetCustomerProfileResponse $GetCustomerProfileResult = null;
     /**
      * The CustomerProfiles
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var \Scraper\ScraperDPD\ArrayType\ArrayOfCustomerProfile
      */
-    public $CustomerProfiles;
+    protected ?\Scraper\ScraperDPD\ArrayType\ArrayOfCustomerProfile $CustomerProfiles = null;
 
     /**
      * Constructor method for GetCustomerProfileResponse
@@ -44,43 +41,37 @@ class GetCustomerProfileResponse extends AbstractStructBase
 
     /**
      * Get GetCustomerProfileResult value
-     *
-     * @return self|null
      */
-    public function getGetCustomerProfileResult()
+    public function getGetCustomerProfileResult(): ?self
     {
         return $this->GetCustomerProfileResult;
     }
 
     /**
      * Set GetCustomerProfileResult value
-     *
-     * @return self
      */
-    public function setGetCustomerProfileResult(?self $getCustomerProfileResult = null)
+    public function setGetCustomerProfileResult(?self $getCustomerProfileResult = null): self
     {
         $this->GetCustomerProfileResult = $getCustomerProfileResult;
+
         return $this;
     }
 
     /**
      * Get CustomerProfiles value
-     *
-     * @return \Scraper\ScraperDPD\ArrayType\ArrayOfCustomerProfile|null
      */
-    public function getCustomerProfiles()
+    public function getCustomerProfiles(): ?\Scraper\ScraperDPD\ArrayType\ArrayOfCustomerProfile
     {
         return $this->CustomerProfiles;
     }
 
     /**
      * Set CustomerProfiles value
-     *
-     * @return self
      */
-    public function setCustomerProfiles(?\Scraper\ScraperDPD\ArrayType\ArrayOfCustomerProfile $customerProfiles = null)
+    public function setCustomerProfiles(?\Scraper\ScraperDPD\ArrayType\ArrayOfCustomerProfile $customerProfiles = null): self
     {
         $this->CustomerProfiles = $customerProfiles;
+
         return $this;
     }
 }

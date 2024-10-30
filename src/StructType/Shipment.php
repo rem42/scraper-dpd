@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for Shipment StructType
  */
+#[\AllowDynamicProperties]
 class Shipment extends AbstractStructBase
 {
     /**
@@ -14,46 +15,36 @@ class Shipment extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var int
      */
-    public $countrycode;
+    protected int $countrycode;
     /**
      * The centernumber
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var int
      */
-    public $centernumber;
+    protected int $centernumber;
     /**
      * The parcelnumber
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var int
      */
-    public $parcelnumber;
+    protected int $parcelnumber;
     /**
      * The barcode
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var int
      */
-    public $barcode;
+    protected int $barcode;
     /**
      * The type
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var string
      */
-    public $type;
+    protected string $type;
 
     /**
      * Constructor method for Shipment
@@ -63,14 +54,8 @@ class Shipment extends AbstractStructBase
      * @uses Shipment::setParcelnumber()
      * @uses Shipment::setBarcode()
      * @uses Shipment::setType()
-     *
-     * @param int    $countrycode
-     * @param int    $centernumber
-     * @param int    $parcelnumber
-     * @param int    $barcode
-     * @param string $type
      */
-    public function __construct($countrycode = null, $centernumber = null, $parcelnumber = null, $barcode = null, $type = null)
+    public function __construct(int $countrycode, int $centernumber, int $parcelnumber, int $barcode, string $type)
     {
         $this
             ->setCountrycode($countrycode)
@@ -83,118 +68,96 @@ class Shipment extends AbstractStructBase
 
     /**
      * Get countrycode value
-     *
-     * @return int
      */
-    public function getCountrycode()
+    public function getCountrycode(): int
     {
         return $this->countrycode;
     }
 
     /**
      * Set countrycode value
-     *
-     * @param int $countrycode
-     *
-     * @return self
      */
-    public function setCountrycode($countrycode = null)
+    public function setCountrycode(int $countrycode): self
     {
         // validation for constraint: int
         if (null !== $countrycode && !(\is_int($countrycode) || ctype_digit($countrycode))) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($countrycode, true), \gettype($countrycode)), __LINE__);
         }
         $this->countrycode = $countrycode;
+
         return $this;
     }
 
     /**
      * Get centernumber value
-     *
-     * @return int
      */
-    public function getCenternumber()
+    public function getCenternumber(): int
     {
         return $this->centernumber;
     }
 
     /**
      * Set centernumber value
-     *
-     * @param int $centernumber
-     *
-     * @return self
      */
-    public function setCenternumber($centernumber = null)
+    public function setCenternumber(int $centernumber): self
     {
         // validation for constraint: int
         if (null !== $centernumber && !(\is_int($centernumber) || ctype_digit($centernumber))) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($centernumber, true), \gettype($centernumber)), __LINE__);
         }
         $this->centernumber = $centernumber;
+
         return $this;
     }
 
     /**
      * Get parcelnumber value
-     *
-     * @return int
      */
-    public function getParcelnumber()
+    public function getParcelnumber(): int
     {
         return $this->parcelnumber;
     }
 
     /**
      * Set parcelnumber value
-     *
-     * @param int $parcelnumber
-     *
-     * @return self
      */
-    public function setParcelnumber($parcelnumber = null)
+    public function setParcelnumber(int $parcelnumber): self
     {
         // validation for constraint: int
         if (null !== $parcelnumber && !(\is_int($parcelnumber) || ctype_digit($parcelnumber))) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($parcelnumber, true), \gettype($parcelnumber)), __LINE__);
         }
         $this->parcelnumber = $parcelnumber;
+
         return $this;
     }
 
     /**
      * Get barcode value
-     *
-     * @return int
      */
-    public function getBarcode()
+    public function getBarcode(): int
     {
         return $this->barcode;
     }
 
     /**
      * Set barcode value
-     *
-     * @param int $barcode
-     *
-     * @return self
      */
-    public function setBarcode($barcode = null)
+    public function setBarcode(int $barcode): self
     {
         // validation for constraint: int
         if (null !== $barcode && !(\is_int($barcode) || ctype_digit($barcode))) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($barcode, true), \gettype($barcode)), __LINE__);
         }
         $this->barcode = $barcode;
+
         return $this;
     }
 
     /**
      * Get type value
-     *
-     * @return string
      */
-    public function getType()
+    public function getType(): string
     {
         return $this->type;
     }
@@ -205,19 +168,16 @@ class Shipment extends AbstractStructBase
      * @uses \Scraper\ScraperDPD\EnumType\Etype::valueIsValid()
      * @uses \Scraper\ScraperDPD\EnumType\Etype::getValidValues()
      *
-     * @param string $type
-     *
      * @throws \InvalidArgumentException
-     *
-     * @return self
      */
-    public function setType($type = null)
+    public function setType(string $type): self
     {
         // validation for constraint: enumeration
         if (!\Scraper\ScraperDPD\EnumType\Etype::valueIsValid($type)) {
             throw new \InvalidArgumentException(sprintf('Invalid value(s) %s, please use one of: %s from enumeration class \Scraper\ScraperDPD\EnumType\Etype', \is_array($type) ? implode(', ', $type) : var_export($type, true), implode(', ', \Scraper\ScraperDPD\EnumType\Etype::getValidValues())), __LINE__);
         }
         $this->type = $type;
+
         return $this;
     }
 }

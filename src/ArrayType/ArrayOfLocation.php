@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\ArrayType;
 
@@ -18,7 +18,7 @@ class ArrayOfLocation extends AbstractStructArrayBase
      *
      * @var array<\Scraper\ScraperDPD\StructType\Location>
      */
-    public $Location;
+    protected ?array $Location = null;
 
     /**
      * Constructor method for ArrayOfLocation
@@ -27,7 +27,7 @@ class ArrayOfLocation extends AbstractStructArrayBase
      *
      * @param array<\Scraper\ScraperDPD\StructType\Location> $location
      */
-    public function __construct(array $location = [])
+    public function __construct(?array $location = null)
     {
         $this
             ->setLocation($location)
@@ -40,21 +40,25 @@ class ArrayOfLocation extends AbstractStructArrayBase
      * this property may have been unset before, due to the fact that this property is
      * removable from the request (nillable=true+minOccurs=0)
      *
-     * @return array<\Scraper\ScraperDPD\StructType\Location>|null
+     * @return array<\Scraper\ScraperDPD\StructType\Location>
      */
-    public function getLocation()
+    public function getLocation(): ?array
     {
         return $this->Location ?? null;
     }
 
     /**
-     * This method is responsible for validating the values passed to the setLocation method
+     * This method is responsible for validating the value(s) passed to the setLocation method
      * This method is willingly generated in order to preserve the one-line inline validation within the setLocation method
+     * This has to validate that each item contained by the array match the itemType constraint
      *
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateLocationForArrayConstraintsFromSetLocation(array $values = [])
+    public static function validateLocationForArrayConstraintFromSetLocation(?array $values = []): string
     {
+        if (!\is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
 
@@ -69,6 +73,7 @@ class ArrayOfLocation extends AbstractStructArrayBase
             $message = sprintf('The Location property can only contain items of type \Scraper\ScraperDPD\StructType\Location, %s given', \is_object($invalidValues) ? $invalidValues::class : (\is_array($invalidValues) ? implode(', ', $invalidValues) : \gettype($invalidValues)));
         }
         unset($invalidValues);
+
         return $message;
     }
 
@@ -80,13 +85,11 @@ class ArrayOfLocation extends AbstractStructArrayBase
      * @param array<\Scraper\ScraperDPD\StructType\Location> $location
      *
      * @throws \InvalidArgumentException
-     *
-     * @return self
      */
-    public function setLocation(array $location = [])
+    public function setLocation(?array $location = null): self
     {
         // validation for constraint: array
-        if ('' !== ($locationArrayErrorMessage = self::validateLocationForArrayConstraintsFromSetLocation($location))) {
+        if ('' !== ($locationArrayErrorMessage = self::validateLocationForArrayConstraintFromSetLocation($location))) {
             throw new \InvalidArgumentException($locationArrayErrorMessage, __LINE__);
         }
 
@@ -95,23 +98,7 @@ class ArrayOfLocation extends AbstractStructArrayBase
         } else {
             $this->Location = $location;
         }
-        return $this;
-    }
 
-    /**
-     * Add item to Location value
-     *
-     * @throws \InvalidArgumentException
-     *
-     * @return self
-     */
-    public function addToLocation(\Scraper\ScraperDPD\StructType\Location $item)
-    {
-        // validation for constraint: itemType
-        if (!$item instanceof \Scraper\ScraperDPD\StructType\Location) {
-            throw new \InvalidArgumentException(sprintf('The Location property can only contain items of type \Scraper\ScraperDPD\StructType\Location, %s given', \is_object($item) ? $item::class : (\is_array($item) ? implode(', ', $item) : \gettype($item))), __LINE__);
-        }
-        $this->Location[] = $item;
         return $this;
     }
 
@@ -119,10 +106,8 @@ class ArrayOfLocation extends AbstractStructArrayBase
      * Returns the current element
      *
      * @see AbstractStructArrayBase::current()
-     *
-     * @return \Scraper\ScraperDPD\StructType\Location|null
      */
-    public function current()
+    public function current(): ?\Scraper\ScraperDPD\StructType\Location
     {
         return parent::current();
     }
@@ -133,10 +118,8 @@ class ArrayOfLocation extends AbstractStructArrayBase
      * @see AbstractStructArrayBase::item()
      *
      * @param int $index
-     *
-     * @return \Scraper\ScraperDPD\StructType\Location|null
      */
-    public function item($index)
+    public function item($index): ?\Scraper\ScraperDPD\StructType\Location
     {
         return parent::item($index);
     }
@@ -145,10 +128,8 @@ class ArrayOfLocation extends AbstractStructArrayBase
      * Returns the first element
      *
      * @see AbstractStructArrayBase::first()
-     *
-     * @return \Scraper\ScraperDPD\StructType\Location|null
      */
-    public function first()
+    public function first(): ?\Scraper\ScraperDPD\StructType\Location
     {
         return parent::first();
     }
@@ -157,10 +138,8 @@ class ArrayOfLocation extends AbstractStructArrayBase
      * Returns the last element
      *
      * @see AbstractStructArrayBase::last()
-     *
-     * @return \Scraper\ScraperDPD\StructType\Location|null
      */
-    public function last()
+    public function last(): ?\Scraper\ScraperDPD\StructType\Location
     {
         return parent::last();
     }
@@ -171,12 +150,28 @@ class ArrayOfLocation extends AbstractStructArrayBase
      * @see AbstractStructArrayBase::offsetGet()
      *
      * @param int $offset
-     *
-     * @return \Scraper\ScraperDPD\StructType\Location|null
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): ?\Scraper\ScraperDPD\StructType\Location
     {
         return parent::offsetGet($offset);
+    }
+
+    /**
+     * Add element to array
+     *
+     * @see AbstractStructArrayBase::add()
+     *
+     * @param \Scraper\ScraperDPD\StructType\Location $item
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function add($item): self
+    {
+        // validation for constraint: itemType
+        if (!$item instanceof \Scraper\ScraperDPD\StructType\Location) {
+            throw new \InvalidArgumentException(sprintf('The Location property can only contain items of type \Scraper\ScraperDPD\StructType\Location, %s given', \is_object($item) ? $item::class : (\is_array($item) ? implode(', ', $item) : \gettype($item))), __LINE__);
+        }
+        return parent::add($item);
     }
 
     /**
@@ -186,7 +181,7 @@ class ArrayOfLocation extends AbstractStructArrayBase
      *
      * @return string Location
      */
-    public function getAttributeName()
+    public function getAttributeName(): string
     {
         return 'Location';
     }

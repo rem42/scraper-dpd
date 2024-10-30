@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for ShipmentsWithLabelsBc StructType
  */
+#[\AllowDynamicProperties]
 class ShipmentsWithLabelsBc extends AbstractStructBase
 {
     /**
@@ -14,19 +15,15 @@ class ShipmentsWithLabelsBc extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var \Scraper\ScraperDPD\ArrayType\ArrayOfShipmentBc
      */
-    public $shipments;
+    protected ?\Scraper\ScraperDPD\ArrayType\ArrayOfShipmentBc $shipments = null;
     /**
      * The labels
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var \Scraper\ScraperDPD\ArrayType\ArrayOfLabel
      */
-    public $labels;
+    protected ?\Scraper\ScraperDPD\ArrayType\ArrayOfLabel $labels = null;
 
     /**
      * Constructor method for ShipmentsWithLabelsBc
@@ -44,43 +41,37 @@ class ShipmentsWithLabelsBc extends AbstractStructBase
 
     /**
      * Get shipments value
-     *
-     * @return \Scraper\ScraperDPD\ArrayType\ArrayOfShipmentBc|null
      */
-    public function getShipments()
+    public function getShipments(): ?\Scraper\ScraperDPD\ArrayType\ArrayOfShipmentBc
     {
         return $this->shipments;
     }
 
     /**
      * Set shipments value
-     *
-     * @return self
      */
-    public function setShipments(?\Scraper\ScraperDPD\ArrayType\ArrayOfShipmentBc $shipments = null)
+    public function setShipments(?\Scraper\ScraperDPD\ArrayType\ArrayOfShipmentBc $shipments = null): self
     {
         $this->shipments = $shipments;
+
         return $this;
     }
 
     /**
      * Get labels value
-     *
-     * @return \Scraper\ScraperDPD\ArrayType\ArrayOfLabel|null
      */
-    public function getLabels()
+    public function getLabels(): ?\Scraper\ScraperDPD\ArrayType\ArrayOfLabel
     {
         return $this->labels;
     }
 
     /**
      * Set labels value
-     *
-     * @return self
      */
-    public function setLabels(?\Scraper\ScraperDPD\ArrayType\ArrayOfLabel $labels = null)
+    public function setLabels(?\Scraper\ScraperDPD\ArrayType\ArrayOfLabel $labels = null): self
     {
         $this->labels = $labels;
+
         return $this;
     }
 }

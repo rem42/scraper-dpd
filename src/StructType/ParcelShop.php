@@ -1,10 +1,11 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
 /**
  * This class stands for ParcelShop StructType
  */
+#[\AllowDynamicProperties]
 class ParcelShop extends DefaultService
 {
     /**
@@ -12,10 +13,8 @@ class ParcelShop extends DefaultService
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var ShopAddress
      */
-    public $shopaddress;
+    protected ?ShopAddress $shopaddress = null;
 
     /**
      * Constructor method for ParcelShop
@@ -31,22 +30,19 @@ class ParcelShop extends DefaultService
 
     /**
      * Get shopaddress value
-     *
-     * @return ShopAddress|null
      */
-    public function getShopaddress()
+    public function getShopaddress(): ?ShopAddress
     {
         return $this->shopaddress;
     }
 
     /**
      * Set shopaddress value
-     *
-     * @return self
      */
-    public function setShopaddress(?ShopAddress $shopaddress = null)
+    public function setShopaddress(?ShopAddress $shopaddress = null): self
     {
         $this->shopaddress = $shopaddress;
+
         return $this;
     }
 }

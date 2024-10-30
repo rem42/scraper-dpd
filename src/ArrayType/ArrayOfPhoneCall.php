@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\ArrayType;
 
@@ -18,7 +18,7 @@ class ArrayOfPhoneCall extends AbstractStructArrayBase
      *
      * @var array<\Scraper\ScraperDPD\StructType\PhoneCall>
      */
-    public $PhoneCall;
+    protected ?array $PhoneCall = null;
 
     /**
      * Constructor method for ArrayOfPhoneCall
@@ -27,7 +27,7 @@ class ArrayOfPhoneCall extends AbstractStructArrayBase
      *
      * @param array<\Scraper\ScraperDPD\StructType\PhoneCall> $phoneCall
      */
-    public function __construct(array $phoneCall = [])
+    public function __construct(?array $phoneCall = null)
     {
         $this
             ->setPhoneCall($phoneCall)
@@ -40,21 +40,25 @@ class ArrayOfPhoneCall extends AbstractStructArrayBase
      * this property may have been unset before, due to the fact that this property is
      * removable from the request (nillable=true+minOccurs=0)
      *
-     * @return array<\Scraper\ScraperDPD\StructType\PhoneCall>|null
+     * @return array<\Scraper\ScraperDPD\StructType\PhoneCall>
      */
-    public function getPhoneCall()
+    public function getPhoneCall(): ?array
     {
         return $this->PhoneCall ?? null;
     }
 
     /**
-     * This method is responsible for validating the values passed to the setPhoneCall method
+     * This method is responsible for validating the value(s) passed to the setPhoneCall method
      * This method is willingly generated in order to preserve the one-line inline validation within the setPhoneCall method
+     * This has to validate that each item contained by the array match the itemType constraint
      *
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validatePhoneCallForArrayConstraintsFromSetPhoneCall(array $values = [])
+    public static function validatePhoneCallForArrayConstraintFromSetPhoneCall(?array $values = []): string
     {
+        if (!\is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
 
@@ -69,6 +73,7 @@ class ArrayOfPhoneCall extends AbstractStructArrayBase
             $message = sprintf('The PhoneCall property can only contain items of type \Scraper\ScraperDPD\StructType\PhoneCall, %s given', \is_object($invalidValues) ? $invalidValues::class : (\is_array($invalidValues) ? implode(', ', $invalidValues) : \gettype($invalidValues)));
         }
         unset($invalidValues);
+
         return $message;
     }
 
@@ -80,13 +85,11 @@ class ArrayOfPhoneCall extends AbstractStructArrayBase
      * @param array<\Scraper\ScraperDPD\StructType\PhoneCall> $phoneCall
      *
      * @throws \InvalidArgumentException
-     *
-     * @return self
      */
-    public function setPhoneCall(array $phoneCall = [])
+    public function setPhoneCall(?array $phoneCall = null): self
     {
         // validation for constraint: array
-        if ('' !== ($phoneCallArrayErrorMessage = self::validatePhoneCallForArrayConstraintsFromSetPhoneCall($phoneCall))) {
+        if ('' !== ($phoneCallArrayErrorMessage = self::validatePhoneCallForArrayConstraintFromSetPhoneCall($phoneCall))) {
             throw new \InvalidArgumentException($phoneCallArrayErrorMessage, __LINE__);
         }
 
@@ -95,23 +98,7 @@ class ArrayOfPhoneCall extends AbstractStructArrayBase
         } else {
             $this->PhoneCall = $phoneCall;
         }
-        return $this;
-    }
 
-    /**
-     * Add item to PhoneCall value
-     *
-     * @throws \InvalidArgumentException
-     *
-     * @return self
-     */
-    public function addToPhoneCall(\Scraper\ScraperDPD\StructType\PhoneCall $item)
-    {
-        // validation for constraint: itemType
-        if (!$item instanceof \Scraper\ScraperDPD\StructType\PhoneCall) {
-            throw new \InvalidArgumentException(sprintf('The PhoneCall property can only contain items of type \Scraper\ScraperDPD\StructType\PhoneCall, %s given', \is_object($item) ? $item::class : (\is_array($item) ? implode(', ', $item) : \gettype($item))), __LINE__);
-        }
-        $this->PhoneCall[] = $item;
         return $this;
     }
 
@@ -119,10 +106,8 @@ class ArrayOfPhoneCall extends AbstractStructArrayBase
      * Returns the current element
      *
      * @see AbstractStructArrayBase::current()
-     *
-     * @return \Scraper\ScraperDPD\StructType\PhoneCall|null
      */
-    public function current()
+    public function current(): ?\Scraper\ScraperDPD\StructType\PhoneCall
     {
         return parent::current();
     }
@@ -133,10 +118,8 @@ class ArrayOfPhoneCall extends AbstractStructArrayBase
      * @see AbstractStructArrayBase::item()
      *
      * @param int $index
-     *
-     * @return \Scraper\ScraperDPD\StructType\PhoneCall|null
      */
-    public function item($index)
+    public function item($index): ?\Scraper\ScraperDPD\StructType\PhoneCall
     {
         return parent::item($index);
     }
@@ -145,10 +128,8 @@ class ArrayOfPhoneCall extends AbstractStructArrayBase
      * Returns the first element
      *
      * @see AbstractStructArrayBase::first()
-     *
-     * @return \Scraper\ScraperDPD\StructType\PhoneCall|null
      */
-    public function first()
+    public function first(): ?\Scraper\ScraperDPD\StructType\PhoneCall
     {
         return parent::first();
     }
@@ -157,10 +138,8 @@ class ArrayOfPhoneCall extends AbstractStructArrayBase
      * Returns the last element
      *
      * @see AbstractStructArrayBase::last()
-     *
-     * @return \Scraper\ScraperDPD\StructType\PhoneCall|null
      */
-    public function last()
+    public function last(): ?\Scraper\ScraperDPD\StructType\PhoneCall
     {
         return parent::last();
     }
@@ -171,12 +150,28 @@ class ArrayOfPhoneCall extends AbstractStructArrayBase
      * @see AbstractStructArrayBase::offsetGet()
      *
      * @param int $offset
-     *
-     * @return \Scraper\ScraperDPD\StructType\PhoneCall|null
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): ?\Scraper\ScraperDPD\StructType\PhoneCall
     {
         return parent::offsetGet($offset);
+    }
+
+    /**
+     * Add element to array
+     *
+     * @see AbstractStructArrayBase::add()
+     *
+     * @param \Scraper\ScraperDPD\StructType\PhoneCall $item
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function add($item): self
+    {
+        // validation for constraint: itemType
+        if (!$item instanceof \Scraper\ScraperDPD\StructType\PhoneCall) {
+            throw new \InvalidArgumentException(sprintf('The PhoneCall property can only contain items of type \Scraper\ScraperDPD\StructType\PhoneCall, %s given', \is_object($item) ? $item::class : (\is_array($item) ? implode(', ', $item) : \gettype($item))), __LINE__);
+        }
+        return parent::add($item);
     }
 
     /**
@@ -186,7 +181,7 @@ class ArrayOfPhoneCall extends AbstractStructArrayBase
      *
      * @return string PhoneCall
      */
-    public function getAttributeName()
+    public function getAttributeName(): string
     {
         return 'PhoneCall';
     }

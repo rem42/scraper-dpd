@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for UpdateRdvShipmentData StructType
  */
+#[\AllowDynamicProperties]
 class UpdateRdvShipmentData extends AbstractStructBase
 {
     /**
@@ -14,37 +15,29 @@ class UpdateRdvShipmentData extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $Sin;
+    protected ?string $Sin = null;
     /**
      * The Receiver_EmailAddress
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $Receiver_EmailAddress;
+    protected ?string $Receiver_EmailAddress = null;
     /**
      * The User
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $User;
+    protected ?string $User = null;
     /**
      * The request
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var UpdateRdvShipmentDataRequest
      */
-    public $request;
+    protected ?UpdateRdvShipmentDataRequest $request = null;
 
     /**
      * Constructor method for UpdateRdvShipmentData
@@ -53,12 +46,8 @@ class UpdateRdvShipmentData extends AbstractStructBase
      * @uses UpdateRdvShipmentData::setReceiver_EmailAddress()
      * @uses UpdateRdvShipmentData::setUser()
      * @uses UpdateRdvShipmentData::setRequest()
-     *
-     * @param string $sin
-     * @param string $receiver_EmailAddress
-     * @param string $user
      */
-    public function __construct($sin = null, $receiver_EmailAddress = null, $user = null, ?UpdateRdvShipmentDataRequest $request = null)
+    public function __construct(?string $sin = null, ?string $receiver_EmailAddress = null, ?string $user = null, ?UpdateRdvShipmentDataRequest $request = null)
     {
         $this
             ->setSin($sin)
@@ -70,103 +59,85 @@ class UpdateRdvShipmentData extends AbstractStructBase
 
     /**
      * Get Sin value
-     *
-     * @return string|null
      */
-    public function getSin()
+    public function getSin(): ?string
     {
         return $this->Sin;
     }
 
     /**
      * Set Sin value
-     *
-     * @param string $sin
-     *
-     * @return self
      */
-    public function setSin($sin = null)
+    public function setSin(?string $sin = null): self
     {
         // validation for constraint: string
         if (null !== $sin && !\is_string($sin)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($sin, true), \gettype($sin)), __LINE__);
         }
         $this->Sin = $sin;
+
         return $this;
     }
 
     /**
      * Get Receiver_EmailAddress value
-     *
-     * @return string|null
      */
-    public function getReceiver_EmailAddress()
+    public function getReceiver_EmailAddress(): ?string
     {
         return $this->Receiver_EmailAddress;
     }
 
     /**
      * Set Receiver_EmailAddress value
-     *
-     * @param string $receiver_EmailAddress
-     *
-     * @return self
      */
-    public function setReceiver_EmailAddress($receiver_EmailAddress = null)
+    public function setReceiver_EmailAddress(?string $receiver_EmailAddress = null): self
     {
         // validation for constraint: string
         if (null !== $receiver_EmailAddress && !\is_string($receiver_EmailAddress)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($receiver_EmailAddress, true), \gettype($receiver_EmailAddress)), __LINE__);
         }
         $this->Receiver_EmailAddress = $receiver_EmailAddress;
+
         return $this;
     }
 
     /**
      * Get User value
-     *
-     * @return string|null
      */
-    public function getUser()
+    public function getUser(): ?string
     {
         return $this->User;
     }
 
     /**
      * Set User value
-     *
-     * @param string $user
-     *
-     * @return self
      */
-    public function setUser($user = null)
+    public function setUser(?string $user = null): self
     {
         // validation for constraint: string
         if (null !== $user && !\is_string($user)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($user, true), \gettype($user)), __LINE__);
         }
         $this->User = $user;
+
         return $this;
     }
 
     /**
      * Get request value
-     *
-     * @return UpdateRdvShipmentDataRequest|null
      */
-    public function getRequest()
+    public function getRequest(): ?UpdateRdvShipmentDataRequest
     {
         return $this->request;
     }
 
     /**
      * Set request value
-     *
-     * @return self
      */
-    public function setRequest(?UpdateRdvShipmentDataRequest $request = null)
+    public function setRequest(?UpdateRdvShipmentDataRequest $request = null): self
     {
         $this->request = $request;
+
         return $this;
     }
 }

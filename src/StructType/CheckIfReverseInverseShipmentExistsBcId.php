@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for CheckIfReverseInverseShipmentExistsBcId StructType
  */
+#[\AllowDynamicProperties]
 class CheckIfReverseInverseShipmentExistsBcId extends AbstractStructBase
 {
     /**
@@ -14,10 +15,8 @@ class CheckIfReverseInverseShipmentExistsBcId extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var CheckIfReverseInverseShipmentExistsBcIdRequest
      */
-    public $request;
+    protected ?CheckIfReverseInverseShipmentExistsBcIdRequest $request = null;
 
     /**
      * Constructor method for CheckIfReverseInverseShipmentExistsBcId
@@ -33,22 +32,19 @@ class CheckIfReverseInverseShipmentExistsBcId extends AbstractStructBase
 
     /**
      * Get request value
-     *
-     * @return CheckIfReverseInverseShipmentExistsBcIdRequest|null
      */
-    public function getRequest()
+    public function getRequest(): ?CheckIfReverseInverseShipmentExistsBcIdRequest
     {
         return $this->request;
     }
 
     /**
      * Set request value
-     *
-     * @return self
      */
-    public function setRequest(?CheckIfReverseInverseShipmentExistsBcIdRequest $request = null)
+    public function setRequest(?CheckIfReverseInverseShipmentExistsBcIdRequest $request = null): self
     {
         $this->request = $request;
+
         return $this;
     }
 }

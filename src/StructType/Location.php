@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for Location StructType
  */
+#[\AllowDynamicProperties]
 class Location extends AbstractStructBase
 {
     /**
@@ -14,28 +15,22 @@ class Location extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var string
      */
-    public $TimeStamp;
+    protected string $TimeStamp;
     /**
      * The Latitude
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var float
      */
-    public $Latitude;
+    protected float $Latitude;
     /**
      * The Longitude
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var float
      */
-    public $Longitude;
+    protected float $Longitude;
 
     /**
      * Constructor method for Location
@@ -43,12 +38,8 @@ class Location extends AbstractStructBase
      * @uses Location::setTimeStamp()
      * @uses Location::setLatitude()
      * @uses Location::setLongitude()
-     *
-     * @param string $timeStamp
-     * @param float  $latitude
-     * @param float  $longitude
      */
-    public function __construct($timeStamp = null, $latitude = null, $longitude = null)
+    public function __construct(string $timeStamp, float $latitude, float $longitude)
     {
         $this
             ->setTimeStamp($timeStamp)
@@ -59,82 +50,67 @@ class Location extends AbstractStructBase
 
     /**
      * Get TimeStamp value
-     *
-     * @return string
      */
-    public function getTimeStamp()
+    public function getTimeStamp(): string
     {
         return $this->TimeStamp;
     }
 
     /**
      * Set TimeStamp value
-     *
-     * @param string $timeStamp
-     *
-     * @return self
      */
-    public function setTimeStamp($timeStamp = null)
+    public function setTimeStamp(string $timeStamp): self
     {
         // validation for constraint: string
         if (null !== $timeStamp && !\is_string($timeStamp)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($timeStamp, true), \gettype($timeStamp)), __LINE__);
         }
         $this->TimeStamp = $timeStamp;
+
         return $this;
     }
 
     /**
      * Get Latitude value
-     *
-     * @return float
      */
-    public function getLatitude()
+    public function getLatitude(): float
     {
         return $this->Latitude;
     }
 
     /**
      * Set Latitude value
-     *
-     * @param float $latitude
-     *
-     * @return self
      */
-    public function setLatitude($latitude = null)
+    public function setLatitude(float $latitude): self
     {
         // validation for constraint: float
         if (null !== $latitude && !(\is_float($latitude) || is_numeric($latitude))) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a float value, %s given', var_export($latitude, true), \gettype($latitude)), __LINE__);
         }
         $this->Latitude = $latitude;
+
         return $this;
     }
 
     /**
      * Get Longitude value
-     *
-     * @return float
      */
-    public function getLongitude()
+    public function getLongitude(): float
     {
         return $this->Longitude;
     }
 
     /**
      * Set Longitude value
-     *
-     * @param float $longitude
-     *
-     * @return self
      */
-    public function setLongitude($longitude = null)
+    public function setLongitude(float $longitude): self
     {
         // validation for constraint: float
         if (null !== $longitude && !(\is_float($longitude) || is_numeric($longitude))) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a float value, %s given', var_export($longitude, true), \gettype($longitude)), __LINE__);
         }
         $this->Longitude = $longitude;
+
         return $this;
     }
 }

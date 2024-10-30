@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for CreateShipmentBc StructType
  */
+#[\AllowDynamicProperties]
 class CreateShipmentBc extends AbstractStructBase
 {
     /**
@@ -14,10 +15,8 @@ class CreateShipmentBc extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var StdShipmentRequest
      */
-    public $request;
+    protected ?StdShipmentRequest $request = null;
 
     /**
      * Constructor method for CreateShipmentBc
@@ -33,22 +32,19 @@ class CreateShipmentBc extends AbstractStructBase
 
     /**
      * Get request value
-     *
-     * @return StdShipmentRequest|null
      */
-    public function getRequest()
+    public function getRequest(): ?StdShipmentRequest
     {
         return $this->request;
     }
 
     /**
      * Set request value
-     *
-     * @return self
      */
-    public function setRequest(?StdShipmentRequest $request = null)
+    public function setRequest(?StdShipmentRequest $request = null): self
     {
         $this->request = $request;
+
         return $this;
     }
 }

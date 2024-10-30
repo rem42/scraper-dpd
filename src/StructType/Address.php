@@ -1,10 +1,11 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
 /**
  * This class stands for Address StructType
  */
+#[\AllowDynamicProperties]
 class Address extends AddressMini
 {
     /**
@@ -12,46 +13,36 @@ class Address extends AddressMini
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $name;
+    protected ?string $name = null;
     /**
      * The phoneNumber
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $phoneNumber;
+    protected ?string $phoneNumber = null;
     /**
      * The faxNumber
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $faxNumber;
+    protected ?string $faxNumber = null;
     /**
      * The geoX
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $geoX;
+    protected ?string $geoX = null;
     /**
      * The geoY
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $geoY;
+    protected ?string $geoY = null;
 
     /**
      * Constructor method for Address
@@ -61,14 +52,8 @@ class Address extends AddressMini
      * @uses Address::setFaxNumber()
      * @uses Address::setGeoX()
      * @uses Address::setGeoY()
-     *
-     * @param string $name
-     * @param string $phoneNumber
-     * @param string $faxNumber
-     * @param string $geoX
-     * @param string $geoY
      */
-    public function __construct($name = null, $phoneNumber = null, $faxNumber = null, $geoX = null, $geoY = null)
+    public function __construct(?string $name = null, ?string $phoneNumber = null, ?string $faxNumber = null, ?string $geoX = null, ?string $geoY = null)
     {
         $this
             ->setName($name)
@@ -81,136 +66,111 @@ class Address extends AddressMini
 
     /**
      * Get name value
-     *
-     * @return string|null
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     /**
      * Set name value
-     *
-     * @param string $name
-     *
-     * @return self
      */
-    public function setName($name = null)
+    public function setName(?string $name = null): self
     {
         // validation for constraint: string
         if (null !== $name && !\is_string($name)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($name, true), \gettype($name)), __LINE__);
         }
         $this->name = $name;
+
         return $this;
     }
 
     /**
      * Get phoneNumber value
-     *
-     * @return string|null
      */
-    public function getPhoneNumber()
+    public function getPhoneNumber(): ?string
     {
         return $this->phoneNumber;
     }
 
     /**
      * Set phoneNumber value
-     *
-     * @param string $phoneNumber
-     *
-     * @return self
      */
-    public function setPhoneNumber($phoneNumber = null)
+    public function setPhoneNumber(?string $phoneNumber = null): self
     {
         // validation for constraint: string
         if (null !== $phoneNumber && !\is_string($phoneNumber)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($phoneNumber, true), \gettype($phoneNumber)), __LINE__);
         }
         $this->phoneNumber = $phoneNumber;
+
         return $this;
     }
 
     /**
      * Get faxNumber value
-     *
-     * @return string|null
      */
-    public function getFaxNumber()
+    public function getFaxNumber(): ?string
     {
         return $this->faxNumber;
     }
 
     /**
      * Set faxNumber value
-     *
-     * @param string $faxNumber
-     *
-     * @return self
      */
-    public function setFaxNumber($faxNumber = null)
+    public function setFaxNumber(?string $faxNumber = null): self
     {
         // validation for constraint: string
         if (null !== $faxNumber && !\is_string($faxNumber)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($faxNumber, true), \gettype($faxNumber)), __LINE__);
         }
         $this->faxNumber = $faxNumber;
+
         return $this;
     }
 
     /**
      * Get geoX value
-     *
-     * @return string|null
      */
-    public function getGeoX()
+    public function getGeoX(): ?string
     {
         return $this->geoX;
     }
 
     /**
      * Set geoX value
-     *
-     * @param string $geoX
-     *
-     * @return self
      */
-    public function setGeoX($geoX = null)
+    public function setGeoX(?string $geoX = null): self
     {
         // validation for constraint: string
         if (null !== $geoX && !\is_string($geoX)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($geoX, true), \gettype($geoX)), __LINE__);
         }
         $this->geoX = $geoX;
+
         return $this;
     }
 
     /**
      * Get geoY value
-     *
-     * @return string|null
      */
-    public function getGeoY()
+    public function getGeoY(): ?string
     {
         return $this->geoY;
     }
 
     /**
      * Set geoY value
-     *
-     * @param string $geoY
-     *
-     * @return self
      */
-    public function setGeoY($geoY = null)
+    public function setGeoY(?string $geoY = null): self
     {
         // validation for constraint: string
         if (null !== $geoY && !\is_string($geoY)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($geoY, true), \gettype($geoY)), __LINE__);
         }
         $this->geoY = $geoY;
+
         return $this;
     }
 }

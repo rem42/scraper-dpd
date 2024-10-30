@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for GetRdvShipmentDataResponse StructType
  */
+#[\AllowDynamicProperties]
 class GetRdvShipmentDataResponse extends AbstractStructBase
 {
     /**
@@ -14,10 +15,8 @@ class GetRdvShipmentDataResponse extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var \Scraper\ScraperDPD\ArrayType\ArrayOfRdvShipmentData
      */
-    public $GetRdvShipmentDataResult;
+    protected ?\Scraper\ScraperDPD\ArrayType\ArrayOfRdvShipmentData $GetRdvShipmentDataResult = null;
 
     /**
      * Constructor method for GetRdvShipmentDataResponse
@@ -33,22 +32,19 @@ class GetRdvShipmentDataResponse extends AbstractStructBase
 
     /**
      * Get GetRdvShipmentDataResult value
-     *
-     * @return \Scraper\ScraperDPD\ArrayType\ArrayOfRdvShipmentData|null
      */
-    public function getGetRdvShipmentDataResult()
+    public function getGetRdvShipmentDataResult(): ?\Scraper\ScraperDPD\ArrayType\ArrayOfRdvShipmentData
     {
         return $this->GetRdvShipmentDataResult;
     }
 
     /**
      * Set GetRdvShipmentDataResult value
-     *
-     * @return self
      */
-    public function setGetRdvShipmentDataResult(?\Scraper\ScraperDPD\ArrayType\ArrayOfRdvShipmentData $getRdvShipmentDataResult = null)
+    public function setGetRdvShipmentDataResult(?\Scraper\ScraperDPD\ArrayType\ArrayOfRdvShipmentData $getRdvShipmentDataResult = null): self
     {
         $this->GetRdvShipmentDataResult = $getRdvShipmentDataResult;
+
         return $this;
     }
 }

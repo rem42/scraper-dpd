@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\ArrayType;
 
@@ -18,7 +18,7 @@ class ArrayOfCNOTParcel extends AbstractStructArrayBase
      *
      * @var array<\Scraper\ScraperDPD\StructType\CNOTParcel>
      */
-    public $CNOTParcel;
+    protected ?array $CNOTParcel = null;
 
     /**
      * Constructor method for ArrayOfCNOTParcel
@@ -27,7 +27,7 @@ class ArrayOfCNOTParcel extends AbstractStructArrayBase
      *
      * @param array<\Scraper\ScraperDPD\StructType\CNOTParcel> $cNOTParcel
      */
-    public function __construct(array $cNOTParcel = [])
+    public function __construct(?array $cNOTParcel = null)
     {
         $this
             ->setCNOTParcel($cNOTParcel)
@@ -40,21 +40,25 @@ class ArrayOfCNOTParcel extends AbstractStructArrayBase
      * this property may have been unset before, due to the fact that this property is
      * removable from the request (nillable=true+minOccurs=0)
      *
-     * @return array<\Scraper\ScraperDPD\StructType\CNOTParcel>|null
+     * @return array<\Scraper\ScraperDPD\StructType\CNOTParcel>
      */
-    public function getCNOTParcel()
+    public function getCNOTParcel(): ?array
     {
         return $this->CNOTParcel ?? null;
     }
 
     /**
-     * This method is responsible for validating the values passed to the setCNOTParcel method
+     * This method is responsible for validating the value(s) passed to the setCNOTParcel method
      * This method is willingly generated in order to preserve the one-line inline validation within the setCNOTParcel method
+     * This has to validate that each item contained by the array match the itemType constraint
      *
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateCNOTParcelForArrayConstraintsFromSetCNOTParcel(array $values = [])
+    public static function validateCNOTParcelForArrayConstraintFromSetCNOTParcel(?array $values = []): string
     {
+        if (!\is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
 
@@ -69,6 +73,7 @@ class ArrayOfCNOTParcel extends AbstractStructArrayBase
             $message = sprintf('The CNOTParcel property can only contain items of type \Scraper\ScraperDPD\StructType\CNOTParcel, %s given', \is_object($invalidValues) ? $invalidValues::class : (\is_array($invalidValues) ? implode(', ', $invalidValues) : \gettype($invalidValues)));
         }
         unset($invalidValues);
+
         return $message;
     }
 
@@ -80,13 +85,11 @@ class ArrayOfCNOTParcel extends AbstractStructArrayBase
      * @param array<\Scraper\ScraperDPD\StructType\CNOTParcel> $cNOTParcel
      *
      * @throws \InvalidArgumentException
-     *
-     * @return self
      */
-    public function setCNOTParcel(array $cNOTParcel = [])
+    public function setCNOTParcel(?array $cNOTParcel = null): self
     {
         // validation for constraint: array
-        if ('' !== ($cNOTParcelArrayErrorMessage = self::validateCNOTParcelForArrayConstraintsFromSetCNOTParcel($cNOTParcel))) {
+        if ('' !== ($cNOTParcelArrayErrorMessage = self::validateCNOTParcelForArrayConstraintFromSetCNOTParcel($cNOTParcel))) {
             throw new \InvalidArgumentException($cNOTParcelArrayErrorMessage, __LINE__);
         }
 
@@ -95,23 +98,7 @@ class ArrayOfCNOTParcel extends AbstractStructArrayBase
         } else {
             $this->CNOTParcel = $cNOTParcel;
         }
-        return $this;
-    }
 
-    /**
-     * Add item to CNOTParcel value
-     *
-     * @throws \InvalidArgumentException
-     *
-     * @return self
-     */
-    public function addToCNOTParcel(\Scraper\ScraperDPD\StructType\CNOTParcel $item)
-    {
-        // validation for constraint: itemType
-        if (!$item instanceof \Scraper\ScraperDPD\StructType\CNOTParcel) {
-            throw new \InvalidArgumentException(sprintf('The CNOTParcel property can only contain items of type \Scraper\ScraperDPD\StructType\CNOTParcel, %s given', \is_object($item) ? $item::class : (\is_array($item) ? implode(', ', $item) : \gettype($item))), __LINE__);
-        }
-        $this->CNOTParcel[] = $item;
         return $this;
     }
 
@@ -119,10 +106,8 @@ class ArrayOfCNOTParcel extends AbstractStructArrayBase
      * Returns the current element
      *
      * @see AbstractStructArrayBase::current()
-     *
-     * @return \Scraper\ScraperDPD\StructType\CNOTParcel|null
      */
-    public function current()
+    public function current(): ?\Scraper\ScraperDPD\StructType\CNOTParcel
     {
         return parent::current();
     }
@@ -133,10 +118,8 @@ class ArrayOfCNOTParcel extends AbstractStructArrayBase
      * @see AbstractStructArrayBase::item()
      *
      * @param int $index
-     *
-     * @return \Scraper\ScraperDPD\StructType\CNOTParcel|null
      */
-    public function item($index)
+    public function item($index): ?\Scraper\ScraperDPD\StructType\CNOTParcel
     {
         return parent::item($index);
     }
@@ -145,10 +128,8 @@ class ArrayOfCNOTParcel extends AbstractStructArrayBase
      * Returns the first element
      *
      * @see AbstractStructArrayBase::first()
-     *
-     * @return \Scraper\ScraperDPD\StructType\CNOTParcel|null
      */
-    public function first()
+    public function first(): ?\Scraper\ScraperDPD\StructType\CNOTParcel
     {
         return parent::first();
     }
@@ -157,10 +138,8 @@ class ArrayOfCNOTParcel extends AbstractStructArrayBase
      * Returns the last element
      *
      * @see AbstractStructArrayBase::last()
-     *
-     * @return \Scraper\ScraperDPD\StructType\CNOTParcel|null
      */
-    public function last()
+    public function last(): ?\Scraper\ScraperDPD\StructType\CNOTParcel
     {
         return parent::last();
     }
@@ -171,12 +150,28 @@ class ArrayOfCNOTParcel extends AbstractStructArrayBase
      * @see AbstractStructArrayBase::offsetGet()
      *
      * @param int $offset
-     *
-     * @return \Scraper\ScraperDPD\StructType\CNOTParcel|null
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): ?\Scraper\ScraperDPD\StructType\CNOTParcel
     {
         return parent::offsetGet($offset);
+    }
+
+    /**
+     * Add element to array
+     *
+     * @see AbstractStructArrayBase::add()
+     *
+     * @param \Scraper\ScraperDPD\StructType\CNOTParcel $item
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function add($item): self
+    {
+        // validation for constraint: itemType
+        if (!$item instanceof \Scraper\ScraperDPD\StructType\CNOTParcel) {
+            throw new \InvalidArgumentException(sprintf('The CNOTParcel property can only contain items of type \Scraper\ScraperDPD\StructType\CNOTParcel, %s given', \is_object($item) ? $item::class : (\is_array($item) ? implode(', ', $item) : \gettype($item))), __LINE__);
+        }
+        return parent::add($item);
     }
 
     /**
@@ -186,7 +181,7 @@ class ArrayOfCNOTParcel extends AbstractStructArrayBase
      *
      * @return string CNOTParcel
      */
-    public function getAttributeName()
+    public function getAttributeName(): string
     {
         return 'CNOTParcel';
     }

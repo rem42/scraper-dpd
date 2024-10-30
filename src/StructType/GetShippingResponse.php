@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for GetShippingResponse StructType
  */
+#[\AllowDynamicProperties]
 class GetShippingResponse extends AbstractStructBase
 {
     /**
@@ -14,19 +15,15 @@ class GetShippingResponse extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var self
      */
-    public $GetShippingResult;
+    protected ?GetShippingResponse $GetShippingResult = null;
     /**
      * The shippings
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var \Scraper\ScraperDPD\ArrayType\ArrayOfShipping
      */
-    public $shippings;
+    protected ?\Scraper\ScraperDPD\ArrayType\ArrayOfShipping $shippings = null;
 
     /**
      * Constructor method for GetShippingResponse
@@ -44,43 +41,37 @@ class GetShippingResponse extends AbstractStructBase
 
     /**
      * Get GetShippingResult value
-     *
-     * @return self|null
      */
-    public function getGetShippingResult()
+    public function getGetShippingResult(): ?self
     {
         return $this->GetShippingResult;
     }
 
     /**
      * Set GetShippingResult value
-     *
-     * @return self
      */
-    public function setGetShippingResult(?self $getShippingResult = null)
+    public function setGetShippingResult(?self $getShippingResult = null): self
     {
         $this->GetShippingResult = $getShippingResult;
+
         return $this;
     }
 
     /**
      * Get shippings value
-     *
-     * @return \Scraper\ScraperDPD\ArrayType\ArrayOfShipping|null
      */
-    public function getShippings()
+    public function getShippings(): ?\Scraper\ScraperDPD\ArrayType\ArrayOfShipping
     {
         return $this->shippings;
     }
 
     /**
      * Set shippings value
-     *
-     * @return self
      */
-    public function setShippings(?\Scraper\ScraperDPD\ArrayType\ArrayOfShipping $shippings = null)
+    public function setShippings(?\Scraper\ScraperDPD\ArrayType\ArrayOfShipping $shippings = null): self
     {
         $this->shippings = $shippings;
+
         return $this;
     }
 }

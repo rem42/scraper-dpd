@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for IsPickableOnDate StructType
  */
+#[\AllowDynamicProperties]
 class IsPickableOnDate extends AbstractStructBase
 {
     /**
@@ -14,10 +15,8 @@ class IsPickableOnDate extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var IsPickableRequest
      */
-    public $request;
+    protected ?IsPickableRequest $request = null;
 
     /**
      * Constructor method for IsPickableOnDate
@@ -33,22 +32,19 @@ class IsPickableOnDate extends AbstractStructBase
 
     /**
      * Get request value
-     *
-     * @return IsPickableRequest|null
      */
-    public function getRequest()
+    public function getRequest(): ?IsPickableRequest
     {
         return $this->request;
     }
 
     /**
      * Set request value
-     *
-     * @return self
      */
-    public function setRequest(?IsPickableRequest $request = null)
+    public function setRequest(?IsPickableRequest $request = null): self
     {
         $this->request = $request;
+
         return $this;
     }
 }

@@ -1,10 +1,11 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
 /**
  * This class stands for TerminateCollectionRequest StructType
  */
+#[\AllowDynamicProperties]
 class TerminateCollectionRequest extends TerminateCollectionRequestParcel
 {
     /**
@@ -12,10 +13,8 @@ class TerminateCollectionRequest extends TerminateCollectionRequestParcel
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var self
      */
-    public $request;
+    protected ?TerminateCollectionRequest $request = null;
 
     /**
      * Constructor method for TerminateCollectionRequest
@@ -31,22 +30,19 @@ class TerminateCollectionRequest extends TerminateCollectionRequestParcel
 
     /**
      * Get request value
-     *
-     * @return self|null
      */
-    public function getRequest()
+    public function getRequest(): ?self
     {
         return $this->request;
     }
 
     /**
      * Set request value
-     *
-     * @return self
      */
-    public function setRequest(?self $request = null)
+    public function setRequest(?self $request = null): self
     {
         $this->request = $request;
+
         return $this;
     }
 }

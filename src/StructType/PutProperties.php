@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for PutProperties StructType
  */
+#[\AllowDynamicProperties]
 class PutProperties extends AbstractStructBase
 {
     /**
@@ -14,10 +15,8 @@ class PutProperties extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var PutPropertiesRequest
      */
-    public $request;
+    protected ?PutPropertiesRequest $request = null;
 
     /**
      * Constructor method for PutProperties
@@ -33,22 +32,19 @@ class PutProperties extends AbstractStructBase
 
     /**
      * Get request value
-     *
-     * @return PutPropertiesRequest|null
      */
-    public function getRequest()
+    public function getRequest(): ?PutPropertiesRequest
     {
         return $this->request;
     }
 
     /**
      * Set request value
-     *
-     * @return self
      */
-    public function setRequest(?PutPropertiesRequest $request = null)
+    public function setRequest(?PutPropertiesRequest $request = null): self
     {
         $this->request = $request;
+
         return $this;
     }
 }

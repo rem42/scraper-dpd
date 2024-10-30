@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for RdvShipmentDataBase StructType
  */
+#[\AllowDynamicProperties]
 class RdvShipmentDataBase extends AbstractStructBase
 {
     /**
@@ -14,181 +15,141 @@ class RdvShipmentDataBase extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var bool
      */
-    public $ParcelOptional;
+    protected bool $ParcelOptional;
     /**
      * The SC_CenterNumber
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var int
      */
-    public $SC_CenterNumber;
+    protected int $SC_CenterNumber;
     /**
      * The RC_CenterNumber
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var int
      */
-    public $RC_CenterNumber;
+    protected int $RC_CenterNumber;
     /**
      * The Weight
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var float
      */
-    public $Weight;
+    protected float $Weight;
     /**
      * The NumberOfParcelsReal
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var int
      */
-    public $NumberOfParcelsReal;
+    protected int $NumberOfParcelsReal;
     /**
      * The CustomerRDVProfile
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var bool
      */
-    public $CustomerRDVProfile;
+    protected bool $CustomerRDVProfile;
     /**
      * The SavePlaceRDVAllowed
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var bool
      */
-    public $SavePlaceRDVAllowed;
+    protected bool $SavePlaceRDVAllowed;
     /**
      * The RDVServiceAllowed
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var bool
      */
-    public $RDVServiceAllowed;
+    protected bool $RDVServiceAllowed;
     /**
      * The Predict
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var bool
      */
-    public $Predict;
+    protected bool $Predict;
     /**
      * The RdvUpdateable
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var bool
      */
-    public $RdvUpdateable;
+    protected bool $RdvUpdateable;
     /**
      * The ShippingDate
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $ShippingDate;
+    protected ?string $ShippingDate = null;
     /**
      * The PredictCutOffDate
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $PredictCutOffDate;
+    protected ?string $PredictCutOffDate = null;
     /**
      * The ShipperName
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $ShipperName;
+    protected ?string $ShipperName = null;
     /**
      * The ReceiverAddress
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var RdvAddress
      */
-    public $ReceiverAddress;
+    protected ?RdvAddress $ReceiverAddress = null;
     /**
      * The ReceiverEmailAddress
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $ReceiverEmailAddress;
+    protected ?string $ReceiverEmailAddress = null;
     /**
      * The ReceiverMobileNumber
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $ReceiverMobileNumber;
+    protected ?string $ReceiverMobileNumber = null;
     /**
      * The ReceiverAltZipCode
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $ReceiverAltZipCode;
+    protected ?string $ReceiverAltZipCode = null;
     /**
      * The ShipperInfo
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var RdvDeliveryInfo
      */
-    public $ShipperInfo;
+    protected ?RdvDeliveryInfo $ShipperInfo = null;
     /**
      * The RdvInfo
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var RdvDeliveryInfo
      */
-    public $RdvInfo;
+    protected ?RdvDeliveryInfo $RdvInfo = null;
     /**
      * The Services
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var \Scraper\ScraperDPD\ArrayType\ArrayOfRdvService
      */
-    public $Services;
+    protected ?\Scraper\ScraperDPD\ArrayType\ArrayOfRdvService $Services = null;
 
     /**
      * Constructor method for RdvShipmentDataBase
@@ -213,25 +174,8 @@ class RdvShipmentDataBase extends AbstractStructBase
      * @uses RdvShipmentDataBase::setShipperInfo()
      * @uses RdvShipmentDataBase::setRdvInfo()
      * @uses RdvShipmentDataBase::setServices()
-     *
-     * @param bool   $parcelOptional
-     * @param int    $sC_CenterNumber
-     * @param int    $rC_CenterNumber
-     * @param float  $weight
-     * @param int    $numberOfParcelsReal
-     * @param bool   $customerRDVProfile
-     * @param bool   $savePlaceRDVAllowed
-     * @param bool   $rDVServiceAllowed
-     * @param bool   $predict
-     * @param bool   $rdvUpdateable
-     * @param string $shippingDate
-     * @param string $predictCutOffDate
-     * @param string $shipperName
-     * @param string $receiverEmailAddress
-     * @param string $receiverMobileNumber
-     * @param string $receiverAltZipCode
      */
-    public function __construct($parcelOptional = null, $sC_CenterNumber = null, $rC_CenterNumber = null, $weight = null, $numberOfParcelsReal = null, $customerRDVProfile = null, $savePlaceRDVAllowed = null, $rDVServiceAllowed = null, $predict = null, $rdvUpdateable = null, $shippingDate = null, $predictCutOffDate = null, $shipperName = null, ?RdvAddress $receiverAddress = null, $receiverEmailAddress = null, $receiverMobileNumber = null, $receiverAltZipCode = null, ?RdvDeliveryInfo $shipperInfo = null, ?RdvDeliveryInfo $rdvInfo = null, ?\Scraper\ScraperDPD\ArrayType\ArrayOfRdvService $services = null)
+    public function __construct(bool $parcelOptional, int $sC_CenterNumber, int $rC_CenterNumber, float $weight, int $numberOfParcelsReal, bool $customerRDVProfile, bool $savePlaceRDVAllowed, bool $rDVServiceAllowed, bool $predict, bool $rdvUpdateable, ?string $shippingDate = null, ?string $predictCutOffDate = null, ?string $shipperName = null, ?RdvAddress $receiverAddress = null, ?string $receiverEmailAddress = null, ?string $receiverMobileNumber = null, ?string $receiverAltZipCode = null, ?RdvDeliveryInfo $shipperInfo = null, ?RdvDeliveryInfo $rdvInfo = null, ?\Scraper\ScraperDPD\ArrayType\ArrayOfRdvService $services = null)
     {
         $this
             ->setParcelOptional($parcelOptional)
@@ -259,517 +203,425 @@ class RdvShipmentDataBase extends AbstractStructBase
 
     /**
      * Get ParcelOptional value
-     *
-     * @return bool
      */
-    public function getParcelOptional()
+    public function getParcelOptional(): bool
     {
         return $this->ParcelOptional;
     }
 
     /**
      * Set ParcelOptional value
-     *
-     * @param bool $parcelOptional
-     *
-     * @return self
      */
-    public function setParcelOptional($parcelOptional = null)
+    public function setParcelOptional(bool $parcelOptional): self
     {
         // validation for constraint: boolean
         if (null !== $parcelOptional && !\is_bool($parcelOptional)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a bool, %s given', var_export($parcelOptional, true), \gettype($parcelOptional)), __LINE__);
         }
         $this->ParcelOptional = $parcelOptional;
+
         return $this;
     }
 
     /**
      * Get SC_CenterNumber value
-     *
-     * @return int
      */
-    public function getSC_CenterNumber()
+    public function getSC_CenterNumber(): int
     {
         return $this->SC_CenterNumber;
     }
 
     /**
      * Set SC_CenterNumber value
-     *
-     * @param int $sC_CenterNumber
-     *
-     * @return self
      */
-    public function setSC_CenterNumber($sC_CenterNumber = null)
+    public function setSC_CenterNumber(int $sC_CenterNumber): self
     {
         // validation for constraint: int
         if (null !== $sC_CenterNumber && !(\is_int($sC_CenterNumber) || ctype_digit($sC_CenterNumber))) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($sC_CenterNumber, true), \gettype($sC_CenterNumber)), __LINE__);
         }
         $this->SC_CenterNumber = $sC_CenterNumber;
+
         return $this;
     }
 
     /**
      * Get RC_CenterNumber value
-     *
-     * @return int
      */
-    public function getRC_CenterNumber()
+    public function getRC_CenterNumber(): int
     {
         return $this->RC_CenterNumber;
     }
 
     /**
      * Set RC_CenterNumber value
-     *
-     * @param int $rC_CenterNumber
-     *
-     * @return self
      */
-    public function setRC_CenterNumber($rC_CenterNumber = null)
+    public function setRC_CenterNumber(int $rC_CenterNumber): self
     {
         // validation for constraint: int
         if (null !== $rC_CenterNumber && !(\is_int($rC_CenterNumber) || ctype_digit($rC_CenterNumber))) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($rC_CenterNumber, true), \gettype($rC_CenterNumber)), __LINE__);
         }
         $this->RC_CenterNumber = $rC_CenterNumber;
+
         return $this;
     }
 
     /**
      * Get Weight value
-     *
-     * @return float
      */
-    public function getWeight()
+    public function getWeight(): float
     {
         return $this->Weight;
     }
 
     /**
      * Set Weight value
-     *
-     * @param float $weight
-     *
-     * @return self
      */
-    public function setWeight($weight = null)
+    public function setWeight(float $weight): self
     {
         // validation for constraint: float
         if (null !== $weight && !(\is_float($weight) || is_numeric($weight))) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a float value, %s given', var_export($weight, true), \gettype($weight)), __LINE__);
         }
         $this->Weight = $weight;
+
         return $this;
     }
 
     /**
      * Get NumberOfParcelsReal value
-     *
-     * @return int
      */
-    public function getNumberOfParcelsReal()
+    public function getNumberOfParcelsReal(): int
     {
         return $this->NumberOfParcelsReal;
     }
 
     /**
      * Set NumberOfParcelsReal value
-     *
-     * @param int $numberOfParcelsReal
-     *
-     * @return self
      */
-    public function setNumberOfParcelsReal($numberOfParcelsReal = null)
+    public function setNumberOfParcelsReal(int $numberOfParcelsReal): self
     {
         // validation for constraint: int
         if (null !== $numberOfParcelsReal && !(\is_int($numberOfParcelsReal) || ctype_digit($numberOfParcelsReal))) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($numberOfParcelsReal, true), \gettype($numberOfParcelsReal)), __LINE__);
         }
         $this->NumberOfParcelsReal = $numberOfParcelsReal;
+
         return $this;
     }
 
     /**
      * Get CustomerRDVProfile value
-     *
-     * @return bool
      */
-    public function getCustomerRDVProfile()
+    public function getCustomerRDVProfile(): bool
     {
         return $this->CustomerRDVProfile;
     }
 
     /**
      * Set CustomerRDVProfile value
-     *
-     * @param bool $customerRDVProfile
-     *
-     * @return self
      */
-    public function setCustomerRDVProfile($customerRDVProfile = null)
+    public function setCustomerRDVProfile(bool $customerRDVProfile): self
     {
         // validation for constraint: boolean
         if (null !== $customerRDVProfile && !\is_bool($customerRDVProfile)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a bool, %s given', var_export($customerRDVProfile, true), \gettype($customerRDVProfile)), __LINE__);
         }
         $this->CustomerRDVProfile = $customerRDVProfile;
+
         return $this;
     }
 
     /**
      * Get SavePlaceRDVAllowed value
-     *
-     * @return bool
      */
-    public function getSavePlaceRDVAllowed()
+    public function getSavePlaceRDVAllowed(): bool
     {
         return $this->SavePlaceRDVAllowed;
     }
 
     /**
      * Set SavePlaceRDVAllowed value
-     *
-     * @param bool $savePlaceRDVAllowed
-     *
-     * @return self
      */
-    public function setSavePlaceRDVAllowed($savePlaceRDVAllowed = null)
+    public function setSavePlaceRDVAllowed(bool $savePlaceRDVAllowed): self
     {
         // validation for constraint: boolean
         if (null !== $savePlaceRDVAllowed && !\is_bool($savePlaceRDVAllowed)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a bool, %s given', var_export($savePlaceRDVAllowed, true), \gettype($savePlaceRDVAllowed)), __LINE__);
         }
         $this->SavePlaceRDVAllowed = $savePlaceRDVAllowed;
+
         return $this;
     }
 
     /**
      * Get RDVServiceAllowed value
-     *
-     * @return bool
      */
-    public function getRDVServiceAllowed()
+    public function getRDVServiceAllowed(): bool
     {
         return $this->RDVServiceAllowed;
     }
 
     /**
      * Set RDVServiceAllowed value
-     *
-     * @param bool $rDVServiceAllowed
-     *
-     * @return self
      */
-    public function setRDVServiceAllowed($rDVServiceAllowed = null)
+    public function setRDVServiceAllowed(bool $rDVServiceAllowed): self
     {
         // validation for constraint: boolean
         if (null !== $rDVServiceAllowed && !\is_bool($rDVServiceAllowed)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a bool, %s given', var_export($rDVServiceAllowed, true), \gettype($rDVServiceAllowed)), __LINE__);
         }
         $this->RDVServiceAllowed = $rDVServiceAllowed;
+
         return $this;
     }
 
     /**
      * Get Predict value
-     *
-     * @return bool
      */
-    public function getPredict()
+    public function getPredict(): bool
     {
         return $this->Predict;
     }
 
     /**
      * Set Predict value
-     *
-     * @param bool $predict
-     *
-     * @return self
      */
-    public function setPredict($predict = null)
+    public function setPredict(bool $predict): self
     {
         // validation for constraint: boolean
         if (null !== $predict && !\is_bool($predict)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a bool, %s given', var_export($predict, true), \gettype($predict)), __LINE__);
         }
         $this->Predict = $predict;
+
         return $this;
     }
 
     /**
      * Get RdvUpdateable value
-     *
-     * @return bool
      */
-    public function getRdvUpdateable()
+    public function getRdvUpdateable(): bool
     {
         return $this->RdvUpdateable;
     }
 
     /**
      * Set RdvUpdateable value
-     *
-     * @param bool $rdvUpdateable
-     *
-     * @return self
      */
-    public function setRdvUpdateable($rdvUpdateable = null)
+    public function setRdvUpdateable(bool $rdvUpdateable): self
     {
         // validation for constraint: boolean
         if (null !== $rdvUpdateable && !\is_bool($rdvUpdateable)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a bool, %s given', var_export($rdvUpdateable, true), \gettype($rdvUpdateable)), __LINE__);
         }
         $this->RdvUpdateable = $rdvUpdateable;
+
         return $this;
     }
 
     /**
      * Get ShippingDate value
-     *
-     * @return string|null
      */
-    public function getShippingDate()
+    public function getShippingDate(): ?string
     {
         return $this->ShippingDate;
     }
 
     /**
      * Set ShippingDate value
-     *
-     * @param string $shippingDate
-     *
-     * @return self
      */
-    public function setShippingDate($shippingDate = null)
+    public function setShippingDate(?string $shippingDate = null): self
     {
         // validation for constraint: string
         if (null !== $shippingDate && !\is_string($shippingDate)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($shippingDate, true), \gettype($shippingDate)), __LINE__);
         }
         $this->ShippingDate = $shippingDate;
+
         return $this;
     }
 
     /**
      * Get PredictCutOffDate value
-     *
-     * @return string|null
      */
-    public function getPredictCutOffDate()
+    public function getPredictCutOffDate(): ?string
     {
         return $this->PredictCutOffDate;
     }
 
     /**
      * Set PredictCutOffDate value
-     *
-     * @param string $predictCutOffDate
-     *
-     * @return self
      */
-    public function setPredictCutOffDate($predictCutOffDate = null)
+    public function setPredictCutOffDate(?string $predictCutOffDate = null): self
     {
         // validation for constraint: string
         if (null !== $predictCutOffDate && !\is_string($predictCutOffDate)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($predictCutOffDate, true), \gettype($predictCutOffDate)), __LINE__);
         }
         $this->PredictCutOffDate = $predictCutOffDate;
+
         return $this;
     }
 
     /**
      * Get ShipperName value
-     *
-     * @return string|null
      */
-    public function getShipperName()
+    public function getShipperName(): ?string
     {
         return $this->ShipperName;
     }
 
     /**
      * Set ShipperName value
-     *
-     * @param string $shipperName
-     *
-     * @return self
      */
-    public function setShipperName($shipperName = null)
+    public function setShipperName(?string $shipperName = null): self
     {
         // validation for constraint: string
         if (null !== $shipperName && !\is_string($shipperName)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($shipperName, true), \gettype($shipperName)), __LINE__);
         }
         $this->ShipperName = $shipperName;
+
         return $this;
     }
 
     /**
      * Get ReceiverAddress value
-     *
-     * @return RdvAddress|null
      */
-    public function getReceiverAddress()
+    public function getReceiverAddress(): ?RdvAddress
     {
         return $this->ReceiverAddress;
     }
 
     /**
      * Set ReceiverAddress value
-     *
-     * @return self
      */
-    public function setReceiverAddress(?RdvAddress $receiverAddress = null)
+    public function setReceiverAddress(?RdvAddress $receiverAddress = null): self
     {
         $this->ReceiverAddress = $receiverAddress;
+
         return $this;
     }
 
     /**
      * Get ReceiverEmailAddress value
-     *
-     * @return string|null
      */
-    public function getReceiverEmailAddress()
+    public function getReceiverEmailAddress(): ?string
     {
         return $this->ReceiverEmailAddress;
     }
 
     /**
      * Set ReceiverEmailAddress value
-     *
-     * @param string $receiverEmailAddress
-     *
-     * @return self
      */
-    public function setReceiverEmailAddress($receiverEmailAddress = null)
+    public function setReceiverEmailAddress(?string $receiverEmailAddress = null): self
     {
         // validation for constraint: string
         if (null !== $receiverEmailAddress && !\is_string($receiverEmailAddress)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($receiverEmailAddress, true), \gettype($receiverEmailAddress)), __LINE__);
         }
         $this->ReceiverEmailAddress = $receiverEmailAddress;
+
         return $this;
     }
 
     /**
      * Get ReceiverMobileNumber value
-     *
-     * @return string|null
      */
-    public function getReceiverMobileNumber()
+    public function getReceiverMobileNumber(): ?string
     {
         return $this->ReceiverMobileNumber;
     }
 
     /**
      * Set ReceiverMobileNumber value
-     *
-     * @param string $receiverMobileNumber
-     *
-     * @return self
      */
-    public function setReceiverMobileNumber($receiverMobileNumber = null)
+    public function setReceiverMobileNumber(?string $receiverMobileNumber = null): self
     {
         // validation for constraint: string
         if (null !== $receiverMobileNumber && !\is_string($receiverMobileNumber)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($receiverMobileNumber, true), \gettype($receiverMobileNumber)), __LINE__);
         }
         $this->ReceiverMobileNumber = $receiverMobileNumber;
+
         return $this;
     }
 
     /**
      * Get ReceiverAltZipCode value
-     *
-     * @return string|null
      */
-    public function getReceiverAltZipCode()
+    public function getReceiverAltZipCode(): ?string
     {
         return $this->ReceiverAltZipCode;
     }
 
     /**
      * Set ReceiverAltZipCode value
-     *
-     * @param string $receiverAltZipCode
-     *
-     * @return self
      */
-    public function setReceiverAltZipCode($receiverAltZipCode = null)
+    public function setReceiverAltZipCode(?string $receiverAltZipCode = null): self
     {
         // validation for constraint: string
         if (null !== $receiverAltZipCode && !\is_string($receiverAltZipCode)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($receiverAltZipCode, true), \gettype($receiverAltZipCode)), __LINE__);
         }
         $this->ReceiverAltZipCode = $receiverAltZipCode;
+
         return $this;
     }
 
     /**
      * Get ShipperInfo value
-     *
-     * @return RdvDeliveryInfo|null
      */
-    public function getShipperInfo()
+    public function getShipperInfo(): ?RdvDeliveryInfo
     {
         return $this->ShipperInfo;
     }
 
     /**
      * Set ShipperInfo value
-     *
-     * @return self
      */
-    public function setShipperInfo(?RdvDeliveryInfo $shipperInfo = null)
+    public function setShipperInfo(?RdvDeliveryInfo $shipperInfo = null): self
     {
         $this->ShipperInfo = $shipperInfo;
+
         return $this;
     }
 
     /**
      * Get RdvInfo value
-     *
-     * @return RdvDeliveryInfo|null
      */
-    public function getRdvInfo()
+    public function getRdvInfo(): ?RdvDeliveryInfo
     {
         return $this->RdvInfo;
     }
 
     /**
      * Set RdvInfo value
-     *
-     * @return self
      */
-    public function setRdvInfo(?RdvDeliveryInfo $rdvInfo = null)
+    public function setRdvInfo(?RdvDeliveryInfo $rdvInfo = null): self
     {
         $this->RdvInfo = $rdvInfo;
+
         return $this;
     }
 
     /**
      * Get Services value
-     *
-     * @return \Scraper\ScraperDPD\ArrayType\ArrayOfRdvService|null
      */
-    public function getServices()
+    public function getServices(): ?\Scraper\ScraperDPD\ArrayType\ArrayOfRdvService
     {
         return $this->Services;
     }
 
     /**
      * Set Services value
-     *
-     * @return self
      */
-    public function setServices(?\Scraper\ScraperDPD\ArrayType\ArrayOfRdvService $services = null)
+    public function setServices(?\Scraper\ScraperDPD\ArrayType\ArrayOfRdvService $services = null): self
     {
         $this->Services = $services;
+
         return $this;
     }
 }

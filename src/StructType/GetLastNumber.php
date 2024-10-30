@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for GetLastNumber StructType
  */
+#[\AllowDynamicProperties]
 class GetLastNumber extends AbstractStructBase
 {
     /**
@@ -14,10 +15,8 @@ class GetLastNumber extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var GetLastNumberRequest
      */
-    public $request;
+    protected ?GetLastNumberRequest $request = null;
 
     /**
      * Constructor method for GetLastNumber
@@ -33,22 +32,19 @@ class GetLastNumber extends AbstractStructBase
 
     /**
      * Get request value
-     *
-     * @return GetLastNumberRequest|null
      */
-    public function getRequest()
+    public function getRequest(): ?GetLastNumberRequest
     {
         return $this->request;
     }
 
     /**
      * Set request value
-     *
-     * @return self
      */
-    public function setRequest(?GetLastNumberRequest $request = null)
+    public function setRequest(?GetLastNumberRequest $request = null): self
     {
         $this->request = $request;
+
         return $this;
     }
 }

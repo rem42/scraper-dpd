@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for UpdateServiceNotice StructType
  */
+#[\AllowDynamicProperties]
 class UpdateServiceNotice extends AbstractStructBase
 {
     /**
@@ -14,10 +15,8 @@ class UpdateServiceNotice extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var UpdateServiceNoticeRequest
      */
-    public $request;
+    protected ?UpdateServiceNoticeRequest $request = null;
 
     /**
      * Constructor method for UpdateServiceNotice
@@ -33,22 +32,19 @@ class UpdateServiceNotice extends AbstractStructBase
 
     /**
      * Get request value
-     *
-     * @return UpdateServiceNoticeRequest|null
      */
-    public function getRequest()
+    public function getRequest(): ?UpdateServiceNoticeRequest
     {
         return $this->request;
     }
 
     /**
      * Set request value
-     *
-     * @return self
      */
-    public function setRequest(?UpdateServiceNoticeRequest $request = null)
+    public function setRequest(?UpdateServiceNoticeRequest $request = null): self
     {
         $this->request = $request;
+
         return $this;
     }
 }

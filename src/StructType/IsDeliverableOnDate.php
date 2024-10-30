@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for IsDeliverableOnDate StructType
  */
+#[\AllowDynamicProperties]
 class IsDeliverableOnDate extends AbstractStructBase
 {
     /**
@@ -14,10 +15,8 @@ class IsDeliverableOnDate extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var IsDeliverableRequest
      */
-    public $request;
+    protected ?IsDeliverableRequest $request = null;
 
     /**
      * Constructor method for IsDeliverableOnDate
@@ -33,22 +32,19 @@ class IsDeliverableOnDate extends AbstractStructBase
 
     /**
      * Get request value
-     *
-     * @return IsDeliverableRequest|null
      */
-    public function getRequest()
+    public function getRequest(): ?IsDeliverableRequest
     {
         return $this->request;
     }
 
     /**
      * Set request value
-     *
-     * @return self
      */
-    public function setRequest(?IsDeliverableRequest $request = null)
+    public function setRequest(?IsDeliverableRequest $request = null): self
     {
         $this->request = $request;
+
         return $this;
     }
 }

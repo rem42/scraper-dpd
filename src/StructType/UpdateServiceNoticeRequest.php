@@ -1,10 +1,11 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
 /**
  * This class stands for UpdateServiceNoticeRequest StructType
  */
+#[\AllowDynamicProperties]
 class UpdateServiceNoticeRequest extends UpdateServiceNoticeRequestBase
 {
     /**
@@ -12,28 +13,22 @@ class UpdateServiceNoticeRequest extends UpdateServiceNoticeRequestBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var int
      */
-    public $answerID;
+    protected int $answerID;
     /**
      * The text
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $text;
+    protected ?string $text = null;
     /**
      * The address
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var Address
      */
-    public $address;
+    protected ?Address $address = null;
 
     /**
      * Constructor method for UpdateServiceNoticeRequest
@@ -41,11 +36,8 @@ class UpdateServiceNoticeRequest extends UpdateServiceNoticeRequestBase
      * @uses UpdateServiceNoticeRequest::setAnswerID()
      * @uses UpdateServiceNoticeRequest::setText()
      * @uses UpdateServiceNoticeRequest::setAddress()
-     *
-     * @param int    $answerID
-     * @param string $text
      */
-    public function __construct($answerID = null, $text = null, ?Address $address = null)
+    public function __construct(int $answerID, ?string $text = null, ?Address $address = null)
     {
         $this
             ->setAnswerID($answerID)
@@ -56,76 +48,63 @@ class UpdateServiceNoticeRequest extends UpdateServiceNoticeRequestBase
 
     /**
      * Get answerID value
-     *
-     * @return int
      */
-    public function getAnswerID()
+    public function getAnswerID(): int
     {
         return $this->answerID;
     }
 
     /**
      * Set answerID value
-     *
-     * @param int $answerID
-     *
-     * @return self
      */
-    public function setAnswerID($answerID = null)
+    public function setAnswerID(int $answerID): self
     {
         // validation for constraint: int
         if (null !== $answerID && !(\is_int($answerID) || ctype_digit($answerID))) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($answerID, true), \gettype($answerID)), __LINE__);
         }
         $this->answerID = $answerID;
+
         return $this;
     }
 
     /**
      * Get text value
-     *
-     * @return string|null
      */
-    public function getText()
+    public function getText(): ?string
     {
         return $this->text;
     }
 
     /**
      * Set text value
-     *
-     * @param string $text
-     *
-     * @return self
      */
-    public function setText($text = null)
+    public function setText(?string $text = null): self
     {
         // validation for constraint: string
         if (null !== $text && !\is_string($text)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($text, true), \gettype($text)), __LINE__);
         }
         $this->text = $text;
+
         return $this;
     }
 
     /**
      * Get address value
-     *
-     * @return Address|null
      */
-    public function getAddress()
+    public function getAddress(): ?Address
     {
         return $this->address;
     }
 
     /**
      * Set address value
-     *
-     * @return self
      */
-    public function setAddress(?Address $address = null)
+    public function setAddress(?Address $address = null): self
     {
         $this->address = $address;
+
         return $this;
     }
 }

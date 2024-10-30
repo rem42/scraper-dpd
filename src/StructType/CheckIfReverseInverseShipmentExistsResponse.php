@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for CheckIfReverseInverseShipmentExistsResponse StructType
  */
+#[\AllowDynamicProperties]
 class CheckIfReverseInverseShipmentExistsResponse extends AbstractStructBase
 {
     /**
@@ -14,19 +15,15 @@ class CheckIfReverseInverseShipmentExistsResponse extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var string
      */
-    public $CheckIfReverseInverseShipmentExistsResult;
+    protected string $CheckIfReverseInverseShipmentExistsResult;
 
     /**
      * Constructor method for CheckIfReverseInverseShipmentExistsResponse
      *
      * @uses CheckIfReverseInverseShipmentExistsResponse::setCheckIfReverseInverseShipmentExistsResult()
-     *
-     * @param string $checkIfReverseInverseShipmentExistsResult
      */
-    public function __construct($checkIfReverseInverseShipmentExistsResult = null)
+    public function __construct(string $checkIfReverseInverseShipmentExistsResult)
     {
         $this
             ->setCheckIfReverseInverseShipmentExistsResult($checkIfReverseInverseShipmentExistsResult)
@@ -35,10 +32,8 @@ class CheckIfReverseInverseShipmentExistsResponse extends AbstractStructBase
 
     /**
      * Get CheckIfReverseInverseShipmentExistsResult value
-     *
-     * @return string
      */
-    public function getCheckIfReverseInverseShipmentExistsResult()
+    public function getCheckIfReverseInverseShipmentExistsResult(): string
     {
         return $this->CheckIfReverseInverseShipmentExistsResult;
     }
@@ -49,19 +44,16 @@ class CheckIfReverseInverseShipmentExistsResponse extends AbstractStructBase
      * @uses \Scraper\ScraperDPD\EnumType\CheckReverseInverseShipmentReturn::valueIsValid()
      * @uses \Scraper\ScraperDPD\EnumType\CheckReverseInverseShipmentReturn::getValidValues()
      *
-     * @param string $checkIfReverseInverseShipmentExistsResult
-     *
      * @throws \InvalidArgumentException
-     *
-     * @return self
      */
-    public function setCheckIfReverseInverseShipmentExistsResult($checkIfReverseInverseShipmentExistsResult = null)
+    public function setCheckIfReverseInverseShipmentExistsResult(string $checkIfReverseInverseShipmentExistsResult): self
     {
         // validation for constraint: enumeration
         if (!\Scraper\ScraperDPD\EnumType\CheckReverseInverseShipmentReturn::valueIsValid($checkIfReverseInverseShipmentExistsResult)) {
             throw new \InvalidArgumentException(sprintf('Invalid value(s) %s, please use one of: %s from enumeration class \Scraper\ScraperDPD\EnumType\CheckReverseInverseShipmentReturn', \is_array($checkIfReverseInverseShipmentExistsResult) ? implode(', ', $checkIfReverseInverseShipmentExistsResult) : var_export($checkIfReverseInverseShipmentExistsResult, true), implode(', ', \Scraper\ScraperDPD\EnumType\CheckReverseInverseShipmentReturn::getValidValues())), __LINE__);
         }
         $this->CheckIfReverseInverseShipmentExistsResult = $checkIfReverseInverseShipmentExistsResult;
+
         return $this;
     }
 }

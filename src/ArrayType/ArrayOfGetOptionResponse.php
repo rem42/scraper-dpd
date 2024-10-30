@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\ArrayType;
 
@@ -18,7 +18,7 @@ class ArrayOfGetOptionResponse extends AbstractStructArrayBase
      *
      * @var array<\Scraper\ScraperDPD\StructType\GetOptionResponse>
      */
-    public $GetOptionResponse;
+    protected ?array $GetOptionResponse = null;
 
     /**
      * Constructor method for ArrayOfGetOptionResponse
@@ -27,7 +27,7 @@ class ArrayOfGetOptionResponse extends AbstractStructArrayBase
      *
      * @param array<\Scraper\ScraperDPD\StructType\GetOptionResponse> $getOptionResponse
      */
-    public function __construct(array $getOptionResponse = [])
+    public function __construct(?array $getOptionResponse = null)
     {
         $this
             ->setGetOptionResponse($getOptionResponse)
@@ -40,21 +40,25 @@ class ArrayOfGetOptionResponse extends AbstractStructArrayBase
      * this property may have been unset before, due to the fact that this property is
      * removable from the request (nillable=true+minOccurs=0)
      *
-     * @return array<\Scraper\ScraperDPD\StructType\GetOptionResponse>|null
+     * @return array<\Scraper\ScraperDPD\StructType\GetOptionResponse>
      */
-    public function getGetOptionResponse()
+    public function getGetOptionResponse(): ?array
     {
         return $this->GetOptionResponse ?? null;
     }
 
     /**
-     * This method is responsible for validating the values passed to the setGetOptionResponse method
+     * This method is responsible for validating the value(s) passed to the setGetOptionResponse method
      * This method is willingly generated in order to preserve the one-line inline validation within the setGetOptionResponse method
+     * This has to validate that each item contained by the array match the itemType constraint
      *
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateGetOptionResponseForArrayConstraintsFromSetGetOptionResponse(array $values = [])
+    public static function validateGetOptionResponseForArrayConstraintFromSetGetOptionResponse(?array $values = []): string
     {
+        if (!\is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
 
@@ -69,6 +73,7 @@ class ArrayOfGetOptionResponse extends AbstractStructArrayBase
             $message = sprintf('The GetOptionResponse property can only contain items of type \Scraper\ScraperDPD\StructType\GetOptionResponse, %s given', \is_object($invalidValues) ? $invalidValues::class : (\is_array($invalidValues) ? implode(', ', $invalidValues) : \gettype($invalidValues)));
         }
         unset($invalidValues);
+
         return $message;
     }
 
@@ -80,13 +85,11 @@ class ArrayOfGetOptionResponse extends AbstractStructArrayBase
      * @param array<\Scraper\ScraperDPD\StructType\GetOptionResponse> $getOptionResponse
      *
      * @throws \InvalidArgumentException
-     *
-     * @return self
      */
-    public function setGetOptionResponse(array $getOptionResponse = [])
+    public function setGetOptionResponse(?array $getOptionResponse = null): self
     {
         // validation for constraint: array
-        if ('' !== ($getOptionResponseArrayErrorMessage = self::validateGetOptionResponseForArrayConstraintsFromSetGetOptionResponse($getOptionResponse))) {
+        if ('' !== ($getOptionResponseArrayErrorMessage = self::validateGetOptionResponseForArrayConstraintFromSetGetOptionResponse($getOptionResponse))) {
             throw new \InvalidArgumentException($getOptionResponseArrayErrorMessage, __LINE__);
         }
 
@@ -95,23 +98,7 @@ class ArrayOfGetOptionResponse extends AbstractStructArrayBase
         } else {
             $this->GetOptionResponse = $getOptionResponse;
         }
-        return $this;
-    }
 
-    /**
-     * Add item to GetOptionResponse value
-     *
-     * @throws \InvalidArgumentException
-     *
-     * @return self
-     */
-    public function addToGetOptionResponse(\Scraper\ScraperDPD\StructType\GetOptionResponse $item)
-    {
-        // validation for constraint: itemType
-        if (!$item instanceof \Scraper\ScraperDPD\StructType\GetOptionResponse) {
-            throw new \InvalidArgumentException(sprintf('The GetOptionResponse property can only contain items of type \Scraper\ScraperDPD\StructType\GetOptionResponse, %s given', \is_object($item) ? $item::class : (\is_array($item) ? implode(', ', $item) : \gettype($item))), __LINE__);
-        }
-        $this->GetOptionResponse[] = $item;
         return $this;
     }
 
@@ -119,10 +106,8 @@ class ArrayOfGetOptionResponse extends AbstractStructArrayBase
      * Returns the current element
      *
      * @see AbstractStructArrayBase::current()
-     *
-     * @return \Scraper\ScraperDPD\StructType\GetOptionResponse|null
      */
-    public function current()
+    public function current(): ?\Scraper\ScraperDPD\StructType\GetOptionResponse
     {
         return parent::current();
     }
@@ -133,10 +118,8 @@ class ArrayOfGetOptionResponse extends AbstractStructArrayBase
      * @see AbstractStructArrayBase::item()
      *
      * @param int $index
-     *
-     * @return \Scraper\ScraperDPD\StructType\GetOptionResponse|null
      */
-    public function item($index)
+    public function item($index): ?\Scraper\ScraperDPD\StructType\GetOptionResponse
     {
         return parent::item($index);
     }
@@ -145,10 +128,8 @@ class ArrayOfGetOptionResponse extends AbstractStructArrayBase
      * Returns the first element
      *
      * @see AbstractStructArrayBase::first()
-     *
-     * @return \Scraper\ScraperDPD\StructType\GetOptionResponse|null
      */
-    public function first()
+    public function first(): ?\Scraper\ScraperDPD\StructType\GetOptionResponse
     {
         return parent::first();
     }
@@ -157,10 +138,8 @@ class ArrayOfGetOptionResponse extends AbstractStructArrayBase
      * Returns the last element
      *
      * @see AbstractStructArrayBase::last()
-     *
-     * @return \Scraper\ScraperDPD\StructType\GetOptionResponse|null
      */
-    public function last()
+    public function last(): ?\Scraper\ScraperDPD\StructType\GetOptionResponse
     {
         return parent::last();
     }
@@ -171,12 +150,28 @@ class ArrayOfGetOptionResponse extends AbstractStructArrayBase
      * @see AbstractStructArrayBase::offsetGet()
      *
      * @param int $offset
-     *
-     * @return \Scraper\ScraperDPD\StructType\GetOptionResponse|null
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): ?\Scraper\ScraperDPD\StructType\GetOptionResponse
     {
         return parent::offsetGet($offset);
+    }
+
+    /**
+     * Add element to array
+     *
+     * @see AbstractStructArrayBase::add()
+     *
+     * @param \Scraper\ScraperDPD\StructType\GetOptionResponse $item
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function add($item): self
+    {
+        // validation for constraint: itemType
+        if (!$item instanceof \Scraper\ScraperDPD\StructType\GetOptionResponse) {
+            throw new \InvalidArgumentException(sprintf('The GetOptionResponse property can only contain items of type \Scraper\ScraperDPD\StructType\GetOptionResponse, %s given', \is_object($item) ? $item::class : (\is_array($item) ? implode(', ', $item) : \gettype($item))), __LINE__);
+        }
+        return parent::add($item);
     }
 
     /**
@@ -186,7 +181,7 @@ class ArrayOfGetOptionResponse extends AbstractStructArrayBase
      *
      * @return string GetOptionResponse
      */
-    public function getAttributeName()
+    public function getAttributeName(): string
     {
         return 'GetOptionResponse';
     }

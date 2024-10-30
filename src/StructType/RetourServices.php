@@ -1,10 +1,11 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
 /**
  * This class stands for RetourServices StructType
  */
+#[\AllowDynamicProperties]
 class RetourServices extends ServiceBaseList
 {
     /**
@@ -12,19 +13,15 @@ class RetourServices extends ServiceBaseList
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var int
      */
-    public $expireOffset;
+    protected int $expireOffset;
 
     /**
      * Constructor method for RetourServices
      *
      * @uses RetourServices::setExpireOffset()
-     *
-     * @param int $expireOffset
      */
-    public function __construct($expireOffset = null)
+    public function __construct(int $expireOffset)
     {
         $this
             ->setExpireOffset($expireOffset)
@@ -33,28 +30,23 @@ class RetourServices extends ServiceBaseList
 
     /**
      * Get expireOffset value
-     *
-     * @return int
      */
-    public function getExpireOffset()
+    public function getExpireOffset(): int
     {
         return $this->expireOffset;
     }
 
     /**
      * Set expireOffset value
-     *
-     * @param int $expireOffset
-     *
-     * @return self
      */
-    public function setExpireOffset($expireOffset = null)
+    public function setExpireOffset(int $expireOffset): self
     {
         // validation for constraint: int
         if (null !== $expireOffset && !(\is_int($expireOffset) || ctype_digit($expireOffset))) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($expireOffset, true), \gettype($expireOffset)), __LINE__);
         }
         $this->expireOffset = $expireOffset;
+
         return $this;
     }
 }

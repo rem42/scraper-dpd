@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for GetOptionsRequest StructType
  */
+#[\AllowDynamicProperties]
 class GetOptionsRequest extends AbstractStructBase
 {
     /**
@@ -14,46 +15,36 @@ class GetOptionsRequest extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var Customer
      */
-    public $Customer;
+    protected ?Customer $Customer = null;
     /**
      * The ProductType
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $ProductType;
+    protected ?string $ProductType = null;
     /**
      * The HardwareId
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $HardwareId;
+    protected ?string $HardwareId = null;
     /**
      * The Group
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $Group;
+    protected ?string $Group = null;
     /**
      * The Options
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var \Scraper\ScraperDPD\ArrayType\ArrayOfString
      */
-    public $Options;
+    protected ?\Scraper\ScraperDPD\ArrayType\ArrayOfString $Options = null;
 
     /**
      * Constructor method for GetOptionsRequest
@@ -63,12 +54,8 @@ class GetOptionsRequest extends AbstractStructBase
      * @uses GetOptionsRequest::setHardwareId()
      * @uses GetOptionsRequest::setGroup()
      * @uses GetOptionsRequest::setOptions()
-     *
-     * @param string $productType
-     * @param string $hardwareId
-     * @param string $group
      */
-    public function __construct(?Customer $customer = null, $productType = null, $hardwareId = null, $group = null, ?\Scraper\ScraperDPD\ArrayType\ArrayOfString $options = null)
+    public function __construct(?Customer $customer = null, ?string $productType = null, ?string $hardwareId = null, ?string $group = null, ?\Scraper\ScraperDPD\ArrayType\ArrayOfString $options = null)
     {
         $this
             ->setCustomer($customer)
@@ -81,124 +68,103 @@ class GetOptionsRequest extends AbstractStructBase
 
     /**
      * Get Customer value
-     *
-     * @return Customer|null
      */
-    public function getCustomer()
+    public function getCustomer(): ?Customer
     {
         return $this->Customer;
     }
 
     /**
      * Set Customer value
-     *
-     * @return self
      */
-    public function setCustomer(?Customer $customer = null)
+    public function setCustomer(?Customer $customer = null): self
     {
         $this->Customer = $customer;
+
         return $this;
     }
 
     /**
      * Get ProductType value
-     *
-     * @return string|null
      */
-    public function getProductType()
+    public function getProductType(): ?string
     {
         return $this->ProductType;
     }
 
     /**
      * Set ProductType value
-     *
-     * @param string $productType
-     *
-     * @return self
      */
-    public function setProductType($productType = null)
+    public function setProductType(?string $productType = null): self
     {
         // validation for constraint: string
         if (null !== $productType && !\is_string($productType)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($productType, true), \gettype($productType)), __LINE__);
         }
         $this->ProductType = $productType;
+
         return $this;
     }
 
     /**
      * Get HardwareId value
-     *
-     * @return string|null
      */
-    public function getHardwareId()
+    public function getHardwareId(): ?string
     {
         return $this->HardwareId;
     }
 
     /**
      * Set HardwareId value
-     *
-     * @param string $hardwareId
-     *
-     * @return self
      */
-    public function setHardwareId($hardwareId = null)
+    public function setHardwareId(?string $hardwareId = null): self
     {
         // validation for constraint: string
         if (null !== $hardwareId && !\is_string($hardwareId)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($hardwareId, true), \gettype($hardwareId)), __LINE__);
         }
         $this->HardwareId = $hardwareId;
+
         return $this;
     }
 
     /**
      * Get Group value
-     *
-     * @return string|null
      */
-    public function getGroup()
+    public function getGroup(): ?string
     {
         return $this->Group;
     }
 
     /**
      * Set Group value
-     *
-     * @param string $group
-     *
-     * @return self
      */
-    public function setGroup($group = null)
+    public function setGroup(?string $group = null): self
     {
         // validation for constraint: string
         if (null !== $group && !\is_string($group)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($group, true), \gettype($group)), __LINE__);
         }
         $this->Group = $group;
+
         return $this;
     }
 
     /**
      * Get Options value
-     *
-     * @return \Scraper\ScraperDPD\ArrayType\ArrayOfString|null
      */
-    public function getOptions()
+    public function getOptions(): ?\Scraper\ScraperDPD\ArrayType\ArrayOfString
     {
         return $this->Options;
     }
 
     /**
      * Set Options value
-     *
-     * @return self
      */
-    public function setOptions(?\Scraper\ScraperDPD\ArrayType\ArrayOfString $options = null)
+    public function setOptions(?\Scraper\ScraperDPD\ArrayType\ArrayOfString $options = null): self
     {
         $this->Options = $options;
+
         return $this;
     }
 }

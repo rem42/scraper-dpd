@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for PickupAtCustomerRequestBase StructType
  */
+#[\AllowDynamicProperties]
 class PickupAtCustomerRequestBase extends AbstractStructBase
 {
     /**
@@ -14,37 +15,29 @@ class PickupAtCustomerRequestBase extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var Address
      */
-    public $shipperaddress;
+    protected ?Address $shipperaddress = null;
     /**
      * The customer
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var Customer
      */
-    public $customer;
+    protected ?Customer $customer = null;
     /**
      * The pick_date
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $pick_date;
+    protected ?string $pick_date = null;
     /**
      * The data
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var PickupData
      */
-    public $data;
+    protected ?PickupData $data = null;
 
     /**
      * Constructor method for PickupAtCustomerRequestBase
@@ -53,10 +46,8 @@ class PickupAtCustomerRequestBase extends AbstractStructBase
      * @uses PickupAtCustomerRequestBase::setCustomer()
      * @uses PickupAtCustomerRequestBase::setPick_date()
      * @uses PickupAtCustomerRequestBase::setData()
-     *
-     * @param string $pick_date
      */
-    public function __construct(?Address $shipperaddress = null, ?Customer $customer = null, $pick_date = null, ?PickupData $data = null)
+    public function __construct(?Address $shipperaddress = null, ?Customer $customer = null, ?string $pick_date = null, ?PickupData $data = null)
     {
         $this
             ->setShipperaddress($shipperaddress)
@@ -68,91 +59,77 @@ class PickupAtCustomerRequestBase extends AbstractStructBase
 
     /**
      * Get shipperaddress value
-     *
-     * @return Address|null
      */
-    public function getShipperaddress()
+    public function getShipperaddress(): ?Address
     {
         return $this->shipperaddress;
     }
 
     /**
      * Set shipperaddress value
-     *
-     * @return self
      */
-    public function setShipperaddress(?Address $shipperaddress = null)
+    public function setShipperaddress(?Address $shipperaddress = null): self
     {
         $this->shipperaddress = $shipperaddress;
+
         return $this;
     }
 
     /**
      * Get customer value
-     *
-     * @return Customer|null
      */
-    public function getCustomer()
+    public function getCustomer(): ?Customer
     {
         return $this->customer;
     }
 
     /**
      * Set customer value
-     *
-     * @return self
      */
-    public function setCustomer(?Customer $customer = null)
+    public function setCustomer(?Customer $customer = null): self
     {
         $this->customer = $customer;
+
         return $this;
     }
 
     /**
      * Get pick_date value
-     *
-     * @return string|null
      */
-    public function getPick_date()
+    public function getPick_date(): ?string
     {
         return $this->pick_date;
     }
 
     /**
      * Set pick_date value
-     *
-     * @param string $pick_date
-     *
-     * @return self
      */
-    public function setPick_date($pick_date = null)
+    public function setPick_date(?string $pick_date = null): self
     {
         // validation for constraint: string
         if (null !== $pick_date && !\is_string($pick_date)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($pick_date, true), \gettype($pick_date)), __LINE__);
         }
         $this->pick_date = $pick_date;
+
         return $this;
     }
 
     /**
      * Get data value
-     *
-     * @return PickupData|null
      */
-    public function getData()
+    public function getData(): ?PickupData
     {
         return $this->data;
     }
 
     /**
      * Set data value
-     *
-     * @return self
      */
-    public function setData(?PickupData $data = null)
+    public function setData(?PickupData $data = null): self
     {
         $this->data = $data;
+
         return $this;
     }
 }

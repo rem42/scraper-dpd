@@ -1,10 +1,11 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
 /**
  * This class stands for Reverse StructType
  */
+#[\AllowDynamicProperties]
 class Reverse extends DefaultService
 {
     /**
@@ -12,28 +13,22 @@ class Reverse extends DefaultService
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var int
      */
-    public $expireOffset;
+    protected int $expireOffset;
     /**
      * The type
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var string
      */
-    public $type;
+    protected string $type;
     /**
      * The retour_receiver
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var Address
      */
-    public $retour_receiver;
+    protected ?Address $retour_receiver = null;
 
     /**
      * Constructor method for Reverse
@@ -41,11 +36,8 @@ class Reverse extends DefaultService
      * @uses Reverse::setExpireOffset()
      * @uses Reverse::setType()
      * @uses Reverse::setRetour_receiver()
-     *
-     * @param int    $expireOffset
-     * @param string $type
      */
-    public function __construct($expireOffset = null, $type = null, ?Address $retour_receiver = null)
+    public function __construct(int $expireOffset, string $type, ?Address $retour_receiver = null)
     {
         $this
             ->setExpireOffset($expireOffset)
@@ -56,37 +48,30 @@ class Reverse extends DefaultService
 
     /**
      * Get expireOffset value
-     *
-     * @return int
      */
-    public function getExpireOffset()
+    public function getExpireOffset(): int
     {
         return $this->expireOffset;
     }
 
     /**
      * Set expireOffset value
-     *
-     * @param int $expireOffset
-     *
-     * @return self
      */
-    public function setExpireOffset($expireOffset = null)
+    public function setExpireOffset(int $expireOffset): self
     {
         // validation for constraint: int
         if (null !== $expireOffset && !(\is_int($expireOffset) || ctype_digit($expireOffset))) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($expireOffset, true), \gettype($expireOffset)), __LINE__);
         }
         $this->expireOffset = $expireOffset;
+
         return $this;
     }
 
     /**
      * Get type value
-     *
-     * @return string
      */
-    public function getType()
+    public function getType(): string
     {
         return $this->type;
     }
@@ -97,40 +82,34 @@ class Reverse extends DefaultService
      * @uses \Scraper\ScraperDPD\EnumType\EtypeReverse::valueIsValid()
      * @uses \Scraper\ScraperDPD\EnumType\EtypeReverse::getValidValues()
      *
-     * @param string $type
-     *
      * @throws \InvalidArgumentException
-     *
-     * @return self
      */
-    public function setType($type = null)
+    public function setType(string $type): self
     {
         // validation for constraint: enumeration
         if (!\Scraper\ScraperDPD\EnumType\EtypeReverse::valueIsValid($type)) {
             throw new \InvalidArgumentException(sprintf('Invalid value(s) %s, please use one of: %s from enumeration class \Scraper\ScraperDPD\EnumType\EtypeReverse', \is_array($type) ? implode(', ', $type) : var_export($type, true), implode(', ', \Scraper\ScraperDPD\EnumType\EtypeReverse::getValidValues())), __LINE__);
         }
         $this->type = $type;
+
         return $this;
     }
 
     /**
      * Get retour_receiver value
-     *
-     * @return Address|null
      */
-    public function getRetour_receiver()
+    public function getRetour_receiver(): ?Address
     {
         return $this->retour_receiver;
     }
 
     /**
      * Set retour_receiver value
-     *
-     * @return self
      */
-    public function setRetour_receiver(?Address $retour_receiver = null)
+    public function setRetour_receiver(?Address $retour_receiver = null): self
     {
         $this->retour_receiver = $retour_receiver;
+
         return $this;
     }
 }

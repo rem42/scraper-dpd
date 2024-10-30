@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\ArrayType;
 
@@ -18,7 +18,7 @@ class ArrayOfCustomerService extends AbstractStructArrayBase
      *
      * @var array<\Scraper\ScraperDPD\StructType\CustomerService>
      */
-    public $CustomerService;
+    protected ?array $CustomerService = null;
 
     /**
      * Constructor method for ArrayOfCustomerService
@@ -27,7 +27,7 @@ class ArrayOfCustomerService extends AbstractStructArrayBase
      *
      * @param array<\Scraper\ScraperDPD\StructType\CustomerService> $customerService
      */
-    public function __construct(array $customerService = [])
+    public function __construct(?array $customerService = null)
     {
         $this
             ->setCustomerService($customerService)
@@ -40,21 +40,25 @@ class ArrayOfCustomerService extends AbstractStructArrayBase
      * this property may have been unset before, due to the fact that this property is
      * removable from the request (nillable=true+minOccurs=0)
      *
-     * @return array<\Scraper\ScraperDPD\StructType\CustomerService>|null
+     * @return array<\Scraper\ScraperDPD\StructType\CustomerService>
      */
-    public function getCustomerService()
+    public function getCustomerService(): ?array
     {
         return $this->CustomerService ?? null;
     }
 
     /**
-     * This method is responsible for validating the values passed to the setCustomerService method
+     * This method is responsible for validating the value(s) passed to the setCustomerService method
      * This method is willingly generated in order to preserve the one-line inline validation within the setCustomerService method
+     * This has to validate that each item contained by the array match the itemType constraint
      *
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateCustomerServiceForArrayConstraintsFromSetCustomerService(array $values = [])
+    public static function validateCustomerServiceForArrayConstraintFromSetCustomerService(?array $values = []): string
     {
+        if (!\is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
 
@@ -69,6 +73,7 @@ class ArrayOfCustomerService extends AbstractStructArrayBase
             $message = sprintf('The CustomerService property can only contain items of type \Scraper\ScraperDPD\StructType\CustomerService, %s given', \is_object($invalidValues) ? $invalidValues::class : (\is_array($invalidValues) ? implode(', ', $invalidValues) : \gettype($invalidValues)));
         }
         unset($invalidValues);
+
         return $message;
     }
 
@@ -80,13 +85,11 @@ class ArrayOfCustomerService extends AbstractStructArrayBase
      * @param array<\Scraper\ScraperDPD\StructType\CustomerService> $customerService
      *
      * @throws \InvalidArgumentException
-     *
-     * @return self
      */
-    public function setCustomerService(array $customerService = [])
+    public function setCustomerService(?array $customerService = null): self
     {
         // validation for constraint: array
-        if ('' !== ($customerServiceArrayErrorMessage = self::validateCustomerServiceForArrayConstraintsFromSetCustomerService($customerService))) {
+        if ('' !== ($customerServiceArrayErrorMessage = self::validateCustomerServiceForArrayConstraintFromSetCustomerService($customerService))) {
             throw new \InvalidArgumentException($customerServiceArrayErrorMessage, __LINE__);
         }
 
@@ -95,23 +98,7 @@ class ArrayOfCustomerService extends AbstractStructArrayBase
         } else {
             $this->CustomerService = $customerService;
         }
-        return $this;
-    }
 
-    /**
-     * Add item to CustomerService value
-     *
-     * @throws \InvalidArgumentException
-     *
-     * @return self
-     */
-    public function addToCustomerService(\Scraper\ScraperDPD\StructType\CustomerService $item)
-    {
-        // validation for constraint: itemType
-        if (!$item instanceof \Scraper\ScraperDPD\StructType\CustomerService) {
-            throw new \InvalidArgumentException(sprintf('The CustomerService property can only contain items of type \Scraper\ScraperDPD\StructType\CustomerService, %s given', \is_object($item) ? $item::class : (\is_array($item) ? implode(', ', $item) : \gettype($item))), __LINE__);
-        }
-        $this->CustomerService[] = $item;
         return $this;
     }
 
@@ -119,10 +106,8 @@ class ArrayOfCustomerService extends AbstractStructArrayBase
      * Returns the current element
      *
      * @see AbstractStructArrayBase::current()
-     *
-     * @return \Scraper\ScraperDPD\StructType\CustomerService|null
      */
-    public function current()
+    public function current(): ?\Scraper\ScraperDPD\StructType\CustomerService
     {
         return parent::current();
     }
@@ -133,10 +118,8 @@ class ArrayOfCustomerService extends AbstractStructArrayBase
      * @see AbstractStructArrayBase::item()
      *
      * @param int $index
-     *
-     * @return \Scraper\ScraperDPD\StructType\CustomerService|null
      */
-    public function item($index)
+    public function item($index): ?\Scraper\ScraperDPD\StructType\CustomerService
     {
         return parent::item($index);
     }
@@ -145,10 +128,8 @@ class ArrayOfCustomerService extends AbstractStructArrayBase
      * Returns the first element
      *
      * @see AbstractStructArrayBase::first()
-     *
-     * @return \Scraper\ScraperDPD\StructType\CustomerService|null
      */
-    public function first()
+    public function first(): ?\Scraper\ScraperDPD\StructType\CustomerService
     {
         return parent::first();
     }
@@ -157,10 +138,8 @@ class ArrayOfCustomerService extends AbstractStructArrayBase
      * Returns the last element
      *
      * @see AbstractStructArrayBase::last()
-     *
-     * @return \Scraper\ScraperDPD\StructType\CustomerService|null
      */
-    public function last()
+    public function last(): ?\Scraper\ScraperDPD\StructType\CustomerService
     {
         return parent::last();
     }
@@ -171,12 +150,28 @@ class ArrayOfCustomerService extends AbstractStructArrayBase
      * @see AbstractStructArrayBase::offsetGet()
      *
      * @param int $offset
-     *
-     * @return \Scraper\ScraperDPD\StructType\CustomerService|null
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): ?\Scraper\ScraperDPD\StructType\CustomerService
     {
         return parent::offsetGet($offset);
+    }
+
+    /**
+     * Add element to array
+     *
+     * @see AbstractStructArrayBase::add()
+     *
+     * @param \Scraper\ScraperDPD\StructType\CustomerService $item
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function add($item): self
+    {
+        // validation for constraint: itemType
+        if (!$item instanceof \Scraper\ScraperDPD\StructType\CustomerService) {
+            throw new \InvalidArgumentException(sprintf('The CustomerService property can only contain items of type \Scraper\ScraperDPD\StructType\CustomerService, %s given', \is_object($item) ? $item::class : (\is_array($item) ? implode(', ', $item) : \gettype($item))), __LINE__);
+        }
+        return parent::add($item);
     }
 
     /**
@@ -186,7 +181,7 @@ class ArrayOfCustomerService extends AbstractStructArrayBase
      *
      * @return string CustomerService
      */
-    public function getAttributeName()
+    public function getAttributeName(): string
     {
         return 'CustomerService';
     }

@@ -1,10 +1,11 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
 /**
  * This class stands for UpdateRdvShipmentDataForShopRequest StructType
  */
+#[\AllowDynamicProperties]
 class UpdateRdvShipmentDataForShopRequest extends UpdateRdvShipmentData
 {
     /**
@@ -12,37 +13,29 @@ class UpdateRdvShipmentDataForShopRequest extends UpdateRdvShipmentData
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $ShopID;
+    protected ?string $ShopID = null;
     /**
      * The Receiver_ContactName
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $Receiver_ContactName;
+    protected ?string $Receiver_ContactName = null;
     /**
      * The DeliveryDate
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $DeliveryDate;
+    protected ?string $DeliveryDate = null;
     /**
      * The EsnInfo
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var RdvEsnInfo
      */
-    public $EsnInfo;
+    protected ?RdvEsnInfo $EsnInfo = null;
 
     /**
      * Constructor method for UpdateRdvShipmentDataForShopRequest
@@ -51,12 +44,8 @@ class UpdateRdvShipmentDataForShopRequest extends UpdateRdvShipmentData
      * @uses UpdateRdvShipmentDataForShopRequest::setReceiver_ContactName()
      * @uses UpdateRdvShipmentDataForShopRequest::setDeliveryDate()
      * @uses UpdateRdvShipmentDataForShopRequest::setEsnInfo()
-     *
-     * @param string $shopID
-     * @param string $receiver_ContactName
-     * @param string $deliveryDate
      */
-    public function __construct($shopID = null, $receiver_ContactName = null, $deliveryDate = null, ?RdvEsnInfo $esnInfo = null)
+    public function __construct(?string $shopID = null, ?string $receiver_ContactName = null, ?string $deliveryDate = null, ?RdvEsnInfo $esnInfo = null)
     {
         $this
             ->setShopID($shopID)
@@ -68,103 +57,85 @@ class UpdateRdvShipmentDataForShopRequest extends UpdateRdvShipmentData
 
     /**
      * Get ShopID value
-     *
-     * @return string|null
      */
-    public function getShopID()
+    public function getShopID(): ?string
     {
         return $this->ShopID;
     }
 
     /**
      * Set ShopID value
-     *
-     * @param string $shopID
-     *
-     * @return self
      */
-    public function setShopID($shopID = null)
+    public function setShopID(?string $shopID = null): self
     {
         // validation for constraint: string
         if (null !== $shopID && !\is_string($shopID)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($shopID, true), \gettype($shopID)), __LINE__);
         }
         $this->ShopID = $shopID;
+
         return $this;
     }
 
     /**
      * Get Receiver_ContactName value
-     *
-     * @return string|null
      */
-    public function getReceiver_ContactName()
+    public function getReceiver_ContactName(): ?string
     {
         return $this->Receiver_ContactName;
     }
 
     /**
      * Set Receiver_ContactName value
-     *
-     * @param string $receiver_ContactName
-     *
-     * @return self
      */
-    public function setReceiver_ContactName($receiver_ContactName = null)
+    public function setReceiver_ContactName(?string $receiver_ContactName = null): self
     {
         // validation for constraint: string
         if (null !== $receiver_ContactName && !\is_string($receiver_ContactName)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($receiver_ContactName, true), \gettype($receiver_ContactName)), __LINE__);
         }
         $this->Receiver_ContactName = $receiver_ContactName;
+
         return $this;
     }
 
     /**
      * Get DeliveryDate value
-     *
-     * @return string|null
      */
-    public function getDeliveryDate()
+    public function getDeliveryDate(): ?string
     {
         return $this->DeliveryDate;
     }
 
     /**
      * Set DeliveryDate value
-     *
-     * @param string $deliveryDate
-     *
-     * @return self
      */
-    public function setDeliveryDate($deliveryDate = null)
+    public function setDeliveryDate(?string $deliveryDate = null): self
     {
         // validation for constraint: string
         if (null !== $deliveryDate && !\is_string($deliveryDate)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($deliveryDate, true), \gettype($deliveryDate)), __LINE__);
         }
         $this->DeliveryDate = $deliveryDate;
+
         return $this;
     }
 
     /**
      * Get EsnInfo value
-     *
-     * @return RdvEsnInfo|null
      */
-    public function getEsnInfo()
+    public function getEsnInfo(): ?RdvEsnInfo
     {
         return $this->EsnInfo;
     }
 
     /**
      * Set EsnInfo value
-     *
-     * @return self
      */
-    public function setEsnInfo(?RdvEsnInfo $esnInfo = null)
+    public function setEsnInfo(?RdvEsnInfo $esnInfo = null): self
     {
         $this->EsnInfo = $esnInfo;
+
         return $this;
     }
 }

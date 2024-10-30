@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\ArrayType;
 
@@ -18,7 +18,7 @@ class ArrayOfEntry extends AbstractStructArrayBase
      *
      * @var array<\Scraper\ScraperDPD\StructType\Entry>
      */
-    public $Entry;
+    protected ?array $Entry = null;
 
     /**
      * Constructor method for ArrayOfEntry
@@ -27,7 +27,7 @@ class ArrayOfEntry extends AbstractStructArrayBase
      *
      * @param array<\Scraper\ScraperDPD\StructType\Entry> $entry
      */
-    public function __construct(array $entry = [])
+    public function __construct(?array $entry = null)
     {
         $this
             ->setEntry($entry)
@@ -40,21 +40,25 @@ class ArrayOfEntry extends AbstractStructArrayBase
      * this property may have been unset before, due to the fact that this property is
      * removable from the request (nillable=true+minOccurs=0)
      *
-     * @return array<\Scraper\ScraperDPD\StructType\Entry>|null
+     * @return array<\Scraper\ScraperDPD\StructType\Entry>
      */
-    public function getEntry()
+    public function getEntry(): ?array
     {
         return $this->Entry ?? null;
     }
 
     /**
-     * This method is responsible for validating the values passed to the setEntry method
+     * This method is responsible for validating the value(s) passed to the setEntry method
      * This method is willingly generated in order to preserve the one-line inline validation within the setEntry method
+     * This has to validate that each item contained by the array match the itemType constraint
      *
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateEntryForArrayConstraintsFromSetEntry(array $values = [])
+    public static function validateEntryForArrayConstraintFromSetEntry(?array $values = []): string
     {
+        if (!\is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
 
@@ -69,6 +73,7 @@ class ArrayOfEntry extends AbstractStructArrayBase
             $message = sprintf('The Entry property can only contain items of type \Scraper\ScraperDPD\StructType\Entry, %s given', \is_object($invalidValues) ? $invalidValues::class : (\is_array($invalidValues) ? implode(', ', $invalidValues) : \gettype($invalidValues)));
         }
         unset($invalidValues);
+
         return $message;
     }
 
@@ -80,13 +85,11 @@ class ArrayOfEntry extends AbstractStructArrayBase
      * @param array<\Scraper\ScraperDPD\StructType\Entry> $entry
      *
      * @throws \InvalidArgumentException
-     *
-     * @return self
      */
-    public function setEntry(array $entry = [])
+    public function setEntry(?array $entry = null): self
     {
         // validation for constraint: array
-        if ('' !== ($entryArrayErrorMessage = self::validateEntryForArrayConstraintsFromSetEntry($entry))) {
+        if ('' !== ($entryArrayErrorMessage = self::validateEntryForArrayConstraintFromSetEntry($entry))) {
             throw new \InvalidArgumentException($entryArrayErrorMessage, __LINE__);
         }
 
@@ -95,23 +98,7 @@ class ArrayOfEntry extends AbstractStructArrayBase
         } else {
             $this->Entry = $entry;
         }
-        return $this;
-    }
 
-    /**
-     * Add item to Entry value
-     *
-     * @throws \InvalidArgumentException
-     *
-     * @return self
-     */
-    public function addToEntry(\Scraper\ScraperDPD\StructType\Entry $item)
-    {
-        // validation for constraint: itemType
-        if (!$item instanceof \Scraper\ScraperDPD\StructType\Entry) {
-            throw new \InvalidArgumentException(sprintf('The Entry property can only contain items of type \Scraper\ScraperDPD\StructType\Entry, %s given', \is_object($item) ? $item::class : (\is_array($item) ? implode(', ', $item) : \gettype($item))), __LINE__);
-        }
-        $this->Entry[] = $item;
         return $this;
     }
 
@@ -119,10 +106,8 @@ class ArrayOfEntry extends AbstractStructArrayBase
      * Returns the current element
      *
      * @see AbstractStructArrayBase::current()
-     *
-     * @return \Scraper\ScraperDPD\StructType\Entry|null
      */
-    public function current()
+    public function current(): ?\Scraper\ScraperDPD\StructType\Entry
     {
         return parent::current();
     }
@@ -133,10 +118,8 @@ class ArrayOfEntry extends AbstractStructArrayBase
      * @see AbstractStructArrayBase::item()
      *
      * @param int $index
-     *
-     * @return \Scraper\ScraperDPD\StructType\Entry|null
      */
-    public function item($index)
+    public function item($index): ?\Scraper\ScraperDPD\StructType\Entry
     {
         return parent::item($index);
     }
@@ -145,10 +128,8 @@ class ArrayOfEntry extends AbstractStructArrayBase
      * Returns the first element
      *
      * @see AbstractStructArrayBase::first()
-     *
-     * @return \Scraper\ScraperDPD\StructType\Entry|null
      */
-    public function first()
+    public function first(): ?\Scraper\ScraperDPD\StructType\Entry
     {
         return parent::first();
     }
@@ -157,10 +138,8 @@ class ArrayOfEntry extends AbstractStructArrayBase
      * Returns the last element
      *
      * @see AbstractStructArrayBase::last()
-     *
-     * @return \Scraper\ScraperDPD\StructType\Entry|null
      */
-    public function last()
+    public function last(): ?\Scraper\ScraperDPD\StructType\Entry
     {
         return parent::last();
     }
@@ -171,12 +150,28 @@ class ArrayOfEntry extends AbstractStructArrayBase
      * @see AbstractStructArrayBase::offsetGet()
      *
      * @param int $offset
-     *
-     * @return \Scraper\ScraperDPD\StructType\Entry|null
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): ?\Scraper\ScraperDPD\StructType\Entry
     {
         return parent::offsetGet($offset);
+    }
+
+    /**
+     * Add element to array
+     *
+     * @see AbstractStructArrayBase::add()
+     *
+     * @param \Scraper\ScraperDPD\StructType\Entry $item
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function add($item): self
+    {
+        // validation for constraint: itemType
+        if (!$item instanceof \Scraper\ScraperDPD\StructType\Entry) {
+            throw new \InvalidArgumentException(sprintf('The Entry property can only contain items of type \Scraper\ScraperDPD\StructType\Entry, %s given', \is_object($item) ? $item::class : (\is_array($item) ? implode(', ', $item) : \gettype($item))), __LINE__);
+        }
+        return parent::add($item);
     }
 
     /**
@@ -186,7 +181,7 @@ class ArrayOfEntry extends AbstractStructArrayBase
      *
      * @return string Entry
      */
-    public function getAttributeName()
+    public function getAttributeName(): string
     {
         return 'Entry';
     }

@@ -1,10 +1,11 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
 /**
  * This class stands for UpdateRdvShipmentDataForSafePlaceRequest StructType
  */
+#[\AllowDynamicProperties]
 class UpdateRdvShipmentDataForSafePlaceRequest extends UpdateRdvShipmentData
 {
     /**
@@ -12,28 +13,22 @@ class UpdateRdvShipmentDataForSafePlaceRequest extends UpdateRdvShipmentData
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var RdvDeliveryInfoSmall
      */
-    public $DeliveryInfo;
+    protected ?RdvDeliveryInfoSmall $DeliveryInfo = null;
     /**
      * The EsnInfo
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var RdvEsnInfo
      */
-    public $EsnInfo;
+    protected ?RdvEsnInfo $EsnInfo = null;
     /**
      * The Image
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $Image;
+    protected ?string $Image = null;
 
     /**
      * Constructor method for UpdateRdvShipmentDataForSafePlaceRequest
@@ -41,10 +36,8 @@ class UpdateRdvShipmentDataForSafePlaceRequest extends UpdateRdvShipmentData
      * @uses UpdateRdvShipmentDataForSafePlaceRequest::setDeliveryInfo()
      * @uses UpdateRdvShipmentDataForSafePlaceRequest::setEsnInfo()
      * @uses UpdateRdvShipmentDataForSafePlaceRequest::setImage()
-     *
-     * @param string $image
      */
-    public function __construct(?RdvDeliveryInfoSmall $deliveryInfo = null, ?RdvEsnInfo $esnInfo = null, $image = null)
+    public function __construct(?RdvDeliveryInfoSmall $deliveryInfo = null, ?RdvEsnInfo $esnInfo = null, ?string $image = null)
     {
         $this
             ->setDeliveryInfo($deliveryInfo)
@@ -55,70 +48,59 @@ class UpdateRdvShipmentDataForSafePlaceRequest extends UpdateRdvShipmentData
 
     /**
      * Get DeliveryInfo value
-     *
-     * @return RdvDeliveryInfoSmall|null
      */
-    public function getDeliveryInfo()
+    public function getDeliveryInfo(): ?RdvDeliveryInfoSmall
     {
         return $this->DeliveryInfo;
     }
 
     /**
      * Set DeliveryInfo value
-     *
-     * @return self
      */
-    public function setDeliveryInfo(?RdvDeliveryInfoSmall $deliveryInfo = null)
+    public function setDeliveryInfo(?RdvDeliveryInfoSmall $deliveryInfo = null): self
     {
         $this->DeliveryInfo = $deliveryInfo;
+
         return $this;
     }
 
     /**
      * Get EsnInfo value
-     *
-     * @return RdvEsnInfo|null
      */
-    public function getEsnInfo()
+    public function getEsnInfo(): ?RdvEsnInfo
     {
         return $this->EsnInfo;
     }
 
     /**
      * Set EsnInfo value
-     *
-     * @return self
      */
-    public function setEsnInfo(?RdvEsnInfo $esnInfo = null)
+    public function setEsnInfo(?RdvEsnInfo $esnInfo = null): self
     {
         $this->EsnInfo = $esnInfo;
+
         return $this;
     }
 
     /**
      * Get Image value
-     *
-     * @return string|null
      */
-    public function getImage()
+    public function getImage(): ?string
     {
         return $this->Image;
     }
 
     /**
      * Set Image value
-     *
-     * @param string $image
-     *
-     * @return self
      */
-    public function setImage($image = null)
+    public function setImage(?string $image = null): self
     {
         // validation for constraint: string
         if (null !== $image && !\is_string($image)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($image, true), \gettype($image)), __LINE__);
         }
         $this->Image = $image;
+
         return $this;
     }
 }

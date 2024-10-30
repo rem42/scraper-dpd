@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for PropertyDefinition StructType
  */
+#[\AllowDynamicProperties]
 class PropertyDefinition extends AbstractStructBase
 {
     /**
@@ -14,55 +15,43 @@ class PropertyDefinition extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var int
      */
-    public $Id;
+    protected int $Id;
     /**
      * The PropertyType
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $PropertyType;
+    protected ?string $PropertyType = null;
     /**
      * The DataType
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $DataType;
+    protected ?string $DataType = null;
     /**
      * The Property
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $Property;
+    protected ?string $Property = null;
     /**
      * The Query
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $Query;
+    protected ?string $Query = null;
     /**
      * The Options
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $Options;
+    protected ?string $Options = null;
 
     /**
      * Constructor method for PropertyDefinition
@@ -73,15 +62,8 @@ class PropertyDefinition extends AbstractStructBase
      * @uses PropertyDefinition::setProperty()
      * @uses PropertyDefinition::setQuery()
      * @uses PropertyDefinition::setOptions()
-     *
-     * @param int    $id
-     * @param string $propertyType
-     * @param string $dataType
-     * @param string $property
-     * @param string $query
-     * @param string $options
      */
-    public function __construct($id = null, $propertyType = null, $dataType = null, $property = null, $query = null, $options = null)
+    public function __construct(int $id, ?string $propertyType = null, ?string $dataType = null, ?string $property = null, ?string $query = null, ?string $options = null)
     {
         $this
             ->setId($id)
@@ -95,163 +77,133 @@ class PropertyDefinition extends AbstractStructBase
 
     /**
      * Get Id value
-     *
-     * @return int
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->Id;
     }
 
     /**
      * Set Id value
-     *
-     * @param int $id
-     *
-     * @return self
      */
-    public function setId($id = null)
+    public function setId(int $id): self
     {
         // validation for constraint: int
         if (null !== $id && !(\is_int($id) || ctype_digit($id))) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($id, true), \gettype($id)), __LINE__);
         }
         $this->Id = $id;
+
         return $this;
     }
 
     /**
      * Get PropertyType value
-     *
-     * @return string|null
      */
-    public function getPropertyType()
+    public function getPropertyType(): ?string
     {
         return $this->PropertyType;
     }
 
     /**
      * Set PropertyType value
-     *
-     * @param string $propertyType
-     *
-     * @return self
      */
-    public function setPropertyType($propertyType = null)
+    public function setPropertyType(?string $propertyType = null): self
     {
         // validation for constraint: string
         if (null !== $propertyType && !\is_string($propertyType)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($propertyType, true), \gettype($propertyType)), __LINE__);
         }
         $this->PropertyType = $propertyType;
+
         return $this;
     }
 
     /**
      * Get DataType value
-     *
-     * @return string|null
      */
-    public function getDataType()
+    public function getDataType(): ?string
     {
         return $this->DataType;
     }
 
     /**
      * Set DataType value
-     *
-     * @param string $dataType
-     *
-     * @return self
      */
-    public function setDataType($dataType = null)
+    public function setDataType(?string $dataType = null): self
     {
         // validation for constraint: string
         if (null !== $dataType && !\is_string($dataType)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($dataType, true), \gettype($dataType)), __LINE__);
         }
         $this->DataType = $dataType;
+
         return $this;
     }
 
     /**
      * Get Property value
-     *
-     * @return string|null
      */
-    public function getProperty()
+    public function getProperty(): ?string
     {
         return $this->Property;
     }
 
     /**
      * Set Property value
-     *
-     * @param string $property
-     *
-     * @return self
      */
-    public function setProperty($property = null)
+    public function setProperty(?string $property = null): self
     {
         // validation for constraint: string
         if (null !== $property && !\is_string($property)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($property, true), \gettype($property)), __LINE__);
         }
         $this->Property = $property;
+
         return $this;
     }
 
     /**
      * Get Query value
-     *
-     * @return string|null
      */
-    public function getQuery()
+    public function getQuery(): ?string
     {
         return $this->Query;
     }
 
     /**
      * Set Query value
-     *
-     * @param string $query
-     *
-     * @return self
      */
-    public function setQuery($query = null)
+    public function setQuery(?string $query = null): self
     {
         // validation for constraint: string
         if (null !== $query && !\is_string($query)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($query, true), \gettype($query)), __LINE__);
         }
         $this->Query = $query;
+
         return $this;
     }
 
     /**
      * Get Options value
-     *
-     * @return string|null
      */
-    public function getOptions()
+    public function getOptions(): ?string
     {
         return $this->Options;
     }
 
     /**
      * Set Options value
-     *
-     * @param string $options
-     *
-     * @return self
      */
-    public function setOptions($options = null)
+    public function setOptions(?string $options = null): self
     {
         // validation for constraint: string
         if (null !== $options && !\is_string($options)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($options, true), \gettype($options)), __LINE__);
         }
         $this->Options = $options;
+
         return $this;
     }
 }

@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\ArrayType;
 
@@ -18,7 +18,7 @@ class ArrayOfShipmentBc extends AbstractStructArrayBase
      *
      * @var array<\Scraper\ScraperDPD\StructType\ShipmentBc>
      */
-    public $ShipmentBc;
+    protected ?array $ShipmentBc = null;
 
     /**
      * Constructor method for ArrayOfShipmentBc
@@ -27,7 +27,7 @@ class ArrayOfShipmentBc extends AbstractStructArrayBase
      *
      * @param array<\Scraper\ScraperDPD\StructType\ShipmentBc> $shipmentBc
      */
-    public function __construct(array $shipmentBc = [])
+    public function __construct(?array $shipmentBc = null)
     {
         $this
             ->setShipmentBc($shipmentBc)
@@ -40,21 +40,25 @@ class ArrayOfShipmentBc extends AbstractStructArrayBase
      * this property may have been unset before, due to the fact that this property is
      * removable from the request (nillable=true+minOccurs=0)
      *
-     * @return array<\Scraper\ScraperDPD\StructType\ShipmentBc>|null
+     * @return array<\Scraper\ScraperDPD\StructType\ShipmentBc>
      */
-    public function getShipmentBc()
+    public function getShipmentBc(): ?array
     {
         return $this->ShipmentBc ?? null;
     }
 
     /**
-     * This method is responsible for validating the values passed to the setShipmentBc method
+     * This method is responsible for validating the value(s) passed to the setShipmentBc method
      * This method is willingly generated in order to preserve the one-line inline validation within the setShipmentBc method
+     * This has to validate that each item contained by the array match the itemType constraint
      *
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateShipmentBcForArrayConstraintsFromSetShipmentBc(array $values = [])
+    public static function validateShipmentBcForArrayConstraintFromSetShipmentBc(?array $values = []): string
     {
+        if (!\is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
 
@@ -69,6 +73,7 @@ class ArrayOfShipmentBc extends AbstractStructArrayBase
             $message = sprintf('The ShipmentBc property can only contain items of type \Scraper\ScraperDPD\StructType\ShipmentBc, %s given', \is_object($invalidValues) ? $invalidValues::class : (\is_array($invalidValues) ? implode(', ', $invalidValues) : \gettype($invalidValues)));
         }
         unset($invalidValues);
+
         return $message;
     }
 
@@ -80,13 +85,11 @@ class ArrayOfShipmentBc extends AbstractStructArrayBase
      * @param array<\Scraper\ScraperDPD\StructType\ShipmentBc> $shipmentBc
      *
      * @throws \InvalidArgumentException
-     *
-     * @return self
      */
-    public function setShipmentBc(array $shipmentBc = [])
+    public function setShipmentBc(?array $shipmentBc = null): self
     {
         // validation for constraint: array
-        if ('' !== ($shipmentBcArrayErrorMessage = self::validateShipmentBcForArrayConstraintsFromSetShipmentBc($shipmentBc))) {
+        if ('' !== ($shipmentBcArrayErrorMessage = self::validateShipmentBcForArrayConstraintFromSetShipmentBc($shipmentBc))) {
             throw new \InvalidArgumentException($shipmentBcArrayErrorMessage, __LINE__);
         }
 
@@ -95,23 +98,7 @@ class ArrayOfShipmentBc extends AbstractStructArrayBase
         } else {
             $this->ShipmentBc = $shipmentBc;
         }
-        return $this;
-    }
 
-    /**
-     * Add item to ShipmentBc value
-     *
-     * @throws \InvalidArgumentException
-     *
-     * @return self
-     */
-    public function addToShipmentBc(\Scraper\ScraperDPD\StructType\ShipmentBc $item)
-    {
-        // validation for constraint: itemType
-        if (!$item instanceof \Scraper\ScraperDPD\StructType\ShipmentBc) {
-            throw new \InvalidArgumentException(sprintf('The ShipmentBc property can only contain items of type \Scraper\ScraperDPD\StructType\ShipmentBc, %s given', \is_object($item) ? $item::class : (\is_array($item) ? implode(', ', $item) : \gettype($item))), __LINE__);
-        }
-        $this->ShipmentBc[] = $item;
         return $this;
     }
 
@@ -119,10 +106,8 @@ class ArrayOfShipmentBc extends AbstractStructArrayBase
      * Returns the current element
      *
      * @see AbstractStructArrayBase::current()
-     *
-     * @return \Scraper\ScraperDPD\StructType\ShipmentBc|null
      */
-    public function current()
+    public function current(): ?\Scraper\ScraperDPD\StructType\ShipmentBc
     {
         return parent::current();
     }
@@ -133,10 +118,8 @@ class ArrayOfShipmentBc extends AbstractStructArrayBase
      * @see AbstractStructArrayBase::item()
      *
      * @param int $index
-     *
-     * @return \Scraper\ScraperDPD\StructType\ShipmentBc|null
      */
-    public function item($index)
+    public function item($index): ?\Scraper\ScraperDPD\StructType\ShipmentBc
     {
         return parent::item($index);
     }
@@ -145,10 +128,8 @@ class ArrayOfShipmentBc extends AbstractStructArrayBase
      * Returns the first element
      *
      * @see AbstractStructArrayBase::first()
-     *
-     * @return \Scraper\ScraperDPD\StructType\ShipmentBc|null
      */
-    public function first()
+    public function first(): ?\Scraper\ScraperDPD\StructType\ShipmentBc
     {
         return parent::first();
     }
@@ -157,10 +138,8 @@ class ArrayOfShipmentBc extends AbstractStructArrayBase
      * Returns the last element
      *
      * @see AbstractStructArrayBase::last()
-     *
-     * @return \Scraper\ScraperDPD\StructType\ShipmentBc|null
      */
-    public function last()
+    public function last(): ?\Scraper\ScraperDPD\StructType\ShipmentBc
     {
         return parent::last();
     }
@@ -171,12 +150,28 @@ class ArrayOfShipmentBc extends AbstractStructArrayBase
      * @see AbstractStructArrayBase::offsetGet()
      *
      * @param int $offset
-     *
-     * @return \Scraper\ScraperDPD\StructType\ShipmentBc|null
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): ?\Scraper\ScraperDPD\StructType\ShipmentBc
     {
         return parent::offsetGet($offset);
+    }
+
+    /**
+     * Add element to array
+     *
+     * @see AbstractStructArrayBase::add()
+     *
+     * @param \Scraper\ScraperDPD\StructType\ShipmentBc $item
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function add($item): self
+    {
+        // validation for constraint: itemType
+        if (!$item instanceof \Scraper\ScraperDPD\StructType\ShipmentBc) {
+            throw new \InvalidArgumentException(sprintf('The ShipmentBc property can only contain items of type \Scraper\ScraperDPD\StructType\ShipmentBc, %s given', \is_object($item) ? $item::class : (\is_array($item) ? implode(', ', $item) : \gettype($item))), __LINE__);
+        }
+        return parent::add($item);
     }
 
     /**
@@ -186,7 +181,7 @@ class ArrayOfShipmentBc extends AbstractStructArrayBase
      *
      * @return string ShipmentBc
      */
-    public function getAttributeName()
+    public function getAttributeName(): string
     {
         return 'ShipmentBc';
     }

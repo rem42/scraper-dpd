@@ -1,10 +1,11 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
 /**
  * This class stands for ReverseShipmentLabelRequest StructType
  */
+#[\AllowDynamicProperties]
 class ReverseShipmentLabelRequest extends ReverseShipmentRequest
 {
     /**
@@ -12,37 +13,29 @@ class ReverseShipmentLabelRequest extends ReverseShipmentRequest
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var bool
      */
-    public $refasbarcode;
+    protected bool $refasbarcode;
     /**
      * The receiver_contact_name
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $receiver_contact_name;
+    protected ?string $receiver_contact_name = null;
     /**
      * The customLabelText
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $customLabelText;
+    protected ?string $customLabelText = null;
     /**
      * The labelType
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var LabelType
      */
-    public $labelType;
+    protected ?LabelType $labelType = null;
 
     /**
      * Constructor method for ReverseShipmentLabelRequest
@@ -51,12 +44,8 @@ class ReverseShipmentLabelRequest extends ReverseShipmentRequest
      * @uses ReverseShipmentLabelRequest::setReceiver_contact_name()
      * @uses ReverseShipmentLabelRequest::setCustomLabelText()
      * @uses ReverseShipmentLabelRequest::setLabelType()
-     *
-     * @param bool   $refasbarcode
-     * @param string $receiver_contact_name
-     * @param string $customLabelText
      */
-    public function __construct($refasbarcode = null, $receiver_contact_name = null, $customLabelText = null, ?LabelType $labelType = null)
+    public function __construct(bool $refasbarcode, ?string $receiver_contact_name = null, ?string $customLabelText = null, ?LabelType $labelType = null)
     {
         $this
             ->setRefasbarcode($refasbarcode)
@@ -68,103 +57,85 @@ class ReverseShipmentLabelRequest extends ReverseShipmentRequest
 
     /**
      * Get refasbarcode value
-     *
-     * @return bool
      */
-    public function getRefasbarcode()
+    public function getRefasbarcode(): bool
     {
         return $this->refasbarcode;
     }
 
     /**
      * Set refasbarcode value
-     *
-     * @param bool $refasbarcode
-     *
-     * @return self
      */
-    public function setRefasbarcode($refasbarcode = null)
+    public function setRefasbarcode(bool $refasbarcode): self
     {
         // validation for constraint: boolean
         if (null !== $refasbarcode && !\is_bool($refasbarcode)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a bool, %s given', var_export($refasbarcode, true), \gettype($refasbarcode)), __LINE__);
         }
         $this->refasbarcode = $refasbarcode;
+
         return $this;
     }
 
     /**
      * Get receiver_contact_name value
-     *
-     * @return string|null
      */
-    public function getReceiver_contact_name()
+    public function getReceiver_contact_name(): ?string
     {
         return $this->receiver_contact_name;
     }
 
     /**
      * Set receiver_contact_name value
-     *
-     * @param string $receiver_contact_name
-     *
-     * @return self
      */
-    public function setReceiver_contact_name($receiver_contact_name = null)
+    public function setReceiver_contact_name(?string $receiver_contact_name = null): self
     {
         // validation for constraint: string
         if (null !== $receiver_contact_name && !\is_string($receiver_contact_name)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($receiver_contact_name, true), \gettype($receiver_contact_name)), __LINE__);
         }
         $this->receiver_contact_name = $receiver_contact_name;
+
         return $this;
     }
 
     /**
      * Get customLabelText value
-     *
-     * @return string|null
      */
-    public function getCustomLabelText()
+    public function getCustomLabelText(): ?string
     {
         return $this->customLabelText;
     }
 
     /**
      * Set customLabelText value
-     *
-     * @param string $customLabelText
-     *
-     * @return self
      */
-    public function setCustomLabelText($customLabelText = null)
+    public function setCustomLabelText(?string $customLabelText = null): self
     {
         // validation for constraint: string
         if (null !== $customLabelText && !\is_string($customLabelText)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($customLabelText, true), \gettype($customLabelText)), __LINE__);
         }
         $this->customLabelText = $customLabelText;
+
         return $this;
     }
 
     /**
      * Get labelType value
-     *
-     * @return LabelType|null
      */
-    public function getLabelType()
+    public function getLabelType(): ?LabelType
     {
         return $this->labelType;
     }
 
     /**
      * Set labelType value
-     *
-     * @return self
      */
-    public function setLabelType(?LabelType $labelType = null)
+    public function setLabelType(?LabelType $labelType = null): self
     {
         $this->labelType = $labelType;
+
         return $this;
     }
 }

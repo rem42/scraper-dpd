@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\ServiceType;
 
@@ -13,16 +13,10 @@ class Set extends AbstractSoapClientBase
      * Sets the UserCredentials SoapHeader param
      *
      * @uses AbstractSoapClientBase::setSoapHeader()
-     *
-     * @param string $nameSpace
-     * @param bool   $mustUnderstand
-     * @param string $actor
-     *
-     * @return bool
      */
-    public function setSoapHeaderUserCredentials(\Scraper\ScraperDPD\StructType\UserCredentials $userCredentials, $nameSpace = 'http://www.cargonet.software', $mustUnderstand = false, $actor = null)
+    public function setSoapHeaderUserCredentials(\Scraper\ScraperDPD\StructType\UserCredentials $userCredentials, string $namespace = 'http://www.cargonet.software', bool $mustUnderstand = false, ?string $actor = null): self
     {
-        return $this->setSoapHeader($nameSpace, 'UserCredentials', $userCredentials, $mustUnderstand, $actor);
+        return $this->setSoapHeader($namespace, 'UserCredentials', $userCredentials, $mustUnderstand, $actor);
     }
 
     /**
@@ -35,7 +29,6 @@ class Set extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\SetAliveResponse|bool
@@ -43,10 +36,14 @@ class Set extends AbstractSoapClientBase
     public function setAlive(\Scraper\ScraperDPD\StructType\SetAlive $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->setAlive($parameters));
-            return $this->getResult();
+            $this->setResult($resultSetAlive = $this->getSoapClient()->__soapCall('setAlive', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultSetAlive;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }

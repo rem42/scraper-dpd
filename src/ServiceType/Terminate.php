@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\ServiceType;
 
@@ -13,16 +13,10 @@ class Terminate extends AbstractSoapClientBase
      * Sets the UserCredentials SoapHeader param
      *
      * @uses AbstractSoapClientBase::setSoapHeader()
-     *
-     * @param string $nameSpace
-     * @param bool   $mustUnderstand
-     * @param string $actor
-     *
-     * @return bool
      */
-    public function setSoapHeaderUserCredentials(\Scraper\ScraperDPD\StructType\UserCredentials $userCredentials, $nameSpace = 'http://www.cargonet.software', $mustUnderstand = false, $actor = null)
+    public function setSoapHeaderUserCredentials(\Scraper\ScraperDPD\StructType\UserCredentials $userCredentials, string $namespace = 'http://www.cargonet.software', bool $mustUnderstand = false, ?string $actor = null): self
     {
-        return $this->setSoapHeader($nameSpace, 'UserCredentials', $userCredentials, $mustUnderstand, $actor);
+        return $this->setSoapHeader($namespace, 'UserCredentials', $userCredentials, $mustUnderstand, $actor);
     }
 
     /**
@@ -35,7 +29,6 @@ class Terminate extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\TerminateCollectionRequestResponse|bool
@@ -43,10 +36,14 @@ class Terminate extends AbstractSoapClientBase
     public function TerminateCollectionRequest(\Scraper\ScraperDPD\StructType\TerminateCollectionRequest $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->TerminateCollectionRequest($parameters));
-            return $this->getResult();
+            $this->setResult($resultTerminateCollectionRequest = $this->getSoapClient()->__soapCall('TerminateCollectionRequest', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultTerminateCollectionRequest;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -61,7 +58,6 @@ class Terminate extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\TerminateCollectionRequestBcResponse|bool
@@ -69,10 +65,14 @@ class Terminate extends AbstractSoapClientBase
     public function TerminateCollectionRequestBc(\Scraper\ScraperDPD\StructType\TerminateCollectionRequestBc $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->TerminateCollectionRequestBc($parameters));
-            return $this->getResult();
+            $this->setResult($resultTerminateCollectionRequestBc = $this->getSoapClient()->__soapCall('TerminateCollectionRequestBc', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultTerminateCollectionRequestBc;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -87,7 +87,6 @@ class Terminate extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\TerminateNumberRangeResponse|bool
@@ -95,10 +94,14 @@ class Terminate extends AbstractSoapClientBase
     public function TerminateNumberRange(\Scraper\ScraperDPD\StructType\TerminateNumberRange $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->TerminateNumberRange($parameters));
-            return $this->getResult();
+            $this->setResult($resultTerminateNumberRange = $this->getSoapClient()->__soapCall('TerminateNumberRange', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultTerminateNumberRange;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -113,7 +116,6 @@ class Terminate extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\TerminateNumberRangeBcResponse|bool
@@ -121,10 +123,14 @@ class Terminate extends AbstractSoapClientBase
     public function TerminateNumberRangeBc(\Scraper\ScraperDPD\StructType\TerminateNumberRangeBc $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->TerminateNumberRangeBc($parameters));
-            return $this->getResult();
+            $this->setResult($resultTerminateNumberRangeBc = $this->getSoapClient()->__soapCall('TerminateNumberRangeBc', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultTerminateNumberRangeBc;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -139,7 +145,6 @@ class Terminate extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\TerminateShipmentResponse|bool
@@ -147,10 +152,14 @@ class Terminate extends AbstractSoapClientBase
     public function TerminateShipment(\Scraper\ScraperDPD\StructType\TerminateShipment $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->TerminateShipment($parameters));
-            return $this->getResult();
+            $this->setResult($resultTerminateShipment = $this->getSoapClient()->__soapCall('TerminateShipment', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultTerminateShipment;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }

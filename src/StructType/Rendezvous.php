@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for Rendezvous StructType
  */
+#[\AllowDynamicProperties]
 class Rendezvous extends AbstractStructBase
 {
     /**
@@ -14,37 +15,29 @@ class Rendezvous extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var string
      */
-    public $Type;
+    protected string $Type;
     /**
      * The From
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var string
      */
-    public $From;
+    protected string $From;
     /**
      * The To
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var string
      */
-    public $To;
+    protected string $To;
     /**
      * The PredictChoice
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var int
      */
-    public $PredictChoice;
+    protected int $PredictChoice;
 
     /**
      * Constructor method for Rendezvous
@@ -53,13 +46,8 @@ class Rendezvous extends AbstractStructBase
      * @uses Rendezvous::setFrom()
      * @uses Rendezvous::setTo()
      * @uses Rendezvous::setPredictChoice()
-     *
-     * @param string $type
-     * @param string $from
-     * @param string $to
-     * @param int    $predictChoice
      */
-    public function __construct($type = null, $from = null, $to = null, $predictChoice = null)
+    public function __construct(string $type, string $from, string $to, int $predictChoice)
     {
         $this
             ->setType($type)
@@ -71,10 +59,8 @@ class Rendezvous extends AbstractStructBase
 
     /**
      * Get Type value
-     *
-     * @return string
      */
-    public function getType()
+    public function getType(): string
     {
         return $this->Type;
     }
@@ -85,100 +71,82 @@ class Rendezvous extends AbstractStructBase
      * @uses \Scraper\ScraperDPD\EnumType\ERendezvousType::valueIsValid()
      * @uses \Scraper\ScraperDPD\EnumType\ERendezvousType::getValidValues()
      *
-     * @param string $type
-     *
      * @throws \InvalidArgumentException
-     *
-     * @return self
      */
-    public function setType($type = null)
+    public function setType(string $type): self
     {
         // validation for constraint: enumeration
         if (!\Scraper\ScraperDPD\EnumType\ERendezvousType::valueIsValid($type)) {
             throw new \InvalidArgumentException(sprintf('Invalid value(s) %s, please use one of: %s from enumeration class \Scraper\ScraperDPD\EnumType\ERendezvousType', \is_array($type) ? implode(', ', $type) : var_export($type, true), implode(', ', \Scraper\ScraperDPD\EnumType\ERendezvousType::getValidValues())), __LINE__);
         }
         $this->Type = $type;
+
         return $this;
     }
 
     /**
      * Get From value
-     *
-     * @return string
      */
-    public function getFrom()
+    public function getFrom(): string
     {
         return $this->From;
     }
 
     /**
      * Set From value
-     *
-     * @param string $from
-     *
-     * @return self
      */
-    public function setFrom($from = null)
+    public function setFrom(string $from): self
     {
         // validation for constraint: string
         if (null !== $from && !\is_string($from)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($from, true), \gettype($from)), __LINE__);
         }
         $this->From = $from;
+
         return $this;
     }
 
     /**
      * Get To value
-     *
-     * @return string
      */
-    public function getTo()
+    public function getTo(): string
     {
         return $this->To;
     }
 
     /**
      * Set To value
-     *
-     * @param string $to
-     *
-     * @return self
      */
-    public function setTo($to = null)
+    public function setTo(string $to): self
     {
         // validation for constraint: string
         if (null !== $to && !\is_string($to)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($to, true), \gettype($to)), __LINE__);
         }
         $this->To = $to;
+
         return $this;
     }
 
     /**
      * Get PredictChoice value
-     *
-     * @return int
      */
-    public function getPredictChoice()
+    public function getPredictChoice(): int
     {
         return $this->PredictChoice;
     }
 
     /**
      * Set PredictChoice value
-     *
-     * @param int $predictChoice
-     *
-     * @return self
      */
-    public function setPredictChoice($predictChoice = null)
+    public function setPredictChoice(int $predictChoice): self
     {
         // validation for constraint: int
         if (null !== $predictChoice && !(\is_int($predictChoice) || ctype_digit($predictChoice))) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($predictChoice, true), \gettype($predictChoice)), __LINE__);
         }
         $this->PredictChoice = $predictChoice;
+
         return $this;
     }
 }

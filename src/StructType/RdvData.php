@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for RdvData StructType
  */
+#[\AllowDynamicProperties]
 class RdvData extends AbstractStructBase
 {
     /**
@@ -14,19 +15,15 @@ class RdvData extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var bool
      */
-    public $DayCheckDone;
+    protected bool $DayCheckDone;
 
     /**
      * Constructor method for RdvData
      *
      * @uses RdvData::setDayCheckDone()
-     *
-     * @param bool $dayCheckDone
      */
-    public function __construct($dayCheckDone = null)
+    public function __construct(bool $dayCheckDone)
     {
         $this
             ->setDayCheckDone($dayCheckDone)
@@ -35,28 +32,23 @@ class RdvData extends AbstractStructBase
 
     /**
      * Get DayCheckDone value
-     *
-     * @return bool
      */
-    public function getDayCheckDone()
+    public function getDayCheckDone(): bool
     {
         return $this->DayCheckDone;
     }
 
     /**
      * Set DayCheckDone value
-     *
-     * @param bool $dayCheckDone
-     *
-     * @return self
      */
-    public function setDayCheckDone($dayCheckDone = null)
+    public function setDayCheckDone(bool $dayCheckDone): self
     {
         // validation for constraint: boolean
         if (null !== $dayCheckDone && !\is_bool($dayCheckDone)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a bool, %s given', var_export($dayCheckDone, true), \gettype($dayCheckDone)), __LINE__);
         }
         $this->DayCheckDone = $dayCheckDone;
+
         return $this;
     }
 }

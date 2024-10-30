@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for GetBic3Routing StructType
  */
+#[\AllowDynamicProperties]
 class GetBic3Routing extends AbstractStructBase
 {
     /**
@@ -14,10 +15,8 @@ class GetBic3Routing extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var GetBic3RoutingRequest
      */
-    public $request;
+    protected ?GetBic3RoutingRequest $request = null;
 
     /**
      * Constructor method for GetBic3Routing
@@ -33,22 +32,19 @@ class GetBic3Routing extends AbstractStructBase
 
     /**
      * Get request value
-     *
-     * @return GetBic3RoutingRequest|null
      */
-    public function getRequest()
+    public function getRequest(): ?GetBic3RoutingRequest
     {
         return $this->request;
     }
 
     /**
      * Set request value
-     *
-     * @return self
      */
-    public function setRequest(?GetBic3RoutingRequest $request = null)
+    public function setRequest(?GetBic3RoutingRequest $request = null): self
     {
         $this->request = $request;
+
         return $this;
     }
 }

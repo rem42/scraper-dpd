@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for GetLastNumberRequest StructType
  */
+#[\AllowDynamicProperties]
 class GetLastNumberRequest extends AbstractStructBase
 {
     /**
@@ -14,19 +15,15 @@ class GetLastNumberRequest extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var Customer
      */
-    public $Customer;
+    protected ?Customer $Customer = null;
     /**
      * The Entries
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var \Scraper\ScraperDPD\ArrayType\ArrayOfEntry
      */
-    public $Entries;
+    protected ?\Scraper\ScraperDPD\ArrayType\ArrayOfEntry $Entries = null;
 
     /**
      * Constructor method for GetLastNumberRequest
@@ -44,43 +41,37 @@ class GetLastNumberRequest extends AbstractStructBase
 
     /**
      * Get Customer value
-     *
-     * @return Customer|null
      */
-    public function getCustomer()
+    public function getCustomer(): ?Customer
     {
         return $this->Customer;
     }
 
     /**
      * Set Customer value
-     *
-     * @return self
      */
-    public function setCustomer(?Customer $customer = null)
+    public function setCustomer(?Customer $customer = null): self
     {
         $this->Customer = $customer;
+
         return $this;
     }
 
     /**
      * Get Entries value
-     *
-     * @return \Scraper\ScraperDPD\ArrayType\ArrayOfEntry|null
      */
-    public function getEntries()
+    public function getEntries(): ?\Scraper\ScraperDPD\ArrayType\ArrayOfEntry
     {
         return $this->Entries;
     }
 
     /**
      * Set Entries value
-     *
-     * @return self
      */
-    public function setEntries(?\Scraper\ScraperDPD\ArrayType\ArrayOfEntry $entries = null)
+    public function setEntries(?\Scraper\ScraperDPD\ArrayType\ArrayOfEntry $entries = null): self
     {
         $this->Entries = $entries;
+
         return $this;
     }
 }

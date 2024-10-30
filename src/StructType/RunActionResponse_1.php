@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for RunActionResponse StructType
  */
+#[\AllowDynamicProperties]
 class RunActionResponse_1 extends AbstractStructBase
 {
     /**
@@ -14,19 +15,15 @@ class RunActionResponse_1 extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $Response;
+    protected ?string $Response = null;
 
     /**
      * Constructor method for RunActionResponse
      *
      * @uses RunActionResponse_1::setResponse()
-     *
-     * @param string $response
      */
-    public function __construct($response = null)
+    public function __construct(?string $response = null)
     {
         $this
             ->setResponse($response)
@@ -35,28 +32,23 @@ class RunActionResponse_1 extends AbstractStructBase
 
     /**
      * Get Response value
-     *
-     * @return string|null
      */
-    public function getResponse()
+    public function getResponse(): ?string
     {
         return $this->Response;
     }
 
     /**
      * Set Response value
-     *
-     * @param string $response
-     *
-     * @return self
      */
-    public function setResponse($response = null)
+    public function setResponse(?string $response = null): self
     {
         // validation for constraint: string
         if (null !== $response && !\is_string($response)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($response, true), \gettype($response)), __LINE__);
         }
         $this->Response = $response;
+
         return $this;
     }
 }

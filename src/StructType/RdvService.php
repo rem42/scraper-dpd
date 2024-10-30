@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for RdvService StructType
  */
+#[\AllowDynamicProperties]
 class RdvService extends AbstractStructBase
 {
     /**
@@ -14,28 +15,22 @@ class RdvService extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var int
      */
-    public $Type;
+    protected int $Type;
     /**
      * The Attribute
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var int
      */
-    public $Attribute;
+    protected int $Attribute;
     /**
      * The Status
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var int
      */
-    public $Status;
+    protected int $Status;
 
     /**
      * Constructor method for RdvService
@@ -43,12 +38,8 @@ class RdvService extends AbstractStructBase
      * @uses RdvService::setType()
      * @uses RdvService::setAttribute()
      * @uses RdvService::setStatus()
-     *
-     * @param int $type
-     * @param int $attribute
-     * @param int $status
      */
-    public function __construct($type = null, $attribute = null, $status = null)
+    public function __construct(int $type, int $attribute, int $status)
     {
         $this
             ->setType($type)
@@ -59,82 +50,67 @@ class RdvService extends AbstractStructBase
 
     /**
      * Get Type value
-     *
-     * @return int
      */
-    public function getType()
+    public function getType(): int
     {
         return $this->Type;
     }
 
     /**
      * Set Type value
-     *
-     * @param int $type
-     *
-     * @return self
      */
-    public function setType($type = null)
+    public function setType(int $type): self
     {
         // validation for constraint: int
         if (null !== $type && !(\is_int($type) || ctype_digit($type))) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($type, true), \gettype($type)), __LINE__);
         }
         $this->Type = $type;
+
         return $this;
     }
 
     /**
      * Get Attribute value
-     *
-     * @return int
      */
-    public function getAttribute()
+    public function getAttribute(): int
     {
         return $this->Attribute;
     }
 
     /**
      * Set Attribute value
-     *
-     * @param int $attribute
-     *
-     * @return self
      */
-    public function setAttribute($attribute = null)
+    public function setAttribute(int $attribute): self
     {
         // validation for constraint: int
         if (null !== $attribute && !(\is_int($attribute) || ctype_digit($attribute))) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($attribute, true), \gettype($attribute)), __LINE__);
         }
         $this->Attribute = $attribute;
+
         return $this;
     }
 
     /**
      * Get Status value
-     *
-     * @return int
      */
-    public function getStatus()
+    public function getStatus(): int
     {
         return $this->Status;
     }
 
     /**
      * Set Status value
-     *
-     * @param int $status
-     *
-     * @return self
      */
-    public function setStatus($status = null)
+    public function setStatus(int $status): self
     {
         // validation for constraint: int
         if (null !== $status && !(\is_int($status) || ctype_digit($status))) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($status, true), \gettype($status)), __LINE__);
         }
         $this->Status = $status;
+
         return $this;
     }
 }

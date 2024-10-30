@@ -1,10 +1,11 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
 /**
  * This class stands for UpdateRdvShipmentDataForAgencyPickupRequest StructType
  */
+#[\AllowDynamicProperties]
 class UpdateRdvShipmentDataForAgencyPickupRequest extends UpdateRdvShipmentData
 {
     /**
@@ -12,29 +13,23 @@ class UpdateRdvShipmentDataForAgencyPickupRequest extends UpdateRdvShipmentData
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $DeliveryDate;
+    protected ?string $DeliveryDate = null;
     /**
      * The EsnInfo
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var RdvEsnInfo
      */
-    public $EsnInfo;
+    protected ?RdvEsnInfo $EsnInfo = null;
 
     /**
      * Constructor method for UpdateRdvShipmentDataForAgencyPickupRequest
      *
      * @uses UpdateRdvShipmentDataForAgencyPickupRequest::setDeliveryDate()
      * @uses UpdateRdvShipmentDataForAgencyPickupRequest::setEsnInfo()
-     *
-     * @param string $deliveryDate
      */
-    public function __construct($deliveryDate = null, ?RdvEsnInfo $esnInfo = null)
+    public function __construct(?string $deliveryDate = null, ?RdvEsnInfo $esnInfo = null)
     {
         $this
             ->setDeliveryDate($deliveryDate)
@@ -44,49 +39,41 @@ class UpdateRdvShipmentDataForAgencyPickupRequest extends UpdateRdvShipmentData
 
     /**
      * Get DeliveryDate value
-     *
-     * @return string|null
      */
-    public function getDeliveryDate()
+    public function getDeliveryDate(): ?string
     {
         return $this->DeliveryDate;
     }
 
     /**
      * Set DeliveryDate value
-     *
-     * @param string $deliveryDate
-     *
-     * @return self
      */
-    public function setDeliveryDate($deliveryDate = null)
+    public function setDeliveryDate(?string $deliveryDate = null): self
     {
         // validation for constraint: string
         if (null !== $deliveryDate && !\is_string($deliveryDate)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($deliveryDate, true), \gettype($deliveryDate)), __LINE__);
         }
         $this->DeliveryDate = $deliveryDate;
+
         return $this;
     }
 
     /**
      * Get EsnInfo value
-     *
-     * @return RdvEsnInfo|null
      */
-    public function getEsnInfo()
+    public function getEsnInfo(): ?RdvEsnInfo
     {
         return $this->EsnInfo;
     }
 
     /**
      * Set EsnInfo value
-     *
-     * @return self
      */
-    public function setEsnInfo(?RdvEsnInfo $esnInfo = null)
+    public function setEsnInfo(?RdvEsnInfo $esnInfo = null): self
     {
         $this->EsnInfo = $esnInfo;
+
         return $this;
     }
 }

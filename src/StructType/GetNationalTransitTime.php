@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for GetNationalTransitTime StructType
  */
+#[\AllowDynamicProperties]
 class GetNationalTransitTime extends AbstractStructBase
 {
     /**
@@ -14,10 +15,8 @@ class GetNationalTransitTime extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var GetNationalTransitTimeRequest
      */
-    public $request;
+    protected ?GetNationalTransitTimeRequest $request = null;
 
     /**
      * Constructor method for GetNationalTransitTime
@@ -33,22 +32,19 @@ class GetNationalTransitTime extends AbstractStructBase
 
     /**
      * Get request value
-     *
-     * @return GetNationalTransitTimeRequest|null
      */
-    public function getRequest()
+    public function getRequest(): ?GetNationalTransitTimeRequest
     {
         return $this->request;
     }
 
     /**
      * Set request value
-     *
-     * @return self
      */
-    public function setRequest(?GetNationalTransitTimeRequest $request = null)
+    public function setRequest(?GetNationalTransitTimeRequest $request = null): self
     {
         $this->request = $request;
+
         return $this;
     }
 }

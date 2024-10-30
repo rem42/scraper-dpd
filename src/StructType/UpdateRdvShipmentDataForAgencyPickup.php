@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for UpdateRdvShipmentDataForAgencyPickup StructType
  */
+#[\AllowDynamicProperties]
 class UpdateRdvShipmentDataForAgencyPickup extends AbstractStructBase
 {
     /**
@@ -14,10 +15,8 @@ class UpdateRdvShipmentDataForAgencyPickup extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var UpdateRdvShipmentDataForAgencyPickupRequest
      */
-    public $request;
+    protected ?UpdateRdvShipmentDataForAgencyPickupRequest $request = null;
 
     /**
      * Constructor method for UpdateRdvShipmentDataForAgencyPickup
@@ -33,22 +32,19 @@ class UpdateRdvShipmentDataForAgencyPickup extends AbstractStructBase
 
     /**
      * Get request value
-     *
-     * @return UpdateRdvShipmentDataForAgencyPickupRequest|null
      */
-    public function getRequest()
+    public function getRequest(): ?UpdateRdvShipmentDataForAgencyPickupRequest
     {
         return $this->request;
     }
 
     /**
      * Set request value
-     *
-     * @return self
      */
-    public function setRequest(?UpdateRdvShipmentDataForAgencyPickupRequest $request = null)
+    public function setRequest(?UpdateRdvShipmentDataForAgencyPickupRequest $request = null): self
     {
         $this->request = $request;
+
         return $this;
     }
 }

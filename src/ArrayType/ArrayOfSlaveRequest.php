@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\ArrayType;
 
@@ -18,7 +18,7 @@ class ArrayOfSlaveRequest extends AbstractStructArrayBase
      *
      * @var array<\Scraper\ScraperDPD\StructType\SlaveRequest>
      */
-    public $SlaveRequest;
+    protected ?array $SlaveRequest = null;
 
     /**
      * Constructor method for ArrayOfSlaveRequest
@@ -27,7 +27,7 @@ class ArrayOfSlaveRequest extends AbstractStructArrayBase
      *
      * @param array<\Scraper\ScraperDPD\StructType\SlaveRequest> $slaveRequest
      */
-    public function __construct(array $slaveRequest = [])
+    public function __construct(?array $slaveRequest = null)
     {
         $this
             ->setSlaveRequest($slaveRequest)
@@ -40,21 +40,25 @@ class ArrayOfSlaveRequest extends AbstractStructArrayBase
      * this property may have been unset before, due to the fact that this property is
      * removable from the request (nillable=true+minOccurs=0)
      *
-     * @return array<\Scraper\ScraperDPD\StructType\SlaveRequest>|null
+     * @return array<\Scraper\ScraperDPD\StructType\SlaveRequest>
      */
-    public function getSlaveRequest()
+    public function getSlaveRequest(): ?array
     {
         return $this->SlaveRequest ?? null;
     }
 
     /**
-     * This method is responsible for validating the values passed to the setSlaveRequest method
+     * This method is responsible for validating the value(s) passed to the setSlaveRequest method
      * This method is willingly generated in order to preserve the one-line inline validation within the setSlaveRequest method
+     * This has to validate that each item contained by the array match the itemType constraint
      *
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateSlaveRequestForArrayConstraintsFromSetSlaveRequest(array $values = [])
+    public static function validateSlaveRequestForArrayConstraintFromSetSlaveRequest(?array $values = []): string
     {
+        if (!\is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
 
@@ -69,6 +73,7 @@ class ArrayOfSlaveRequest extends AbstractStructArrayBase
             $message = sprintf('The SlaveRequest property can only contain items of type \Scraper\ScraperDPD\StructType\SlaveRequest, %s given', \is_object($invalidValues) ? $invalidValues::class : (\is_array($invalidValues) ? implode(', ', $invalidValues) : \gettype($invalidValues)));
         }
         unset($invalidValues);
+
         return $message;
     }
 
@@ -80,13 +85,11 @@ class ArrayOfSlaveRequest extends AbstractStructArrayBase
      * @param array<\Scraper\ScraperDPD\StructType\SlaveRequest> $slaveRequest
      *
      * @throws \InvalidArgumentException
-     *
-     * @return self
      */
-    public function setSlaveRequest(array $slaveRequest = [])
+    public function setSlaveRequest(?array $slaveRequest = null): self
     {
         // validation for constraint: array
-        if ('' !== ($slaveRequestArrayErrorMessage = self::validateSlaveRequestForArrayConstraintsFromSetSlaveRequest($slaveRequest))) {
+        if ('' !== ($slaveRequestArrayErrorMessage = self::validateSlaveRequestForArrayConstraintFromSetSlaveRequest($slaveRequest))) {
             throw new \InvalidArgumentException($slaveRequestArrayErrorMessage, __LINE__);
         }
 
@@ -95,23 +98,7 @@ class ArrayOfSlaveRequest extends AbstractStructArrayBase
         } else {
             $this->SlaveRequest = $slaveRequest;
         }
-        return $this;
-    }
 
-    /**
-     * Add item to SlaveRequest value
-     *
-     * @throws \InvalidArgumentException
-     *
-     * @return self
-     */
-    public function addToSlaveRequest(\Scraper\ScraperDPD\StructType\SlaveRequest $item)
-    {
-        // validation for constraint: itemType
-        if (!$item instanceof \Scraper\ScraperDPD\StructType\SlaveRequest) {
-            throw new \InvalidArgumentException(sprintf('The SlaveRequest property can only contain items of type \Scraper\ScraperDPD\StructType\SlaveRequest, %s given', \is_object($item) ? $item::class : (\is_array($item) ? implode(', ', $item) : \gettype($item))), __LINE__);
-        }
-        $this->SlaveRequest[] = $item;
         return $this;
     }
 
@@ -119,10 +106,8 @@ class ArrayOfSlaveRequest extends AbstractStructArrayBase
      * Returns the current element
      *
      * @see AbstractStructArrayBase::current()
-     *
-     * @return \Scraper\ScraperDPD\StructType\SlaveRequest|null
      */
-    public function current()
+    public function current(): ?\Scraper\ScraperDPD\StructType\SlaveRequest
     {
         return parent::current();
     }
@@ -133,10 +118,8 @@ class ArrayOfSlaveRequest extends AbstractStructArrayBase
      * @see AbstractStructArrayBase::item()
      *
      * @param int $index
-     *
-     * @return \Scraper\ScraperDPD\StructType\SlaveRequest|null
      */
-    public function item($index)
+    public function item($index): ?\Scraper\ScraperDPD\StructType\SlaveRequest
     {
         return parent::item($index);
     }
@@ -145,10 +128,8 @@ class ArrayOfSlaveRequest extends AbstractStructArrayBase
      * Returns the first element
      *
      * @see AbstractStructArrayBase::first()
-     *
-     * @return \Scraper\ScraperDPD\StructType\SlaveRequest|null
      */
-    public function first()
+    public function first(): ?\Scraper\ScraperDPD\StructType\SlaveRequest
     {
         return parent::first();
     }
@@ -157,10 +138,8 @@ class ArrayOfSlaveRequest extends AbstractStructArrayBase
      * Returns the last element
      *
      * @see AbstractStructArrayBase::last()
-     *
-     * @return \Scraper\ScraperDPD\StructType\SlaveRequest|null
      */
-    public function last()
+    public function last(): ?\Scraper\ScraperDPD\StructType\SlaveRequest
     {
         return parent::last();
     }
@@ -171,12 +150,28 @@ class ArrayOfSlaveRequest extends AbstractStructArrayBase
      * @see AbstractStructArrayBase::offsetGet()
      *
      * @param int $offset
-     *
-     * @return \Scraper\ScraperDPD\StructType\SlaveRequest|null
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): ?\Scraper\ScraperDPD\StructType\SlaveRequest
     {
         return parent::offsetGet($offset);
+    }
+
+    /**
+     * Add element to array
+     *
+     * @see AbstractStructArrayBase::add()
+     *
+     * @param \Scraper\ScraperDPD\StructType\SlaveRequest $item
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function add($item): self
+    {
+        // validation for constraint: itemType
+        if (!$item instanceof \Scraper\ScraperDPD\StructType\SlaveRequest) {
+            throw new \InvalidArgumentException(sprintf('The SlaveRequest property can only contain items of type \Scraper\ScraperDPD\StructType\SlaveRequest, %s given', \is_object($item) ? $item::class : (\is_array($item) ? implode(', ', $item) : \gettype($item))), __LINE__);
+        }
+        return parent::add($item);
     }
 
     /**
@@ -186,7 +181,7 @@ class ArrayOfSlaveRequest extends AbstractStructArrayBase
      *
      * @return string SlaveRequest
      */
-    public function getAttributeName()
+    public function getAttributeName(): string
     {
         return 'SlaveRequest';
     }

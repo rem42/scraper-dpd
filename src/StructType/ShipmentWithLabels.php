@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for ShipmentWithLabels StructType
  */
+#[\AllowDynamicProperties]
 class ShipmentWithLabels extends AbstractStructBase
 {
     /**
@@ -14,19 +15,15 @@ class ShipmentWithLabels extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var Shipment
      */
-    public $shipment;
+    protected ?Shipment $shipment = null;
     /**
      * The labels
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var \Scraper\ScraperDPD\ArrayType\ArrayOfLabel
      */
-    public $labels;
+    protected ?\Scraper\ScraperDPD\ArrayType\ArrayOfLabel $labels = null;
 
     /**
      * Constructor method for ShipmentWithLabels
@@ -44,43 +41,37 @@ class ShipmentWithLabels extends AbstractStructBase
 
     /**
      * Get shipment value
-     *
-     * @return Shipment|null
      */
-    public function getShipment()
+    public function getShipment(): ?Shipment
     {
         return $this->shipment;
     }
 
     /**
      * Set shipment value
-     *
-     * @return self
      */
-    public function setShipment(?Shipment $shipment = null)
+    public function setShipment(?Shipment $shipment = null): self
     {
         $this->shipment = $shipment;
+
         return $this;
     }
 
     /**
      * Get labels value
-     *
-     * @return \Scraper\ScraperDPD\ArrayType\ArrayOfLabel|null
      */
-    public function getLabels()
+    public function getLabels(): ?\Scraper\ScraperDPD\ArrayType\ArrayOfLabel
     {
         return $this->labels;
     }
 
     /**
      * Set labels value
-     *
-     * @return self
      */
-    public function setLabels(?\Scraper\ScraperDPD\ArrayType\ArrayOfLabel $labels = null)
+    public function setLabels(?\Scraper\ScraperDPD\ArrayType\ArrayOfLabel $labels = null): self
     {
         $this->labels = $labels;
+
         return $this;
     }
 }

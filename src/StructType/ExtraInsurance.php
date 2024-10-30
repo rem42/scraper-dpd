@@ -1,10 +1,11 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
 /**
  * This class stands for ExtraInsurance StructType
  */
+#[\AllowDynamicProperties]
 class ExtraInsurance extends DefaultService
 {
     /**
@@ -12,30 +13,23 @@ class ExtraInsurance extends DefaultService
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var string
      */
-    public $type;
+    protected string $type;
     /**
      * The value
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $value;
+    protected ?string $value = null;
 
     /**
      * Constructor method for ExtraInsurance
      *
      * @uses ExtraInsurance::setType()
      * @uses ExtraInsurance::setValue()
-     *
-     * @param string $type
-     * @param string $value
      */
-    public function __construct($type = null, $value = null)
+    public function __construct(string $type, ?string $value = null)
     {
         $this
             ->setType($type)
@@ -45,10 +39,8 @@ class ExtraInsurance extends DefaultService
 
     /**
      * Get type value
-     *
-     * @return string
      */
-    public function getType()
+    public function getType(): string
     {
         return $this->type;
     }
@@ -59,46 +51,38 @@ class ExtraInsurance extends DefaultService
      * @uses \Scraper\ScraperDPD\EnumType\EtypeInsurance::valueIsValid()
      * @uses \Scraper\ScraperDPD\EnumType\EtypeInsurance::getValidValues()
      *
-     * @param string $type
-     *
      * @throws \InvalidArgumentException
-     *
-     * @return self
      */
-    public function setType($type = null)
+    public function setType(string $type): self
     {
         // validation for constraint: enumeration
         if (!\Scraper\ScraperDPD\EnumType\EtypeInsurance::valueIsValid($type)) {
             throw new \InvalidArgumentException(sprintf('Invalid value(s) %s, please use one of: %s from enumeration class \Scraper\ScraperDPD\EnumType\EtypeInsurance', \is_array($type) ? implode(', ', $type) : var_export($type, true), implode(', ', \Scraper\ScraperDPD\EnumType\EtypeInsurance::getValidValues())), __LINE__);
         }
         $this->type = $type;
+
         return $this;
     }
 
     /**
      * Get value value
-     *
-     * @return string|null
      */
-    public function getValue()
+    public function getValue(): ?string
     {
         return $this->value;
     }
 
     /**
      * Set value value
-     *
-     * @param string $value
-     *
-     * @return self
      */
-    public function setValue($value = null)
+    public function setValue(?string $value = null): self
     {
         // validation for constraint: string
         if (null !== $value && !\is_string($value)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($value, true), \gettype($value)), __LINE__);
         }
         $this->value = $value;
+
         return $this;
     }
 }

@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for GetSafePlaceDataResponse StructType
  */
+#[\AllowDynamicProperties]
 class GetSafePlaceDataResponse extends AbstractStructBase
 {
     /**
@@ -14,19 +15,15 @@ class GetSafePlaceDataResponse extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var self
      */
-    public $GetSafePlaceDataResult;
+    protected ?GetSafePlaceDataResponse $GetSafePlaceDataResult = null;
     /**
      * The Images
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var \Scraper\ScraperDPD\ArrayType\ArrayOfBase64Binary
      */
-    public $Images;
+    protected ?\Scraper\ScraperDPD\ArrayType\ArrayOfBase64Binary $Images = null;
 
     /**
      * Constructor method for GetSafePlaceDataResponse
@@ -44,43 +41,37 @@ class GetSafePlaceDataResponse extends AbstractStructBase
 
     /**
      * Get GetSafePlaceDataResult value
-     *
-     * @return self|null
      */
-    public function getGetSafePlaceDataResult()
+    public function getGetSafePlaceDataResult(): ?self
     {
         return $this->GetSafePlaceDataResult;
     }
 
     /**
      * Set GetSafePlaceDataResult value
-     *
-     * @return self
      */
-    public function setGetSafePlaceDataResult(?self $getSafePlaceDataResult = null)
+    public function setGetSafePlaceDataResult(?self $getSafePlaceDataResult = null): self
     {
         $this->GetSafePlaceDataResult = $getSafePlaceDataResult;
+
         return $this;
     }
 
     /**
      * Get Images value
-     *
-     * @return \Scraper\ScraperDPD\ArrayType\ArrayOfBase64Binary|null
      */
-    public function getImages()
+    public function getImages(): ?\Scraper\ScraperDPD\ArrayType\ArrayOfBase64Binary
     {
         return $this->Images;
     }
 
     /**
      * Set Images value
-     *
-     * @return self
      */
-    public function setImages(?\Scraper\ScraperDPD\ArrayType\ArrayOfBase64Binary $images = null)
+    public function setImages(?\Scraper\ScraperDPD\ArrayType\ArrayOfBase64Binary $images = null): self
     {
         $this->Images = $images;
+
         return $this;
     }
 }

@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for GetNationalTransitTimeResponse StructType
  */
+#[\AllowDynamicProperties]
 class GetNationalTransitTimeResponse extends AbstractStructBase
 {
     /**
@@ -14,29 +15,23 @@ class GetNationalTransitTimeResponse extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var int
      */
-    public $TransitTime;
+    protected int $TransitTime;
     /**
      * The GetNationalTransitTimeResult
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var self
      */
-    public $GetNationalTransitTimeResult;
+    protected ?GetNationalTransitTimeResponse $GetNationalTransitTimeResult = null;
 
     /**
      * Constructor method for GetNationalTransitTimeResponse
      *
      * @uses GetNationalTransitTimeResponse::setTransitTime()
      * @uses GetNationalTransitTimeResponse::setGetNationalTransitTimeResult()
-     *
-     * @param int $transitTime
      */
-    public function __construct($transitTime = null, ?self $getNationalTransitTimeResult = null)
+    public function __construct(int $transitTime, ?self $getNationalTransitTimeResult = null)
     {
         $this
             ->setTransitTime($transitTime)
@@ -46,49 +41,41 @@ class GetNationalTransitTimeResponse extends AbstractStructBase
 
     /**
      * Get TransitTime value
-     *
-     * @return int
      */
-    public function getTransitTime()
+    public function getTransitTime(): int
     {
         return $this->TransitTime;
     }
 
     /**
      * Set TransitTime value
-     *
-     * @param int $transitTime
-     *
-     * @return self
      */
-    public function setTransitTime($transitTime = null)
+    public function setTransitTime(int $transitTime): self
     {
         // validation for constraint: int
         if (null !== $transitTime && !(\is_int($transitTime) || ctype_digit($transitTime))) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($transitTime, true), \gettype($transitTime)), __LINE__);
         }
         $this->TransitTime = $transitTime;
+
         return $this;
     }
 
     /**
      * Get GetNationalTransitTimeResult value
-     *
-     * @return self|null
      */
-    public function getGetNationalTransitTimeResult()
+    public function getGetNationalTransitTimeResult(): ?self
     {
         return $this->GetNationalTransitTimeResult;
     }
 
     /**
      * Set GetNationalTransitTimeResult value
-     *
-     * @return self
      */
-    public function setGetNationalTransitTimeResult(?self $getNationalTransitTimeResult = null)
+    public function setGetNationalTransitTimeResult(?self $getNationalTransitTimeResult = null): self
     {
         $this->GetNationalTransitTimeResult = $getNationalTransitTimeResult;
+
         return $this;
     }
 }

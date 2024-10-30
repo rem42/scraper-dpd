@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for GetNumberRangeBc StructType
  */
+#[\AllowDynamicProperties]
 class GetNumberRangeBc extends AbstractStructBase
 {
     /**
@@ -14,10 +15,8 @@ class GetNumberRangeBc extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var NumberRangeBcRequest
      */
-    public $request;
+    protected ?NumberRangeBcRequest $request = null;
 
     /**
      * Constructor method for GetNumberRangeBc
@@ -33,22 +32,19 @@ class GetNumberRangeBc extends AbstractStructBase
 
     /**
      * Get request value
-     *
-     * @return NumberRangeBcRequest|null
      */
-    public function getRequest()
+    public function getRequest(): ?NumberRangeBcRequest
     {
         return $this->request;
     }
 
     /**
      * Set request value
-     *
-     * @return self
      */
-    public function setRequest(?NumberRangeBcRequest $request = null)
+    public function setRequest(?NumberRangeBcRequest $request = null): self
     {
         $this->request = $request;
+
         return $this;
     }
 }

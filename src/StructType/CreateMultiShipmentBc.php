@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for CreateMultiShipmentBc StructType
  */
+#[\AllowDynamicProperties]
 class CreateMultiShipmentBc extends AbstractStructBase
 {
     /**
@@ -14,10 +15,8 @@ class CreateMultiShipmentBc extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var MultiShipmentRequest
      */
-    public $request;
+    protected ?MultiShipmentRequest $request = null;
 
     /**
      * Constructor method for CreateMultiShipmentBc
@@ -33,22 +32,19 @@ class CreateMultiShipmentBc extends AbstractStructBase
 
     /**
      * Get request value
-     *
-     * @return MultiShipmentRequest|null
      */
-    public function getRequest()
+    public function getRequest(): ?MultiShipmentRequest
     {
         return $this->request;
     }
 
     /**
      * Set request value
-     *
-     * @return self
      */
-    public function setRequest(?MultiShipmentRequest $request = null)
+    public function setRequest(?MultiShipmentRequest $request = null): self
     {
         $this->request = $request;
+
         return $this;
     }
 }

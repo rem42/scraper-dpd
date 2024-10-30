@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for GetCustomerProfileRequest StructType
  */
+#[\AllowDynamicProperties]
 class GetCustomerProfileRequest extends AbstractStructBase
 {
     /**
@@ -14,29 +15,23 @@ class GetCustomerProfileRequest extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var \Scraper\ScraperDPD\ArrayType\ArrayOfCustomer
      */
-    public $Customers;
+    protected ?\Scraper\ScraperDPD\ArrayType\ArrayOfCustomer $Customers = null;
     /**
      * The Language
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $Language;
+    protected ?string $Language = null;
 
     /**
      * Constructor method for GetCustomerProfileRequest
      *
      * @uses GetCustomerProfileRequest::setCustomers()
      * @uses GetCustomerProfileRequest::setLanguage()
-     *
-     * @param string $language
      */
-    public function __construct(?\Scraper\ScraperDPD\ArrayType\ArrayOfCustomer $customers = null, $language = null)
+    public function __construct(?\Scraper\ScraperDPD\ArrayType\ArrayOfCustomer $customers = null, ?string $language = null)
     {
         $this
             ->setCustomers($customers)
@@ -46,49 +41,41 @@ class GetCustomerProfileRequest extends AbstractStructBase
 
     /**
      * Get Customers value
-     *
-     * @return \Scraper\ScraperDPD\ArrayType\ArrayOfCustomer|null
      */
-    public function getCustomers()
+    public function getCustomers(): ?\Scraper\ScraperDPD\ArrayType\ArrayOfCustomer
     {
         return $this->Customers;
     }
 
     /**
      * Set Customers value
-     *
-     * @return self
      */
-    public function setCustomers(?\Scraper\ScraperDPD\ArrayType\ArrayOfCustomer $customers = null)
+    public function setCustomers(?\Scraper\ScraperDPD\ArrayType\ArrayOfCustomer $customers = null): self
     {
         $this->Customers = $customers;
+
         return $this;
     }
 
     /**
      * Get Language value
-     *
-     * @return string|null
      */
-    public function getLanguage()
+    public function getLanguage(): ?string
     {
         return $this->Language;
     }
 
     /**
      * Set Language value
-     *
-     * @param string $language
-     *
-     * @return self
      */
-    public function setLanguage($language = null)
+    public function setLanguage(?string $language = null): self
     {
         // validation for constraint: string
         if (null !== $language && !\is_string($language)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($language, true), \gettype($language)), __LINE__);
         }
         $this->Language = $language;
+
         return $this;
     }
 }

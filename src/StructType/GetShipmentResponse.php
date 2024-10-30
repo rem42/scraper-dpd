@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for GetShipmentResponse StructType
  */
+#[\AllowDynamicProperties]
 class GetShipmentResponse extends AbstractStructBase
 {
     /**
@@ -14,10 +15,8 @@ class GetShipmentResponse extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var ShipmentDataExtended
      */
-    public $GetShipmentResult;
+    protected ?ShipmentDataExtended $GetShipmentResult = null;
 
     /**
      * Constructor method for GetShipmentResponse
@@ -33,22 +32,19 @@ class GetShipmentResponse extends AbstractStructBase
 
     /**
      * Get GetShipmentResult value
-     *
-     * @return ShipmentDataExtended|null
      */
-    public function getGetShipmentResult()
+    public function getGetShipmentResult(): ?ShipmentDataExtended
     {
         return $this->GetShipmentResult;
     }
 
     /**
      * Set GetShipmentResult value
-     *
-     * @return self
      */
-    public function setGetShipmentResult(?ShipmentDataExtended $getShipmentResult = null)
+    public function setGetShipmentResult(?ShipmentDataExtended $getShipmentResult = null): self
     {
         $this->GetShipmentResult = $getShipmentResult;
+
         return $this;
     }
 }

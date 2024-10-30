@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\ServiceType;
 
@@ -13,16 +13,10 @@ class Update extends AbstractSoapClientBase
      * Sets the UserCredentials SoapHeader param
      *
      * @uses AbstractSoapClientBase::setSoapHeader()
-     *
-     * @param string $nameSpace
-     * @param bool   $mustUnderstand
-     * @param string $actor
-     *
-     * @return bool
      */
-    public function setSoapHeaderUserCredentials(\Scraper\ScraperDPD\StructType\UserCredentials $userCredentials, $nameSpace = 'http://www.cargonet.software', $mustUnderstand = false, $actor = null)
+    public function setSoapHeaderUserCredentials(\Scraper\ScraperDPD\StructType\UserCredentials $userCredentials, string $namespace = 'http://www.cargonet.software', bool $mustUnderstand = false, ?string $actor = null): self
     {
-        return $this->setSoapHeader($nameSpace, 'UserCredentials', $userCredentials, $mustUnderstand, $actor);
+        return $this->setSoapHeader($namespace, 'UserCredentials', $userCredentials, $mustUnderstand, $actor);
     }
 
     /**
@@ -35,7 +29,6 @@ class Update extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\UpdateServiceNoticeResponse|bool
@@ -43,10 +36,14 @@ class Update extends AbstractSoapClientBase
     public function UpdateServiceNotice(\Scraper\ScraperDPD\StructType\UpdateServiceNotice $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->UpdateServiceNotice($parameters));
-            return $this->getResult();
+            $this->setResult($resultUpdateServiceNotice = $this->getSoapClient()->__soapCall('UpdateServiceNotice', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultUpdateServiceNotice;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -61,7 +58,6 @@ class Update extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\UpdateRdvShipmentDataForShopResponse|bool
@@ -69,10 +65,14 @@ class Update extends AbstractSoapClientBase
     public function UpdateRdvShipmentDataForShop(\Scraper\ScraperDPD\StructType\UpdateRdvShipmentDataForShop $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->UpdateRdvShipmentDataForShop($parameters));
-            return $this->getResult();
+            $this->setResult($resultUpdateRdvShipmentDataForShop = $this->getSoapClient()->__soapCall('UpdateRdvShipmentDataForShop', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultUpdateRdvShipmentDataForShop;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -88,7 +88,6 @@ class Update extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\UpdateRdvShipmentDataForAgencyPickupResponse|bool
@@ -96,10 +95,14 @@ class Update extends AbstractSoapClientBase
     public function UpdateRdvShipmentDataForAgencyPickup(\Scraper\ScraperDPD\StructType\UpdateRdvShipmentDataForAgencyPickup $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->UpdateRdvShipmentDataForAgencyPickup($parameters));
-            return $this->getResult();
+            $this->setResult($resultUpdateRdvShipmentDataForAgencyPickup = $this->getSoapClient()->__soapCall('UpdateRdvShipmentDataForAgencyPickup', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultUpdateRdvShipmentDataForAgencyPickup;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -114,7 +117,6 @@ class Update extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\UpdateRdvShipmentDataResponse|bool
@@ -122,10 +124,14 @@ class Update extends AbstractSoapClientBase
     public function UpdateRdvShipmentData(\Scraper\ScraperDPD\StructType\UpdateRdvShipmentData $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->UpdateRdvShipmentData($parameters));
-            return $this->getResult();
+            $this->setResult($resultUpdateRdvShipmentData = $this->getSoapClient()->__soapCall('UpdateRdvShipmentData', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultUpdateRdvShipmentData;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -140,7 +146,6 @@ class Update extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\UpdateRdvShipmentDataForPredictResponse|bool
@@ -148,10 +153,14 @@ class Update extends AbstractSoapClientBase
     public function UpdateRdvShipmentDataForPredict(\Scraper\ScraperDPD\StructType\UpdateRdvShipmentDataForPredict $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->UpdateRdvShipmentDataForPredict($parameters));
-            return $this->getResult();
+            $this->setResult($resultUpdateRdvShipmentDataForPredict = $this->getSoapClient()->__soapCall('UpdateRdvShipmentDataForPredict', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultUpdateRdvShipmentDataForPredict;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -166,7 +175,6 @@ class Update extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\UpdateRdvShipmentDataForSafePlaceResponse|bool
@@ -174,10 +182,14 @@ class Update extends AbstractSoapClientBase
     public function UpdateRdvShipmentDataForSafePlace(\Scraper\ScraperDPD\StructType\UpdateRdvShipmentDataForSafePlace $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->UpdateRdvShipmentDataForSafePlace($parameters));
-            return $this->getResult();
+            $this->setResult($resultUpdateRdvShipmentDataForSafePlace = $this->getSoapClient()->__soapCall('UpdateRdvShipmentDataForSafePlace', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultUpdateRdvShipmentDataForSafePlace;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }

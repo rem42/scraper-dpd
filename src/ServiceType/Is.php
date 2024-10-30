@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\ServiceType;
 
@@ -13,16 +13,10 @@ class Is extends AbstractSoapClientBase
      * Sets the UserCredentials SoapHeader param
      *
      * @uses AbstractSoapClientBase::setSoapHeader()
-     *
-     * @param string $nameSpace
-     * @param bool   $mustUnderstand
-     * @param string $actor
-     *
-     * @return bool
      */
-    public function setSoapHeaderUserCredentials(\Scraper\ScraperDPD\StructType\UserCredentials $userCredentials, $nameSpace = 'http://www.cargonet.software', $mustUnderstand = false, $actor = null)
+    public function setSoapHeaderUserCredentials(\Scraper\ScraperDPD\StructType\UserCredentials $userCredentials, string $namespace = 'http://www.cargonet.software', bool $mustUnderstand = false, ?string $actor = null): self
     {
-        return $this->setSoapHeader($nameSpace, 'UserCredentials', $userCredentials, $mustUnderstand, $actor);
+        return $this->setSoapHeader($namespace, 'UserCredentials', $userCredentials, $mustUnderstand, $actor);
     }
 
     /**
@@ -30,7 +24,6 @@ class Is extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\IsAliveResponse|bool
@@ -38,10 +31,14 @@ class Is extends AbstractSoapClientBase
     public function isAlive(\Scraper\ScraperDPD\StructType\IsAlive $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->isAlive($parameters));
-            return $this->getResult();
+            $this->setResult($resultIsAlive = $this->getSoapClient()->__soapCall('isAlive', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultIsAlive;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -56,7 +53,6 @@ class Is extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\IsPickableOnDateResponse|bool
@@ -64,10 +60,14 @@ class Is extends AbstractSoapClientBase
     public function IsPickableOnDate(\Scraper\ScraperDPD\StructType\IsPickableOnDate $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->IsPickableOnDate($parameters));
-            return $this->getResult();
+            $this->setResult($resultIsPickableOnDate = $this->getSoapClient()->__soapCall('IsPickableOnDate', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultIsPickableOnDate;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -82,7 +82,6 @@ class Is extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\IsDeliverableOnDateResponse|bool
@@ -90,10 +89,14 @@ class Is extends AbstractSoapClientBase
     public function IsDeliverableOnDate(\Scraper\ScraperDPD\StructType\IsDeliverableOnDate $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->IsDeliverableOnDate($parameters));
-            return $this->getResult();
+            $this->setResult($resultIsDeliverableOnDate = $this->getSoapClient()->__soapCall('IsDeliverableOnDate', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultIsDeliverableOnDate;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -108,7 +111,6 @@ class Is extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\IsCustomerBlockedResponse|bool
@@ -116,10 +118,14 @@ class Is extends AbstractSoapClientBase
     public function IsCustomerBlocked(\Scraper\ScraperDPD\StructType\IsCustomerBlocked $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->IsCustomerBlocked($parameters));
-            return $this->getResult();
+            $this->setResult($resultIsCustomerBlocked = $this->getSoapClient()->__soapCall('IsCustomerBlocked', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultIsCustomerBlocked;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }

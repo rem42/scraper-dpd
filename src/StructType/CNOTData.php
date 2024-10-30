@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for CNOTData StructType
  */
+#[\AllowDynamicProperties]
 class CNOTData extends AbstractStructBase
 {
     /**
@@ -14,73 +15,57 @@ class CNOTData extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var int
      */
-    public $Depot;
+    protected int $Depot;
     /**
      * The TimeStamp
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var string
      */
-    public $TimeStamp;
+    protected string $TimeStamp;
     /**
      * The HardwareId
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $HardwareId;
+    protected ?string $HardwareId = null;
     /**
      * The TourNumber
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $TourNumber;
+    protected ?string $TourNumber = null;
     /**
      * The Status
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $Status;
+    protected ?string $Status = null;
     /**
      * The Tasks
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var \Scraper\ScraperDPD\ArrayType\ArrayOfTask
      */
-    public $Tasks;
+    protected ?\Scraper\ScraperDPD\ArrayType\ArrayOfTask $Tasks = null;
     /**
      * The Locations
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var \Scraper\ScraperDPD\ArrayType\ArrayOfLocation
      */
-    public $Locations;
+    protected ?\Scraper\ScraperDPD\ArrayType\ArrayOfLocation $Locations = null;
     /**
      * The PhoneCalls
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var \Scraper\ScraperDPD\ArrayType\ArrayOfPhoneCall
      */
-    public $PhoneCalls;
+    protected ?\Scraper\ScraperDPD\ArrayType\ArrayOfPhoneCall $PhoneCalls = null;
 
     /**
      * Constructor method for CNOTData
@@ -93,14 +78,8 @@ class CNOTData extends AbstractStructBase
      * @uses CNOTData::setTasks()
      * @uses CNOTData::setLocations()
      * @uses CNOTData::setPhoneCalls()
-     *
-     * @param int    $depot
-     * @param string $timeStamp
-     * @param string $hardwareId
-     * @param string $tourNumber
-     * @param string $status
      */
-    public function __construct($depot = null, $timeStamp = null, $hardwareId = null, $tourNumber = null, $status = null, ?\Scraper\ScraperDPD\ArrayType\ArrayOfTask $tasks = null, ?\Scraper\ScraperDPD\ArrayType\ArrayOfLocation $locations = null, ?\Scraper\ScraperDPD\ArrayType\ArrayOfPhoneCall $phoneCalls = null)
+    public function __construct(int $depot, string $timeStamp, ?string $hardwareId = null, ?string $tourNumber = null, ?string $status = null, ?\Scraper\ScraperDPD\ArrayType\ArrayOfTask $tasks = null, ?\Scraper\ScraperDPD\ArrayType\ArrayOfLocation $locations = null, ?\Scraper\ScraperDPD\ArrayType\ArrayOfPhoneCall $phoneCalls = null)
     {
         $this
             ->setDepot($depot)
@@ -116,199 +95,165 @@ class CNOTData extends AbstractStructBase
 
     /**
      * Get Depot value
-     *
-     * @return int
      */
-    public function getDepot()
+    public function getDepot(): int
     {
         return $this->Depot;
     }
 
     /**
      * Set Depot value
-     *
-     * @param int $depot
-     *
-     * @return self
      */
-    public function setDepot($depot = null)
+    public function setDepot(int $depot): self
     {
         // validation for constraint: int
         if (null !== $depot && !(\is_int($depot) || ctype_digit($depot))) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($depot, true), \gettype($depot)), __LINE__);
         }
         $this->Depot = $depot;
+
         return $this;
     }
 
     /**
      * Get TimeStamp value
-     *
-     * @return string
      */
-    public function getTimeStamp()
+    public function getTimeStamp(): string
     {
         return $this->TimeStamp;
     }
 
     /**
      * Set TimeStamp value
-     *
-     * @param string $timeStamp
-     *
-     * @return self
      */
-    public function setTimeStamp($timeStamp = null)
+    public function setTimeStamp(string $timeStamp): self
     {
         // validation for constraint: string
         if (null !== $timeStamp && !\is_string($timeStamp)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($timeStamp, true), \gettype($timeStamp)), __LINE__);
         }
         $this->TimeStamp = $timeStamp;
+
         return $this;
     }
 
     /**
      * Get HardwareId value
-     *
-     * @return string|null
      */
-    public function getHardwareId()
+    public function getHardwareId(): ?string
     {
         return $this->HardwareId;
     }
 
     /**
      * Set HardwareId value
-     *
-     * @param string $hardwareId
-     *
-     * @return self
      */
-    public function setHardwareId($hardwareId = null)
+    public function setHardwareId(?string $hardwareId = null): self
     {
         // validation for constraint: string
         if (null !== $hardwareId && !\is_string($hardwareId)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($hardwareId, true), \gettype($hardwareId)), __LINE__);
         }
         $this->HardwareId = $hardwareId;
+
         return $this;
     }
 
     /**
      * Get TourNumber value
-     *
-     * @return string|null
      */
-    public function getTourNumber()
+    public function getTourNumber(): ?string
     {
         return $this->TourNumber;
     }
 
     /**
      * Set TourNumber value
-     *
-     * @param string $tourNumber
-     *
-     * @return self
      */
-    public function setTourNumber($tourNumber = null)
+    public function setTourNumber(?string $tourNumber = null): self
     {
         // validation for constraint: string
         if (null !== $tourNumber && !\is_string($tourNumber)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($tourNumber, true), \gettype($tourNumber)), __LINE__);
         }
         $this->TourNumber = $tourNumber;
+
         return $this;
     }
 
     /**
      * Get Status value
-     *
-     * @return string|null
      */
-    public function getStatus()
+    public function getStatus(): ?string
     {
         return $this->Status;
     }
 
     /**
      * Set Status value
-     *
-     * @param string $status
-     *
-     * @return self
      */
-    public function setStatus($status = null)
+    public function setStatus(?string $status = null): self
     {
         // validation for constraint: string
         if (null !== $status && !\is_string($status)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($status, true), \gettype($status)), __LINE__);
         }
         $this->Status = $status;
+
         return $this;
     }
 
     /**
      * Get Tasks value
-     *
-     * @return \Scraper\ScraperDPD\ArrayType\ArrayOfTask|null
      */
-    public function getTasks()
+    public function getTasks(): ?\Scraper\ScraperDPD\ArrayType\ArrayOfTask
     {
         return $this->Tasks;
     }
 
     /**
      * Set Tasks value
-     *
-     * @return self
      */
-    public function setTasks(?\Scraper\ScraperDPD\ArrayType\ArrayOfTask $tasks = null)
+    public function setTasks(?\Scraper\ScraperDPD\ArrayType\ArrayOfTask $tasks = null): self
     {
         $this->Tasks = $tasks;
+
         return $this;
     }
 
     /**
      * Get Locations value
-     *
-     * @return \Scraper\ScraperDPD\ArrayType\ArrayOfLocation|null
      */
-    public function getLocations()
+    public function getLocations(): ?\Scraper\ScraperDPD\ArrayType\ArrayOfLocation
     {
         return $this->Locations;
     }
 
     /**
      * Set Locations value
-     *
-     * @return self
      */
-    public function setLocations(?\Scraper\ScraperDPD\ArrayType\ArrayOfLocation $locations = null)
+    public function setLocations(?\Scraper\ScraperDPD\ArrayType\ArrayOfLocation $locations = null): self
     {
         $this->Locations = $locations;
+
         return $this;
     }
 
     /**
      * Get PhoneCalls value
-     *
-     * @return \Scraper\ScraperDPD\ArrayType\ArrayOfPhoneCall|null
      */
-    public function getPhoneCalls()
+    public function getPhoneCalls(): ?\Scraper\ScraperDPD\ArrayType\ArrayOfPhoneCall
     {
         return $this->PhoneCalls;
     }
 
     /**
      * Set PhoneCalls value
-     *
-     * @return self
      */
-    public function setPhoneCalls(?\Scraper\ScraperDPD\ArrayType\ArrayOfPhoneCall $phoneCalls = null)
+    public function setPhoneCalls(?\Scraper\ScraperDPD\ArrayType\ArrayOfPhoneCall $phoneCalls = null): self
     {
         $this->PhoneCalls = $phoneCalls;
+
         return $this;
     }
 }

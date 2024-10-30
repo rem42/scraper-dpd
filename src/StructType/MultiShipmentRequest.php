@@ -1,10 +1,11 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
 /**
  * This class stands for MultiShipmentRequest StructType
  */
+#[\AllowDynamicProperties]
 class MultiShipmentRequest extends ShipmentRequestBase
 {
     /**
@@ -12,19 +13,15 @@ class MultiShipmentRequest extends ShipmentRequestBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var MultiServices
      */
-    public $services;
+    protected ?MultiServices $services = null;
     /**
      * The slaves
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var \Scraper\ScraperDPD\ArrayType\ArrayOfSlaveRequest
      */
-    public $slaves;
+    protected ?\Scraper\ScraperDPD\ArrayType\ArrayOfSlaveRequest $slaves = null;
 
     /**
      * Constructor method for MultiShipmentRequest
@@ -42,43 +39,37 @@ class MultiShipmentRequest extends ShipmentRequestBase
 
     /**
      * Get services value
-     *
-     * @return MultiServices|null
      */
-    public function getServices()
+    public function getServices(): ?MultiServices
     {
         return $this->services;
     }
 
     /**
      * Set services value
-     *
-     * @return self
      */
-    public function setServices(?MultiServices $services = null)
+    public function setServices(?MultiServices $services = null): self
     {
         $this->services = $services;
+
         return $this;
     }
 
     /**
      * Get slaves value
-     *
-     * @return \Scraper\ScraperDPD\ArrayType\ArrayOfSlaveRequest|null
      */
-    public function getSlaves()
+    public function getSlaves(): ?\Scraper\ScraperDPD\ArrayType\ArrayOfSlaveRequest
     {
         return $this->slaves;
     }
 
     /**
      * Set slaves value
-     *
-     * @return self
      */
-    public function setSlaves(?\Scraper\ScraperDPD\ArrayType\ArrayOfSlaveRequest $slaves = null)
+    public function setSlaves(?\Scraper\ScraperDPD\ArrayType\ArrayOfSlaveRequest $slaves = null): self
     {
         $this->slaves = $slaves;
+
         return $this;
     }
 }

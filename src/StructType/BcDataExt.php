@@ -1,10 +1,11 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
 /**
  * This class stands for BcDataExt StructType
  */
+#[\AllowDynamicProperties]
 class BcDataExt extends BcData
 {
     /**
@@ -12,19 +13,15 @@ class BcDataExt extends BcData
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $BarCode;
+    protected ?string $BarCode = null;
 
     /**
      * Constructor method for BcDataExt
      *
      * @uses BcDataExt::setBarCode()
-     *
-     * @param string $barCode
      */
-    public function __construct($barCode = null)
+    public function __construct(?string $barCode = null)
     {
         $this
             ->setBarCode($barCode)
@@ -33,28 +30,23 @@ class BcDataExt extends BcData
 
     /**
      * Get BarCode value
-     *
-     * @return string|null
      */
-    public function getBarCode()
+    public function getBarCode(): ?string
     {
         return $this->BarCode;
     }
 
     /**
      * Set BarCode value
-     *
-     * @param string $barCode
-     *
-     * @return self
      */
-    public function setBarCode($barCode = null)
+    public function setBarCode(?string $barCode = null): self
     {
         // validation for constraint: string
         if (null !== $barCode && !\is_string($barCode)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($barCode, true), \gettype($barCode)), __LINE__);
         }
         $this->BarCode = $barCode;
+
         return $this;
     }
 }

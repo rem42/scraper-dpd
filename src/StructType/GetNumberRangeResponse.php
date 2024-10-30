@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for GetNumberRangeResponse StructType
  */
+#[\AllowDynamicProperties]
 class GetNumberRangeResponse extends AbstractStructBase
 {
     /**
@@ -14,10 +15,8 @@ class GetNumberRangeResponse extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var NumberRangeResponse
      */
-    public $GetNumberRangeResult;
+    protected ?NumberRangeResponse $GetNumberRangeResult = null;
 
     /**
      * Constructor method for GetNumberRangeResponse
@@ -33,22 +32,19 @@ class GetNumberRangeResponse extends AbstractStructBase
 
     /**
      * Get GetNumberRangeResult value
-     *
-     * @return NumberRangeResponse|null
      */
-    public function getGetNumberRangeResult()
+    public function getGetNumberRangeResult(): ?NumberRangeResponse
     {
         return $this->GetNumberRangeResult;
     }
 
     /**
      * Set GetNumberRangeResult value
-     *
-     * @return self
      */
-    public function setGetNumberRangeResult(?NumberRangeResponse $getNumberRangeResult = null)
+    public function setGetNumberRangeResult(?NumberRangeResponse $getNumberRangeResult = null): self
     {
         $this->GetNumberRangeResult = $getNumberRangeResult;
+
         return $this;
     }
 }

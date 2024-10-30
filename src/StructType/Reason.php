@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for Reason StructType
  */
+#[\AllowDynamicProperties]
 class Reason extends AbstractStructBase
 {
     /**
@@ -14,30 +15,23 @@ class Reason extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $Language;
+    protected ?string $Language = null;
     /**
      * The Text
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $Text;
+    protected ?string $Text = null;
 
     /**
      * Constructor method for Reason
      *
      * @uses Reason::setLanguage()
      * @uses Reason::setText()
-     *
-     * @param string $language
-     * @param string $text
      */
-    public function __construct($language = null, $text = null)
+    public function __construct(?string $language = null, ?string $text = null)
     {
         $this
             ->setLanguage($language)
@@ -47,55 +41,45 @@ class Reason extends AbstractStructBase
 
     /**
      * Get Language value
-     *
-     * @return string|null
      */
-    public function getLanguage()
+    public function getLanguage(): ?string
     {
         return $this->Language;
     }
 
     /**
      * Set Language value
-     *
-     * @param string $language
-     *
-     * @return self
      */
-    public function setLanguage($language = null)
+    public function setLanguage(?string $language = null): self
     {
         // validation for constraint: string
         if (null !== $language && !\is_string($language)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($language, true), \gettype($language)), __LINE__);
         }
         $this->Language = $language;
+
         return $this;
     }
 
     /**
      * Get Text value
-     *
-     * @return string|null
      */
-    public function getText()
+    public function getText(): ?string
     {
         return $this->Text;
     }
 
     /**
      * Set Text value
-     *
-     * @param string $text
-     *
-     * @return self
      */
-    public function setText($text = null)
+    public function setText(?string $text = null): self
     {
         // validation for constraint: string
         if (null !== $text && !\is_string($text)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($text, true), \gettype($text)), __LINE__);
         }
         $this->Text = $text;
+
         return $this;
     }
 }

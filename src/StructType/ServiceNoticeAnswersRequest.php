@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for ServiceNoticeAnswersRequest StructType
  */
+#[\AllowDynamicProperties]
 class ServiceNoticeAnswersRequest extends AbstractStructBase
 {
     /**
@@ -14,30 +15,23 @@ class ServiceNoticeAnswersRequest extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var string
      */
-    public $type;
+    protected string $type;
     /**
      * The language
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $language;
+    protected ?string $language = null;
 
     /**
      * Constructor method for ServiceNoticeAnswersRequest
      *
      * @uses ServiceNoticeAnswersRequest::setType()
      * @uses ServiceNoticeAnswersRequest::setLanguage()
-     *
-     * @param string $type
-     * @param string $language
      */
-    public function __construct($type = null, $language = null)
+    public function __construct(string $type, ?string $language = null)
     {
         $this
             ->setType($type)
@@ -47,10 +41,8 @@ class ServiceNoticeAnswersRequest extends AbstractStructBase
 
     /**
      * Get type value
-     *
-     * @return string
      */
-    public function getType()
+    public function getType(): string
     {
         return $this->type;
     }
@@ -61,46 +53,38 @@ class ServiceNoticeAnswersRequest extends AbstractStructBase
      * @uses \Scraper\ScraperDPD\EnumType\ServiceNoticeType::valueIsValid()
      * @uses \Scraper\ScraperDPD\EnumType\ServiceNoticeType::getValidValues()
      *
-     * @param string $type
-     *
      * @throws \InvalidArgumentException
-     *
-     * @return self
      */
-    public function setType($type = null)
+    public function setType(string $type): self
     {
         // validation for constraint: enumeration
         if (!\Scraper\ScraperDPD\EnumType\ServiceNoticeType::valueIsValid($type)) {
             throw new \InvalidArgumentException(sprintf('Invalid value(s) %s, please use one of: %s from enumeration class \Scraper\ScraperDPD\EnumType\ServiceNoticeType', \is_array($type) ? implode(', ', $type) : var_export($type, true), implode(', ', \Scraper\ScraperDPD\EnumType\ServiceNoticeType::getValidValues())), __LINE__);
         }
         $this->type = $type;
+
         return $this;
     }
 
     /**
      * Get language value
-     *
-     * @return string|null
      */
-    public function getLanguage()
+    public function getLanguage(): ?string
     {
         return $this->language;
     }
 
     /**
      * Set language value
-     *
-     * @param string $language
-     *
-     * @return self
      */
-    public function setLanguage($language = null)
+    public function setLanguage(?string $language = null): self
     {
         // validation for constraint: string
         if (null !== $language && !\is_string($language)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($language, true), \gettype($language)), __LINE__);
         }
         $this->language = $language;
+
         return $this;
     }
 }

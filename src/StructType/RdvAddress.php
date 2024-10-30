@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for RdvAddress StructType
  */
+#[\AllowDynamicProperties]
 class RdvAddress extends AbstractStructBase
 {
     /**
@@ -14,73 +15,57 @@ class RdvAddress extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $Name;
+    protected ?string $Name = null;
     /**
      * The CountryPrefix
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $CountryPrefix;
+    protected ?string $CountryPrefix = null;
     /**
      * The ZipCode
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $ZipCode;
+    protected ?string $ZipCode = null;
     /**
      * The City
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $City;
+    protected ?string $City = null;
     /**
      * The Street
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $Street;
+    protected ?string $Street = null;
     /**
      * The PhoneNumber
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $PhoneNumber;
+    protected ?string $PhoneNumber = null;
     /**
      * The GeoCoord_Y
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $GeoCoord_Y;
+    protected ?string $GeoCoord_Y = null;
     /**
      * The GeoCoord_X
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $GeoCoord_X;
+    protected ?string $GeoCoord_X = null;
 
     /**
      * Constructor method for RdvAddress
@@ -93,17 +78,8 @@ class RdvAddress extends AbstractStructBase
      * @uses RdvAddress::setPhoneNumber()
      * @uses RdvAddress::setGeoCoord_Y()
      * @uses RdvAddress::setGeoCoord_X()
-     *
-     * @param string $name
-     * @param string $countryPrefix
-     * @param string $zipCode
-     * @param string $city
-     * @param string $street
-     * @param string $phoneNumber
-     * @param string $geoCoord_Y
-     * @param string $geoCoord_X
      */
-    public function __construct($name = null, $countryPrefix = null, $zipCode = null, $city = null, $street = null, $phoneNumber = null, $geoCoord_Y = null, $geoCoord_X = null)
+    public function __construct(?string $name = null, ?string $countryPrefix = null, ?string $zipCode = null, ?string $city = null, ?string $street = null, ?string $phoneNumber = null, ?string $geoCoord_Y = null, ?string $geoCoord_X = null)
     {
         $this
             ->setName($name)
@@ -119,217 +95,177 @@ class RdvAddress extends AbstractStructBase
 
     /**
      * Get Name value
-     *
-     * @return string|null
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->Name;
     }
 
     /**
      * Set Name value
-     *
-     * @param string $name
-     *
-     * @return self
      */
-    public function setName($name = null)
+    public function setName(?string $name = null): self
     {
         // validation for constraint: string
         if (null !== $name && !\is_string($name)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($name, true), \gettype($name)), __LINE__);
         }
         $this->Name = $name;
+
         return $this;
     }
 
     /**
      * Get CountryPrefix value
-     *
-     * @return string|null
      */
-    public function getCountryPrefix()
+    public function getCountryPrefix(): ?string
     {
         return $this->CountryPrefix;
     }
 
     /**
      * Set CountryPrefix value
-     *
-     * @param string $countryPrefix
-     *
-     * @return self
      */
-    public function setCountryPrefix($countryPrefix = null)
+    public function setCountryPrefix(?string $countryPrefix = null): self
     {
         // validation for constraint: string
         if (null !== $countryPrefix && !\is_string($countryPrefix)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($countryPrefix, true), \gettype($countryPrefix)), __LINE__);
         }
         $this->CountryPrefix = $countryPrefix;
+
         return $this;
     }
 
     /**
      * Get ZipCode value
-     *
-     * @return string|null
      */
-    public function getZipCode()
+    public function getZipCode(): ?string
     {
         return $this->ZipCode;
     }
 
     /**
      * Set ZipCode value
-     *
-     * @param string $zipCode
-     *
-     * @return self
      */
-    public function setZipCode($zipCode = null)
+    public function setZipCode(?string $zipCode = null): self
     {
         // validation for constraint: string
         if (null !== $zipCode && !\is_string($zipCode)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($zipCode, true), \gettype($zipCode)), __LINE__);
         }
         $this->ZipCode = $zipCode;
+
         return $this;
     }
 
     /**
      * Get City value
-     *
-     * @return string|null
      */
-    public function getCity()
+    public function getCity(): ?string
     {
         return $this->City;
     }
 
     /**
      * Set City value
-     *
-     * @param string $city
-     *
-     * @return self
      */
-    public function setCity($city = null)
+    public function setCity(?string $city = null): self
     {
         // validation for constraint: string
         if (null !== $city && !\is_string($city)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($city, true), \gettype($city)), __LINE__);
         }
         $this->City = $city;
+
         return $this;
     }
 
     /**
      * Get Street value
-     *
-     * @return string|null
      */
-    public function getStreet()
+    public function getStreet(): ?string
     {
         return $this->Street;
     }
 
     /**
      * Set Street value
-     *
-     * @param string $street
-     *
-     * @return self
      */
-    public function setStreet($street = null)
+    public function setStreet(?string $street = null): self
     {
         // validation for constraint: string
         if (null !== $street && !\is_string($street)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($street, true), \gettype($street)), __LINE__);
         }
         $this->Street = $street;
+
         return $this;
     }
 
     /**
      * Get PhoneNumber value
-     *
-     * @return string|null
      */
-    public function getPhoneNumber()
+    public function getPhoneNumber(): ?string
     {
         return $this->PhoneNumber;
     }
 
     /**
      * Set PhoneNumber value
-     *
-     * @param string $phoneNumber
-     *
-     * @return self
      */
-    public function setPhoneNumber($phoneNumber = null)
+    public function setPhoneNumber(?string $phoneNumber = null): self
     {
         // validation for constraint: string
         if (null !== $phoneNumber && !\is_string($phoneNumber)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($phoneNumber, true), \gettype($phoneNumber)), __LINE__);
         }
         $this->PhoneNumber = $phoneNumber;
+
         return $this;
     }
 
     /**
      * Get GeoCoord_Y value
-     *
-     * @return string|null
      */
-    public function getGeoCoord_Y()
+    public function getGeoCoord_Y(): ?string
     {
         return $this->GeoCoord_Y;
     }
 
     /**
      * Set GeoCoord_Y value
-     *
-     * @param string $geoCoord_Y
-     *
-     * @return self
      */
-    public function setGeoCoord_Y($geoCoord_Y = null)
+    public function setGeoCoord_Y(?string $geoCoord_Y = null): self
     {
         // validation for constraint: string
         if (null !== $geoCoord_Y && !\is_string($geoCoord_Y)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($geoCoord_Y, true), \gettype($geoCoord_Y)), __LINE__);
         }
         $this->GeoCoord_Y = $geoCoord_Y;
+
         return $this;
     }
 
     /**
      * Get GeoCoord_X value
-     *
-     * @return string|null
      */
-    public function getGeoCoord_X()
+    public function getGeoCoord_X(): ?string
     {
         return $this->GeoCoord_X;
     }
 
     /**
      * Set GeoCoord_X value
-     *
-     * @param string $geoCoord_X
-     *
-     * @return self
      */
-    public function setGeoCoord_X($geoCoord_X = null)
+    public function setGeoCoord_X(?string $geoCoord_X = null): self
     {
         // validation for constraint: string
         if (null !== $geoCoord_X && !\is_string($geoCoord_X)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($geoCoord_X, true), \gettype($geoCoord_X)), __LINE__);
         }
         $this->GeoCoord_X = $geoCoord_X;
+
         return $this;
     }
 }

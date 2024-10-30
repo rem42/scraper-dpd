@@ -1,10 +1,11 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
 /**
  * This class stands for RetourShipmentDataBc StructType
  */
+#[\AllowDynamicProperties]
 class RetourShipmentDataBc extends ShipmentDataBc
 {
     /**
@@ -12,10 +13,8 @@ class RetourShipmentDataBc extends ShipmentDataBc
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var RetourServices
      */
-    public $services;
+    protected ?RetourServices $services = null;
 
     /**
      * Constructor method for RetourShipmentDataBc
@@ -31,22 +30,19 @@ class RetourShipmentDataBc extends ShipmentDataBc
 
     /**
      * Get services value
-     *
-     * @return RetourServices|null
      */
-    public function getServices()
+    public function getServices(): ?RetourServices
     {
         return $this->services;
     }
 
     /**
      * Set services value
-     *
-     * @return self
      */
-    public function setServices(?RetourServices $services = null)
+    public function setServices(?RetourServices $services = null): self
     {
         $this->services = $services;
+
         return $this;
     }
 }

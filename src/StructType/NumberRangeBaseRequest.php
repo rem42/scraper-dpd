@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for NumberRangeBaseRequest StructType
  */
+#[\AllowDynamicProperties]
 abstract class NumberRangeBaseRequest extends AbstractStructBase
 {
     /**
@@ -14,37 +15,29 @@ abstract class NumberRangeBaseRequest extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var int
      */
-    public $CustomerCenterNumber;
+    protected int $CustomerCenterNumber;
     /**
      * The CustomerNumber
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var int
      */
-    public $CustomerNumber;
+    protected int $CustomerNumber;
     /**
      * The ClientID
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $ClientID;
+    protected ?string $ClientID = null;
     /**
      * The NumberRangeType
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $NumberRangeType;
+    protected ?string $NumberRangeType = null;
 
     /**
      * Constructor method for NumberRangeBaseRequest
@@ -53,13 +46,8 @@ abstract class NumberRangeBaseRequest extends AbstractStructBase
      * @uses NumberRangeBaseRequest::setCustomerNumber()
      * @uses NumberRangeBaseRequest::setClientID()
      * @uses NumberRangeBaseRequest::setNumberRangeType()
-     *
-     * @param int    $customerCenterNumber
-     * @param int    $customerNumber
-     * @param string $clientID
-     * @param string $numberRangeType
      */
-    public function __construct($customerCenterNumber = null, $customerNumber = null, $clientID = null, $numberRangeType = null)
+    public function __construct(int $customerCenterNumber, int $customerNumber, ?string $clientID = null, ?string $numberRangeType = null)
     {
         $this
             ->setCustomerCenterNumber($customerCenterNumber)
@@ -71,109 +59,89 @@ abstract class NumberRangeBaseRequest extends AbstractStructBase
 
     /**
      * Get CustomerCenterNumber value
-     *
-     * @return int
      */
-    public function getCustomerCenterNumber()
+    public function getCustomerCenterNumber(): int
     {
         return $this->CustomerCenterNumber;
     }
 
     /**
      * Set CustomerCenterNumber value
-     *
-     * @param int $customerCenterNumber
-     *
-     * @return self
      */
-    public function setCustomerCenterNumber($customerCenterNumber = null)
+    public function setCustomerCenterNumber(int $customerCenterNumber): self
     {
         // validation for constraint: int
         if (null !== $customerCenterNumber && !(\is_int($customerCenterNumber) || ctype_digit($customerCenterNumber))) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($customerCenterNumber, true), \gettype($customerCenterNumber)), __LINE__);
         }
         $this->CustomerCenterNumber = $customerCenterNumber;
+
         return $this;
     }
 
     /**
      * Get CustomerNumber value
-     *
-     * @return int
      */
-    public function getCustomerNumber()
+    public function getCustomerNumber(): int
     {
         return $this->CustomerNumber;
     }
 
     /**
      * Set CustomerNumber value
-     *
-     * @param int $customerNumber
-     *
-     * @return self
      */
-    public function setCustomerNumber($customerNumber = null)
+    public function setCustomerNumber(int $customerNumber): self
     {
         // validation for constraint: int
         if (null !== $customerNumber && !(\is_int($customerNumber) || ctype_digit($customerNumber))) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($customerNumber, true), \gettype($customerNumber)), __LINE__);
         }
         $this->CustomerNumber = $customerNumber;
+
         return $this;
     }
 
     /**
      * Get ClientID value
-     *
-     * @return string|null
      */
-    public function getClientID()
+    public function getClientID(): ?string
     {
         return $this->ClientID;
     }
 
     /**
      * Set ClientID value
-     *
-     * @param string $clientID
-     *
-     * @return self
      */
-    public function setClientID($clientID = null)
+    public function setClientID(?string $clientID = null): self
     {
         // validation for constraint: string
         if (null !== $clientID && !\is_string($clientID)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($clientID, true), \gettype($clientID)), __LINE__);
         }
         $this->ClientID = $clientID;
+
         return $this;
     }
 
     /**
      * Get NumberRangeType value
-     *
-     * @return string|null
      */
-    public function getNumberRangeType()
+    public function getNumberRangeType(): ?string
     {
         return $this->NumberRangeType;
     }
 
     /**
      * Set NumberRangeType value
-     *
-     * @param string $numberRangeType
-     *
-     * @return self
      */
-    public function setNumberRangeType($numberRangeType = null)
+    public function setNumberRangeType(?string $numberRangeType = null): self
     {
         // validation for constraint: string
         if (null !== $numberRangeType && !\is_string($numberRangeType)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($numberRangeType, true), \gettype($numberRangeType)), __LINE__);
         }
         $this->NumberRangeType = $numberRangeType;
+
         return $this;
     }
 }

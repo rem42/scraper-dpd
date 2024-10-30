@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for VerifyClientResponse StructType
  */
+#[\AllowDynamicProperties]
 class VerifyClientResponse extends AbstractStructBase
 {
     /**
@@ -14,10 +15,8 @@ class VerifyClientResponse extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var VerifyResponse
      */
-    public $VerifyClientResult;
+    protected ?VerifyResponse $VerifyClientResult = null;
 
     /**
      * Constructor method for VerifyClientResponse
@@ -33,22 +32,19 @@ class VerifyClientResponse extends AbstractStructBase
 
     /**
      * Get VerifyClientResult value
-     *
-     * @return VerifyResponse|null
      */
-    public function getVerifyClientResult()
+    public function getVerifyClientResult(): ?VerifyResponse
     {
         return $this->VerifyClientResult;
     }
 
     /**
      * Set VerifyClientResult value
-     *
-     * @return self
      */
-    public function setVerifyClientResult(?VerifyResponse $verifyClientResult = null)
+    public function setVerifyClientResult(?VerifyResponse $verifyClientResult = null): self
     {
         $this->VerifyClientResult = $verifyClientResult;
+
         return $this;
     }
 }

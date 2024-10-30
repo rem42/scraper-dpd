@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -9,6 +9,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * Meta information extracted from the WSDL
  * - type: tns:UserCredentials
  */
+#[\AllowDynamicProperties]
 class UserCredentials extends AbstractStructBase
 {
     /**
@@ -16,30 +17,23 @@ class UserCredentials extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $userid;
+    protected ?string $userid = null;
     /**
      * The password
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $password;
+    protected ?string $password = null;
 
     /**
      * Constructor method for UserCredentials
      *
      * @uses UserCredentials::setUserid()
      * @uses UserCredentials::setPassword()
-     *
-     * @param string $userid
-     * @param string $password
      */
-    public function __construct($userid = null, $password = null)
+    public function __construct(?string $userid = null, ?string $password = null)
     {
         $this
             ->setUserid($userid)
@@ -49,55 +43,45 @@ class UserCredentials extends AbstractStructBase
 
     /**
      * Get userid value
-     *
-     * @return string|null
      */
-    public function getUserid()
+    public function getUserid(): ?string
     {
         return $this->userid;
     }
 
     /**
      * Set userid value
-     *
-     * @param string $userid
-     *
-     * @return self
      */
-    public function setUserid($userid = null)
+    public function setUserid(?string $userid = null): self
     {
         // validation for constraint: string
         if (null !== $userid && !\is_string($userid)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($userid, true), \gettype($userid)), __LINE__);
         }
         $this->userid = $userid;
+
         return $this;
     }
 
     /**
      * Get password value
-     *
-     * @return string|null
      */
-    public function getPassword()
+    public function getPassword(): ?string
     {
         return $this->password;
     }
 
     /**
      * Set password value
-     *
-     * @param string $password
-     *
-     * @return self
      */
-    public function setPassword($password = null)
+    public function setPassword(?string $password = null): self
     {
         // validation for constraint: string
         if (null !== $password && !\is_string($password)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($password, true), \gettype($password)), __LINE__);
         }
         $this->password = $password;
+
         return $this;
     }
 }

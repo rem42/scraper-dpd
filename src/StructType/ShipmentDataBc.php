@@ -1,10 +1,11 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
 /**
  * This class stands for ShipmentDataBc StructType
  */
+#[\AllowDynamicProperties]
 class ShipmentDataBc extends ShipmentDataBase
 {
     /**
@@ -12,19 +13,15 @@ class ShipmentDataBc extends ShipmentDataBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var BcDataExt
      */
-    public $shipment;
+    protected ?BcDataExt $shipment = null;
     /**
      * The shipmentRetour
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var BcDataExt
      */
-    public $shipmentRetour;
+    protected ?BcDataExt $shipmentRetour = null;
 
     /**
      * Constructor method for ShipmentDataBc
@@ -42,43 +39,37 @@ class ShipmentDataBc extends ShipmentDataBase
 
     /**
      * Get shipment value
-     *
-     * @return BcDataExt|null
      */
-    public function getShipment()
+    public function getShipment(): ?BcDataExt
     {
         return $this->shipment;
     }
 
     /**
      * Set shipment value
-     *
-     * @return self
      */
-    public function setShipment(?BcDataExt $shipment = null)
+    public function setShipment(?BcDataExt $shipment = null): self
     {
         $this->shipment = $shipment;
+
         return $this;
     }
 
     /**
      * Get shipmentRetour value
-     *
-     * @return BcDataExt|null
      */
-    public function getShipmentRetour()
+    public function getShipmentRetour(): ?BcDataExt
     {
         return $this->shipmentRetour;
     }
 
     /**
      * Set shipmentRetour value
-     *
-     * @return self
      */
-    public function setShipmentRetour(?BcDataExt $shipmentRetour = null)
+    public function setShipmentRetour(?BcDataExt $shipmentRetour = null): self
     {
         $this->shipmentRetour = $shipmentRetour;
+
         return $this;
     }
 }

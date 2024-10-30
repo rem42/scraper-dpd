@@ -1,10 +1,11 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
 /**
  * This class stands for GetLabelDataRequest StructType
  */
+#[\AllowDynamicProperties]
 class GetLabelDataRequest extends ShipmentRequestBcBase
 {
     /**
@@ -12,19 +13,15 @@ class GetLabelDataRequest extends ShipmentRequestBcBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var string
      */
-    public $Options;
+    protected string $Options;
 
     /**
      * Constructor method for GetLabelDataRequest
      *
      * @uses GetLabelDataRequest::setOptions()
-     *
-     * @param string $options
      */
-    public function __construct($options = null)
+    public function __construct(string $options)
     {
         $this
             ->setOptions($options)
@@ -33,10 +30,8 @@ class GetLabelDataRequest extends ShipmentRequestBcBase
 
     /**
      * Get Options value
-     *
-     * @return string
      */
-    public function getOptions()
+    public function getOptions(): string
     {
         return $this->Options;
     }
@@ -47,19 +42,16 @@ class GetLabelDataRequest extends ShipmentRequestBcBase
      * @uses \Scraper\ScraperDPD\EnumType\ELabelDataOptions::valueIsValid()
      * @uses \Scraper\ScraperDPD\EnumType\ELabelDataOptions::getValidValues()
      *
-     * @param string $options
-     *
      * @throws \InvalidArgumentException
-     *
-     * @return self
      */
-    public function setOptions($options = null)
+    public function setOptions(string $options): self
     {
         // validation for constraint: enumeration
         if (!\Scraper\ScraperDPD\EnumType\ELabelDataOptions::valueIsValid($options)) {
             throw new \InvalidArgumentException(sprintf('Invalid value(s) %s, please use one of: %s from enumeration class \Scraper\ScraperDPD\EnumType\ELabelDataOptions', \is_array($options) ? implode(', ', $options) : var_export($options, true), implode(', ', \Scraper\ScraperDPD\EnumType\ELabelDataOptions::getValidValues())), __LINE__);
         }
         $this->Options = $options;
+
         return $this;
     }
 }

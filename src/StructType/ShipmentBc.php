@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for ShipmentBc StructType
  */
+#[\AllowDynamicProperties]
 class ShipmentBc extends AbstractStructBase
 {
     /**
@@ -14,29 +15,23 @@ class ShipmentBc extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var string
      */
-    public $Type;
+    protected string $Type;
     /**
      * The Shipment
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var BcDataExt
      */
-    public $Shipment;
+    protected ?BcDataExt $Shipment = null;
 
     /**
      * Constructor method for ShipmentBc
      *
      * @uses ShipmentBc::setType()
      * @uses ShipmentBc::setShipment()
-     *
-     * @param string $type
      */
-    public function __construct($type = null, ?BcDataExt $shipment = null)
+    public function __construct(string $type, ?BcDataExt $shipment = null)
     {
         $this
             ->setType($type)
@@ -46,10 +41,8 @@ class ShipmentBc extends AbstractStructBase
 
     /**
      * Get Type value
-     *
-     * @return string
      */
-    public function getType()
+    public function getType(): string
     {
         return $this->Type;
     }
@@ -60,40 +53,34 @@ class ShipmentBc extends AbstractStructBase
      * @uses \Scraper\ScraperDPD\EnumType\Etype::valueIsValid()
      * @uses \Scraper\ScraperDPD\EnumType\Etype::getValidValues()
      *
-     * @param string $type
-     *
      * @throws \InvalidArgumentException
-     *
-     * @return self
      */
-    public function setType($type = null)
+    public function setType(string $type): self
     {
         // validation for constraint: enumeration
         if (!\Scraper\ScraperDPD\EnumType\Etype::valueIsValid($type)) {
             throw new \InvalidArgumentException(sprintf('Invalid value(s) %s, please use one of: %s from enumeration class \Scraper\ScraperDPD\EnumType\Etype', \is_array($type) ? implode(', ', $type) : var_export($type, true), implode(', ', \Scraper\ScraperDPD\EnumType\Etype::getValidValues())), __LINE__);
         }
         $this->Type = $type;
+
         return $this;
     }
 
     /**
      * Get Shipment value
-     *
-     * @return BcDataExt|null
      */
-    public function getShipment()
+    public function getShipment(): ?BcDataExt
     {
         return $this->Shipment;
     }
 
     /**
      * Set Shipment value
-     *
-     * @return self
      */
-    public function setShipment(?BcDataExt $shipment = null)
+    public function setShipment(?BcDataExt $shipment = null): self
     {
         $this->Shipment = $shipment;
+
         return $this;
     }
 }

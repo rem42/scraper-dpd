@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for CancelServiceNotice StructType
  */
+#[\AllowDynamicProperties]
 class CancelServiceNotice extends AbstractStructBase
 {
     /**
@@ -14,10 +15,8 @@ class CancelServiceNotice extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var CancelServiceNoticeRequest
      */
-    public $request;
+    protected ?CancelServiceNoticeRequest $request = null;
 
     /**
      * Constructor method for CancelServiceNotice
@@ -33,22 +32,19 @@ class CancelServiceNotice extends AbstractStructBase
 
     /**
      * Get request value
-     *
-     * @return CancelServiceNoticeRequest|null
      */
-    public function getRequest()
+    public function getRequest(): ?CancelServiceNoticeRequest
     {
         return $this->request;
     }
 
     /**
      * Set request value
-     *
-     * @return self
      */
-    public function setRequest(?CancelServiceNoticeRequest $request = null)
+    public function setRequest(?CancelServiceNoticeRequest $request = null): self
     {
         $this->request = $request;
+
         return $this;
     }
 }

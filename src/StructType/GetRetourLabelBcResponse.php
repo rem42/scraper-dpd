@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for GetRetourLabelBcResponse StructType
  */
+#[\AllowDynamicProperties]
 class GetRetourLabelBcResponse extends AbstractStructBase
 {
     /**
@@ -14,10 +15,8 @@ class GetRetourLabelBcResponse extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var LabelResponse
      */
-    public $GetRetourLabelBcResult;
+    protected ?LabelResponse $GetRetourLabelBcResult = null;
 
     /**
      * Constructor method for GetRetourLabelBcResponse
@@ -33,22 +32,19 @@ class GetRetourLabelBcResponse extends AbstractStructBase
 
     /**
      * Get GetRetourLabelBcResult value
-     *
-     * @return LabelResponse|null
      */
-    public function getGetRetourLabelBcResult()
+    public function getGetRetourLabelBcResult(): ?LabelResponse
     {
         return $this->GetRetourLabelBcResult;
     }
 
     /**
      * Set GetRetourLabelBcResult value
-     *
-     * @return self
      */
-    public function setGetRetourLabelBcResult(?LabelResponse $getRetourLabelBcResult = null)
+    public function setGetRetourLabelBcResult(?LabelResponse $getRetourLabelBcResult = null): self
     {
         $this->GetRetourLabelBcResult = $getRetourLabelBcResult;
+
         return $this;
     }
 }

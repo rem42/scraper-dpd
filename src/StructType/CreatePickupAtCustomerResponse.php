@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for CreatePickupAtCustomerResponse StructType
  */
+#[\AllowDynamicProperties]
 class CreatePickupAtCustomerResponse extends AbstractStructBase
 {
     /**
@@ -14,10 +15,8 @@ class CreatePickupAtCustomerResponse extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var Parcel
      */
-    public $CreatePickupAtCustomerResult;
+    protected ?Parcel $CreatePickupAtCustomerResult = null;
 
     /**
      * Constructor method for CreatePickupAtCustomerResponse
@@ -33,22 +32,19 @@ class CreatePickupAtCustomerResponse extends AbstractStructBase
 
     /**
      * Get CreatePickupAtCustomerResult value
-     *
-     * @return Parcel|null
      */
-    public function getCreatePickupAtCustomerResult()
+    public function getCreatePickupAtCustomerResult(): ?Parcel
     {
         return $this->CreatePickupAtCustomerResult;
     }
 
     /**
      * Set CreatePickupAtCustomerResult value
-     *
-     * @return self
      */
-    public function setCreatePickupAtCustomerResult(?Parcel $createPickupAtCustomerResult = null)
+    public function setCreatePickupAtCustomerResult(?Parcel $createPickupAtCustomerResult = null): self
     {
         $this->CreatePickupAtCustomerResult = $createPickupAtCustomerResult;
+
         return $this;
     }
 }

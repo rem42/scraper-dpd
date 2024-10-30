@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for CreateShipmentBcResponse StructType
  */
+#[\AllowDynamicProperties]
 class CreateShipmentBcResponse extends AbstractStructBase
 {
     /**
@@ -14,10 +15,8 @@ class CreateShipmentBcResponse extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var \Scraper\ScraperDPD\ArrayType\ArrayOfShipmentBc
      */
-    public $CreateShipmentBcResult;
+    protected ?\Scraper\ScraperDPD\ArrayType\ArrayOfShipmentBc $CreateShipmentBcResult = null;
 
     /**
      * Constructor method for CreateShipmentBcResponse
@@ -33,22 +32,19 @@ class CreateShipmentBcResponse extends AbstractStructBase
 
     /**
      * Get CreateShipmentBcResult value
-     *
-     * @return \Scraper\ScraperDPD\ArrayType\ArrayOfShipmentBc|null
      */
-    public function getCreateShipmentBcResult()
+    public function getCreateShipmentBcResult(): ?\Scraper\ScraperDPD\ArrayType\ArrayOfShipmentBc
     {
         return $this->CreateShipmentBcResult;
     }
 
     /**
      * Set CreateShipmentBcResult value
-     *
-     * @return self
      */
-    public function setCreateShipmentBcResult(?\Scraper\ScraperDPD\ArrayType\ArrayOfShipmentBc $createShipmentBcResult = null)
+    public function setCreateShipmentBcResult(?\Scraper\ScraperDPD\ArrayType\ArrayOfShipmentBc $createShipmentBcResult = null): self
     {
         $this->CreateShipmentBcResult = $createShipmentBcResult;
+
         return $this;
     }
 }

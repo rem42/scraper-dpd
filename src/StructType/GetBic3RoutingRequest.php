@@ -1,10 +1,11 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
 /**
  * This class stands for GetBic3RoutingRequest StructType
  */
+#[\AllowDynamicProperties]
 class GetBic3RoutingRequest extends GeoRoutingRequest
 {
     /**
@@ -12,10 +13,8 @@ class GetBic3RoutingRequest extends GeoRoutingRequest
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var Customer
      */
-    public $customer;
+    protected ?Customer $customer = null;
 
     /**
      * Constructor method for GetBic3RoutingRequest
@@ -31,22 +30,19 @@ class GetBic3RoutingRequest extends GeoRoutingRequest
 
     /**
      * Get customer value
-     *
-     * @return Customer|null
      */
-    public function getCustomer()
+    public function getCustomer(): ?Customer
     {
         return $this->customer;
     }
 
     /**
      * Set customer value
-     *
-     * @return self
      */
-    public function setCustomer(?Customer $customer = null)
+    public function setCustomer(?Customer $customer = null): self
     {
         $this->customer = $customer;
+
         return $this;
     }
 }

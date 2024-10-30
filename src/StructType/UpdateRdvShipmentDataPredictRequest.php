@@ -1,10 +1,11 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
 /**
  * This class stands for UpdateRdvShipmentDataPredictRequest StructType
  */
+#[\AllowDynamicProperties]
 class UpdateRdvShipmentDataPredictRequest extends UpdateRdvShipmentData
 {
     /**
@@ -12,28 +13,22 @@ class UpdateRdvShipmentDataPredictRequest extends UpdateRdvShipmentData
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var RdvDeliveryInfo
      */
-    public $DeliveryInfo;
+    protected ?RdvDeliveryInfo $DeliveryInfo = null;
     /**
      * The EsnInfo
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var RdvEsnInfo
      */
-    public $EsnInfo;
+    protected ?RdvEsnInfo $EsnInfo = null;
     /**
      * The AdditionalData
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var RdvData
      */
-    public $AdditionalData;
+    protected ?RdvData $AdditionalData = null;
 
     /**
      * Constructor method for UpdateRdvShipmentDataPredictRequest
@@ -53,64 +48,55 @@ class UpdateRdvShipmentDataPredictRequest extends UpdateRdvShipmentData
 
     /**
      * Get DeliveryInfo value
-     *
-     * @return RdvDeliveryInfo|null
      */
-    public function getDeliveryInfo()
+    public function getDeliveryInfo(): ?RdvDeliveryInfo
     {
         return $this->DeliveryInfo;
     }
 
     /**
      * Set DeliveryInfo value
-     *
-     * @return self
      */
-    public function setDeliveryInfo(?RdvDeliveryInfo $deliveryInfo = null)
+    public function setDeliveryInfo(?RdvDeliveryInfo $deliveryInfo = null): self
     {
         $this->DeliveryInfo = $deliveryInfo;
+
         return $this;
     }
 
     /**
      * Get EsnInfo value
-     *
-     * @return RdvEsnInfo|null
      */
-    public function getEsnInfo()
+    public function getEsnInfo(): ?RdvEsnInfo
     {
         return $this->EsnInfo;
     }
 
     /**
      * Set EsnInfo value
-     *
-     * @return self
      */
-    public function setEsnInfo(?RdvEsnInfo $esnInfo = null)
+    public function setEsnInfo(?RdvEsnInfo $esnInfo = null): self
     {
         $this->EsnInfo = $esnInfo;
+
         return $this;
     }
 
     /**
      * Get AdditionalData value
-     *
-     * @return RdvData|null
      */
-    public function getAdditionalData()
+    public function getAdditionalData(): ?RdvData
     {
         return $this->AdditionalData;
     }
 
     /**
      * Set AdditionalData value
-     *
-     * @return self
      */
-    public function setAdditionalData(?RdvData $additionalData = null)
+    public function setAdditionalData(?RdvData $additionalData = null): self
     {
         $this->AdditionalData = $additionalData;
+
         return $this;
     }
 }

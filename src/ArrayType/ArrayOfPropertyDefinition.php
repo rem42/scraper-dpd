@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\ArrayType;
 
@@ -18,7 +18,7 @@ class ArrayOfPropertyDefinition extends AbstractStructArrayBase
      *
      * @var array<\Scraper\ScraperDPD\StructType\PropertyDefinition>
      */
-    public $PropertyDefinition;
+    protected ?array $PropertyDefinition = null;
 
     /**
      * Constructor method for ArrayOfPropertyDefinition
@@ -27,7 +27,7 @@ class ArrayOfPropertyDefinition extends AbstractStructArrayBase
      *
      * @param array<\Scraper\ScraperDPD\StructType\PropertyDefinition> $propertyDefinition
      */
-    public function __construct(array $propertyDefinition = [])
+    public function __construct(?array $propertyDefinition = null)
     {
         $this
             ->setPropertyDefinition($propertyDefinition)
@@ -40,21 +40,25 @@ class ArrayOfPropertyDefinition extends AbstractStructArrayBase
      * this property may have been unset before, due to the fact that this property is
      * removable from the request (nillable=true+minOccurs=0)
      *
-     * @return array<\Scraper\ScraperDPD\StructType\PropertyDefinition>|null
+     * @return array<\Scraper\ScraperDPD\StructType\PropertyDefinition>
      */
-    public function getPropertyDefinition()
+    public function getPropertyDefinition(): ?array
     {
         return $this->PropertyDefinition ?? null;
     }
 
     /**
-     * This method is responsible for validating the values passed to the setPropertyDefinition method
+     * This method is responsible for validating the value(s) passed to the setPropertyDefinition method
      * This method is willingly generated in order to preserve the one-line inline validation within the setPropertyDefinition method
+     * This has to validate that each item contained by the array match the itemType constraint
      *
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validatePropertyDefinitionForArrayConstraintsFromSetPropertyDefinition(array $values = [])
+    public static function validatePropertyDefinitionForArrayConstraintFromSetPropertyDefinition(?array $values = []): string
     {
+        if (!\is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
 
@@ -69,6 +73,7 @@ class ArrayOfPropertyDefinition extends AbstractStructArrayBase
             $message = sprintf('The PropertyDefinition property can only contain items of type \Scraper\ScraperDPD\StructType\PropertyDefinition, %s given', \is_object($invalidValues) ? $invalidValues::class : (\is_array($invalidValues) ? implode(', ', $invalidValues) : \gettype($invalidValues)));
         }
         unset($invalidValues);
+
         return $message;
     }
 
@@ -80,13 +85,11 @@ class ArrayOfPropertyDefinition extends AbstractStructArrayBase
      * @param array<\Scraper\ScraperDPD\StructType\PropertyDefinition> $propertyDefinition
      *
      * @throws \InvalidArgumentException
-     *
-     * @return self
      */
-    public function setPropertyDefinition(array $propertyDefinition = [])
+    public function setPropertyDefinition(?array $propertyDefinition = null): self
     {
         // validation for constraint: array
-        if ('' !== ($propertyDefinitionArrayErrorMessage = self::validatePropertyDefinitionForArrayConstraintsFromSetPropertyDefinition($propertyDefinition))) {
+        if ('' !== ($propertyDefinitionArrayErrorMessage = self::validatePropertyDefinitionForArrayConstraintFromSetPropertyDefinition($propertyDefinition))) {
             throw new \InvalidArgumentException($propertyDefinitionArrayErrorMessage, __LINE__);
         }
 
@@ -95,23 +98,7 @@ class ArrayOfPropertyDefinition extends AbstractStructArrayBase
         } else {
             $this->PropertyDefinition = $propertyDefinition;
         }
-        return $this;
-    }
 
-    /**
-     * Add item to PropertyDefinition value
-     *
-     * @throws \InvalidArgumentException
-     *
-     * @return self
-     */
-    public function addToPropertyDefinition(\Scraper\ScraperDPD\StructType\PropertyDefinition $item)
-    {
-        // validation for constraint: itemType
-        if (!$item instanceof \Scraper\ScraperDPD\StructType\PropertyDefinition) {
-            throw new \InvalidArgumentException(sprintf('The PropertyDefinition property can only contain items of type \Scraper\ScraperDPD\StructType\PropertyDefinition, %s given', \is_object($item) ? $item::class : (\is_array($item) ? implode(', ', $item) : \gettype($item))), __LINE__);
-        }
-        $this->PropertyDefinition[] = $item;
         return $this;
     }
 
@@ -119,10 +106,8 @@ class ArrayOfPropertyDefinition extends AbstractStructArrayBase
      * Returns the current element
      *
      * @see AbstractStructArrayBase::current()
-     *
-     * @return \Scraper\ScraperDPD\StructType\PropertyDefinition|null
      */
-    public function current()
+    public function current(): ?\Scraper\ScraperDPD\StructType\PropertyDefinition
     {
         return parent::current();
     }
@@ -133,10 +118,8 @@ class ArrayOfPropertyDefinition extends AbstractStructArrayBase
      * @see AbstractStructArrayBase::item()
      *
      * @param int $index
-     *
-     * @return \Scraper\ScraperDPD\StructType\PropertyDefinition|null
      */
-    public function item($index)
+    public function item($index): ?\Scraper\ScraperDPD\StructType\PropertyDefinition
     {
         return parent::item($index);
     }
@@ -145,10 +128,8 @@ class ArrayOfPropertyDefinition extends AbstractStructArrayBase
      * Returns the first element
      *
      * @see AbstractStructArrayBase::first()
-     *
-     * @return \Scraper\ScraperDPD\StructType\PropertyDefinition|null
      */
-    public function first()
+    public function first(): ?\Scraper\ScraperDPD\StructType\PropertyDefinition
     {
         return parent::first();
     }
@@ -157,10 +138,8 @@ class ArrayOfPropertyDefinition extends AbstractStructArrayBase
      * Returns the last element
      *
      * @see AbstractStructArrayBase::last()
-     *
-     * @return \Scraper\ScraperDPD\StructType\PropertyDefinition|null
      */
-    public function last()
+    public function last(): ?\Scraper\ScraperDPD\StructType\PropertyDefinition
     {
         return parent::last();
     }
@@ -171,12 +150,28 @@ class ArrayOfPropertyDefinition extends AbstractStructArrayBase
      * @see AbstractStructArrayBase::offsetGet()
      *
      * @param int $offset
-     *
-     * @return \Scraper\ScraperDPD\StructType\PropertyDefinition|null
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): ?\Scraper\ScraperDPD\StructType\PropertyDefinition
     {
         return parent::offsetGet($offset);
+    }
+
+    /**
+     * Add element to array
+     *
+     * @see AbstractStructArrayBase::add()
+     *
+     * @param \Scraper\ScraperDPD\StructType\PropertyDefinition $item
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function add($item): self
+    {
+        // validation for constraint: itemType
+        if (!$item instanceof \Scraper\ScraperDPD\StructType\PropertyDefinition) {
+            throw new \InvalidArgumentException(sprintf('The PropertyDefinition property can only contain items of type \Scraper\ScraperDPD\StructType\PropertyDefinition, %s given', \is_object($item) ? $item::class : (\is_array($item) ? implode(', ', $item) : \gettype($item))), __LINE__);
+        }
+        return parent::add($item);
     }
 
     /**
@@ -186,7 +181,7 @@ class ArrayOfPropertyDefinition extends AbstractStructArrayBase
      *
      * @return string PropertyDefinition
      */
-    public function getAttributeName()
+    public function getAttributeName(): string
     {
         return 'PropertyDefinition';
     }

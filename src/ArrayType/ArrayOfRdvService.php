@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\ArrayType;
 
@@ -18,7 +18,7 @@ class ArrayOfRdvService extends AbstractStructArrayBase
      *
      * @var array<\Scraper\ScraperDPD\StructType\RdvService>
      */
-    public $RdvService;
+    protected ?array $RdvService = null;
 
     /**
      * Constructor method for ArrayOfRdvService
@@ -27,7 +27,7 @@ class ArrayOfRdvService extends AbstractStructArrayBase
      *
      * @param array<\Scraper\ScraperDPD\StructType\RdvService> $rdvService
      */
-    public function __construct(array $rdvService = [])
+    public function __construct(?array $rdvService = null)
     {
         $this
             ->setRdvService($rdvService)
@@ -40,21 +40,25 @@ class ArrayOfRdvService extends AbstractStructArrayBase
      * this property may have been unset before, due to the fact that this property is
      * removable from the request (nillable=true+minOccurs=0)
      *
-     * @return array<\Scraper\ScraperDPD\StructType\RdvService>|null
+     * @return array<\Scraper\ScraperDPD\StructType\RdvService>
      */
-    public function getRdvService()
+    public function getRdvService(): ?array
     {
         return $this->RdvService ?? null;
     }
 
     /**
-     * This method is responsible for validating the values passed to the setRdvService method
+     * This method is responsible for validating the value(s) passed to the setRdvService method
      * This method is willingly generated in order to preserve the one-line inline validation within the setRdvService method
+     * This has to validate that each item contained by the array match the itemType constraint
      *
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateRdvServiceForArrayConstraintsFromSetRdvService(array $values = [])
+    public static function validateRdvServiceForArrayConstraintFromSetRdvService(?array $values = []): string
     {
+        if (!\is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
 
@@ -69,6 +73,7 @@ class ArrayOfRdvService extends AbstractStructArrayBase
             $message = sprintf('The RdvService property can only contain items of type \Scraper\ScraperDPD\StructType\RdvService, %s given', \is_object($invalidValues) ? $invalidValues::class : (\is_array($invalidValues) ? implode(', ', $invalidValues) : \gettype($invalidValues)));
         }
         unset($invalidValues);
+
         return $message;
     }
 
@@ -80,13 +85,11 @@ class ArrayOfRdvService extends AbstractStructArrayBase
      * @param array<\Scraper\ScraperDPD\StructType\RdvService> $rdvService
      *
      * @throws \InvalidArgumentException
-     *
-     * @return self
      */
-    public function setRdvService(array $rdvService = [])
+    public function setRdvService(?array $rdvService = null): self
     {
         // validation for constraint: array
-        if ('' !== ($rdvServiceArrayErrorMessage = self::validateRdvServiceForArrayConstraintsFromSetRdvService($rdvService))) {
+        if ('' !== ($rdvServiceArrayErrorMessage = self::validateRdvServiceForArrayConstraintFromSetRdvService($rdvService))) {
             throw new \InvalidArgumentException($rdvServiceArrayErrorMessage, __LINE__);
         }
 
@@ -95,23 +98,7 @@ class ArrayOfRdvService extends AbstractStructArrayBase
         } else {
             $this->RdvService = $rdvService;
         }
-        return $this;
-    }
 
-    /**
-     * Add item to RdvService value
-     *
-     * @throws \InvalidArgumentException
-     *
-     * @return self
-     */
-    public function addToRdvService(\Scraper\ScraperDPD\StructType\RdvService $item)
-    {
-        // validation for constraint: itemType
-        if (!$item instanceof \Scraper\ScraperDPD\StructType\RdvService) {
-            throw new \InvalidArgumentException(sprintf('The RdvService property can only contain items of type \Scraper\ScraperDPD\StructType\RdvService, %s given', \is_object($item) ? $item::class : (\is_array($item) ? implode(', ', $item) : \gettype($item))), __LINE__);
-        }
-        $this->RdvService[] = $item;
         return $this;
     }
 
@@ -119,10 +106,8 @@ class ArrayOfRdvService extends AbstractStructArrayBase
      * Returns the current element
      *
      * @see AbstractStructArrayBase::current()
-     *
-     * @return \Scraper\ScraperDPD\StructType\RdvService|null
      */
-    public function current()
+    public function current(): ?\Scraper\ScraperDPD\StructType\RdvService
     {
         return parent::current();
     }
@@ -133,10 +118,8 @@ class ArrayOfRdvService extends AbstractStructArrayBase
      * @see AbstractStructArrayBase::item()
      *
      * @param int $index
-     *
-     * @return \Scraper\ScraperDPD\StructType\RdvService|null
      */
-    public function item($index)
+    public function item($index): ?\Scraper\ScraperDPD\StructType\RdvService
     {
         return parent::item($index);
     }
@@ -145,10 +128,8 @@ class ArrayOfRdvService extends AbstractStructArrayBase
      * Returns the first element
      *
      * @see AbstractStructArrayBase::first()
-     *
-     * @return \Scraper\ScraperDPD\StructType\RdvService|null
      */
-    public function first()
+    public function first(): ?\Scraper\ScraperDPD\StructType\RdvService
     {
         return parent::first();
     }
@@ -157,10 +138,8 @@ class ArrayOfRdvService extends AbstractStructArrayBase
      * Returns the last element
      *
      * @see AbstractStructArrayBase::last()
-     *
-     * @return \Scraper\ScraperDPD\StructType\RdvService|null
      */
-    public function last()
+    public function last(): ?\Scraper\ScraperDPD\StructType\RdvService
     {
         return parent::last();
     }
@@ -171,12 +150,28 @@ class ArrayOfRdvService extends AbstractStructArrayBase
      * @see AbstractStructArrayBase::offsetGet()
      *
      * @param int $offset
-     *
-     * @return \Scraper\ScraperDPD\StructType\RdvService|null
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): ?\Scraper\ScraperDPD\StructType\RdvService
     {
         return parent::offsetGet($offset);
+    }
+
+    /**
+     * Add element to array
+     *
+     * @see AbstractStructArrayBase::add()
+     *
+     * @param \Scraper\ScraperDPD\StructType\RdvService $item
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function add($item): self
+    {
+        // validation for constraint: itemType
+        if (!$item instanceof \Scraper\ScraperDPD\StructType\RdvService) {
+            throw new \InvalidArgumentException(sprintf('The RdvService property can only contain items of type \Scraper\ScraperDPD\StructType\RdvService, %s given', \is_object($item) ? $item::class : (\is_array($item) ? implode(', ', $item) : \gettype($item))), __LINE__);
+        }
+        return parent::add($item);
     }
 
     /**
@@ -186,7 +181,7 @@ class ArrayOfRdvService extends AbstractStructArrayBase
      *
      * @return string RdvService
      */
-    public function getAttributeName()
+    public function getAttributeName(): string
     {
         return 'RdvService';
     }

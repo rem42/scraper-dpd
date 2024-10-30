@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for PhoneCall StructType
  */
+#[\AllowDynamicProperties]
 class PhoneCall extends AbstractStructBase
 {
     /**
@@ -14,37 +15,29 @@ class PhoneCall extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var int
      */
-    public $DurationSec;
+    protected int $DurationSec;
     /**
      * The Date
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var string
      */
-    public $Date;
+    protected string $Date;
     /**
      * The Number
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $Number;
+    protected ?string $Number = null;
     /**
      * The Type
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $Type;
+    protected ?string $Type = null;
 
     /**
      * Constructor method for PhoneCall
@@ -53,13 +46,8 @@ class PhoneCall extends AbstractStructBase
      * @uses PhoneCall::setDate()
      * @uses PhoneCall::setNumber()
      * @uses PhoneCall::setType()
-     *
-     * @param int    $durationSec
-     * @param string $date
-     * @param string $number
-     * @param string $type
      */
-    public function __construct($durationSec = null, $date = null, $number = null, $type = null)
+    public function __construct(int $durationSec, string $date, ?string $number = null, ?string $type = null)
     {
         $this
             ->setDurationSec($durationSec)
@@ -71,109 +59,89 @@ class PhoneCall extends AbstractStructBase
 
     /**
      * Get DurationSec value
-     *
-     * @return int
      */
-    public function getDurationSec()
+    public function getDurationSec(): int
     {
         return $this->DurationSec;
     }
 
     /**
      * Set DurationSec value
-     *
-     * @param int $durationSec
-     *
-     * @return self
      */
-    public function setDurationSec($durationSec = null)
+    public function setDurationSec(int $durationSec): self
     {
         // validation for constraint: int
         if (null !== $durationSec && !(\is_int($durationSec) || ctype_digit($durationSec))) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($durationSec, true), \gettype($durationSec)), __LINE__);
         }
         $this->DurationSec = $durationSec;
+
         return $this;
     }
 
     /**
      * Get Date value
-     *
-     * @return string
      */
-    public function getDate()
+    public function getDate(): string
     {
         return $this->Date;
     }
 
     /**
      * Set Date value
-     *
-     * @param string $date
-     *
-     * @return self
      */
-    public function setDate($date = null)
+    public function setDate(string $date): self
     {
         // validation for constraint: string
         if (null !== $date && !\is_string($date)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($date, true), \gettype($date)), __LINE__);
         }
         $this->Date = $date;
+
         return $this;
     }
 
     /**
      * Get Number value
-     *
-     * @return string|null
      */
-    public function getNumber()
+    public function getNumber(): ?string
     {
         return $this->Number;
     }
 
     /**
      * Set Number value
-     *
-     * @param string $number
-     *
-     * @return self
      */
-    public function setNumber($number = null)
+    public function setNumber(?string $number = null): self
     {
         // validation for constraint: string
         if (null !== $number && !\is_string($number)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($number, true), \gettype($number)), __LINE__);
         }
         $this->Number = $number;
+
         return $this;
     }
 
     /**
      * Get Type value
-     *
-     * @return string|null
      */
-    public function getType()
+    public function getType(): ?string
     {
         return $this->Type;
     }
 
     /**
      * Set Type value
-     *
-     * @param string $type
-     *
-     * @return self
      */
-    public function setType($type = null)
+    public function setType(?string $type = null): self
     {
         // validation for constraint: string
         if (null !== $type && !\is_string($type)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($type, true), \gettype($type)), __LINE__);
         }
         $this->Type = $type;
+
         return $this;
     }
 }

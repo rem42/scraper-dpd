@@ -1,10 +1,11 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
 /**
  * This class stands for ShopAddress StructType
  */
+#[\AllowDynamicProperties]
 class ShopAddress extends Address
 {
     /**
@@ -12,19 +13,15 @@ class ShopAddress extends Address
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $shopid;
+    protected ?string $shopid = null;
 
     /**
      * Constructor method for ShopAddress
      *
      * @uses ShopAddress::setShopid()
-     *
-     * @param string $shopid
      */
-    public function __construct($shopid = null)
+    public function __construct(?string $shopid = null)
     {
         $this
             ->setShopid($shopid)
@@ -33,28 +30,23 @@ class ShopAddress extends Address
 
     /**
      * Get shopid value
-     *
-     * @return string|null
      */
-    public function getShopid()
+    public function getShopid(): ?string
     {
         return $this->shopid;
     }
 
     /**
      * Set shopid value
-     *
-     * @param string $shopid
-     *
-     * @return self
      */
-    public function setShopid($shopid = null)
+    public function setShopid(?string $shopid = null): self
     {
         // validation for constraint: string
         if (null !== $shopid && !\is_string($shopid)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($shopid, true), \gettype($shopid)), __LINE__);
         }
         $this->shopid = $shopid;
+
         return $this;
     }
 }

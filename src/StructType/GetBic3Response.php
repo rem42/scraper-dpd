@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for GetBic3Response StructType
  */
+#[\AllowDynamicProperties]
 class GetBic3Response extends AbstractStructBase
 {
     /**
@@ -14,19 +15,15 @@ class GetBic3Response extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var int
      */
-    public $GetBic3Result;
+    protected int $GetBic3Result;
 
     /**
      * Constructor method for GetBic3Response
      *
      * @uses GetBic3Response::setGetBic3Result()
-     *
-     * @param int $getBic3Result
      */
-    public function __construct($getBic3Result = null)
+    public function __construct(int $getBic3Result)
     {
         $this
             ->setGetBic3Result($getBic3Result)
@@ -35,28 +32,23 @@ class GetBic3Response extends AbstractStructBase
 
     /**
      * Get GetBic3Result value
-     *
-     * @return int
      */
-    public function getGetBic3Result()
+    public function getGetBic3Result(): int
     {
         return $this->GetBic3Result;
     }
 
     /**
      * Set GetBic3Result value
-     *
-     * @param int $getBic3Result
-     *
-     * @return self
      */
-    public function setGetBic3Result($getBic3Result = null)
+    public function setGetBic3Result(int $getBic3Result): self
     {
         // validation for constraint: int
         if (null !== $getBic3Result && !(\is_int($getBic3Result) || ctype_digit($getBic3Result))) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($getBic3Result, true), \gettype($getBic3Result)), __LINE__);
         }
         $this->GetBic3Result = $getBic3Result;
+
         return $this;
     }
 }

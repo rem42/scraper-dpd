@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for ReceiveLabelRequestBase StructType
  */
+#[\AllowDynamicProperties]
 abstract class ReceiveLabelRequestBase extends AbstractStructBase
 {
     /**
@@ -14,55 +15,43 @@ abstract class ReceiveLabelRequestBase extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var Address
      */
-    public $overrideShipperLabelAddress;
+    protected ?Address $overrideShipperLabelAddress = null;
     /**
      * The refnrasbarcode
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var bool
      */
-    public $refnrasbarcode;
+    protected ?bool $refnrasbarcode = null;
     /**
      * The referenceInBarcode
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var ReferenceInBarcode
      */
-    public $referenceInBarcode;
+    protected ?ReferenceInBarcode $referenceInBarcode = null;
     /**
      * The bic3data
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var Bic3LabelData
      */
-    public $bic3data;
+    protected ?Bic3LabelData $bic3data = null;
     /**
      * The injectionHub
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $injectionHub;
+    protected ?string $injectionHub = null;
     /**
      * The labelType
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var LabelType
      */
-    public $labelType;
+    protected ?LabelType $labelType = null;
 
     /**
      * Constructor method for ReceiveLabelRequestBase
@@ -73,11 +62,8 @@ abstract class ReceiveLabelRequestBase extends AbstractStructBase
      * @uses ReceiveLabelRequestBase::setBic3data()
      * @uses ReceiveLabelRequestBase::setInjectionHub()
      * @uses ReceiveLabelRequestBase::setLabelType()
-     *
-     * @param bool   $refnrasbarcode
-     * @param string $injectionHub
      */
-    public function __construct(?Address $overrideShipperLabelAddress = null, $refnrasbarcode = null, ?ReferenceInBarcode $referenceInBarcode = null, ?Bic3LabelData $bic3data = null, $injectionHub = null, ?LabelType $labelType = null)
+    public function __construct(?Address $overrideShipperLabelAddress = null, ?bool $refnrasbarcode = null, ?ReferenceInBarcode $referenceInBarcode = null, ?Bic3LabelData $bic3data = null, ?string $injectionHub = null, ?LabelType $labelType = null)
     {
         $this
             ->setOverrideShipperLabelAddress($overrideShipperLabelAddress)
@@ -91,139 +77,117 @@ abstract class ReceiveLabelRequestBase extends AbstractStructBase
 
     /**
      * Get overrideShipperLabelAddress value
-     *
-     * @return Address|null
      */
-    public function getOverrideShipperLabelAddress()
+    public function getOverrideShipperLabelAddress(): ?Address
     {
         return $this->overrideShipperLabelAddress;
     }
 
     /**
      * Set overrideShipperLabelAddress value
-     *
-     * @return self
      */
-    public function setOverrideShipperLabelAddress(?Address $overrideShipperLabelAddress = null)
+    public function setOverrideShipperLabelAddress(?Address $overrideShipperLabelAddress = null): self
     {
         $this->overrideShipperLabelAddress = $overrideShipperLabelAddress;
+
         return $this;
     }
 
     /**
      * Get refnrasbarcode value
-     *
-     * @return bool|null
      */
-    public function getRefnrasbarcode()
+    public function getRefnrasbarcode(): ?bool
     {
         return $this->refnrasbarcode;
     }
 
     /**
      * Set refnrasbarcode value
-     *
-     * @param bool $refnrasbarcode
-     *
-     * @return self
      */
-    public function setRefnrasbarcode($refnrasbarcode = null)
+    public function setRefnrasbarcode(?bool $refnrasbarcode = null): self
     {
         // validation for constraint: boolean
         if (null !== $refnrasbarcode && !\is_bool($refnrasbarcode)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a bool, %s given', var_export($refnrasbarcode, true), \gettype($refnrasbarcode)), __LINE__);
         }
         $this->refnrasbarcode = $refnrasbarcode;
+
         return $this;
     }
 
     /**
      * Get referenceInBarcode value
-     *
-     * @return ReferenceInBarcode|null
      */
-    public function getReferenceInBarcode()
+    public function getReferenceInBarcode(): ?ReferenceInBarcode
     {
         return $this->referenceInBarcode;
     }
 
     /**
      * Set referenceInBarcode value
-     *
-     * @return self
      */
-    public function setReferenceInBarcode(?ReferenceInBarcode $referenceInBarcode = null)
+    public function setReferenceInBarcode(?ReferenceInBarcode $referenceInBarcode = null): self
     {
         $this->referenceInBarcode = $referenceInBarcode;
+
         return $this;
     }
 
     /**
      * Get bic3data value
-     *
-     * @return Bic3LabelData|null
      */
-    public function getBic3data()
+    public function getBic3data(): ?Bic3LabelData
     {
         return $this->bic3data;
     }
 
     /**
      * Set bic3data value
-     *
-     * @return self
      */
-    public function setBic3data(?Bic3LabelData $bic3data = null)
+    public function setBic3data(?Bic3LabelData $bic3data = null): self
     {
         $this->bic3data = $bic3data;
+
         return $this;
     }
 
     /**
      * Get injectionHub value
-     *
-     * @return string|null
      */
-    public function getInjectionHub()
+    public function getInjectionHub(): ?string
     {
         return $this->injectionHub;
     }
 
     /**
      * Set injectionHub value
-     *
-     * @param string $injectionHub
-     *
-     * @return self
      */
-    public function setInjectionHub($injectionHub = null)
+    public function setInjectionHub(?string $injectionHub = null): self
     {
         // validation for constraint: string
         if (null !== $injectionHub && !\is_string($injectionHub)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($injectionHub, true), \gettype($injectionHub)), __LINE__);
         }
         $this->injectionHub = $injectionHub;
+
         return $this;
     }
 
     /**
      * Get labelType value
-     *
-     * @return LabelType|null
      */
-    public function getLabelType()
+    public function getLabelType(): ?LabelType
     {
         return $this->labelType;
     }
 
     /**
      * Set labelType value
-     *
-     * @return self
      */
-    public function setLabelType(?LabelType $labelType = null)
+    public function setLabelType(?LabelType $labelType = null): self
     {
         $this->labelType = $labelType;
+
         return $this;
     }
 }

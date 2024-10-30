@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for LabelBaseResponse StructType
  */
+#[\AllowDynamicProperties]
 class LabelBaseResponse extends AbstractStructBase
 {
     /**
@@ -14,10 +15,8 @@ class LabelBaseResponse extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var \Scraper\ScraperDPD\ArrayType\ArrayOfLabel
      */
-    public $labels;
+    protected ?\Scraper\ScraperDPD\ArrayType\ArrayOfLabel $labels = null;
 
     /**
      * Constructor method for LabelBaseResponse
@@ -33,22 +32,19 @@ class LabelBaseResponse extends AbstractStructBase
 
     /**
      * Get labels value
-     *
-     * @return \Scraper\ScraperDPD\ArrayType\ArrayOfLabel|null
      */
-    public function getLabels()
+    public function getLabels(): ?\Scraper\ScraperDPD\ArrayType\ArrayOfLabel
     {
         return $this->labels;
     }
 
     /**
      * Set labels value
-     *
-     * @return self
      */
-    public function setLabels(?\Scraper\ScraperDPD\ArrayType\ArrayOfLabel $labels = null)
+    public function setLabels(?\Scraper\ScraperDPD\ArrayType\ArrayOfLabel $labels = null): self
     {
         $this->labels = $labels;
+
         return $this;
     }
 }

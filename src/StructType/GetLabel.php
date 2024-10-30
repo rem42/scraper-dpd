@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for GetLabel StructType
  */
+#[\AllowDynamicProperties]
 class GetLabel extends AbstractStructBase
 {
     /**
@@ -14,10 +15,8 @@ class GetLabel extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var ReceiveLabelRequest
      */
-    public $request;
+    protected ?ReceiveLabelRequest $request = null;
 
     /**
      * Constructor method for GetLabel
@@ -33,22 +32,19 @@ class GetLabel extends AbstractStructBase
 
     /**
      * Get request value
-     *
-     * @return ReceiveLabelRequest|null
      */
-    public function getRequest()
+    public function getRequest(): ?ReceiveLabelRequest
     {
         return $this->request;
     }
 
     /**
      * Set request value
-     *
-     * @return self
      */
-    public function setRequest(?ReceiveLabelRequest $request = null)
+    public function setRequest(?ReceiveLabelRequest $request = null): self
     {
         $this->request = $request;
+
         return $this;
     }
 }

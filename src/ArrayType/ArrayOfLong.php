@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\ArrayType;
 
@@ -17,7 +17,7 @@ class ArrayOfLong extends AbstractStructArrayBase
      *
      * @var array<int>
      */
-    public $long;
+    protected ?array $long = null;
 
     /**
      * Constructor method for ArrayOfLong
@@ -26,7 +26,7 @@ class ArrayOfLong extends AbstractStructArrayBase
      *
      * @param array<int> $long
      */
-    public function __construct(array $long = [])
+    public function __construct(?array $long = null)
     {
         $this
             ->setLong($long)
@@ -36,21 +36,25 @@ class ArrayOfLong extends AbstractStructArrayBase
     /**
      * Get long value
      *
-     * @return array<int>|null
+     * @return array<int>
      */
-    public function getLong()
+    public function getLong(): ?array
     {
         return $this->long;
     }
 
     /**
-     * This method is responsible for validating the values passed to the setLong method
+     * This method is responsible for validating the value(s) passed to the setLong method
      * This method is willingly generated in order to preserve the one-line inline validation within the setLong method
+     * This has to validate that each item contained by the array match the itemType constraint
      *
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateLongForArrayConstraintsFromSetLong(array $values = [])
+    public static function validateLongForArrayConstraintFromSetLong(?array $values = []): string
     {
+        if (!\is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
 
@@ -62,9 +66,10 @@ class ArrayOfLong extends AbstractStructArrayBase
         }
 
         if (!empty($invalidValues)) {
-            $message = sprintf('The long property can only contain items of type long, %s given', \is_object($invalidValues) ? $invalidValues::class : (\is_array($invalidValues) ? implode(', ', $invalidValues) : \gettype($invalidValues)));
+            $message = sprintf('The long property can only contain items of type int, %s given', \is_object($invalidValues) ? $invalidValues::class : (\is_array($invalidValues) ? implode(', ', $invalidValues) : \gettype($invalidValues)));
         }
         unset($invalidValues);
+
         return $message;
     }
 
@@ -74,35 +79,15 @@ class ArrayOfLong extends AbstractStructArrayBase
      * @param array<int> $long
      *
      * @throws \InvalidArgumentException
-     *
-     * @return self
      */
-    public function setLong(array $long = [])
+    public function setLong(?array $long = null): self
     {
         // validation for constraint: array
-        if ('' !== ($longArrayErrorMessage = self::validateLongForArrayConstraintsFromSetLong($long))) {
+        if ('' !== ($longArrayErrorMessage = self::validateLongForArrayConstraintFromSetLong($long))) {
             throw new \InvalidArgumentException($longArrayErrorMessage, __LINE__);
         }
         $this->long = $long;
-        return $this;
-    }
 
-    /**
-     * Add item to long value
-     *
-     * @param int $item
-     *
-     * @throws \InvalidArgumentException
-     *
-     * @return self
-     */
-    public function addToLong($item)
-    {
-        // validation for constraint: itemType
-        if (!(\is_int($item) || ctype_digit($item))) {
-            throw new \InvalidArgumentException(sprintf('The long property can only contain items of type long, %s given', \is_object($item) ? $item::class : (\is_array($item) ? implode(', ', $item) : \gettype($item))), __LINE__);
-        }
-        $this->long[] = $item;
         return $this;
     }
 
@@ -110,10 +95,8 @@ class ArrayOfLong extends AbstractStructArrayBase
      * Returns the current element
      *
      * @see AbstractStructArrayBase::current()
-     *
-     * @return int|null
      */
-    public function current()
+    public function current(): ?int
     {
         return parent::current();
     }
@@ -124,10 +107,8 @@ class ArrayOfLong extends AbstractStructArrayBase
      * @see AbstractStructArrayBase::item()
      *
      * @param int $index
-     *
-     * @return int|null
      */
-    public function item($index)
+    public function item($index): ?int
     {
         return parent::item($index);
     }
@@ -136,10 +117,8 @@ class ArrayOfLong extends AbstractStructArrayBase
      * Returns the first element
      *
      * @see AbstractStructArrayBase::first()
-     *
-     * @return int|null
      */
-    public function first()
+    public function first(): ?int
     {
         return parent::first();
     }
@@ -148,10 +127,8 @@ class ArrayOfLong extends AbstractStructArrayBase
      * Returns the last element
      *
      * @see AbstractStructArrayBase::last()
-     *
-     * @return int|null
      */
-    public function last()
+    public function last(): ?int
     {
         return parent::last();
     }
@@ -162,10 +139,8 @@ class ArrayOfLong extends AbstractStructArrayBase
      * @see AbstractStructArrayBase::offsetGet()
      *
      * @param int $offset
-     *
-     * @return int|null
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): ?int
     {
         return parent::offsetGet($offset);
     }
@@ -177,7 +152,7 @@ class ArrayOfLong extends AbstractStructArrayBase
      *
      * @return string long
      */
-    public function getAttributeName()
+    public function getAttributeName(): string
     {
         return 'long';
     }

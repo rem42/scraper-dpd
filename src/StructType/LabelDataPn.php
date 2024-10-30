@@ -1,10 +1,11 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
 /**
  * This class stands for LabelDataPn StructType
  */
+#[\AllowDynamicProperties]
 class LabelDataPn extends LabelDataBase
 {
     /**
@@ -12,100 +13,78 @@ class LabelDataPn extends LabelDataBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var bool
      */
-    public $OSortInverse;
+    protected bool $OSortInverse;
     /**
      * The OSort2Inverse
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var bool
      */
-    public $OSort2Inverse;
+    protected bool $OSort2Inverse;
     /**
      * The DSortInverse
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var bool
      */
-    public $DSortInverse;
+    protected bool $DSortInverse;
     /**
      * The IsShop
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var bool
      */
-    public $IsShop;
+    protected bool $IsShop;
     /**
      * The ReverseHint
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var bool
      */
-    public $ReverseHint;
+    protected bool $ReverseHint;
     /**
      * The DutiableHint
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $DutiableHint;
+    protected ?string $DutiableHint = null;
     /**
      * The Hint
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $Hint;
+    protected ?string $Hint = null;
     /**
      * The Routingtext
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $Routingtext;
+    protected ?string $Routingtext = null;
     /**
      * The Servicetext
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $Servicetext;
+    protected ?string $Servicetext = null;
     /**
      * The ServiceMark
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $ServiceMark;
+    protected ?string $ServiceMark = null;
     /**
      * The ReceiverCenterLine
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $ReceiverCenterLine;
+    protected ?string $ReceiverCenterLine = null;
 
     /**
      * Constructor method for LabelDataPn
@@ -121,20 +100,8 @@ class LabelDataPn extends LabelDataBase
      * @uses LabelDataPn::setServicetext()
      * @uses LabelDataPn::setServiceMark()
      * @uses LabelDataPn::setReceiverCenterLine()
-     *
-     * @param bool   $oSortInverse
-     * @param bool   $oSort2Inverse
-     * @param bool   $dSortInverse
-     * @param bool   $isShop
-     * @param bool   $reverseHint
-     * @param string $dutiableHint
-     * @param string $hint
-     * @param string $routingtext
-     * @param string $servicetext
-     * @param string $serviceMark
-     * @param string $receiverCenterLine
      */
-    public function __construct($oSortInverse = null, $oSort2Inverse = null, $dSortInverse = null, $isShop = null, $reverseHint = null, $dutiableHint = null, $hint = null, $routingtext = null, $servicetext = null, $serviceMark = null, $receiverCenterLine = null)
+    public function __construct(bool $oSortInverse, bool $oSort2Inverse, bool $dSortInverse, bool $isShop, bool $reverseHint, ?string $dutiableHint = null, ?string $hint = null, ?string $routingtext = null, ?string $servicetext = null, ?string $serviceMark = null, ?string $receiverCenterLine = null)
     {
         $this
             ->setOSortInverse($oSortInverse)
@@ -153,298 +120,243 @@ class LabelDataPn extends LabelDataBase
 
     /**
      * Get OSortInverse value
-     *
-     * @return bool
      */
-    public function getOSortInverse()
+    public function getOSortInverse(): bool
     {
         return $this->OSortInverse;
     }
 
     /**
      * Set OSortInverse value
-     *
-     * @param bool $oSortInverse
-     *
-     * @return self
      */
-    public function setOSortInverse($oSortInverse = null)
+    public function setOSortInverse(bool $oSortInverse): self
     {
         // validation for constraint: boolean
         if (null !== $oSortInverse && !\is_bool($oSortInverse)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a bool, %s given', var_export($oSortInverse, true), \gettype($oSortInverse)), __LINE__);
         }
         $this->OSortInverse = $oSortInverse;
+
         return $this;
     }
 
     /**
      * Get OSort2Inverse value
-     *
-     * @return bool
      */
-    public function getOSort2Inverse()
+    public function getOSort2Inverse(): bool
     {
         return $this->OSort2Inverse;
     }
 
     /**
      * Set OSort2Inverse value
-     *
-     * @param bool $oSort2Inverse
-     *
-     * @return self
      */
-    public function setOSort2Inverse($oSort2Inverse = null)
+    public function setOSort2Inverse(bool $oSort2Inverse): self
     {
         // validation for constraint: boolean
         if (null !== $oSort2Inverse && !\is_bool($oSort2Inverse)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a bool, %s given', var_export($oSort2Inverse, true), \gettype($oSort2Inverse)), __LINE__);
         }
         $this->OSort2Inverse = $oSort2Inverse;
+
         return $this;
     }
 
     /**
      * Get DSortInverse value
-     *
-     * @return bool
      */
-    public function getDSortInverse()
+    public function getDSortInverse(): bool
     {
         return $this->DSortInverse;
     }
 
     /**
      * Set DSortInverse value
-     *
-     * @param bool $dSortInverse
-     *
-     * @return self
      */
-    public function setDSortInverse($dSortInverse = null)
+    public function setDSortInverse(bool $dSortInverse): self
     {
         // validation for constraint: boolean
         if (null !== $dSortInverse && !\is_bool($dSortInverse)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a bool, %s given', var_export($dSortInverse, true), \gettype($dSortInverse)), __LINE__);
         }
         $this->DSortInverse = $dSortInverse;
+
         return $this;
     }
 
     /**
      * Get IsShop value
-     *
-     * @return bool
      */
-    public function getIsShop()
+    public function getIsShop(): bool
     {
         return $this->IsShop;
     }
 
     /**
      * Set IsShop value
-     *
-     * @param bool $isShop
-     *
-     * @return self
      */
-    public function setIsShop($isShop = null)
+    public function setIsShop(bool $isShop): self
     {
         // validation for constraint: boolean
         if (null !== $isShop && !\is_bool($isShop)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a bool, %s given', var_export($isShop, true), \gettype($isShop)), __LINE__);
         }
         $this->IsShop = $isShop;
+
         return $this;
     }
 
     /**
      * Get ReverseHint value
-     *
-     * @return bool
      */
-    public function getReverseHint()
+    public function getReverseHint(): bool
     {
         return $this->ReverseHint;
     }
 
     /**
      * Set ReverseHint value
-     *
-     * @param bool $reverseHint
-     *
-     * @return self
      */
-    public function setReverseHint($reverseHint = null)
+    public function setReverseHint(bool $reverseHint): self
     {
         // validation for constraint: boolean
         if (null !== $reverseHint && !\is_bool($reverseHint)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a bool, %s given', var_export($reverseHint, true), \gettype($reverseHint)), __LINE__);
         }
         $this->ReverseHint = $reverseHint;
+
         return $this;
     }
 
     /**
      * Get DutiableHint value
-     *
-     * @return string|null
      */
-    public function getDutiableHint()
+    public function getDutiableHint(): ?string
     {
         return $this->DutiableHint;
     }
 
     /**
      * Set DutiableHint value
-     *
-     * @param string $dutiableHint
-     *
-     * @return self
      */
-    public function setDutiableHint($dutiableHint = null)
+    public function setDutiableHint(?string $dutiableHint = null): self
     {
         // validation for constraint: string
         if (null !== $dutiableHint && !\is_string($dutiableHint)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($dutiableHint, true), \gettype($dutiableHint)), __LINE__);
         }
         $this->DutiableHint = $dutiableHint;
+
         return $this;
     }
 
     /**
      * Get Hint value
-     *
-     * @return string|null
      */
-    public function getHint()
+    public function getHint(): ?string
     {
         return $this->Hint;
     }
 
     /**
      * Set Hint value
-     *
-     * @param string $hint
-     *
-     * @return self
      */
-    public function setHint($hint = null)
+    public function setHint(?string $hint = null): self
     {
         // validation for constraint: string
         if (null !== $hint && !\is_string($hint)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($hint, true), \gettype($hint)), __LINE__);
         }
         $this->Hint = $hint;
+
         return $this;
     }
 
     /**
      * Get Routingtext value
-     *
-     * @return string|null
      */
-    public function getRoutingtext()
+    public function getRoutingtext(): ?string
     {
         return $this->Routingtext;
     }
 
     /**
      * Set Routingtext value
-     *
-     * @param string $routingtext
-     *
-     * @return self
      */
-    public function setRoutingtext($routingtext = null)
+    public function setRoutingtext(?string $routingtext = null): self
     {
         // validation for constraint: string
         if (null !== $routingtext && !\is_string($routingtext)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($routingtext, true), \gettype($routingtext)), __LINE__);
         }
         $this->Routingtext = $routingtext;
+
         return $this;
     }
 
     /**
      * Get Servicetext value
-     *
-     * @return string|null
      */
-    public function getServicetext()
+    public function getServicetext(): ?string
     {
         return $this->Servicetext;
     }
 
     /**
      * Set Servicetext value
-     *
-     * @param string $servicetext
-     *
-     * @return self
      */
-    public function setServicetext($servicetext = null)
+    public function setServicetext(?string $servicetext = null): self
     {
         // validation for constraint: string
         if (null !== $servicetext && !\is_string($servicetext)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($servicetext, true), \gettype($servicetext)), __LINE__);
         }
         $this->Servicetext = $servicetext;
+
         return $this;
     }
 
     /**
      * Get ServiceMark value
-     *
-     * @return string|null
      */
-    public function getServiceMark()
+    public function getServiceMark(): ?string
     {
         return $this->ServiceMark;
     }
 
     /**
      * Set ServiceMark value
-     *
-     * @param string $serviceMark
-     *
-     * @return self
      */
-    public function setServiceMark($serviceMark = null)
+    public function setServiceMark(?string $serviceMark = null): self
     {
         // validation for constraint: string
         if (null !== $serviceMark && !\is_string($serviceMark)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($serviceMark, true), \gettype($serviceMark)), __LINE__);
         }
         $this->ServiceMark = $serviceMark;
+
         return $this;
     }
 
     /**
      * Get ReceiverCenterLine value
-     *
-     * @return string|null
      */
-    public function getReceiverCenterLine()
+    public function getReceiverCenterLine(): ?string
     {
         return $this->ReceiverCenterLine;
     }
 
     /**
      * Set ReceiverCenterLine value
-     *
-     * @param string $receiverCenterLine
-     *
-     * @return self
      */
-    public function setReceiverCenterLine($receiverCenterLine = null)
+    public function setReceiverCenterLine(?string $receiverCenterLine = null): self
     {
         // validation for constraint: string
         if (null !== $receiverCenterLine && !\is_string($receiverCenterLine)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($receiverCenterLine, true), \gettype($receiverCenterLine)), __LINE__);
         }
         $this->ReceiverCenterLine = $receiverCenterLine;
+
         return $this;
     }
 }

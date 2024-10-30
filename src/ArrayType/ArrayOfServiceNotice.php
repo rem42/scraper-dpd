@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\ArrayType;
 
@@ -18,7 +18,7 @@ class ArrayOfServiceNotice extends AbstractStructArrayBase
      *
      * @var array<\Scraper\ScraperDPD\StructType\ServiceNotice>
      */
-    public $ServiceNotice;
+    protected ?array $ServiceNotice = null;
 
     /**
      * Constructor method for ArrayOfServiceNotice
@@ -27,7 +27,7 @@ class ArrayOfServiceNotice extends AbstractStructArrayBase
      *
      * @param array<\Scraper\ScraperDPD\StructType\ServiceNotice> $serviceNotice
      */
-    public function __construct(array $serviceNotice = [])
+    public function __construct(?array $serviceNotice = null)
     {
         $this
             ->setServiceNotice($serviceNotice)
@@ -40,21 +40,25 @@ class ArrayOfServiceNotice extends AbstractStructArrayBase
      * this property may have been unset before, due to the fact that this property is
      * removable from the request (nillable=true+minOccurs=0)
      *
-     * @return array<\Scraper\ScraperDPD\StructType\ServiceNotice>|null
+     * @return array<\Scraper\ScraperDPD\StructType\ServiceNotice>
      */
-    public function getServiceNotice()
+    public function getServiceNotice(): ?array
     {
         return $this->ServiceNotice ?? null;
     }
 
     /**
-     * This method is responsible for validating the values passed to the setServiceNotice method
+     * This method is responsible for validating the value(s) passed to the setServiceNotice method
      * This method is willingly generated in order to preserve the one-line inline validation within the setServiceNotice method
+     * This has to validate that each item contained by the array match the itemType constraint
      *
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateServiceNoticeForArrayConstraintsFromSetServiceNotice(array $values = [])
+    public static function validateServiceNoticeForArrayConstraintFromSetServiceNotice(?array $values = []): string
     {
+        if (!\is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
 
@@ -69,6 +73,7 @@ class ArrayOfServiceNotice extends AbstractStructArrayBase
             $message = sprintf('The ServiceNotice property can only contain items of type \Scraper\ScraperDPD\StructType\ServiceNotice, %s given', \is_object($invalidValues) ? $invalidValues::class : (\is_array($invalidValues) ? implode(', ', $invalidValues) : \gettype($invalidValues)));
         }
         unset($invalidValues);
+
         return $message;
     }
 
@@ -80,13 +85,11 @@ class ArrayOfServiceNotice extends AbstractStructArrayBase
      * @param array<\Scraper\ScraperDPD\StructType\ServiceNotice> $serviceNotice
      *
      * @throws \InvalidArgumentException
-     *
-     * @return self
      */
-    public function setServiceNotice(array $serviceNotice = [])
+    public function setServiceNotice(?array $serviceNotice = null): self
     {
         // validation for constraint: array
-        if ('' !== ($serviceNoticeArrayErrorMessage = self::validateServiceNoticeForArrayConstraintsFromSetServiceNotice($serviceNotice))) {
+        if ('' !== ($serviceNoticeArrayErrorMessage = self::validateServiceNoticeForArrayConstraintFromSetServiceNotice($serviceNotice))) {
             throw new \InvalidArgumentException($serviceNoticeArrayErrorMessage, __LINE__);
         }
 
@@ -95,23 +98,7 @@ class ArrayOfServiceNotice extends AbstractStructArrayBase
         } else {
             $this->ServiceNotice = $serviceNotice;
         }
-        return $this;
-    }
 
-    /**
-     * Add item to ServiceNotice value
-     *
-     * @throws \InvalidArgumentException
-     *
-     * @return self
-     */
-    public function addToServiceNotice(\Scraper\ScraperDPD\StructType\ServiceNotice $item)
-    {
-        // validation for constraint: itemType
-        if (!$item instanceof \Scraper\ScraperDPD\StructType\ServiceNotice) {
-            throw new \InvalidArgumentException(sprintf('The ServiceNotice property can only contain items of type \Scraper\ScraperDPD\StructType\ServiceNotice, %s given', \is_object($item) ? $item::class : (\is_array($item) ? implode(', ', $item) : \gettype($item))), __LINE__);
-        }
-        $this->ServiceNotice[] = $item;
         return $this;
     }
 
@@ -119,10 +106,8 @@ class ArrayOfServiceNotice extends AbstractStructArrayBase
      * Returns the current element
      *
      * @see AbstractStructArrayBase::current()
-     *
-     * @return \Scraper\ScraperDPD\StructType\ServiceNotice|null
      */
-    public function current()
+    public function current(): ?\Scraper\ScraperDPD\StructType\ServiceNotice
     {
         return parent::current();
     }
@@ -133,10 +118,8 @@ class ArrayOfServiceNotice extends AbstractStructArrayBase
      * @see AbstractStructArrayBase::item()
      *
      * @param int $index
-     *
-     * @return \Scraper\ScraperDPD\StructType\ServiceNotice|null
      */
-    public function item($index)
+    public function item($index): ?\Scraper\ScraperDPD\StructType\ServiceNotice
     {
         return parent::item($index);
     }
@@ -145,10 +128,8 @@ class ArrayOfServiceNotice extends AbstractStructArrayBase
      * Returns the first element
      *
      * @see AbstractStructArrayBase::first()
-     *
-     * @return \Scraper\ScraperDPD\StructType\ServiceNotice|null
      */
-    public function first()
+    public function first(): ?\Scraper\ScraperDPD\StructType\ServiceNotice
     {
         return parent::first();
     }
@@ -157,10 +138,8 @@ class ArrayOfServiceNotice extends AbstractStructArrayBase
      * Returns the last element
      *
      * @see AbstractStructArrayBase::last()
-     *
-     * @return \Scraper\ScraperDPD\StructType\ServiceNotice|null
      */
-    public function last()
+    public function last(): ?\Scraper\ScraperDPD\StructType\ServiceNotice
     {
         return parent::last();
     }
@@ -171,12 +150,28 @@ class ArrayOfServiceNotice extends AbstractStructArrayBase
      * @see AbstractStructArrayBase::offsetGet()
      *
      * @param int $offset
-     *
-     * @return \Scraper\ScraperDPD\StructType\ServiceNotice|null
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): ?\Scraper\ScraperDPD\StructType\ServiceNotice
     {
         return parent::offsetGet($offset);
+    }
+
+    /**
+     * Add element to array
+     *
+     * @see AbstractStructArrayBase::add()
+     *
+     * @param \Scraper\ScraperDPD\StructType\ServiceNotice $item
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function add($item): self
+    {
+        // validation for constraint: itemType
+        if (!$item instanceof \Scraper\ScraperDPD\StructType\ServiceNotice) {
+            throw new \InvalidArgumentException(sprintf('The ServiceNotice property can only contain items of type \Scraper\ScraperDPD\StructType\ServiceNotice, %s given', \is_object($item) ? $item::class : (\is_array($item) ? implode(', ', $item) : \gettype($item))), __LINE__);
+        }
+        return parent::add($item);
     }
 
     /**
@@ -186,7 +181,7 @@ class ArrayOfServiceNotice extends AbstractStructArrayBase
      *
      * @return string ServiceNotice
      */
-    public function getAttributeName()
+    public function getAttributeName(): string
     {
         return 'ServiceNotice';
     }

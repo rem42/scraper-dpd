@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\EnumType;
 
@@ -23,7 +23,7 @@ class ELinkedShipmentType extends AbstractStructEnumBase
      *
      * @return array<string>
      */
-    public static function getValidValues()
+    public static function getValidValues(): array
     {
         return [
             self::VALUE_SLAVE,

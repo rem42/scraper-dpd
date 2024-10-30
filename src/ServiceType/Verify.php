@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\ServiceType;
 
@@ -13,32 +13,20 @@ class Verify extends AbstractSoapClientBase
      * Sets the VerifyUserCredentials SoapHeader param
      *
      * @uses AbstractSoapClientBase::setSoapHeader()
-     *
-     * @param string $nameSpace
-     * @param bool   $mustUnderstand
-     * @param string $actor
-     *
-     * @return bool
      */
-    public function setSoapHeaderVerifyUserCredentials(\Scraper\ScraperDPD\StructType\VerifyUserCredentials $verifyUserCredentials, $nameSpace = 'http://www.cargonet.software', $mustUnderstand = false, $actor = null)
+    public function setSoapHeaderVerifyUserCredentials(\Scraper\ScraperDPD\StructType\VerifyUserCredentials $verifyUserCredentials, string $namespace = 'http://www.cargonet.software', bool $mustUnderstand = false, ?string $actor = null): self
     {
-        return $this->setSoapHeader($nameSpace, 'VerifyUserCredentials', $verifyUserCredentials, $mustUnderstand, $actor);
+        return $this->setSoapHeader($namespace, 'VerifyUserCredentials', $verifyUserCredentials, $mustUnderstand, $actor);
     }
 
     /**
      * Sets the UserCredentials SoapHeader param
      *
      * @uses AbstractSoapClientBase::setSoapHeader()
-     *
-     * @param string $nameSpace
-     * @param bool   $mustUnderstand
-     * @param string $actor
-     *
-     * @return bool
      */
-    public function setSoapHeaderUserCredentials(\Scraper\ScraperDPD\StructType\UserCredentials $userCredentials, $nameSpace = 'http://www.cargonet.software', $mustUnderstand = false, $actor = null)
+    public function setSoapHeaderUserCredentials(\Scraper\ScraperDPD\StructType\UserCredentials $userCredentials, string $namespace = 'http://www.cargonet.software', bool $mustUnderstand = false, ?string $actor = null): self
     {
-        return $this->setSoapHeader($nameSpace, 'UserCredentials', $userCredentials, $mustUnderstand, $actor);
+        return $this->setSoapHeader($namespace, 'UserCredentials', $userCredentials, $mustUnderstand, $actor);
     }
 
     /**
@@ -51,7 +39,6 @@ class Verify extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\VerifyConfigurationResponse|bool
@@ -59,10 +46,14 @@ class Verify extends AbstractSoapClientBase
     public function VerifyConfiguration(\Scraper\ScraperDPD\StructType\VerifyConfiguration $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->VerifyConfiguration($parameters));
-            return $this->getResult();
+            $this->setResult($resultVerifyConfiguration = $this->getSoapClient()->__soapCall('VerifyConfiguration', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultVerifyConfiguration;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -77,7 +68,6 @@ class Verify extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperDPD\StructType\VerifyClientResponse|bool
@@ -85,10 +75,14 @@ class Verify extends AbstractSoapClientBase
     public function VerifyClient(\Scraper\ScraperDPD\StructType\VerifyClient $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->VerifyClient($parameters));
-            return $this->getResult();
+            $this->setResult($resultVerifyClient = $this->getSoapClient()->__soapCall('VerifyClient', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultVerifyClient;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }

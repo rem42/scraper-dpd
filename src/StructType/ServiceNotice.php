@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for ServiceNotice StructType
  */
+#[\AllowDynamicProperties]
 class ServiceNotice extends AbstractStructBase
 {
     /**
@@ -14,91 +15,71 @@ class ServiceNotice extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var string
      */
-    public $type;
+    protected string $type;
     /**
      * The BarcodeId
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $BarcodeId;
+    protected ?string $BarcodeId = null;
     /**
      * The BarcodeSource
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $BarcodeSource;
+    protected ?string $BarcodeSource = null;
     /**
      * The customer
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var Customer
      */
-    public $customer;
+    protected ?Customer $customer = null;
     /**
      * The reason
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $reason;
+    protected ?string $reason = null;
     /**
      * The date
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $date;
+    protected ?string $date = null;
     /**
      * The status
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $status;
+    protected ?string $status = null;
     /**
      * The weight
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $weight;
+    protected ?string $weight = null;
     /**
      * The info
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $info;
+    protected ?string $info = null;
     /**
      * The counterquestion
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $counterquestion;
+    protected ?string $counterquestion = null;
 
     /**
      * Constructor method for ServiceNotice
@@ -113,18 +94,8 @@ class ServiceNotice extends AbstractStructBase
      * @uses ServiceNotice::setWeight()
      * @uses ServiceNotice::setInfo()
      * @uses ServiceNotice::setCounterquestion()
-     *
-     * @param string $type
-     * @param string $barcodeId
-     * @param string $barcodeSource
-     * @param string $reason
-     * @param string $date
-     * @param string $status
-     * @param string $weight
-     * @param string $info
-     * @param string $counterquestion
      */
-    public function __construct($type = null, $barcodeId = null, $barcodeSource = null, ?Customer $customer = null, $reason = null, $date = null, $status = null, $weight = null, $info = null, $counterquestion = null)
+    public function __construct(string $type, ?string $barcodeId = null, ?string $barcodeSource = null, ?Customer $customer = null, ?string $reason = null, ?string $date = null, ?string $status = null, ?string $weight = null, ?string $info = null, ?string $counterquestion = null)
     {
         $this
             ->setType($type)
@@ -142,10 +113,8 @@ class ServiceNotice extends AbstractStructBase
 
     /**
      * Get type value
-     *
-     * @return string
      */
-    public function getType()
+    public function getType(): string
     {
         return $this->type;
     }
@@ -156,256 +125,210 @@ class ServiceNotice extends AbstractStructBase
      * @uses \Scraper\ScraperDPD\EnumType\ServiceNoticeType::valueIsValid()
      * @uses \Scraper\ScraperDPD\EnumType\ServiceNoticeType::getValidValues()
      *
-     * @param string $type
-     *
      * @throws \InvalidArgumentException
-     *
-     * @return self
      */
-    public function setType($type = null)
+    public function setType(string $type): self
     {
         // validation for constraint: enumeration
         if (!\Scraper\ScraperDPD\EnumType\ServiceNoticeType::valueIsValid($type)) {
             throw new \InvalidArgumentException(sprintf('Invalid value(s) %s, please use one of: %s from enumeration class \Scraper\ScraperDPD\EnumType\ServiceNoticeType', \is_array($type) ? implode(', ', $type) : var_export($type, true), implode(', ', \Scraper\ScraperDPD\EnumType\ServiceNoticeType::getValidValues())), __LINE__);
         }
         $this->type = $type;
+
         return $this;
     }
 
     /**
      * Get BarcodeId value
-     *
-     * @return string|null
      */
-    public function getBarcodeId()
+    public function getBarcodeId(): ?string
     {
         return $this->BarcodeId;
     }
 
     /**
      * Set BarcodeId value
-     *
-     * @param string $barcodeId
-     *
-     * @return self
      */
-    public function setBarcodeId($barcodeId = null)
+    public function setBarcodeId(?string $barcodeId = null): self
     {
         // validation for constraint: string
         if (null !== $barcodeId && !\is_string($barcodeId)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($barcodeId, true), \gettype($barcodeId)), __LINE__);
         }
         $this->BarcodeId = $barcodeId;
+
         return $this;
     }
 
     /**
      * Get BarcodeSource value
-     *
-     * @return string|null
      */
-    public function getBarcodeSource()
+    public function getBarcodeSource(): ?string
     {
         return $this->BarcodeSource;
     }
 
     /**
      * Set BarcodeSource value
-     *
-     * @param string $barcodeSource
-     *
-     * @return self
      */
-    public function setBarcodeSource($barcodeSource = null)
+    public function setBarcodeSource(?string $barcodeSource = null): self
     {
         // validation for constraint: string
         if (null !== $barcodeSource && !\is_string($barcodeSource)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($barcodeSource, true), \gettype($barcodeSource)), __LINE__);
         }
         $this->BarcodeSource = $barcodeSource;
+
         return $this;
     }
 
     /**
      * Get customer value
-     *
-     * @return Customer|null
      */
-    public function getCustomer()
+    public function getCustomer(): ?Customer
     {
         return $this->customer;
     }
 
     /**
      * Set customer value
-     *
-     * @return self
      */
-    public function setCustomer(?Customer $customer = null)
+    public function setCustomer(?Customer $customer = null): self
     {
         $this->customer = $customer;
+
         return $this;
     }
 
     /**
      * Get reason value
-     *
-     * @return string|null
      */
-    public function getReason()
+    public function getReason(): ?string
     {
         return $this->reason;
     }
 
     /**
      * Set reason value
-     *
-     * @param string $reason
-     *
-     * @return self
      */
-    public function setReason($reason = null)
+    public function setReason(?string $reason = null): self
     {
         // validation for constraint: string
         if (null !== $reason && !\is_string($reason)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($reason, true), \gettype($reason)), __LINE__);
         }
         $this->reason = $reason;
+
         return $this;
     }
 
     /**
      * Get date value
-     *
-     * @return string|null
      */
-    public function getDate()
+    public function getDate(): ?string
     {
         return $this->date;
     }
 
     /**
      * Set date value
-     *
-     * @param string $date
-     *
-     * @return self
      */
-    public function setDate($date = null)
+    public function setDate(?string $date = null): self
     {
         // validation for constraint: string
         if (null !== $date && !\is_string($date)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($date, true), \gettype($date)), __LINE__);
         }
         $this->date = $date;
+
         return $this;
     }
 
     /**
      * Get status value
-     *
-     * @return string|null
      */
-    public function getStatus()
+    public function getStatus(): ?string
     {
         return $this->status;
     }
 
     /**
      * Set status value
-     *
-     * @param string $status
-     *
-     * @return self
      */
-    public function setStatus($status = null)
+    public function setStatus(?string $status = null): self
     {
         // validation for constraint: string
         if (null !== $status && !\is_string($status)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($status, true), \gettype($status)), __LINE__);
         }
         $this->status = $status;
+
         return $this;
     }
 
     /**
      * Get weight value
-     *
-     * @return string|null
      */
-    public function getWeight()
+    public function getWeight(): ?string
     {
         return $this->weight;
     }
 
     /**
      * Set weight value
-     *
-     * @param string $weight
-     *
-     * @return self
      */
-    public function setWeight($weight = null)
+    public function setWeight(?string $weight = null): self
     {
         // validation for constraint: string
         if (null !== $weight && !\is_string($weight)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($weight, true), \gettype($weight)), __LINE__);
         }
         $this->weight = $weight;
+
         return $this;
     }
 
     /**
      * Get info value
-     *
-     * @return string|null
      */
-    public function getInfo()
+    public function getInfo(): ?string
     {
         return $this->info;
     }
 
     /**
      * Set info value
-     *
-     * @param string $info
-     *
-     * @return self
      */
-    public function setInfo($info = null)
+    public function setInfo(?string $info = null): self
     {
         // validation for constraint: string
         if (null !== $info && !\is_string($info)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($info, true), \gettype($info)), __LINE__);
         }
         $this->info = $info;
+
         return $this;
     }
 
     /**
      * Get counterquestion value
-     *
-     * @return string|null
      */
-    public function getCounterquestion()
+    public function getCounterquestion(): ?string
     {
         return $this->counterquestion;
     }
 
     /**
      * Set counterquestion value
-     *
-     * @param string $counterquestion
-     *
-     * @return self
      */
-    public function setCounterquestion($counterquestion = null)
+    public function setCounterquestion(?string $counterquestion = null): self
     {
         // validation for constraint: string
         if (null !== $counterquestion && !\is_string($counterquestion)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($counterquestion, true), \gettype($counterquestion)), __LINE__);
         }
         $this->counterquestion = $counterquestion;
+
         return $this;
     }
 }

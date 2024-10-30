@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\ArrayType;
 
@@ -18,7 +18,7 @@ class ArrayOfString extends AbstractStructArrayBase
      *
      * @var array<string>
      */
-    public $string;
+    protected ?array $string = null;
 
     /**
      * Constructor method for ArrayOfString
@@ -27,7 +27,7 @@ class ArrayOfString extends AbstractStructArrayBase
      *
      * @param array<string> $string
      */
-    public function __construct(array $string = [])
+    public function __construct(?array $string = null)
     {
         $this
             ->setString($string)
@@ -40,21 +40,25 @@ class ArrayOfString extends AbstractStructArrayBase
      * this property may have been unset before, due to the fact that this property is
      * removable from the request (nillable=true+minOccurs=0)
      *
-     * @return array<string>|null
+     * @return array<string>
      */
-    public function getString()
+    public function getString(): ?array
     {
         return $this->string ?? null;
     }
 
     /**
-     * This method is responsible for validating the values passed to the setString method
+     * This method is responsible for validating the value(s) passed to the setString method
      * This method is willingly generated in order to preserve the one-line inline validation within the setString method
+     * This has to validate that each item contained by the array match the itemType constraint
      *
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateStringForArrayConstraintsFromSetString(array $values = [])
+    public static function validateStringForArrayConstraintFromSetString(?array $values = []): string
     {
+        if (!\is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
 
@@ -69,6 +73,7 @@ class ArrayOfString extends AbstractStructArrayBase
             $message = sprintf('The string property can only contain items of type string, %s given', \is_object($invalidValues) ? $invalidValues::class : (\is_array($invalidValues) ? implode(', ', $invalidValues) : \gettype($invalidValues)));
         }
         unset($invalidValues);
+
         return $message;
     }
 
@@ -80,13 +85,11 @@ class ArrayOfString extends AbstractStructArrayBase
      * @param array<string> $string
      *
      * @throws \InvalidArgumentException
-     *
-     * @return self
      */
-    public function setString(array $string = [])
+    public function setString(?array $string = null): self
     {
         // validation for constraint: array
-        if ('' !== ($stringArrayErrorMessage = self::validateStringForArrayConstraintsFromSetString($string))) {
+        if ('' !== ($stringArrayErrorMessage = self::validateStringForArrayConstraintFromSetString($string))) {
             throw new \InvalidArgumentException($stringArrayErrorMessage, __LINE__);
         }
 
@@ -95,25 +98,7 @@ class ArrayOfString extends AbstractStructArrayBase
         } else {
             $this->string = $string;
         }
-        return $this;
-    }
 
-    /**
-     * Add item to string value
-     *
-     * @param string $item
-     *
-     * @throws \InvalidArgumentException
-     *
-     * @return self
-     */
-    public function addToString($item)
-    {
-        // validation for constraint: itemType
-        if (!\is_string($item)) {
-            throw new \InvalidArgumentException(sprintf('The string property can only contain items of type string, %s given', \is_object($item) ? $item::class : (\is_array($item) ? implode(', ', $item) : \gettype($item))), __LINE__);
-        }
-        $this->string[] = $item;
         return $this;
     }
 
@@ -121,10 +106,8 @@ class ArrayOfString extends AbstractStructArrayBase
      * Returns the current element
      *
      * @see AbstractStructArrayBase::current()
-     *
-     * @return string|null
      */
-    public function current()
+    public function current(): ?string
     {
         return parent::current();
     }
@@ -135,10 +118,8 @@ class ArrayOfString extends AbstractStructArrayBase
      * @see AbstractStructArrayBase::item()
      *
      * @param int $index
-     *
-     * @return string|null
      */
-    public function item($index)
+    public function item($index): ?string
     {
         return parent::item($index);
     }
@@ -147,10 +128,8 @@ class ArrayOfString extends AbstractStructArrayBase
      * Returns the first element
      *
      * @see AbstractStructArrayBase::first()
-     *
-     * @return string|null
      */
-    public function first()
+    public function first(): ?string
     {
         return parent::first();
     }
@@ -159,10 +138,8 @@ class ArrayOfString extends AbstractStructArrayBase
      * Returns the last element
      *
      * @see AbstractStructArrayBase::last()
-     *
-     * @return string|null
      */
-    public function last()
+    public function last(): ?string
     {
         return parent::last();
     }
@@ -173,10 +150,8 @@ class ArrayOfString extends AbstractStructArrayBase
      * @see AbstractStructArrayBase::offsetGet()
      *
      * @param int $offset
-     *
-     * @return string|null
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): ?string
     {
         return parent::offsetGet($offset);
     }
@@ -188,7 +163,7 @@ class ArrayOfString extends AbstractStructArrayBase
      *
      * @return string string
      */
-    public function getAttributeName()
+    public function getAttributeName(): string
     {
         return 'string';
     }

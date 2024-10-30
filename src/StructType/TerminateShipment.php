@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for TerminateShipment StructType
  */
+#[\AllowDynamicProperties]
 class TerminateShipment extends AbstractStructBase
 {
     /**
@@ -14,10 +15,8 @@ class TerminateShipment extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var TerminateShipmentRequest
      */
-    public $request;
+    protected ?TerminateShipmentRequest $request = null;
 
     /**
      * Constructor method for TerminateShipment
@@ -33,22 +32,19 @@ class TerminateShipment extends AbstractStructBase
 
     /**
      * Get request value
-     *
-     * @return TerminateShipmentRequest|null
      */
-    public function getRequest()
+    public function getRequest(): ?TerminateShipmentRequest
     {
         return $this->request;
     }
 
     /**
      * Set request value
-     *
-     * @return self
      */
-    public function setRequest(?TerminateShipmentRequest $request = null)
+    public function setRequest(?TerminateShipmentRequest $request = null): self
     {
         $this->request = $request;
+
         return $this;
     }
 }

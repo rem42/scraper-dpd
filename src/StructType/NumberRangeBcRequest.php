@@ -1,10 +1,11 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
 /**
  * This class stands for NumberRangeBcRequest StructType
  */
+#[\AllowDynamicProperties]
 class NumberRangeBcRequest extends NumberRangeBcBaseRequest
 {
     /**
@@ -12,19 +13,15 @@ class NumberRangeBcRequest extends NumberRangeBcBaseRequest
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $NumberType;
+    protected ?string $NumberType = null;
 
     /**
      * Constructor method for NumberRangeBcRequest
      *
      * @uses NumberRangeBcRequest::setNumberType()
-     *
-     * @param string $numberType
      */
-    public function __construct($numberType = null)
+    public function __construct(?string $numberType = null)
     {
         $this
             ->setNumberType($numberType)
@@ -33,28 +30,23 @@ class NumberRangeBcRequest extends NumberRangeBcBaseRequest
 
     /**
      * Get NumberType value
-     *
-     * @return string|null
      */
-    public function getNumberType()
+    public function getNumberType(): ?string
     {
         return $this->NumberType;
     }
 
     /**
      * Set NumberType value
-     *
-     * @param string $numberType
-     *
-     * @return self
      */
-    public function setNumberType($numberType = null)
+    public function setNumberType(?string $numberType = null): self
     {
         // validation for constraint: string
         if (null !== $numberType && !\is_string($numberType)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($numberType, true), \gettype($numberType)), __LINE__);
         }
         $this->NumberType = $numberType;
+
         return $this;
     }
 }

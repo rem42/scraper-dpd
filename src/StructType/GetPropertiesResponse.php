@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for GetPropertiesResponse StructType
  */
+#[\AllowDynamicProperties]
 class GetPropertiesResponse extends AbstractStructBase
 {
     /**
@@ -14,19 +15,15 @@ class GetPropertiesResponse extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var self
      */
-    public $GetPropertiesResult;
+    protected ?GetPropertiesResponse $GetPropertiesResult = null;
     /**
      * The Properties
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var \Scraper\ScraperDPD\ArrayType\ArrayOfPropertyDefinition
      */
-    public $Properties;
+    protected ?\Scraper\ScraperDPD\ArrayType\ArrayOfPropertyDefinition $Properties = null;
 
     /**
      * Constructor method for GetPropertiesResponse
@@ -44,43 +41,37 @@ class GetPropertiesResponse extends AbstractStructBase
 
     /**
      * Get GetPropertiesResult value
-     *
-     * @return self|null
      */
-    public function getGetPropertiesResult()
+    public function getGetPropertiesResult(): ?self
     {
         return $this->GetPropertiesResult;
     }
 
     /**
      * Set GetPropertiesResult value
-     *
-     * @return self
      */
-    public function setGetPropertiesResult(?self $getPropertiesResult = null)
+    public function setGetPropertiesResult(?self $getPropertiesResult = null): self
     {
         $this->GetPropertiesResult = $getPropertiesResult;
+
         return $this;
     }
 
     /**
      * Get Properties value
-     *
-     * @return \Scraper\ScraperDPD\ArrayType\ArrayOfPropertyDefinition|null
      */
-    public function getProperties()
+    public function getProperties(): ?\Scraper\ScraperDPD\ArrayType\ArrayOfPropertyDefinition
     {
         return $this->Properties;
     }
 
     /**
      * Set Properties value
-     *
-     * @return self
      */
-    public function setProperties(?\Scraper\ScraperDPD\ArrayType\ArrayOfPropertyDefinition $properties = null)
+    public function setProperties(?\Scraper\ScraperDPD\ArrayType\ArrayOfPropertyDefinition $properties = null): self
     {
         $this->Properties = $properties;
+
         return $this;
     }
 }

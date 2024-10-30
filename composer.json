@@ -3,16 +3,17 @@
     "description": "API SOAP dpd.com",
     "require": {
         "php": "^8.1",
+        "ext-dom": "*",
         "ext-soap": "*",
         "ext-mbstring": "*",
-        "wsdltophp/packagebase": "~2.0"
+        "wsdltophp/packagebase": "~5.0"
     },
     "require-dev": {
         "rem42/php-cs-fixer-config": "^3.5"
     },
     "autoload": {
         "psr-4": {
-            "Scraper\\ScraperDPD\\": "./src/"
+            "Scraper\\ScraperDPD\\": "src/"
         }
     },
     "scripts": {

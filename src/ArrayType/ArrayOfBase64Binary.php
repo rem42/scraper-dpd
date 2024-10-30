@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\ArrayType;
 
@@ -18,7 +18,7 @@ class ArrayOfBase64Binary extends AbstractStructArrayBase
      *
      * @var array<string>
      */
-    public $base64Binary;
+    protected ?array $base64Binary = null;
 
     /**
      * Constructor method for ArrayOfBase64Binary
@@ -27,7 +27,7 @@ class ArrayOfBase64Binary extends AbstractStructArrayBase
      *
      * @param array<string> $base64Binary
      */
-    public function __construct(array $base64Binary = [])
+    public function __construct(?array $base64Binary = null)
     {
         $this
             ->setBase64Binary($base64Binary)
@@ -40,21 +40,25 @@ class ArrayOfBase64Binary extends AbstractStructArrayBase
      * this property may have been unset before, due to the fact that this property is
      * removable from the request (nillable=true+minOccurs=0)
      *
-     * @return array<string>|null
+     * @return array<string>
      */
-    public function getBase64Binary()
+    public function getBase64Binary(): ?array
     {
         return $this->base64Binary ?? null;
     }
 
     /**
-     * This method is responsible for validating the values passed to the setBase64Binary method
+     * This method is responsible for validating the value(s) passed to the setBase64Binary method
      * This method is willingly generated in order to preserve the one-line inline validation within the setBase64Binary method
+     * This has to validate that each item contained by the array match the itemType constraint
      *
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateBase64BinaryForArrayConstraintsFromSetBase64Binary(array $values = [])
+    public static function validateBase64BinaryForArrayConstraintFromSetBase64Binary(?array $values = []): string
     {
+        if (!\is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
 
@@ -66,9 +70,10 @@ class ArrayOfBase64Binary extends AbstractStructArrayBase
         }
 
         if (!empty($invalidValues)) {
-            $message = sprintf('The base64Binary property can only contain items of type base64Binary, %s given', \is_object($invalidValues) ? $invalidValues::class : (\is_array($invalidValues) ? implode(', ', $invalidValues) : \gettype($invalidValues)));
+            $message = sprintf('The base64Binary property can only contain items of type string, %s given', \is_object($invalidValues) ? $invalidValues::class : (\is_array($invalidValues) ? implode(', ', $invalidValues) : \gettype($invalidValues)));
         }
         unset($invalidValues);
+
         return $message;
     }
 
@@ -80,13 +85,11 @@ class ArrayOfBase64Binary extends AbstractStructArrayBase
      * @param array<string> $base64Binary
      *
      * @throws \InvalidArgumentException
-     *
-     * @return self
      */
-    public function setBase64Binary(array $base64Binary = [])
+    public function setBase64Binary(?array $base64Binary = null): self
     {
         // validation for constraint: array
-        if ('' !== ($base64BinaryArrayErrorMessage = self::validateBase64BinaryForArrayConstraintsFromSetBase64Binary($base64Binary))) {
+        if ('' !== ($base64BinaryArrayErrorMessage = self::validateBase64BinaryForArrayConstraintFromSetBase64Binary($base64Binary))) {
             throw new \InvalidArgumentException($base64BinaryArrayErrorMessage, __LINE__);
         }
 
@@ -95,25 +98,7 @@ class ArrayOfBase64Binary extends AbstractStructArrayBase
         } else {
             $this->base64Binary = $base64Binary;
         }
-        return $this;
-    }
 
-    /**
-     * Add item to base64Binary value
-     *
-     * @param string $item
-     *
-     * @throws \InvalidArgumentException
-     *
-     * @return self
-     */
-    public function addToBase64Binary($item)
-    {
-        // validation for constraint: itemType
-        if (!\is_string($item)) {
-            throw new \InvalidArgumentException(sprintf('The base64Binary property can only contain items of type base64Binary, %s given', \is_object($item) ? $item::class : (\is_array($item) ? implode(', ', $item) : \gettype($item))), __LINE__);
-        }
-        $this->base64Binary[] = $item;
         return $this;
     }
 
@@ -121,10 +106,8 @@ class ArrayOfBase64Binary extends AbstractStructArrayBase
      * Returns the current element
      *
      * @see AbstractStructArrayBase::current()
-     *
-     * @return string|null
      */
-    public function current()
+    public function current(): ?string
     {
         return parent::current();
     }
@@ -135,10 +118,8 @@ class ArrayOfBase64Binary extends AbstractStructArrayBase
      * @see AbstractStructArrayBase::item()
      *
      * @param int $index
-     *
-     * @return string|null
      */
-    public function item($index)
+    public function item($index): ?string
     {
         return parent::item($index);
     }
@@ -147,10 +128,8 @@ class ArrayOfBase64Binary extends AbstractStructArrayBase
      * Returns the first element
      *
      * @see AbstractStructArrayBase::first()
-     *
-     * @return string|null
      */
-    public function first()
+    public function first(): ?string
     {
         return parent::first();
     }
@@ -159,10 +138,8 @@ class ArrayOfBase64Binary extends AbstractStructArrayBase
      * Returns the last element
      *
      * @see AbstractStructArrayBase::last()
-     *
-     * @return string|null
      */
-    public function last()
+    public function last(): ?string
     {
         return parent::last();
     }
@@ -173,10 +150,8 @@ class ArrayOfBase64Binary extends AbstractStructArrayBase
      * @see AbstractStructArrayBase::offsetGet()
      *
      * @param int $offset
-     *
-     * @return string|null
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): ?string
     {
         return parent::offsetGet($offset);
     }
@@ -188,7 +163,7 @@ class ArrayOfBase64Binary extends AbstractStructArrayBase
      *
      * @return string base64Binary
      */
-    public function getAttributeName()
+    public function getAttributeName(): string
     {
         return 'base64Binary';
     }

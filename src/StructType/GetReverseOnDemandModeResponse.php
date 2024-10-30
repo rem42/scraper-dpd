@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for GetReverseOnDemandModeResponse StructType
  */
+#[\AllowDynamicProperties]
 class GetReverseOnDemandModeResponse extends AbstractStructBase
 {
     /**
@@ -14,19 +15,15 @@ class GetReverseOnDemandModeResponse extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var int
      */
-    public $GetReverseOnDemandModeResult;
+    protected int $GetReverseOnDemandModeResult;
 
     /**
      * Constructor method for GetReverseOnDemandModeResponse
      *
      * @uses GetReverseOnDemandModeResponse::setGetReverseOnDemandModeResult()
-     *
-     * @param int $getReverseOnDemandModeResult
      */
-    public function __construct($getReverseOnDemandModeResult = null)
+    public function __construct(int $getReverseOnDemandModeResult)
     {
         $this
             ->setGetReverseOnDemandModeResult($getReverseOnDemandModeResult)
@@ -35,28 +32,23 @@ class GetReverseOnDemandModeResponse extends AbstractStructBase
 
     /**
      * Get GetReverseOnDemandModeResult value
-     *
-     * @return int
      */
-    public function getGetReverseOnDemandModeResult()
+    public function getGetReverseOnDemandModeResult(): int
     {
         return $this->GetReverseOnDemandModeResult;
     }
 
     /**
      * Set GetReverseOnDemandModeResult value
-     *
-     * @param int $getReverseOnDemandModeResult
-     *
-     * @return self
      */
-    public function setGetReverseOnDemandModeResult($getReverseOnDemandModeResult = null)
+    public function setGetReverseOnDemandModeResult(int $getReverseOnDemandModeResult): self
     {
         // validation for constraint: int
         if (null !== $getReverseOnDemandModeResult && !(\is_int($getReverseOnDemandModeResult) || ctype_digit($getReverseOnDemandModeResult))) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($getReverseOnDemandModeResult, true), \gettype($getReverseOnDemandModeResult)), __LINE__);
         }
         $this->GetReverseOnDemandModeResult = $getReverseOnDemandModeResult;
+
         return $this;
     }
 }

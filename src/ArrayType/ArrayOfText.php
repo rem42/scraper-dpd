@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\ArrayType;
 
@@ -18,7 +18,7 @@ class ArrayOfText extends AbstractStructArrayBase
      *
      * @var array<\Scraper\ScraperDPD\StructType\Text>
      */
-    public $Text;
+    protected ?array $Text = null;
 
     /**
      * Constructor method for ArrayOfText
@@ -27,7 +27,7 @@ class ArrayOfText extends AbstractStructArrayBase
      *
      * @param array<\Scraper\ScraperDPD\StructType\Text> $text
      */
-    public function __construct(array $text = [])
+    public function __construct(?array $text = null)
     {
         $this
             ->setText($text)
@@ -40,21 +40,25 @@ class ArrayOfText extends AbstractStructArrayBase
      * this property may have been unset before, due to the fact that this property is
      * removable from the request (nillable=true+minOccurs=0)
      *
-     * @return array<\Scraper\ScraperDPD\StructType\Text>|null
+     * @return array<\Scraper\ScraperDPD\StructType\Text>
      */
-    public function getText()
+    public function getText(): ?array
     {
         return $this->Text ?? null;
     }
 
     /**
-     * This method is responsible for validating the values passed to the setText method
+     * This method is responsible for validating the value(s) passed to the setText method
      * This method is willingly generated in order to preserve the one-line inline validation within the setText method
+     * This has to validate that each item contained by the array match the itemType constraint
      *
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateTextForArrayConstraintsFromSetText(array $values = [])
+    public static function validateTextForArrayConstraintFromSetText(?array $values = []): string
     {
+        if (!\is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
 
@@ -69,6 +73,7 @@ class ArrayOfText extends AbstractStructArrayBase
             $message = sprintf('The Text property can only contain items of type \Scraper\ScraperDPD\StructType\Text, %s given', \is_object($invalidValues) ? $invalidValues::class : (\is_array($invalidValues) ? implode(', ', $invalidValues) : \gettype($invalidValues)));
         }
         unset($invalidValues);
+
         return $message;
     }
 
@@ -80,13 +85,11 @@ class ArrayOfText extends AbstractStructArrayBase
      * @param array<\Scraper\ScraperDPD\StructType\Text> $text
      *
      * @throws \InvalidArgumentException
-     *
-     * @return self
      */
-    public function setText(array $text = [])
+    public function setText(?array $text = null): self
     {
         // validation for constraint: array
-        if ('' !== ($textArrayErrorMessage = self::validateTextForArrayConstraintsFromSetText($text))) {
+        if ('' !== ($textArrayErrorMessage = self::validateTextForArrayConstraintFromSetText($text))) {
             throw new \InvalidArgumentException($textArrayErrorMessage, __LINE__);
         }
 
@@ -95,23 +98,7 @@ class ArrayOfText extends AbstractStructArrayBase
         } else {
             $this->Text = $text;
         }
-        return $this;
-    }
 
-    /**
-     * Add item to Text value
-     *
-     * @throws \InvalidArgumentException
-     *
-     * @return self
-     */
-    public function addToText(\Scraper\ScraperDPD\StructType\Text $item)
-    {
-        // validation for constraint: itemType
-        if (!$item instanceof \Scraper\ScraperDPD\StructType\Text) {
-            throw new \InvalidArgumentException(sprintf('The Text property can only contain items of type \Scraper\ScraperDPD\StructType\Text, %s given', \is_object($item) ? $item::class : (\is_array($item) ? implode(', ', $item) : \gettype($item))), __LINE__);
-        }
-        $this->Text[] = $item;
         return $this;
     }
 
@@ -119,10 +106,8 @@ class ArrayOfText extends AbstractStructArrayBase
      * Returns the current element
      *
      * @see AbstractStructArrayBase::current()
-     *
-     * @return \Scraper\ScraperDPD\StructType\Text|null
      */
-    public function current()
+    public function current(): ?\Scraper\ScraperDPD\StructType\Text
     {
         return parent::current();
     }
@@ -133,10 +118,8 @@ class ArrayOfText extends AbstractStructArrayBase
      * @see AbstractStructArrayBase::item()
      *
      * @param int $index
-     *
-     * @return \Scraper\ScraperDPD\StructType\Text|null
      */
-    public function item($index)
+    public function item($index): ?\Scraper\ScraperDPD\StructType\Text
     {
         return parent::item($index);
     }
@@ -145,10 +128,8 @@ class ArrayOfText extends AbstractStructArrayBase
      * Returns the first element
      *
      * @see AbstractStructArrayBase::first()
-     *
-     * @return \Scraper\ScraperDPD\StructType\Text|null
      */
-    public function first()
+    public function first(): ?\Scraper\ScraperDPD\StructType\Text
     {
         return parent::first();
     }
@@ -157,10 +138,8 @@ class ArrayOfText extends AbstractStructArrayBase
      * Returns the last element
      *
      * @see AbstractStructArrayBase::last()
-     *
-     * @return \Scraper\ScraperDPD\StructType\Text|null
      */
-    public function last()
+    public function last(): ?\Scraper\ScraperDPD\StructType\Text
     {
         return parent::last();
     }
@@ -171,12 +150,28 @@ class ArrayOfText extends AbstractStructArrayBase
      * @see AbstractStructArrayBase::offsetGet()
      *
      * @param int $offset
-     *
-     * @return \Scraper\ScraperDPD\StructType\Text|null
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): ?\Scraper\ScraperDPD\StructType\Text
     {
         return parent::offsetGet($offset);
+    }
+
+    /**
+     * Add element to array
+     *
+     * @see AbstractStructArrayBase::add()
+     *
+     * @param \Scraper\ScraperDPD\StructType\Text $item
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function add($item): self
+    {
+        // validation for constraint: itemType
+        if (!$item instanceof \Scraper\ScraperDPD\StructType\Text) {
+            throw new \InvalidArgumentException(sprintf('The Text property can only contain items of type \Scraper\ScraperDPD\StructType\Text, %s given', \is_object($item) ? $item::class : (\is_array($item) ? implode(', ', $item) : \gettype($item))), __LINE__);
+        }
+        return parent::add($item);
     }
 
     /**
@@ -186,7 +181,7 @@ class ArrayOfText extends AbstractStructArrayBase
      *
      * @return string Text
      */
-    public function getAttributeName()
+    public function getAttributeName(): string
     {
         return 'Text';
     }

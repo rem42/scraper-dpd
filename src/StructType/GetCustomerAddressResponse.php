@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for GetCustomerAddressResponse StructType
  */
+#[\AllowDynamicProperties]
 class GetCustomerAddressResponse extends AbstractStructBase
 {
     /**
@@ -14,10 +15,8 @@ class GetCustomerAddressResponse extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var CustomerAddress
      */
-    public $GetCustomerAddressResult;
+    protected ?CustomerAddress $GetCustomerAddressResult = null;
 
     /**
      * Constructor method for GetCustomerAddressResponse
@@ -33,22 +32,19 @@ class GetCustomerAddressResponse extends AbstractStructBase
 
     /**
      * Get GetCustomerAddressResult value
-     *
-     * @return CustomerAddress|null
      */
-    public function getGetCustomerAddressResult()
+    public function getGetCustomerAddressResult(): ?CustomerAddress
     {
         return $this->GetCustomerAddressResult;
     }
 
     /**
      * Set GetCustomerAddressResult value
-     *
-     * @return self
      */
-    public function setGetCustomerAddressResult(?CustomerAddress $getCustomerAddressResult = null)
+    public function setGetCustomerAddressResult(?CustomerAddress $getCustomerAddressResult = null): self
     {
         $this->GetCustomerAddressResult = $getCustomerAddressResult;
+
         return $this;
     }
 }

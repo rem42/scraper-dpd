@@ -1,10 +1,11 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
 /**
  * This class stands for GetShipmentEntry StructType
  */
+#[\AllowDynamicProperties]
 class GetShipmentEntry extends ShipmentDataExtendedBc
 {
     /**
@@ -13,19 +14,15 @@ class GetShipmentEntry extends ShipmentDataExtendedBc
      * - maxOccurs: 1
      * - minOccurs: 1
      * - nillable: true
-     *
-     * @var string
      */
-    public $LinkedShipmentType;
+    protected ?string $LinkedShipmentType;
 
     /**
      * Constructor method for GetShipmentEntry
      *
      * @uses GetShipmentEntry::setLinkedShipmentType()
-     *
-     * @param string $linkedShipmentType
      */
-    public function __construct($linkedShipmentType = null)
+    public function __construct(?string $linkedShipmentType)
     {
         $this
             ->setLinkedShipmentType($linkedShipmentType)
@@ -34,10 +31,8 @@ class GetShipmentEntry extends ShipmentDataExtendedBc
 
     /**
      * Get LinkedShipmentType value
-     *
-     * @return string
      */
-    public function getLinkedShipmentType()
+    public function getLinkedShipmentType(): string
     {
         return $this->LinkedShipmentType;
     }
@@ -48,19 +43,16 @@ class GetShipmentEntry extends ShipmentDataExtendedBc
      * @uses \Scraper\ScraperDPD\EnumType\ELinkedShipmentType::valueIsValid()
      * @uses \Scraper\ScraperDPD\EnumType\ELinkedShipmentType::getValidValues()
      *
-     * @param string $linkedShipmentType
-     *
      * @throws \InvalidArgumentException
-     *
-     * @return self
      */
-    public function setLinkedShipmentType($linkedShipmentType = null)
+    public function setLinkedShipmentType(?string $linkedShipmentType): self
     {
         // validation for constraint: enumeration
         if (!\Scraper\ScraperDPD\EnumType\ELinkedShipmentType::valueIsValid($linkedShipmentType)) {
             throw new \InvalidArgumentException(sprintf('Invalid value(s) %s, please use one of: %s from enumeration class \Scraper\ScraperDPD\EnumType\ELinkedShipmentType', \is_array($linkedShipmentType) ? implode(', ', $linkedShipmentType) : var_export($linkedShipmentType, true), implode(', ', \Scraper\ScraperDPD\EnumType\ELinkedShipmentType::getValidValues())), __LINE__);
         }
         $this->LinkedShipmentType = $linkedShipmentType;
+
         return $this;
     }
 }

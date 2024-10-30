@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for TerminateCollectionRequestBase StructType
  */
+#[\AllowDynamicProperties]
 class TerminateCollectionRequestBase extends AbstractStructBase
 {
     /**
@@ -14,10 +15,8 @@ class TerminateCollectionRequestBase extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var Customer
      */
-    public $customer;
+    protected ?Customer $customer = null;
 
     /**
      * Constructor method for TerminateCollectionRequestBase
@@ -33,22 +32,19 @@ class TerminateCollectionRequestBase extends AbstractStructBase
 
     /**
      * Get customer value
-     *
-     * @return Customer|null
      */
-    public function getCustomer()
+    public function getCustomer(): ?Customer
     {
         return $this->customer;
     }
 
     /**
      * Set customer value
-     *
-     * @return self
      */
-    public function setCustomer(?Customer $customer = null)
+    public function setCustomer(?Customer $customer = null): self
     {
         $this->customer = $customer;
+
         return $this;
     }
 }

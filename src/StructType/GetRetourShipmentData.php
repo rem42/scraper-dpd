@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for GetRetourShipmentData StructType
  */
+#[\AllowDynamicProperties]
 class GetRetourShipmentData extends AbstractStructBase
 {
     /**
@@ -14,10 +15,8 @@ class GetRetourShipmentData extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var RetourShipmentRequest
      */
-    public $request;
+    protected ?RetourShipmentRequest $request = null;
 
     /**
      * Constructor method for GetRetourShipmentData
@@ -33,22 +32,19 @@ class GetRetourShipmentData extends AbstractStructBase
 
     /**
      * Get request value
-     *
-     * @return RetourShipmentRequest|null
      */
-    public function getRequest()
+    public function getRequest(): ?RetourShipmentRequest
     {
         return $this->request;
     }
 
     /**
      * Set request value
-     *
-     * @return self
      */
-    public function setRequest(?RetourShipmentRequest $request = null)
+    public function setRequest(?RetourShipmentRequest $request = null): self
     {
         $this->request = $request;
+
         return $this;
     }
 }

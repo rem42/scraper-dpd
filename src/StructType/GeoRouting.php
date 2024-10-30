@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for GeoRouting StructType
  */
+#[\AllowDynamicProperties]
 class GeoRouting extends AbstractStructBase
 {
     /**
@@ -14,172 +15,134 @@ class GeoRouting extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $barcodeId;
+    protected ?string $barcodeId = null;
     /**
      * The barcodePostcode
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $barcodePostcode;
+    protected ?string $barcodePostcode = null;
     /**
      * The buAlphaStr
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $buAlphaStr;
+    protected ?string $buAlphaStr = null;
     /**
      * The buCode
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $buCode;
+    protected ?string $buCode = null;
     /**
      * The cSort
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $cSort;
+    protected ?string $cSort = null;
     /**
      * The dCountry
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $dCountry;
+    protected ?string $dCountry = null;
     /**
      * The dDepot
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $dDepot;
+    protected ?string $dDepot = null;
     /**
      * The dDepotCountry
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $dDepotCountry;
+    protected ?string $dDepotCountry = null;
     /**
      * The dDepotStr
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $dDepotStr;
+    protected ?string $dDepotStr = null;
     /**
      * The dSort
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $dSort;
+    protected ?string $dSort = null;
     /**
      * The networkCode
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $networkCode;
+    protected ?string $networkCode = null;
     /**
      * The oSort
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $oSort;
+    protected ?string $oSort = null;
     /**
      * The partnerCode
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $partnerCode;
+    protected ?string $partnerCode = null;
     /**
      * The routingText
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $routingText;
+    protected ?string $routingText = null;
     /**
      * The sSort
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $sSort;
+    protected ?string $sSort = null;
     /**
      * The serviceMark
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $serviceMark;
+    protected ?string $serviceMark = null;
     /**
      * The serviceText
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $serviceText;
+    protected ?string $serviceText = null;
     /**
      * The version
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $version;
+    protected ?string $version = null;
     /**
      * The soCode
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $soCode;
+    protected ?string $soCode = null;
 
     /**
      * Constructor method for GeoRouting
@@ -203,28 +166,8 @@ class GeoRouting extends AbstractStructBase
      * @uses GeoRouting::setServiceText()
      * @uses GeoRouting::setVersion()
      * @uses GeoRouting::setSoCode()
-     *
-     * @param string $barcodeId
-     * @param string $barcodePostcode
-     * @param string $buAlphaStr
-     * @param string $buCode
-     * @param string $cSort
-     * @param string $dCountry
-     * @param string $dDepot
-     * @param string $dDepotCountry
-     * @param string $dDepotStr
-     * @param string $dSort
-     * @param string $networkCode
-     * @param string $oSort
-     * @param string $partnerCode
-     * @param string $routingText
-     * @param string $sSort
-     * @param string $serviceMark
-     * @param string $serviceText
-     * @param string $version
-     * @param string $soCode
      */
-    public function __construct($barcodeId = null, $barcodePostcode = null, $buAlphaStr = null, $buCode = null, $cSort = null, $dCountry = null, $dDepot = null, $dDepotCountry = null, $dDepotStr = null, $dSort = null, $networkCode = null, $oSort = null, $partnerCode = null, $routingText = null, $sSort = null, $serviceMark = null, $serviceText = null, $version = null, $soCode = null)
+    public function __construct(?string $barcodeId = null, ?string $barcodePostcode = null, ?string $buAlphaStr = null, ?string $buCode = null, ?string $cSort = null, ?string $dCountry = null, ?string $dDepot = null, ?string $dDepotCountry = null, ?string $dDepotStr = null, ?string $dSort = null, ?string $networkCode = null, ?string $oSort = null, ?string $partnerCode = null, ?string $routingText = null, ?string $sSort = null, ?string $serviceMark = null, ?string $serviceText = null, ?string $version = null, ?string $soCode = null)
     {
         $this
             ->setBarcodeId($barcodeId)
@@ -251,514 +194,419 @@ class GeoRouting extends AbstractStructBase
 
     /**
      * Get barcodeId value
-     *
-     * @return string|null
      */
-    public function getBarcodeId()
+    public function getBarcodeId(): ?string
     {
         return $this->barcodeId;
     }
 
     /**
      * Set barcodeId value
-     *
-     * @param string $barcodeId
-     *
-     * @return self
      */
-    public function setBarcodeId($barcodeId = null)
+    public function setBarcodeId(?string $barcodeId = null): self
     {
         // validation for constraint: string
         if (null !== $barcodeId && !\is_string($barcodeId)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($barcodeId, true), \gettype($barcodeId)), __LINE__);
         }
         $this->barcodeId = $barcodeId;
+
         return $this;
     }
 
     /**
      * Get barcodePostcode value
-     *
-     * @return string|null
      */
-    public function getBarcodePostcode()
+    public function getBarcodePostcode(): ?string
     {
         return $this->barcodePostcode;
     }
 
     /**
      * Set barcodePostcode value
-     *
-     * @param string $barcodePostcode
-     *
-     * @return self
      */
-    public function setBarcodePostcode($barcodePostcode = null)
+    public function setBarcodePostcode(?string $barcodePostcode = null): self
     {
         // validation for constraint: string
         if (null !== $barcodePostcode && !\is_string($barcodePostcode)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($barcodePostcode, true), \gettype($barcodePostcode)), __LINE__);
         }
         $this->barcodePostcode = $barcodePostcode;
+
         return $this;
     }
 
     /**
      * Get buAlphaStr value
-     *
-     * @return string|null
      */
-    public function getBuAlphaStr()
+    public function getBuAlphaStr(): ?string
     {
         return $this->buAlphaStr;
     }
 
     /**
      * Set buAlphaStr value
-     *
-     * @param string $buAlphaStr
-     *
-     * @return self
      */
-    public function setBuAlphaStr($buAlphaStr = null)
+    public function setBuAlphaStr(?string $buAlphaStr = null): self
     {
         // validation for constraint: string
         if (null !== $buAlphaStr && !\is_string($buAlphaStr)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($buAlphaStr, true), \gettype($buAlphaStr)), __LINE__);
         }
         $this->buAlphaStr = $buAlphaStr;
+
         return $this;
     }
 
     /**
      * Get buCode value
-     *
-     * @return string|null
      */
-    public function getBuCode()
+    public function getBuCode(): ?string
     {
         return $this->buCode;
     }
 
     /**
      * Set buCode value
-     *
-     * @param string $buCode
-     *
-     * @return self
      */
-    public function setBuCode($buCode = null)
+    public function setBuCode(?string $buCode = null): self
     {
         // validation for constraint: string
         if (null !== $buCode && !\is_string($buCode)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($buCode, true), \gettype($buCode)), __LINE__);
         }
         $this->buCode = $buCode;
+
         return $this;
     }
 
     /**
      * Get cSort value
-     *
-     * @return string|null
      */
-    public function getCSort()
+    public function getCSort(): ?string
     {
         return $this->cSort;
     }
 
     /**
      * Set cSort value
-     *
-     * @param string $cSort
-     *
-     * @return self
      */
-    public function setCSort($cSort = null)
+    public function setCSort(?string $cSort = null): self
     {
         // validation for constraint: string
         if (null !== $cSort && !\is_string($cSort)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($cSort, true), \gettype($cSort)), __LINE__);
         }
         $this->cSort = $cSort;
+
         return $this;
     }
 
     /**
      * Get dCountry value
-     *
-     * @return string|null
      */
-    public function getDCountry()
+    public function getDCountry(): ?string
     {
         return $this->dCountry;
     }
 
     /**
      * Set dCountry value
-     *
-     * @param string $dCountry
-     *
-     * @return self
      */
-    public function setDCountry($dCountry = null)
+    public function setDCountry(?string $dCountry = null): self
     {
         // validation for constraint: string
         if (null !== $dCountry && !\is_string($dCountry)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($dCountry, true), \gettype($dCountry)), __LINE__);
         }
         $this->dCountry = $dCountry;
+
         return $this;
     }
 
     /**
      * Get dDepot value
-     *
-     * @return string|null
      */
-    public function getDDepot()
+    public function getDDepot(): ?string
     {
         return $this->dDepot;
     }
 
     /**
      * Set dDepot value
-     *
-     * @param string $dDepot
-     *
-     * @return self
      */
-    public function setDDepot($dDepot = null)
+    public function setDDepot(?string $dDepot = null): self
     {
         // validation for constraint: string
         if (null !== $dDepot && !\is_string($dDepot)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($dDepot, true), \gettype($dDepot)), __LINE__);
         }
         $this->dDepot = $dDepot;
+
         return $this;
     }
 
     /**
      * Get dDepotCountry value
-     *
-     * @return string|null
      */
-    public function getDDepotCountry()
+    public function getDDepotCountry(): ?string
     {
         return $this->dDepotCountry;
     }
 
     /**
      * Set dDepotCountry value
-     *
-     * @param string $dDepotCountry
-     *
-     * @return self
      */
-    public function setDDepotCountry($dDepotCountry = null)
+    public function setDDepotCountry(?string $dDepotCountry = null): self
     {
         // validation for constraint: string
         if (null !== $dDepotCountry && !\is_string($dDepotCountry)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($dDepotCountry, true), \gettype($dDepotCountry)), __LINE__);
         }
         $this->dDepotCountry = $dDepotCountry;
+
         return $this;
     }
 
     /**
      * Get dDepotStr value
-     *
-     * @return string|null
      */
-    public function getDDepotStr()
+    public function getDDepotStr(): ?string
     {
         return $this->dDepotStr;
     }
 
     /**
      * Set dDepotStr value
-     *
-     * @param string $dDepotStr
-     *
-     * @return self
      */
-    public function setDDepotStr($dDepotStr = null)
+    public function setDDepotStr(?string $dDepotStr = null): self
     {
         // validation for constraint: string
         if (null !== $dDepotStr && !\is_string($dDepotStr)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($dDepotStr, true), \gettype($dDepotStr)), __LINE__);
         }
         $this->dDepotStr = $dDepotStr;
+
         return $this;
     }
 
     /**
      * Get dSort value
-     *
-     * @return string|null
      */
-    public function getDSort()
+    public function getDSort(): ?string
     {
         return $this->dSort;
     }
 
     /**
      * Set dSort value
-     *
-     * @param string $dSort
-     *
-     * @return self
      */
-    public function setDSort($dSort = null)
+    public function setDSort(?string $dSort = null): self
     {
         // validation for constraint: string
         if (null !== $dSort && !\is_string($dSort)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($dSort, true), \gettype($dSort)), __LINE__);
         }
         $this->dSort = $dSort;
+
         return $this;
     }
 
     /**
      * Get networkCode value
-     *
-     * @return string|null
      */
-    public function getNetworkCode()
+    public function getNetworkCode(): ?string
     {
         return $this->networkCode;
     }
 
     /**
      * Set networkCode value
-     *
-     * @param string $networkCode
-     *
-     * @return self
      */
-    public function setNetworkCode($networkCode = null)
+    public function setNetworkCode(?string $networkCode = null): self
     {
         // validation for constraint: string
         if (null !== $networkCode && !\is_string($networkCode)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($networkCode, true), \gettype($networkCode)), __LINE__);
         }
         $this->networkCode = $networkCode;
+
         return $this;
     }
 
     /**
      * Get oSort value
-     *
-     * @return string|null
      */
-    public function getOSort()
+    public function getOSort(): ?string
     {
         return $this->oSort;
     }
 
     /**
      * Set oSort value
-     *
-     * @param string $oSort
-     *
-     * @return self
      */
-    public function setOSort($oSort = null)
+    public function setOSort(?string $oSort = null): self
     {
         // validation for constraint: string
         if (null !== $oSort && !\is_string($oSort)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($oSort, true), \gettype($oSort)), __LINE__);
         }
         $this->oSort = $oSort;
+
         return $this;
     }
 
     /**
      * Get partnerCode value
-     *
-     * @return string|null
      */
-    public function getPartnerCode()
+    public function getPartnerCode(): ?string
     {
         return $this->partnerCode;
     }
 
     /**
      * Set partnerCode value
-     *
-     * @param string $partnerCode
-     *
-     * @return self
      */
-    public function setPartnerCode($partnerCode = null)
+    public function setPartnerCode(?string $partnerCode = null): self
     {
         // validation for constraint: string
         if (null !== $partnerCode && !\is_string($partnerCode)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($partnerCode, true), \gettype($partnerCode)), __LINE__);
         }
         $this->partnerCode = $partnerCode;
+
         return $this;
     }
 
     /**
      * Get routingText value
-     *
-     * @return string|null
      */
-    public function getRoutingText()
+    public function getRoutingText(): ?string
     {
         return $this->routingText;
     }
 
     /**
      * Set routingText value
-     *
-     * @param string $routingText
-     *
-     * @return self
      */
-    public function setRoutingText($routingText = null)
+    public function setRoutingText(?string $routingText = null): self
     {
         // validation for constraint: string
         if (null !== $routingText && !\is_string($routingText)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($routingText, true), \gettype($routingText)), __LINE__);
         }
         $this->routingText = $routingText;
+
         return $this;
     }
 
     /**
      * Get sSort value
-     *
-     * @return string|null
      */
-    public function getSSort()
+    public function getSSort(): ?string
     {
         return $this->sSort;
     }
 
     /**
      * Set sSort value
-     *
-     * @param string $sSort
-     *
-     * @return self
      */
-    public function setSSort($sSort = null)
+    public function setSSort(?string $sSort = null): self
     {
         // validation for constraint: string
         if (null !== $sSort && !\is_string($sSort)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($sSort, true), \gettype($sSort)), __LINE__);
         }
         $this->sSort = $sSort;
+
         return $this;
     }
 
     /**
      * Get serviceMark value
-     *
-     * @return string|null
      */
-    public function getServiceMark()
+    public function getServiceMark(): ?string
     {
         return $this->serviceMark;
     }
 
     /**
      * Set serviceMark value
-     *
-     * @param string $serviceMark
-     *
-     * @return self
      */
-    public function setServiceMark($serviceMark = null)
+    public function setServiceMark(?string $serviceMark = null): self
     {
         // validation for constraint: string
         if (null !== $serviceMark && !\is_string($serviceMark)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($serviceMark, true), \gettype($serviceMark)), __LINE__);
         }
         $this->serviceMark = $serviceMark;
+
         return $this;
     }
 
     /**
      * Get serviceText value
-     *
-     * @return string|null
      */
-    public function getServiceText()
+    public function getServiceText(): ?string
     {
         return $this->serviceText;
     }
 
     /**
      * Set serviceText value
-     *
-     * @param string $serviceText
-     *
-     * @return self
      */
-    public function setServiceText($serviceText = null)
+    public function setServiceText(?string $serviceText = null): self
     {
         // validation for constraint: string
         if (null !== $serviceText && !\is_string($serviceText)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($serviceText, true), \gettype($serviceText)), __LINE__);
         }
         $this->serviceText = $serviceText;
+
         return $this;
     }
 
     /**
      * Get version value
-     *
-     * @return string|null
      */
-    public function getVersion()
+    public function getVersion(): ?string
     {
         return $this->version;
     }
 
     /**
      * Set version value
-     *
-     * @param string $version
-     *
-     * @return self
      */
-    public function setVersion($version = null)
+    public function setVersion(?string $version = null): self
     {
         // validation for constraint: string
         if (null !== $version && !\is_string($version)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($version, true), \gettype($version)), __LINE__);
         }
         $this->version = $version;
+
         return $this;
     }
 
     /**
      * Get soCode value
-     *
-     * @return string|null
      */
-    public function getSoCode()
+    public function getSoCode(): ?string
     {
         return $this->soCode;
     }
 
     /**
      * Set soCode value
-     *
-     * @param string $soCode
-     *
-     * @return self
      */
-    public function setSoCode($soCode = null)
+    public function setSoCode(?string $soCode = null): self
     {
         // validation for constraint: string
         if (null !== $soCode && !\is_string($soCode)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($soCode, true), \gettype($soCode)), __LINE__);
         }
         $this->soCode = $soCode;
+
         return $this;
     }
 }

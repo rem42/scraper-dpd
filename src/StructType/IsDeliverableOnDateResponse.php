@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for IsDeliverableOnDateResponse StructType
  */
+#[\AllowDynamicProperties]
 class IsDeliverableOnDateResponse extends AbstractStructBase
 {
     /**
@@ -14,19 +15,15 @@ class IsDeliverableOnDateResponse extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var bool
      */
-    public $IsDeliverableOnDateResult;
+    protected bool $IsDeliverableOnDateResult;
 
     /**
      * Constructor method for IsDeliverableOnDateResponse
      *
      * @uses IsDeliverableOnDateResponse::setIsDeliverableOnDateResult()
-     *
-     * @param bool $isDeliverableOnDateResult
      */
-    public function __construct($isDeliverableOnDateResult = null)
+    public function __construct(bool $isDeliverableOnDateResult)
     {
         $this
             ->setIsDeliverableOnDateResult($isDeliverableOnDateResult)
@@ -35,28 +32,23 @@ class IsDeliverableOnDateResponse extends AbstractStructBase
 
     /**
      * Get IsDeliverableOnDateResult value
-     *
-     * @return bool
      */
-    public function getIsDeliverableOnDateResult()
+    public function getIsDeliverableOnDateResult(): bool
     {
         return $this->IsDeliverableOnDateResult;
     }
 
     /**
      * Set IsDeliverableOnDateResult value
-     *
-     * @param bool $isDeliverableOnDateResult
-     *
-     * @return self
      */
-    public function setIsDeliverableOnDateResult($isDeliverableOnDateResult = null)
+    public function setIsDeliverableOnDateResult(bool $isDeliverableOnDateResult): self
     {
         // validation for constraint: boolean
         if (null !== $isDeliverableOnDateResult && !\is_bool($isDeliverableOnDateResult)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a bool, %s given', var_export($isDeliverableOnDateResult, true), \gettype($isDeliverableOnDateResult)), __LINE__);
         }
         $this->IsDeliverableOnDateResult = $isDeliverableOnDateResult;
+
         return $this;
     }
 }

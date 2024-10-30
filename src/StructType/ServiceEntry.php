@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperDPD\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for ServiceEntry StructType
  */
+#[\AllowDynamicProperties]
 class ServiceEntry extends AbstractStructBase
 {
     /**
@@ -14,55 +15,43 @@ class ServiceEntry extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $Name;
+    protected ?string $Name = null;
     /**
      * The Type
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $Type;
+    protected ?string $Type = null;
     /**
      * The Attribute
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $Attribute;
+    protected ?string $Attribute = null;
     /**
      * The Value
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $Value;
+    protected ?string $Value = null;
     /**
      * The Detail
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $Detail;
+    protected ?string $Detail = null;
     /**
      * The Status
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $Status;
+    protected ?string $Status = null;
 
     /**
      * Constructor method for ServiceEntry
@@ -73,15 +62,8 @@ class ServiceEntry extends AbstractStructBase
      * @uses ServiceEntry::setValue()
      * @uses ServiceEntry::setDetail()
      * @uses ServiceEntry::setStatus()
-     *
-     * @param string $name
-     * @param string $type
-     * @param string $attribute
-     * @param string $value
-     * @param string $detail
-     * @param string $status
      */
-    public function __construct($name = null, $type = null, $attribute = null, $value = null, $detail = null, $status = null)
+    public function __construct(?string $name = null, ?string $type = null, ?string $attribute = null, ?string $value = null, ?string $detail = null, ?string $status = null)
     {
         $this
             ->setName($name)
@@ -95,163 +77,133 @@ class ServiceEntry extends AbstractStructBase
 
     /**
      * Get Name value
-     *
-     * @return string|null
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->Name;
     }
 
     /**
      * Set Name value
-     *
-     * @param string $name
-     *
-     * @return self
      */
-    public function setName($name = null)
+    public function setName(?string $name = null): self
     {
         // validation for constraint: string
         if (null !== $name && !\is_string($name)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($name, true), \gettype($name)), __LINE__);
         }
         $this->Name = $name;
+
         return $this;
     }
 
     /**
      * Get Type value
-     *
-     * @return string|null
      */
-    public function getType()
+    public function getType(): ?string
     {
         return $this->Type;
     }
 
     /**
      * Set Type value
-     *
-     * @param string $type
-     *
-     * @return self
      */
-    public function setType($type = null)
+    public function setType(?string $type = null): self
     {
         // validation for constraint: string
         if (null !== $type && !\is_string($type)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($type, true), \gettype($type)), __LINE__);
         }
         $this->Type = $type;
+
         return $this;
     }
 
     /**
      * Get Attribute value
-     *
-     * @return string|null
      */
-    public function getAttribute()
+    public function getAttribute(): ?string
     {
         return $this->Attribute;
     }
 
     /**
      * Set Attribute value
-     *
-     * @param string $attribute
-     *
-     * @return self
      */
-    public function setAttribute($attribute = null)
+    public function setAttribute(?string $attribute = null): self
     {
         // validation for constraint: string
         if (null !== $attribute && !\is_string($attribute)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($attribute, true), \gettype($attribute)), __LINE__);
         }
         $this->Attribute = $attribute;
+
         return $this;
     }
 
     /**
      * Get Value value
-     *
-     * @return string|null
      */
-    public function getValue()
+    public function getValue(): ?string
     {
         return $this->Value;
     }
 
     /**
      * Set Value value
-     *
-     * @param string $value
-     *
-     * @return self
      */
-    public function setValue($value = null)
+    public function setValue(?string $value = null): self
     {
         // validation for constraint: string
         if (null !== $value && !\is_string($value)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($value, true), \gettype($value)), __LINE__);
         }
         $this->Value = $value;
+
         return $this;
     }
 
     /**
      * Get Detail value
-     *
-     * @return string|null
      */
-    public function getDetail()
+    public function getDetail(): ?string
     {
         return $this->Detail;
     }
 
     /**
      * Set Detail value
-     *
-     * @param string $detail
-     *
-     * @return self
      */
-    public function setDetail($detail = null)
+    public function setDetail(?string $detail = null): self
     {
         // validation for constraint: string
         if (null !== $detail && !\is_string($detail)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($detail, true), \gettype($detail)), __LINE__);
         }
         $this->Detail = $detail;
+
         return $this;
     }
 
     /**
      * Get Status value
-     *
-     * @return string|null
      */
-    public function getStatus()
+    public function getStatus(): ?string
     {
         return $this->Status;
     }
 
     /**
      * Set Status value
-     *
-     * @param string $status
-     *
-     * @return self
      */
-    public function setStatus($status = null)
+    public function setStatus(?string $status = null): self
     {
         // validation for constraint: string
         if (null !== $status && !\is_string($status)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($status, true), \gettype($status)), __LINE__);
         }
         $this->Status = $status;
+
         return $this;
     }
 }
